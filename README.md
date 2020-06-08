@@ -21,7 +21,7 @@ QA(质量保障)项目团队对openEuler社区发布软件进行测试，目标�
 - rigorous
 
 # 联系方式
-- [邮件列表](qa@openeuler.org)
+- qa@openeuler.org
 
 # 项目清单
 
