@@ -65,7 +65,12 @@
 
 示例：XX版本测试阶段完成了功能测试，包括哪些特性和需求；完成了性能测试，达成的性能指标；完成了XXX的兼容性测试；完成了专项测试；。测试发现的主要问题都得到了修正，回归测试结果正常。
 
-虚拟化子系统：本版本交付了CPU/MEM热插、VMtop、虚拟机安全启动、虚拟机支持VCPU custom等openEuler 20.09创新版本已交付继承性特性，另外新增libcareplus特性试用版本。针对本版本需求情况，开展了全量功能测试、性能基线测试、长稳可靠性测试、资料测试等专项测试。除资料问题外新增发现虚拟化问题3个，问题均已闭环，测试回归结果正常，虚拟化组件质量总体良好。
+操作系统测试：
+&nbsp;&nbsp;&nbsp;&nbsp;sp1版本测试阶段完成了基本功能测试，包括重点软件包的命令参数等；完成了系统测试，包括管理员指南、开发应用指南、容器指南等；完成了专项测试，包括安装部署、rpm包的全量安装，升级，降级，卸载；服务启动；自编译；冷热重启等。
+&nbsp;&nbsp;&nbsp;&nbsp;测试发现的主要问题都得到了修正，回归测试结果正常。
+
+虚拟化子系统：
+&nbsp;&nbsp;&nbsp;&nbsp;本版本交付了CPU/MEM热插、VMtop、虚拟机安全启动、虚拟机支持VCPU custom等openEuler 20.09创新版本已交付继承性特性，另外新增libcareplus特性试用版本。针对本版本需求情况，开展了全量功能测试、性能基线测试、长稳可靠性测试、资料测试等专项测试。除资料问题外新增发现虚拟化问题3个，问题均已闭环，测试回归结果正常，虚拟化组件质量总体良好。
 
 # 4   版本详细测试结论
 
@@ -81,37 +86,42 @@
 
 | 序号 | 特性名称 | 特性质量评估               | 备注     |
 | ---- | -------- | -------------------------- | -------- |
-| 1    |          | <font color=red>○</font>   | 详细描述 |
-| 2    |          | <font color=blue>○</font>  |          |
-| 3    |          | <font color=green>○</font> |          |
-| 4    | vCPU热插  | <font color=green>○</font> | 虚拟机支持vCPU热插，特性用例全量测试，质量良好|
-| 5    | vMEM热插  | <font color=green>○</font> | 虚拟机支持vMEM热插，特性用例全量测试，质量良好 |
-| 6    | vmtop     | <font color=green>○</font> | VMTop当前仅支持aarch64，特性用例全量测试，质量良好 |
-| 7    | vCPU支持Custom | <font color=green>○</font> | 虚拟机vCPU支持Custom，特性用例全量测试，质量良好 |
-| 8    | 虚拟机安全启动 | <font color=green>○</font>  | 虚拟机支持安全启动，特性用例全量测试，质量良好 |
+| 1    |          | <font color=red>●</font>   | 详细描述 |
+| 2    |          | <font color=blue>▲</font>  |          |
+| 3    |          | <font color=green>█</font> |          
+| 4    | vCPU热插  | <font color=green>█</font> | 虚拟机支持vCPU热插，特性用例全量测试，质量良好|
+| 5    | vMEM热插  | <font color=green>█</font> | 虚拟机支持vMEM热插，特性用例全量测试，质量良好 |
+| 6    | vmtop     | <font color=green>█</font> | VMTop当前仅支持aarch64，特性用例全量测试，质量良好 |
+| 7    | vCPU支持Custom | <font color=green>█</font> | 虚拟机vCPU支持Custom，特性用例全量测试，质量良好 |
+| 8    | 虚拟机安全启动 | <font color=green>█</font>  | 虚拟机支持安全启动，特性用例全量测试，质量良好 |
 
 
-<font color=red>○</font>： 表示特性不稳定，风险高
+<font color=red>●</font>： 表示特性不稳定，风险高
 
-<font color=blue>○</font>： 表示特性基本可用，遗留少量问题
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
 
-<font color=green>○</font>： 表示特性质量良好
+<font color=green>█</font>： 表示特性质量良好
 
 ### 4.1.2   新需求评价
 
 建议以表格的形式汇总新特性测试执行情况及遗留问题单情况的评估,给出特性质量评估结论。
 
-| 序号 | 特性名称 | 约束依赖说明 | 遗留问题单 | 特性质量评估               | 备注     |
-| ---- | -------- | ------------ | ---------- | -------------------------- | -------- |
-| 1    |          |              |            | <font color=red>○</font>   | 详细描述 |
-|      |          |              |            | <font color=blue>○</font>  |          |
-|      |          |              |            | <font color=green>○</font> |          |
+| 序号 | 特性名称 | 约束依赖说明 | 遗留问题单 | 特性质量评估 | 备注 |
+| :----: | -------- | ------------ | ---------- | :----: | -------- |
+| 1 |  |  |  | <font color=red>●</font> | 详细描述 |
+| 2 |  |  |  | <font color=blue>▲</font> |  |
+| 3 |  |  |  | <font color=green>█</font> |  |
+| 4 | 支持openStack | 仅提供安装指南 | <center>NA</center> | <font color=green>█</font>   |  |
+| 5 | 支持k8s | 仅提供安装指南 | <center>NA</center> | <font color=green>█</font> |  |
+| 6 | 支持spring | 仅提供安装指南 | <center>NA</center> | <font color=green>█</font> |  |
+| 7 | 新增支持rpm | <center>NA</center> | <center>NA</center> | <font color=green>█</center> | mysql 5.7.21;openEuler-lsb、python-kerberos、mysql-connector-java;libxml、hyperscan;abrt;osinfo-db;maildrop、proftpd;microcode_ctl、libbpf |
+| 8 | |  |  | <font color=green>█</font> |   |
 
- <font color=red>○</font>： 表示特性不稳定，风险高
+<font color=red>●</font>： 表示特性不稳定，风险高
 
-<font color=blue>○</font>： 表示特性基本可用，遗留少量问题
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
 
-<font color=green>○</font>： 表示特性质量良好
+<font color=green>█</font>： 表示特性质量良好
 
 ## 4.2   兼容性测试结论
 
@@ -138,6 +148,8 @@
 （如本测试阶段涉及则填写）
 
 按照总体测试策略中安全/性能/可靠性等策略完成相应目标的评估。
+
+OS安全：针对安全加固指南中的加固项，进行全量测试。
 
 虚拟化性能： 本次版本性能测试主要对比openEuler 20.03 LTS版本评估CPU计算能力、MEM访问能力、中断虚拟化性能、磁盘IO等虚拟化基线性能测试项。经测试发现相关本版本性能数据与openEuler 20.03 LTS版本持平。综上所述，本版本虚拟化性能风险可控。
 
