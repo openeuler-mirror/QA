@@ -78,29 +78,29 @@ openEuler 21.03创新版本具体交付需求列表如下：
 
 | **no** | **feature**                                                  | **status** | **sig**                    | **owner**                                                    |
 | ------ | ------------------------------------------------------------ | ---------- | -------------------------- | ------------------------------------------------------------ |
-| 1      | [openEuler 21.03 support openStack](https://gitee.com/openeuler/release-management/issues/I25Y6B?from=project-issue) | discussion | sig-openstack              | [@joec88](https://gitee.com/joec88) [@liksh](https://gitee.com/liksh) |
-| 2      | [openEuler 21.03 support virtualization live migration pro](https://gitee.com/openeuler/release-management/issues/I25ZB1?from=project-issue) | discussion | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
-| 3      | [openEuler 21.03 support StratoVirt function enhancement](https://gitee.com/openeuler/release-management/issues/I25ZH0?from=project-issue) | discussion | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
-| 4      | [openEuler 21.03 support Risc-v virt live migration](https://gitee.com/openeuler/release-management/issues/I25ZF1?from=project-issue) | discussion | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
-| 5      | [openEuler 21.03 support DDE](https://gitee.com/openeuler/release-management/issues/I27TT4?from=project-issue) | discussion | sig-DDE                    | [@panchenbo](https://gitee.com/panchenbo)                    |
-| 6      | [openEuler 21.03 kernel update to version 5.10](https://gitee.com/openeuler/release-management/issues/I27YGU?from=project-issue) | discussion | sig-kernel                 | [@XieXiuQi](https://gitee.com/xiexiuqi)                      |
-| 7      | [openEuler 21.03 remove python 2 from release](https://gitee.com/openeuler/release-management/issues/I29EV9?from=project-issue) | discussion | sig-python-modules         | [@yaqiangchen](https://gitee.com/yaqiangchen)                |
-| 8      | [openEuler 21.03 support xfce 4.14](https://gitee.com/openeuler/release-management/issues/I29LTB?from=project-issue) | discussion | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)                |
-| 9      | [openEuler 21.03 support GNOME 3.38.1](https://gitee.com/openeuler/release-management/issues/I29LTT?from=project-issue) | discussion | GNOME                      | [@dillon_chen](https://gitee.com/dillon_chen)                |
-| 10     | [openEuler 21.03 Increase the dependency library of ROS-base](https://gitee.com/openeuler/release-management/issues/I2D19V?from=project-issue) | discussion | sig-ROS                    | [@anchuanxu](https://gitee.com/anchuanxu)                    |
-| 11     | [openEuler 21.03 support memig](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | discussion | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
-| 12     | [openEuler 21.03 support replace vender info](https://gitee.com/openeuler/release-management/issues/I2C2JJ?from=project-issue) | discussion | Builder                    | [@t.feng](https://gitee.com/t.feng)                          |
-| 13     | [openEuler 21.03 support nvwa](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | discussion | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
-| 14     | [openEuler 21.03 support secGear](https://gitee.com/openeuler/release-management/issues/I2B0KY?from=project-issue) | discussion | sig-confidential-computing | [@chenmaodong](https://gitee.com/chenmaodong)                |
-| 15     | [openEuler 21.03 support RaspberryPi](https://gitee.com/openeuler/release-management/issues/I2CVE3) | discussion | sig-RaspberryPi            | [@woqidaideshi](https://gitee.com/woqidaideshi)              |
-| 16     | [openEuler 21.03 support UKUI](https://gitee.com/openeuler/release-management/issues/I2E61C) | discussion | sig-UKUI                   | [@dou33](https://gitee.com/dou33)                            |
-| 17     | [openEuler 21.03 support HA](https://gitee.com/openeuler/release-management/issues/I2E5R3?from=project-issue) | discussion | sig-HA                     | [@yangzhao_kl](https://gitee.com/yangzhao_kl)                |
-| 18     | [openEuler 21.03 support StratoVirt microvm image](https://gitee.com/openeuler/release-management/issues/I2P83D?from=project-issue) | discussion | sig-virt                   | [@alexchen](https://gitee.com/zhendongchen)                  |
-| 19     | [openEuler 21.03 support Kubernetes](https://gitee.com/openeuler/release-management/issues/I2CMA0?from=project-issue) | discussion | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)                  |
-| 20     | [openEuler 21.03 support KubeSphere](https://gitee.com/openeuler/release-management/issues/I34L4L) | discussion | sig-kubesphere             | [@feynmanzhou](https://gitee.com/feynmanzhou)                |
-| 21     | [openEuler 21.03 update SPDK](https://gitee.com/openeuler/release-management/issues/I35A62) | discussion | Storage                    | [@liuzhiqiang](https://gitee.com/liuzhiqiang26)              |
-| 22     | [openEuler 21.03 update some software](https://gitee.com/openeuler/release-management/issues/I35BTA) | discussion | release-management         | [@chenyaqiang](https://gitee.com/yaqiangchen)                |
-| 23     | [openEuler 21.03 slim container base image](https://gitee.com/openeuler/release-management/issues/I35D25) | discussion | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)                  |
+| 1      | [openEuler 21.03 support openStack](https://gitee.com/openeuler/release-management/issues/I25Y6B?from=project-issue) | testing | sig-openstack              | [@joec88](https://gitee.com/joec88) [@liksh](https://gitee.com/liksh) |
+| 2      | [openEuler 21.03 support virtualization live migration pro](https://gitee.com/openeuler/release-management/issues/I25ZB1?from=project-issue) | testing | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
+| 3      | [openEuler 21.03 support StratoVirt function enhancement](https://gitee.com/openeuler/release-management/issues/I25ZH0?from=project-issue) | testing | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
+| 4      | [openEuler 21.03 support Risc-v virt live migration](https://gitee.com/openeuler/release-management/issues/I25ZF1?from=project-issue) | testing | sig-virt                   | [@alexchen](https://gitee.com/alexchen)                      |
+| 5      | [openEuler 21.03 support DDE](https://gitee.com/openeuler/release-management/issues/I27TT4?from=project-issue) | developing | sig-DDE                    | [@panchenbo](https://gitee.com/panchenbo)                    |
+| 6      | [openEuler 21.03 kernel update to version 5.10](https://gitee.com/openeuler/release-management/issues/I27YGU?from=project-issue) | testing | sig-kernel                 | [@XieXiuQi](https://gitee.com/xiexiuqi)                      |
+| 7      | [openEuler 21.03 remove python 2 from release](https://gitee.com/openeuler/release-management/issues/I29EV9?from=project-issue) | testing | sig-python-modules         | [@yaqiangchen](https://gitee.com/yaqiangchen)                |
+| 8      | [openEuler 21.03 support xfce 4.14](https://gitee.com/openeuler/release-management/issues/I29LTB?from=project-issue) | developing | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)                |
+| 9      | [openEuler 21.03 support GNOME 3.38.1](https://gitee.com/openeuler/release-management/issues/I29LTT?from=project-issue) | reject | GNOME                      | [@dillon_chen](https://gitee.com/dillon_chen)                |
+| 10     | [openEuler 21.03 Increase the dependency library of ROS-base](https://gitee.com/openeuler/release-management/issues/I2D19V?from=project-issue) | reject | sig-ROS                    | [@anchuanxu](https://gitee.com/anchuanxu)                    |
+| 11     | [openEuler 21.03 support memig](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | testing | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
+| 12     | [openEuler 21.03 support replace vender info](https://gitee.com/openeuler/release-management/issues/I2C2JJ?from=project-issue) | testing | Builder                    | [@t.feng](https://gitee.com/t.feng)                          |
+| 13     | [openEuler 21.03 support nvwa](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | testing | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
+| 14     | [openEuler 21.03 support secGear](https://gitee.com/openeuler/release-management/issues/I2B0KY?from=project-issue) | testing | sig-confidential-computing | [@chenmaodong](https://gitee.com/chenmaodong)                |
+| 15     | [openEuler 21.03 support RaspberryPi](https://gitee.com/openeuler/release-management/issues/I2CVE3) | developing | sig-RaspberryPi            | [@woqidaideshi](https://gitee.com/woqidaideshi)              |
+| 16     | [openEuler 21.03 support UKUI](https://gitee.com/openeuler/release-management/issues/I2E61C) | developing | sig-UKUI                   | [@dou33](https://gitee.com/dou33)                            |
+| 17     | [openEuler 21.03 support HA](https://gitee.com/openeuler/release-management/issues/I2E5R3?from=project-issue) | developing | sig-HA                     | [@yangzhao_kl](https://gitee.com/yangzhao_kl)                |
+| 18     | [openEuler 21.03 support StratoVirt microvm image](https://gitee.com/openeuler/release-management/issues/I2P83D?from=project-issue) | testing | sig-virt                   | [@alexchen](https://gitee.com/zhendongchen)                  |
+| 19     | [openEuler 21.03 support Kubernetes](https://gitee.com/openeuler/release-management/issues/I2CMA0?from=project-issue) | testing | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)                  |
+| 20     | [openEuler 21.03 support KubeSphere](https://gitee.com/openeuler/release-management/issues/I34L4L) | reject | sig-kubesphere             | [@feynmanzhou](https://gitee.com/feynmanzhou)                |
+| 21     | [openEuler 21.03 update SPDK](https://gitee.com/openeuler/release-management/issues/I35A62) | testing | Storage                    | [@liuzhiqiang](https://gitee.com/liuzhiqiang26)              |
+| 22     | [openEuler 21.03 update some software](https://gitee.com/openeuler/release-management/issues/I35BTA) | testing | release-management         | [@chenyaqiang](https://gitee.com/yaqiangchen)                |
+| 23     | [openEuler 21.03 slim container base image](https://gitee.com/openeuler/release-management/issues/I35D25) | testing | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)                  |
 
 # 风险
 
@@ -120,8 +120,6 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 支持DDE桌面                                | sig-DDE                    | sig-DDE         | DDEsig组验证DDE在openEuler版本上的功能及其他性能指标         |
 | 支持openStack                              | sig-openstack              | sig-openstack   | openstacksig组重点验证nova\neutron\cinder\glance\keystone\ironic等模块的安装部署、基本功能及各类性能规格指标 |
 | 支持xfce 4.14桌面                          | sig-xfce                   | sig-xfce        | xfcesig组验证xfce桌面系统的安装部署、基本功能和稳定性        |
-| 支持GNOME 3.38.1桌面                       | sig-GNOME                  | sig-GNOME       | GNOMEsig组验证GNOME桌面系统的安装部署、基本功能和稳定性      |
-| 增加ROS-base依赖包                         | sig-ROS                    | sig-ROS         | ROSsig组验证此次引入依赖软件包的编译与安装                   |
 | 支持热迁移/StratoVirt增强/Risc-v架构热迁移 | sig-virt                   | sig-QA          | QAsig组对虚拟化组件发布范围的基本功能和稳定性及性能指标      |
 | 内核升级到5.10                             | sig-kernel                 | sig-QA          | QAsig组验证5.10内核版本的基本功能、稳定性、性能等指标        |
 | 移除python2                                | sig-python-modules         | sig-QA          | QAsig组验证python2是否移除干净及其他对python2有依赖包的安装和功能 |
@@ -131,7 +129,6 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 支持secGear                                | sig-confidential-computing | sig-QA          | QAsig组验证开发套件的基本功能                                |
 | 版本发布件中增加StratoVirt的microvm_image  | sig-virt                   | sig-QA          | QAsig组针对此发布件进行镜像的检查和镜像的使用验证，保证镜像启动虚机的基本功能可用性 |
 | 集成 kubernetes及最简部署的依赖组件        | sig-CloudNative            | sig-QA          | QAsig组验证K8S组件在openEuler版本上的可安装、可使用等基本功能 |
-| 集成KubeSphere组件                         | sig-Kubesphere             | sig-Kubesphere  | kubephereSIG完成对kubesphere组件的可安装和基本功能验证       |
 | 容器基础镜像大小优化                       | sig-CloudNative            | sig-QA          | QAsig组验证发布容器基础镜像规格是否符合，容器镜像启动容器后的基本功能 |
 | 版本其它继承需求及整体继承验证             |                            | sig-QA          | QAsig组发布范围需求的质量保障和系统整体集成能力              |
 
@@ -148,13 +145,11 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 6      | 内核升级到5.10                            | 继承已有测试能力，重点关注内核功能的完整性；并对5.10新版本内核进行基础性能摸底 | 采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证 |        |
 | 7      | 移除python2                               | 验证python2相关软件包移除的正确性及带来的                    | 通过软件包的全量安装验证python2移除后是否有影响；根按照软件包测试策略，验证软件包的命令、服务。 |        |
 | 8      | 支持xfce桌面                              | 验证xfce桌面系统的安装部署、基本功能和稳定性                 | 从系统集成角度验证xfce桌面系统的基本功能，覆盖桌面系统提供的各类选项；验证系统在各类压力、异常系统下的稳定性 |        |
-| 9      | 支持GNOME桌面                             | 验证GNOME桌面系统的安装部署、基本功能和稳定性                | 从系统集成角度验证GNOME桌面系统的基本功能，覆盖桌面系统提供的各类选项；验证系统在各类压力、异常系统下的稳定性 |        |
 | 10     | 支持memig                                 | 重点关注特性的基本功能和稳定性                               | 验证特性提供命令接口的功能完整性，进行并发压力测试和长稳测试 |        |
 | 11     | 支持全量vender替换                        | 重点关注工具的可安装和功能完整性，验证替换后镜像的可安装     | 使用替换工具进行基本功能的验证，并保证替换后的镜像可用安装   |        |
 | 12     | 支持nvwa                                  | 验证内核热替换功能、稳定性和热替换对业务中断影响的性能指标   | 通过连续反复替换验证功能的稳定性；通过实际业务部署检查对业务带来的中断影响满足指标要求 |        |
 | 13     | 支持secGear                               | 验证开发套件提供的生命周期、签名工具和代码生成工具的基本功能和可靠性，稳定性 | 验证开发套件基本功能，通过反复的测试验证                     |        |
 | 14     | 集成 kubernetes及最简部署的依赖组件       | 验证K8S组件的可安装和基本功能                                | 验证K8S组件在操作系统上的集成能力                            |        |
-| 15     | 集成KubeSphere组件                        | 验证kubesphere组件的可安装和基本功能                         | 验证组件集成到操作系统后的功能                               |        |
 | 16     | 容器基础镜像大小优化                      | 验证容器镜像的大小规格和功能完整性                           | 验证容器镜像的大小规格和以此镜像启动容器的基本可用性         |        |
 | 17     | 版本发布件中增加StratoVirt的microvm_image | 通过arm和X86双架构的镜像验证镜像的完整性和可用性             | 验证发布的虚拟机镜像规格和以镜像启动虚机的能力               |        |
 
@@ -263,7 +258,7 @@ openEuler 21.03创新版本按照社区开发模式进行运作，结合社区re
 | Test round 1         | 2021-2-24  | 2021-3-2   |
 | Test round 2         | 2021-3-5   | 2021-3-11  |
 | Test round 3         | 2021-3-15  | 2021-3-19  |
-| Test round 4         | 2021-3-22  | 2021-3-24  |
+| Test round 4         | 2021-3-20  | 2021-3-20  |
 | Release              | 2021-3-25  | 2021-3-26  |
 
 ### 测试重点
@@ -316,7 +311,7 @@ openEuler 21.03创新版本按照社区开发模式进行运作，结合社区re
 
 5.  专项：
 
-    性能、安全扫描、可靠性
+    安全漏洞扫描、可靠性
 
 测试阶段4：
 
@@ -328,7 +323,7 @@ openEuler 21.03创新版本按照社区开发模式进行运作，结合社区re
 
 4、专项：
 
-交付件病毒扫描、文档测试、性能
+交付件病毒扫描、文档测试
 
 ### 入口标准
 
