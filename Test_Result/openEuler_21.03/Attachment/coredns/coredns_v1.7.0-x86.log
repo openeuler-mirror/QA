@@ -1,0 +1,1201 @@
+[root@localhost coredns]# go test ./... -v
+go: downloading github.com/prometheus/prometheus v2.5.0+incompatible
+go: downloading github.com/evanphx/json-patch v4.2.0+incompatible
+go: downloading k8s.io/kube-openapi v0.0.0-20200410145947-61e04a5be9a6
+?       github.com/coredns/coredns      [no test files]
+?       github.com/coredns/coredns/core [no test files]
+=== RUN   TestNormalizeZone
+--- PASS: TestNormalizeZone (0.00s)
+=== RUN   TestNormalizeZoneReverse
+--- PASS: TestNormalizeZoneReverse (0.00s)
+=== RUN   TestSplitProtocolHostPort
+--- PASS: TestSplitProtocolHostPort (0.00s)
+=== RUN   TestOverlapAddressChecker
+--- PASS: TestOverlapAddressChecker (0.00s)
+=== RUN   TestHandler
+--- PASS: TestHandler (0.00s)
+=== RUN   TestHandlers
+--- PASS: TestHandlers (0.00s)
+=== RUN   TestGroupingServers
+--- PASS: TestGroupingServers (0.00s)
+=== RUN   TestNewServer
+--- PASS: TestNewServer (0.00s)
+PASS
+ok      github.com/coredns/coredns/core/dnsserver       0.027s
+?       github.com/coredns/coredns/core/plugin  [no test files]
+?       github.com/coredns/coredns/coremain     [no test files]
+?       github.com/coredns/coredns/pb   [no test files]
+=== RUN   TestZoneMatches
+--- PASS: TestZoneMatches (0.00s)
+=== RUN   TestZoneNormalize
+--- PASS: TestZoneNormalize (0.00s)
+=== RUN   TestNameMatches
+--- PASS: TestNameMatches (0.00s)
+=== RUN   TestNameNormalize
+--- PASS: TestNameNormalize (0.00s)
+=== RUN   TestHostNormalize
+--- PASS: TestHostNormalize (0.00s)
+=== RUN   TestHostMustNormalizeFail
+--- PASS: TestHostMustNormalizeFail (0.00s)
+=== RUN   TestSplitHostPortReverse
+--- PASS: TestSplitHostPortReverse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin       0.020s
+=== RUN   TestACLServeDNS
+=== RUN   TestACLServeDNS/Blacklist_1_BLOCKED
+=== RUN   TestACLServeDNS/Blacklist_1_ALLOWED
+=== RUN   TestACLServeDNS/Blacklist_2_BLOCKED
+=== RUN   TestACLServeDNS/Blacklist_3_BLOCKED
+=== RUN   TestACLServeDNS/Blacklist_3_ALLOWED
+=== RUN   TestACLServeDNS/Blacklist_4_Single_IP_BLOCKED
+=== RUN   TestACLServeDNS/Blacklist_4_Single_IP_ALLOWED
+=== RUN   TestACLServeDNS/Whitelist_1_ALLOWED
+=== RUN   TestACLServeDNS/Whitelist_1_REFUSED
+=== RUN   TestACLServeDNS/Fine-Grained_1_REFUSED
+=== RUN   TestACLServeDNS/Fine-Grained_1_ALLOWED
+=== RUN   TestACLServeDNS/Fine-Grained_2_REFUSED
+=== RUN   TestACLServeDNS/Fine-Grained_2_ALLOWED
+=== RUN   TestACLServeDNS/Fine-Grained_3_REFUSED
+=== RUN   TestACLServeDNS/Fine-Grained_3_ALLOWED
+=== RUN   TestACLServeDNS/Blacklist_1_BLOCKED_IPv6
+=== RUN   TestACLServeDNS/Blacklist_1_ALLOWED_IPv6
+=== RUN   TestACLServeDNS/Blacklist_2_BLOCKED_IPv6
+=== RUN   TestACLServeDNS/Blacklist_3_Single_IP_BLOCKED_IPv6
+=== RUN   TestACLServeDNS/Blacklist_3_Single_IP_ALLOWED_IPv6
+=== RUN   TestACLServeDNS/Fine-Grained_1_REFUSED_IPv6
+=== RUN   TestACLServeDNS/Fine-Grained_1_ALLOWED_IPv6
+--- PASS: TestACLServeDNS (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_1_BLOCKED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_1_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_2_BLOCKED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_3_BLOCKED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_3_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_4_Single_IP_BLOCKED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_4_Single_IP_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Whitelist_1_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Whitelist_1_REFUSED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_1_REFUSED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_1_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_2_REFUSED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_2_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_3_REFUSED (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_3_ALLOWED (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_1_BLOCKED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_1_ALLOWED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_2_BLOCKED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_3_Single_IP_BLOCKED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Blacklist_3_Single_IP_ALLOWED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_1_REFUSED_IPv6 (0.00s)
+    --- PASS: TestACLServeDNS/Fine-Grained_1_ALLOWED_IPv6 (0.00s)
+=== RUN   TestSetup
+=== RUN   TestSetup/Blacklist_1
+=== RUN   TestSetup/Blacklist_2
+=== RUN   TestSetup/Blacklist_3
+=== RUN   TestSetup/Blacklist_4
+=== RUN   TestSetup/Whitelist_1
+=== RUN   TestSetup/fine-grained_1
+=== RUN   TestSetup/fine-grained_2
+=== RUN   TestSetup/Multiple_Networks_1
+=== RUN   TestSetup/Multiple_Qtypes_1
+=== RUN   TestSetup/Missing_argument_1
+=== RUN   TestSetup/Missing_argument_2
+=== RUN   TestSetup/Illegal_argument_1
+=== RUN   TestSetup/Illegal_argument_2
+=== RUN   TestSetup/Illegal_argument_3
+=== RUN   TestSetup/Illegal_argument_4
+=== RUN   TestSetup/Blacklist_1_IPv6
+=== RUN   TestSetup/Blacklist_2_IPv6
+=== RUN   TestSetup/Blacklist_3_IPv6
+=== RUN   TestSetup/Blacklist_4_IPv6
+=== RUN   TestSetup/Whitelist_1_IPv6
+=== RUN   TestSetup/fine-grained_1_IPv6
+=== RUN   TestSetup/fine-grained_2_IPv6
+=== RUN   TestSetup/Multiple_Networks_1_IPv6
+=== RUN   TestSetup/Illegal_argument_1_IPv6
+=== RUN   TestSetup/Illegal_argument_2_IPv6
+--- PASS: TestSetup (0.00s)
+    --- PASS: TestSetup/Blacklist_1 (0.00s)
+    --- PASS: TestSetup/Blacklist_2 (0.00s)
+    --- PASS: TestSetup/Blacklist_3 (0.00s)
+    --- PASS: TestSetup/Blacklist_4 (0.00s)
+    --- PASS: TestSetup/Whitelist_1 (0.00s)
+    --- PASS: TestSetup/fine-grained_1 (0.00s)
+    --- PASS: TestSetup/fine-grained_2 (0.00s)
+    --- PASS: TestSetup/Multiple_Networks_1 (0.00s)
+    --- PASS: TestSetup/Multiple_Qtypes_1 (0.00s)
+    --- PASS: TestSetup/Missing_argument_1 (0.00s)
+    --- PASS: TestSetup/Missing_argument_2 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_1 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_2 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_3 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_4 (0.00s)
+    --- PASS: TestSetup/Blacklist_1_IPv6 (0.00s)
+    --- PASS: TestSetup/Blacklist_2_IPv6 (0.00s)
+    --- PASS: TestSetup/Blacklist_3_IPv6 (0.00s)
+    --- PASS: TestSetup/Blacklist_4_IPv6 (0.00s)
+    --- PASS: TestSetup/Whitelist_1_IPv6 (0.00s)
+    --- PASS: TestSetup/fine-grained_1_IPv6 (0.00s)
+    --- PASS: TestSetup/fine-grained_2_IPv6 (0.00s)
+    --- PASS: TestSetup/Multiple_Networks_1_IPv6 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_1_IPv6 (0.00s)
+    --- PASS: TestSetup/Illegal_argument_2_IPv6 (0.00s)
+=== RUN   TestNormalize
+=== RUN   TestNormalize/Network_range_1
+=== RUN   TestNormalize/IP_address_1
+=== RUN   TestNormalize/IPv6_address_1
+--- PASS: TestNormalize (0.00s)
+    --- PASS: TestNormalize/Network_range_1 (0.00s)
+    --- PASS: TestNormalize/IP_address_1 (0.00s)
+    --- PASS: TestNormalize/IPv6_address_1 (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/acl   0.040s
+=== RUN   TestAny
+--- PASS: TestAny (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/any   0.027s
+=== RUN   TestRewriteToExpand
+--- PASS: TestRewriteToExpand (0.00s)
+=== RUN   TestAutoParse
+--- PASS: TestAutoParse (0.00s)
+=== RUN   TestWalk
+--- PASS: TestWalk (0.00s)
+=== RUN   TestWalkNonExistent
+--- PASS: TestWalkNonExistent (0.00s)
+=== RUN   TestWatcher
+--- PASS: TestWatcher (0.00s)
+=== RUN   TestSymlinks
+--- PASS: TestSymlinks (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/auto  0.026s
+=== RUN   TestAutoPath
+--- PASS: TestAutoPath (0.00s)
+=== RUN   TestAutoPathNoAnswer
+--- PASS: TestAutoPathNoAnswer (0.00s)
+=== RUN   TestInSearchPath
+--- PASS: TestInSearchPath (0.00s)
+=== RUN   TestSetupAutoPath
+--- PASS: TestSetupAutoPath (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/autopath      0.026s
+=== RUN   TestAzure
+--- PASS: TestAzure (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/azure 0.041s
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/bind  0.025s
+=== RUN   TestBufsize
+--- PASS: TestBufsize (0.00s)
+=== RUN   TestSetupBufsize
+--- PASS: TestSetupBufsize (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/bufsize       0.124s
+=== RUN   TestCache
+--- PASS: TestCache (0.00s)
+=== RUN   TestCacheZeroTTL
+--- PASS: TestCacheZeroTTL (0.00s)
+=== RUN   TestServeFromStaleCache
+--- PASS: TestServeFromStaleCache (0.00s)
+=== RUN   TestNegativeStaleMaskingPositiveCache
+--- PASS: TestNegativeStaleMaskingPositiveCache (1.00s)
+=== RUN   TestComputeTTL
+--- PASS: TestComputeTTL (0.00s)
+=== RUN   TestFormErr
+--- PASS: TestFormErr (0.00s)
+=== RUN   TestPrefetch
+=== RUN   TestPrefetch/hits.reset.example.org.
+=== RUN   TestPrefetch/short.ttl.example.org.
+=== RUN   TestPrefetch/no.prefetch.example.org.
+--- PASS: TestPrefetch (0.00s)
+    --- PASS: TestPrefetch/hits.reset.example.org. (0.00s)
+    --- PASS: TestPrefetch/short.ttl.example.org. (0.00s)
+    --- PASS: TestPrefetch/no.prefetch.example.org. (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestServeStale
+--- PASS: TestServeStale (0.07s)
+=== RUN   TestSpoof
+--- PASS: TestSpoof (0.00s)
+=== RUN   TestResponse
+--- PASS: TestResponse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/cache 1.121s
+=== RUN   TestFreqUpdate
+--- PASS: TestFreqUpdate (0.00s)
+=== RUN   TestReset
+--- PASS: TestReset (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/cache/freq    0.118s
+=== RUN   TestCancel
+--- PASS: TestCancel (0.04s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/cancel        0.092s
+=== RUN   TestChaos
+--- PASS: TestChaos (0.00s)
+=== RUN   TestSetupChaos
+--- PASS: TestSetupChaos (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/chaos 0.033s
+=== RUN   TestCloudDNS
+--- PASS: TestCloudDNS (0.00s)
+=== RUN   TestSetupCloudDNS
+--- PASS: TestSetupCloudDNS (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/clouddns      0.038s
+=== RUN   TestDebug
+--- PASS: TestDebug (0.00s)
+=== RUN   TestNoDebug
+--- PASS: TestNoDebug (0.00s)
+=== RUN   TestHexdump
+--- PASS: TestHexdump (0.00s)
+=== RUN   TestHexdumpf
+--- PASS: TestHexdumpf (0.00s)
+=== RUN   ExampleLogHexdump
+--- PASS: ExampleLogHexdump (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/debug 0.031s
+?       github.com/coredns/coredns/plugin/deprecated    [no test files]
+=== RUN   TestTo6
+--- PASS: TestTo6 (0.00s)
+=== RUN   TestResponseShould
+=== RUN   TestResponseShould/0
+=== RUN   TestResponseShould/1
+=== RUN   TestResponseShould/2
+=== RUN   TestResponseShould/3
+=== RUN   TestResponseShould/4
+--- PASS: TestResponseShould (0.00s)
+    --- PASS: TestResponseShould/0 (0.00s)
+    --- PASS: TestResponseShould/1 (0.00s)
+    --- PASS: TestResponseShould/2 (0.00s)
+    --- PASS: TestResponseShould/3 (0.00s)
+    --- PASS: TestResponseShould/4 (0.00s)
+=== RUN   TestDNS64
+=== RUN   TestDNS64/0_standard_flow
+=== RUN   TestDNS64/1_a_empty
+=== RUN   TestDNS64/2_non-nxdomain_error
+=== RUN   TestDNS64/3_nxdomain
+=== RUN   TestDNS64/4_AAAA_record
+--- PASS: TestDNS64 (0.00s)
+    --- PASS: TestDNS64/0_standard_flow (0.00s)
+    --- PASS: TestDNS64/1_a_empty (0.00s)
+    --- PASS: TestDNS64/2_non-nxdomain_error (0.00s)
+    --- PASS: TestDNS64/3_nxdomain (0.00s)
+    --- PASS: TestDNS64/4_AAAA_record (0.00s)
+=== RUN   TestSetupDns64
+--- PASS: TestSetupDns64 (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/dns64 0.066s
+=== RUN   TestBlackLiesBitmapNoData
+--- PASS: TestBlackLiesBitmapNoData (0.02s)
+=== RUN   TestBlackLiesBitmapNameError
+--- PASS: TestBlackLiesBitmapNameError (0.00s)
+=== RUN   TestZoneSigningBlackLies
+--- PASS: TestZoneSigningBlackLies (0.00s)
+=== RUN   TestBlackLiesNoError
+--- PASS: TestBlackLiesNoError (0.00s)
+=== RUN   TestCacheSet
+--- PASS: TestCacheSet (0.00s)
+=== RUN   TestCacheNotValidExpired
+--- PASS: TestCacheNotValidExpired (0.00s)
+=== RUN   TestCacheNotValidYet
+--- PASS: TestCacheNotValidYet (0.00s)
+=== RUN   TestZoneSigning
+--- PASS: TestZoneSigning (0.00s)
+=== RUN   TestZoneSigningDouble
+--- PASS: TestZoneSigningDouble (0.00s)
+=== RUN   TestSigningDifferentZone
+--- PASS: TestSigningDifferentZone (0.00s)
+=== RUN   TestSigningCname
+--- PASS: TestSigningCname (0.00s)
+=== RUN   TestSigningDname
+--- PASS: TestSigningDname (0.00s)
+=== RUN   TestSigningEmpty
+--- PASS: TestSigningEmpty (0.00s)
+=== RUN   TestLookupZone
+--- PASS: TestLookupZone (0.00s)
+=== RUN   TestLookupDNSKEY
+--- PASS: TestLookupDNSKEY (0.00s)
+=== RUN   TestSetupDnssec
+--- PASS: TestSetupDnssec (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/dnssec        0.085s
+=== RUN   TestDnstapContext
+--- PASS: TestDnstapContext (0.00s)
+=== RUN   TestDnstap
+--- PASS: TestDnstap (0.00s)
+=== RUN   TestError
+--- PASS: TestError (0.00s)
+=== RUN   TestConfig
+--- PASS: TestConfig (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/dnstap        0.042s
+=== RUN   TestEncoderCompatibility
+--- PASS: TestEncoderCompatibility (0.00s)
+=== RUN   TestTransport
+--- PASS: TestTransport (2.02s)
+=== RUN   TestRace
+--- PASS: TestRace (1.00s)
+=== RUN   TestReconnect
+--- PASS: TestReconnect (6.01s)
+PASS
+ok      github.com/coredns/coredns/plugin/dnstap/dnstapio       9.053s
+=== RUN   TestRequest
+--- PASS: TestRequest (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/dnstap/msg    0.052s
+=== RUN   TestClientQueryResponse
+--- PASS: TestClientQueryResponse (0.00s)
+=== RUN   TestClientQueryResponseWithSendOption
+--- PASS: TestClientQueryResponseWithSendOption (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/dnstap/taprw  0.039s
+?       github.com/coredns/coredns/plugin/dnstap/test   [no test files]
+=== RUN   TestErraticDrop
+--- PASS: TestErraticDrop (0.00s)
+=== RUN   TestErraticTruncate
+--- PASS: TestErraticTruncate (0.00s)
+=== RUN   TestAxfr
+--- PASS: TestAxfr (0.00s)
+=== RUN   TestErratic
+--- PASS: TestErratic (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestParseErratic
+--- PASS: TestParseErratic (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/erratic       0.031s
+=== RUN   TestErrors
+--- PASS: TestErrors (0.00s)
+=== RUN   TestLogPattern
+--- PASS: TestLogPattern (0.00s)
+=== RUN   TestInc
+--- PASS: TestInc (0.00s)
+=== RUN   TestStop
+--- PASS: TestStop (0.00s)
+=== RUN   TestServeDNSConcurrent
+    errors_test.go:374: 12619 consolidated messages found
+--- PASS: TestServeDNSConcurrent (4.53s)
+=== RUN   TestErrorsParse
+--- PASS: TestErrorsParse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/errors        4.572s
+testing: warning: no tests to run
+PASS
+ok      github.com/coredns/coredns/plugin/etcd  0.056s [no tests to run]
+=== RUN   TestPath
+--- PASS: TestPath (0.00s)
+=== RUN   TestSplit255
+--- PASS: TestSplit255 (0.00s)
+=== RUN   TestGroup
+--- PASS: TestGroup (0.00s)
+=== RUN   TestType
+--- PASS: TestType (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/etcd/msg      0.022s
+=== RUN   TestClosestEncloser
+--- PASS: TestClosestEncloser (0.00s)
+=== RUN   TestLookupDelegation
+--- PASS: TestLookupDelegation (0.00s)
+=== RUN   TestLookupSecureDelegation
+--- PASS: TestLookupSecureDelegation (0.00s)
+=== RUN   TestZoneInsertAndDelete
+--- PASS: TestZoneInsertAndDelete (0.00s)
+=== RUN   TestLookupDNSSEC
+--- PASS: TestLookupDNSSEC (0.00s)
+=== RUN   TestLookupDS
+--- PASS: TestLookupDS (0.00s)
+=== RUN   TestLookupEnt
+--- PASS: TestLookupEnt (0.00s)
+=== RUN   TestParseNoSOA
+--- PASS: TestParseNoSOA (0.00s)
+=== RUN   TestLookupGlue
+--- PASS: TestLookupGlue (0.00s)
+=== RUN   TestInclude
+--- PASS: TestInclude (0.00s)
+=== RUN   TestLookup
+--- PASS: TestLookup (0.00s)
+=== RUN   TestLookupNil
+--- PASS: TestLookupNil (0.00s)
+=== RUN   TestParseNSEC3PARAM
+--- PASS: TestParseNSEC3PARAM (0.00s)
+=== RUN   TestParseNSEC3
+--- PASS: TestParseNSEC3 (0.00s)
+=== RUN   TestZoneReload
+--- PASS: TestZoneReload (2.01s)
+=== RUN   TestZoneReloadSOAChange
+--- PASS: TestZoneReloadSOAChange (0.00s)
+=== RUN   TestLess
+--- PASS: TestLess (0.00s)
+=== RUN   TestShouldTransfer
+--- PASS: TestShouldTransfer (0.00s)
+=== RUN   TestTransferIn
+--- PASS: TestTransferIn (0.00s)
+=== RUN   TestIsNotify
+--- PASS: TestIsNotify (0.00s)
+=== RUN   TestFileParse
+--- PASS: TestFileParse (0.00s)
+=== RUN   TestParseReload
+--- PASS: TestParseReload (0.00s)
+=== RUN   TestLookupWildcard
+--- PASS: TestLookupWildcard (0.00s)
+=== RUN   TestLookupDoubleWildcard
+--- PASS: TestLookupDoubleWildcard (0.00s)
+=== RUN   TestReplaceWithAsteriskLabel
+--- PASS: TestReplaceWithAsteriskLabel (0.00s)
+=== RUN   TestLookupApexWildcard
+--- PASS: TestLookupApexWildcard (0.00s)
+=== RUN   TestLookupMultiWildcard
+--- PASS: TestLookupMultiWildcard (0.00s)
+=== RUN   TestAllNewZone
+--- PASS: TestAllNewZone (0.00s)
+=== RUN   TestNameFromRight
+--- PASS: TestNameFromRight (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/file  2.055s
+?       github.com/coredns/coredns/plugin/file/rrutil   [no test files]
+=== RUN   TestLess
+--- PASS: TestLess (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/file/tree     0.023s
+=== RUN   TestDnstap
+--- PASS: TestDnstap (0.00s)
+=== RUN   TestNoDnstap
+--- PASS: TestNoDnstap (0.00s)
+=== RUN   TestList
+--- PASS: TestList (0.00s)
+=== RUN   TestHealth
+--- PASS: TestHealth (3.00s)
+=== RUN   TestHealthNoRecursion
+--- PASS: TestHealthNoRecursion (3.00s)
+=== RUN   TestHealthTimeout
+--- PASS: TestHealthTimeout (3.00s)
+=== RUN   TestHealthFailTwice
+--- PASS: TestHealthFailTwice (5.00s)
+=== RUN   TestHealthMaxFails
+--- PASS: TestHealthMaxFails (9.00s)
+=== RUN   TestHealthNoMaxFails
+--- PASS: TestHealthNoMaxFails (7.00s)
+=== RUN   TestCached
+--- PASS: TestCached (0.00s)
+=== RUN   TestCleanupByTimer
+--- PASS: TestCleanupByTimer (0.25s)
+=== RUN   TestCleanupAll
+--- PASS: TestCleanupAll (0.00s)
+=== RUN   TestProxyClose
+--- PASS: TestProxyClose (0.00s)
+=== RUN   TestProxy
+--- PASS: TestProxy (0.01s)
+=== RUN   TestProxyTLSFail
+--- PASS: TestProxyTLSFail (6.00s)
+=== RUN   TestProtocolSelection
+--- PASS: TestProtocolSelection (0.00s)
+=== RUN   TestSetupPolicy
+--- PASS: TestSetupPolicy (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestSetupTLS
+--- PASS: TestSetupTLS (0.00s)
+=== RUN   TestSetupResolvconf
+--- PASS: TestSetupResolvconf (2.00s)
+=== RUN   TestSetupMaxConcurrent
+--- PASS: TestSetupMaxConcurrent (0.00s)
+=== RUN   TestSetupHealthCheck
+--- PASS: TestSetupHealthCheck (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/forward       38.332s
+=== RUN   TestGRPC
+=== RUN   TestGRPC/single_proxy_ok
+=== RUN   TestGRPC/multiple_proxies_ok
+=== RUN   TestGRPC/single_proxy_ko
+=== RUN   TestGRPC/multiple_proxies_one_ko
+=== RUN   TestGRPC/multiple_proxies_ko
+--- PASS: TestGRPC (0.00s)
+    --- PASS: TestGRPC/single_proxy_ok (0.00s)
+    --- PASS: TestGRPC/multiple_proxies_ok (0.00s)
+    --- PASS: TestGRPC/single_proxy_ko (0.00s)
+    --- PASS: TestGRPC/multiple_proxies_one_ko (0.00s)
+    --- PASS: TestGRPC/multiple_proxies_ko (0.00s)
+=== RUN   TestProxy
+=== RUN   TestProxy/tls
+=== RUN   TestProxy/response_ok
+=== RUN   TestProxy/nil_response
+--- PASS: TestProxy (0.00s)
+    --- PASS: TestProxy/tls (0.00s)
+    --- PASS: TestProxy/response_ok (0.00s)
+    --- PASS: TestProxy/nil_response (0.00s)
+=== RUN   TestSetupPolicy
+--- PASS: TestSetupPolicy (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestSetupTLS
+--- PASS: TestSetupTLS (0.00s)
+=== RUN   TestSetupResolvconf
+--- PASS: TestSetupResolvconf (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/grpc  0.094s
+=== RUN   TestHealth
+--- PASS: TestHealth (0.00s)
+=== RUN   TestHealthLameduck
+--- PASS: TestHealthLameduck (0.25s)
+=== RUN   TestSetupHealth
+--- PASS: TestSetupHealth (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/health        0.282s
+=== RUN   TestLookupA
+--- PASS: TestLookupA (0.00s)
+=== RUN   TestLookupStaticHost
+--- PASS: TestLookupStaticHost (0.00s)
+=== RUN   TestLookupStaticAddr
+--- PASS: TestLookupStaticAddr (0.00s)
+=== RUN   TestHostCacheModification
+--- PASS: TestHostCacheModification (0.00s)
+=== RUN   TestHostsParse
+--- PASS: TestHostsParse (0.00s)
+=== RUN   TestHostsInlineParse
+--- PASS: TestHostsInlineParse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/hosts 0.075s
+=== RUN   TestApex
+--- PASS: TestApex (0.00s)
+=== RUN   TestExternal
+--- PASS: TestExternal (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/k8s_external  0.029s
+=== RUN   TestExternal
+--- PASS: TestExternal (0.00s)
+=== RUN   TestPreserveCase
+--- PASS: TestPreserveCase (0.00s)
+=== RUN   TestServeDNSEmptyService
+--- PASS: TestServeDNSEmptyService (0.00s)
+=== RUN   TestServeDNSModeDisabled
+--- PASS: TestServeDNSModeDisabled (0.00s)
+=== RUN   TestServeDNSModeInsecure
+--- PASS: TestServeDNSModeInsecure (0.00s)
+=== RUN   TestServeDNSModeVerified
+--- PASS: TestServeDNSModeVerified (0.00s)
+=== RUN   TestServeDNS
+--- PASS: TestServeDNS (0.00s)
+=== RUN   TestServeNamespaceDNS
+--- PASS: TestServeNamespaceDNS (0.00s)
+=== RUN   TestNotSyncedServeDNS
+--- PASS: TestNotSyncedServeDNS (0.00s)
+=== RUN   TestDefaultProcessor
+--- PASS: TestDefaultProcessor (0.00s)
+=== RUN   TestServeDNSApex
+--- PASS: TestServeDNSApex (0.00s)
+=== RUN   TestWildcard
+--- PASS: TestWildcard (0.00s)
+=== RUN   TestEndpointHostname
+--- PASS: TestEndpointHostname (0.00s)
+=== RUN   TestServices
+--- PASS: TestServices (0.00s)
+=== RUN   TestServicesAuthority
+--- PASS: TestServicesAuthority (0.00s)
+=== RUN   TestMetadata
+--- PASS: TestMetadata (0.00s)
+=== RUN   TestMetadataPodsVerified
+--- PASS: TestMetadataPodsVerified (0.00s)
+=== RUN   TestDnsProgrammingLatency
+--- PASS: TestDnsProgrammingLatency (0.04s)
+=== RUN   TestFilteredNamespaceExists
+--- PASS: TestFilteredNamespaceExists (0.00s)
+=== RUN   TestNamespaceExposed
+--- PASS: TestNamespaceExposed (0.00s)
+=== RUN   TestNamespaceValid
+--- PASS: TestNamespaceValid (0.00s)
+=== RUN   TestNsAddrs
+--- PASS: TestNsAddrs (0.00s)
+=== RUN   TestParseRequest
+--- PASS: TestParseRequest (0.00s)
+=== RUN   TestParseInvalidRequest
+--- PASS: TestParseInvalidRequest (0.00s)
+=== RUN   TestReverse
+--- PASS: TestReverse (0.00s)
+=== RUN   TestKubernetesParseReverseZone
+--- PASS: TestKubernetesParseReverseZone (0.00s)
+=== RUN   TestKubernetesParse
+--- PASS: TestKubernetesParse (0.00s)
+=== RUN   TestKubernetesParseEndpointPodNames
+--- PASS: TestKubernetesParseEndpointPodNames (0.00s)
+=== RUN   TestKubernetesParseNoEndpoints
+--- PASS: TestKubernetesParseNoEndpoints (0.00s)
+=== RUN   TestKubernetesParseIgnoreEmptyService
+--- PASS: TestKubernetesParseIgnoreEmptyService (0.00s)
+=== RUN   TestKubernetesParseTransfer
+--- PASS: TestKubernetesParseTransfer (0.00s)
+=== RUN   TestKubernetesParseTTL
+--- PASS: TestKubernetesParseTTL (0.00s)
+=== RUN   TestKubernetesXFR
+--- PASS: TestKubernetesXFR (0.00s)
+=== RUN   TestKubernetesXFRNotAllowed
+--- PASS: TestKubernetesXFRNotAllowed (0.00s)
+=== RUN   TestEndpointsEquivalent
+--- PASS: TestEndpointsEquivalent (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/kubernetes    0.067s
+?       github.com/coredns/coredns/plugin/kubernetes/object     [no test files]
+=== RUN   TestLoadBalance
+--- PASS: TestLoadBalance (0.00s)
+=== RUN   TestLoadBalanceXFR
+--- PASS: TestLoadBalanceXFR (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/loadbalance   0.057s
+=== RUN   TestLoggedStatus
+--- PASS: TestLoggedStatus (0.00s)
+=== RUN   TestLoggedClassDenial
+--- PASS: TestLoggedClassDenial (0.00s)
+=== RUN   TestLoggedClassError
+--- PASS: TestLoggedClassError (0.00s)
+=== RUN   TestLogged
+--- PASS: TestLogged (0.00s)
+=== RUN   TestLogParse
+--- PASS: TestLogParse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/log   0.051s
+=== RUN   TestLoop
+--- PASS: TestLoop (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/loop  0.048s
+=== RUN   TestMetadataServeDNS
+--- PASS: TestMetadataServeDNS (0.00s)
+=== RUN   TestLabelFormat
+--- PASS: TestLabelFormat (0.00s)
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestSetupHealth
+--- PASS: TestSetupHealth (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/metadata      0.053s
+=== RUN   TestMetrics
+--- PASS: TestMetrics (0.04s)
+=== RUN   TestPrometheusParse
+--- PASS: TestPrometheusParse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/metrics       0.077s
+?       github.com/coredns/coredns/plugin/metrics/vars  [no test files]
+=== RUN   TestNsid
+--- PASS: TestNsid (0.00s)
+=== RUN   TestNsidCache
+--- PASS: TestNsidCache (0.00s)
+=== RUN   TestSetupNsid
+--- PASS: TestSetupNsid (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/nsid  0.039s
+=== RUN   TestCacheAddAndGet
+--- PASS: TestCacheAddAndGet (0.01s)
+=== RUN   TestCacheLen
+--- PASS: TestCacheLen (0.00s)
+=== RUN   TestCacheSharding
+--- PASS: TestCacheSharding (0.00s)
+=== RUN   TestShardAddAndGet
+--- PASS: TestShardAddAndGet (0.00s)
+=== RUN   TestAddEvict
+--- PASS: TestAddEvict (0.00s)
+=== RUN   TestShardLen
+--- PASS: TestShardLen (0.00s)
+=== RUN   TestShardEvict
+--- PASS: TestShardEvict (0.00s)
+=== RUN   TestShardLenEvict
+--- PASS: TestShardLenEvict (0.00s)
+=== RUN   TestShardEvictParallel
+--- PASS: TestShardEvictParallel (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/cache     0.035s
+=== RUN   TestMultiWriteMsg
+--- PASS: TestMultiWriteMsg (0.00s)
+=== RUN   TestMultiWrite
+--- PASS: TestMultiWrite (0.00s)
+=== RUN   TestNewRecorder
+--- PASS: TestNewRecorder (0.00s)
+=== RUN   TestWriteMsg
+--- PASS: TestWriteMsg (0.00s)
+=== RUN   TestWrite
+--- PASS: TestWrite (0.00s)
+=== RUN   TestNewServer
+--- PASS: TestNewServer (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/dnstest   0.043s
+=== RUN   TestDuplicateCNAME
+--- PASS: TestDuplicateCNAME (0.00s)
+=== RUN   TestJoin
+--- PASS: TestJoin (0.00s)
+=== RUN   TestExtractAddressFromReverse
+--- PASS: TestExtractAddressFromReverse (0.00s)
+=== RUN   TestIsReverse
+--- PASS: TestIsReverse (0.00s)
+=== RUN   TestMinimalTTL
+--- PASS: TestMinimalTTL (0.00s)
+=== RUN   TestTrimZone
+--- PASS: TestTrimZone (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/dnsutil   0.039s
+=== RUN   TestPostRequest
+--- PASS: TestPostRequest (0.00s)
+=== RUN   TestGetRequest
+--- PASS: TestGetRequest (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/doh       0.037s
+=== RUN   TestVersion
+--- PASS: TestVersion (0.00s)
+=== RUN   TestVersionNoEdns
+--- PASS: TestVersionNoEdns (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/edns      0.032s
+=== RUN   TestEqual
+--- PASS: TestEqual (0.00s)
+=== RUN   TestZero
+--- PASS: TestZero (0.00s)
+=== RUN   TestSetZonesFromArgs
+--- PASS: TestSetZonesFromArgs (0.00s)
+=== RUN   TestFallthrough
+--- PASS: TestFallthrough (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/fall      0.061s
+?       github.com/coredns/coredns/plugin/pkg/fuzz      [no test files]
+=== RUN   TestDebug
+--- PASS: TestDebug (0.00s)
+=== RUN   TestDebugx
+--- PASS: TestDebugx (0.00s)
+=== RUN   TestLevels
+--- PASS: TestLevels (0.00s)
+=== RUN   TestPlugins
+--- PASS: TestPlugins (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/log       0.022s
+=== RUN   TestNonWriter
+--- PASS: TestNonWriter (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/nonwriter 0.067s
+=== RUN   TestHostPortOrFile
+--- PASS: TestHostPortOrFile (0.00s)
+=== RUN   TestParseHostPort
+--- PASS: TestParseHostPort (0.00s)
+=== RUN   TestTransfer
+--- PASS: TestTransfer (0.00s)
+=== RUN   TestTransport
+--- PASS: TestTransport (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/parse     0.021s
+=== RUN   TestToString
+--- PASS: TestToString (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/rcode     0.031s
+=== RUN   TestReplacer
+--- PASS: TestReplacer (0.00s)
+=== RUN   TestParseFormat
+--- PASS: TestParseFormat (0.00s)
+=== RUN   TestParseFormatNodes
+--- PASS: TestParseFormatNodes (0.00s)
+=== RUN   TestLabels
+--- PASS: TestLabels (0.00s)
+=== RUN   TestMetadataReplacement
+--- PASS: TestMetadataReplacement (0.00s)
+=== RUN   TestMetadataMalformed
+--- PASS: TestMetadataMalformed (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/replacer  0.052s
+=== RUN   TestTypifyNilMsg
+--- PASS: TestTypifyNilMsg (0.00s)
+=== RUN   TestTypifyDelegation
+--- PASS: TestTypifyDelegation (0.00s)
+=== RUN   TestTypifyRRSIG
+--- PASS: TestTypifyRRSIG (0.00s)
+=== RUN   TestTypifyImpossible
+--- PASS: TestTypifyImpossible (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/response  0.041s
+?       github.com/coredns/coredns/plugin/pkg/reuseport [no test files]
+=== RUN   TestDo
+--- PASS: TestDo (0.00s)
+=== RUN   TestDoErr
+--- PASS: TestDoErr (0.00s)
+=== RUN   TestDoDupSuppress
+--- PASS: TestDoDupSuppress (0.10s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/singleflight      0.124s
+=== RUN   TestNewTLSConfig
+--- PASS: TestNewTLSConfig (0.00s)
+=== RUN   TestNewTLSClientConfig
+--- PASS: TestNewTLSClientConfig (0.00s)
+=== RUN   TestNewTLSConfigFromArgs
+--- PASS: TestNewTLSConfigFromArgs (0.00s)
+=== RUN   TestNewHTTPSTransport
+--- PASS: TestNewHTTPSTransport (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/tls       0.038s
+?       github.com/coredns/coredns/plugin/pkg/trace     [no test files]
+?       github.com/coredns/coredns/plugin/pkg/transport [no test files]
+=== RUN   TestForEach
+--- PASS: TestForEach (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/uniq      0.065s
+=== RUN   TestUp
+--- PASS: TestUp (0.01s)
+PASS
+ok      github.com/coredns/coredns/plugin/pkg/up        0.048s
+?       github.com/coredns/coredns/plugin/pkg/upstream  [no test files]
+=== RUN   TestPProf
+--- PASS: TestPProf (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/pprof 0.067s
+=== RUN   TestReady
+--- PASS: TestReady (0.00s)
+=== RUN   TestSetupReady
+--- PASS: TestSetupReady (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/ready 0.041s
+=== RUN   TestSetupReload
+--- PASS: TestSetupReload (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/reload        0.013s
+=== RUN   TestRewriteIllegalName
+--- PASS: TestRewriteIllegalName (0.00s)
+=== RUN   TestRewriteNamePrefixSuffix
+--- PASS: TestRewriteNamePrefixSuffix (0.00s)
+=== RUN   TestNewNameRule
+    name_test.go:102: Test 0: PASS, passed as expected: (stop) [exact srv3.coredns.rocks srv4.coredns.rocks]
+    name_test.go:102: Test 1: PASS, passed as expected: (stop) [srv1.coredns.rocks srv2.coredns.rocks]
+    name_test.go:102: Test 2: PASS, passed as expected: (stop) [suffix coredns.rocks coredns.rocks.]
+    name_test.go:102: Test 3: PASS, passed as expected: (stop) [suffix coredns.rocks. coredns.rocks]
+    name_test.go:102: Test 4: PASS, passed as expected: (stop) [suffix coredns.rocks. coredns.rocks.]
+    name_test.go:102: Test 5: PASS, passed as expected: (stop) [regex srv1.coredns.rocks 10]
+    name_test.go:102: Test 6: PASS, passed as expected: (stop) [regex (.*).coredns.rocks 10]
+    name_test.go:102: Test 7: PASS, passed as expected: (stop) [regex (.*).coredns.rocks {1}.coredns.rocks]
+    name_test.go:106: Test 8: PASS, failed as expected: (stop) [regex (.*).coredns.rocks {1}.{2}.coredns.rocks]: the rewrite regex pattern ({1}.{2}.coredns.rocks) uses more subexpressions than its corresponding matching regex pattern ((.*).coredns.rocks)
+    name_test.go:102: Test 9: PASS, passed as expected: (stop) [regex staging.mydomain.com aws-loadbalancer-id.us-east-1.elb.amazonaws.com]
+    name_test.go:122: Test 0: PASS, passed as expected: (stop) [stop name exact srv3.coredns.rocks srv4.coredns.rocks]
+    name_test.go:122: Test 1: PASS, passed as expected: (stop) [stop name srv1.coredns.rocks srv2.coredns.rocks]
+    name_test.go:122: Test 2: PASS, passed as expected: (stop) [stop name suffix coredns.rocks coredns.rocks.]
+    name_test.go:122: Test 3: PASS, passed as expected: (stop) [stop name suffix coredns.rocks. coredns.rocks]
+    name_test.go:122: Test 4: PASS, passed as expected: (stop) [stop name suffix coredns.rocks. coredns.rocks.]
+    name_test.go:122: Test 5: PASS, passed as expected: (stop) [stop name regex srv1.coredns.rocks 10]
+    name_test.go:122: Test 6: PASS, passed as expected: (stop) [stop name regex (.*).coredns.rocks 10]
+    name_test.go:122: Test 7: PASS, passed as expected: (stop) [stop name regex (.*).coredns.rocks {1}.coredns.rocks]
+    name_test.go:126: Test 8: PASS, failed as expected: (stop) [stop name regex (.*).coredns.rocks {1}.{2}.coredns.rocks]: the rewrite regex pattern ({1}.{2}.coredns.rocks) uses more subexpressions than its corresponding matching regex pattern ((.*).coredns.rocks)
+    name_test.go:122: Test 9: PASS, passed as expected: (stop) [stop name regex staging.mydomain.com aws-loadbalancer-id.us-east-1.elb.amazonaws.com]
+--- PASS: TestNewNameRule (0.00s)
+=== RUN   TestResponseReverter
+--- PASS: TestResponseReverter (0.00s)
+=== RUN   TestNewRule
+--- PASS: TestNewRule (0.00s)
+=== RUN   TestRewrite
+--- PASS: TestRewrite (0.00s)
+=== RUN   TestRewriteEDNS0Local
+--- PASS: TestRewriteEDNS0Local (0.00s)
+=== RUN   TestEdns0LocalMultiRule
+--- PASS: TestEdns0LocalMultiRule (0.00s)
+=== RUN   TestRewriteEDNS0LocalVariable
+--- PASS: TestRewriteEDNS0LocalVariable (0.00s)
+=== RUN   TestRewriteEDNS0Subnet
+--- PASS: TestRewriteEDNS0Subnet (0.00s)
+=== RUN   TestParse
+--- PASS: TestParse (0.00s)
+=== RUN   TestNewTTLRule
+--- PASS: TestNewTTLRule (0.00s)
+=== RUN   TestTtlRewrite
+--- PASS: TestTtlRewrite (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/rewrite       0.023s
+=== RUN   TestRoot
+--- PASS: TestRoot (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/root  0.014s
+=== RUN   TestRoute53
+--- PASS: TestRoute53 (0.00s)
+=== RUN   TestMaybeUnescape
+--- PASS: TestMaybeUnescape (0.00s)
+=== RUN   TestSetupRoute53
+--- PASS: TestSetupRoute53 (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/route53       0.025s
+=== RUN   TestSecondaryParse
+--- PASS: TestSecondaryParse (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/secondary     0.015s
+=== RUN   TestFileParse
+--- PASS: TestFileParse (0.00s)
+=== RUN   TestNames
+--- PASS: TestNames (0.00s)
+=== RUN   TestResignInception
+--- PASS: TestResignInception (0.00s)
+=== RUN   TestResignExpire
+--- PASS: TestResignExpire (0.00s)
+=== RUN   TestParse
+--- PASS: TestParse (0.00s)
+=== RUN   TestSign
+--- PASS: TestSign (0.02s)
+=== RUN   TestSignApexZone
+--- PASS: TestSignApexZone (0.00s)
+=== RUN   TestSignGlue
+--- PASS: TestSignGlue (0.00s)
+=== RUN   TestSignDS
+    signer_test.go:181: miek.nl.        1800    IN      SOA     linode.atoom.net. miek.miek.nl. 1615369011 14400 3600 604800 14400
+        miek.nl.        1800    IN      RRSIG   SOA 13 2 1800 20210415111504 20210309212025 59725 miek.nl. xz7Yo3k1K1NJl/Ul/LUw5CF81OV56DE1mUERaRZB3G1WrKyMrQANfN1Bu4q2GNYyo7ge7J5nQZR1NzJqeCsrhw==
+        miek.nl.        1800    IN      NS      linode.atoom.net.
+        miek.nl.        1800    IN      RRSIG   NS 13 2 1800 20210415111504 20210309212025 59725 miek.nl. SG3QHT9xbEugkOUWQMGKqqo+PSjwIaqaHcD5goK+MjsnArLyqynnrrJG27DrpTjIlwEyUCnBF80fUZji0Mtmlg==
+        miek.nl.        1800    IN      DNSKEY  257 3 13 sfzRg5nDVxbeUc51su4MzjgwpOpUwnuu81SlRHqJuXe3SOYOeypR69tZ52XLmE56TAmPHsiB8Rgk+NTpf0o1Cw==
+        miek.nl.        1800    IN      CDS     59725 13 1 F8B20281EBD6CDE32FE6C2CAC8CADBAFBE8A3107
+        miek.nl.        1800    IN      CDS     59725 13 2 57C5D78019685A6575BD3AF29F2156CAEAEF9713DD0F45C357C897242E19BCAF
+        miek.nl.        1800    IN      CDNSKEY 257 3 13 sfzRg5nDVxbeUc51su4MzjgwpOpUwnuu81SlRHqJuXe3SOYOeypR69tZ52XLmE56TAmPHsiB8Rgk+NTpf0o1Cw==
+        miek.nl.        14400   IN      NSEC    child.miek.nl. NS SOA RRSIG NSEC DNSKEY CDS CDNSKEY
+        miek.nl.        1800    IN      RRSIG   DNSKEY 13 2 1800 20210415111504 20210309212025 59725 miek.nl. dsNvr3k2v6RpxbBp/VW3pgHxVZ+Vl8uZJ4NX9Ra0UN9vKlEF+jSDISOAu7f2ejNFCakTEUB/wKuXTDJ/xb8Aug==
+        miek.nl.        1800    IN      RRSIG   CDS 13 2 1800 20210415111504 20210309212025 59725 miek.nl. JKSj0N4QdaYLbKawNRTWbrDPtmWJVpfP8Ggn/bmpYKnP7M1EpTf8eftLXWQVbmlIFVpvbSpTTzgTFBrILuIH2Q==
+        miek.nl.        1800    IN      RRSIG   CDNSKEY 13 2 1800 20210415111504 20210309212025 59725 miek.nl. tCR0aMvUcuE6N9BNo7IwrDG3UJljmYJUXAhCKxNQ/o4JDKJs5o8XmJFoU60wot9oN41SSVitR7k78Btgk3oi/w==
+        miek.nl.        14400   IN      RRSIG   NSEC 13 2 14400 20210415111504 20210309212025 59725 miek.nl. OdgKhEsax12Ip1HxI4599tYf4d5avQGqlNIKGYzJ7wQu6ua3j6HJlhS0PU0alHNF8cvPphspfzhdMSi9phswAg==
+        child.miek.nl.  1800    IN      RRSIG   DS 13 3 1800 20210415111504 20210309212025 59725 miek.nl. Ovunzdh97MqI4+PaZq7ENIdEna5w55G0M7rKxkw+4vTGv8SioXirXtgg/cLPRswnZfosvIVJs84/HUaPly6XTA==
+        child.miek.nl.  14400   IN      RRSIG   NSEC 13 3 14400 20210415111504 20210309212025 59725 miek.nl. zct6MhQ1oZif6rik+jnO9uEvYtkN3rqh6ipGFhsFvEBl47BVu7HYL2jmjubjoFEv1W46ZNKCPizwo/KxYKXQaw==
+        child.miek.nl.  1800    IN      NS      ns.child.miek.nl.
+        child.miek.nl.  1800    IN      DS      34385 13 2 FC7397C77AFBCCB6742FCFF19C7B1410D0044661E7085FC200AE1AB3D15A5842
+        child.miek.nl.  14400   IN      NSEC    www.miek.nl. NS DS RRSIG NSEC
+        ns.child.miek.nl.       1800    IN      AAAA    ::1
+        www.miek.nl.    1800    IN      AAAA    ::1
+        www.miek.nl.    14400   IN      NSEC    miek.nl. AAAA RRSIG NSEC
+        www.miek.nl.    1800    IN      RRSIG   AAAA 13 3 1800 20210415111504 20210309212025 59725 miek.nl. LvOLErORjbCZ7dZ5UvB4+b7FvS1xpWZn0qE9TB995Lkf1iEWdo1auayD0SywP/kMqflOZ5uMaBtI8UZN/Cv9AA==
+        www.miek.nl.    14400   IN      RRSIG   NSEC 13 3 14400 20210415111504 20210309212025 59725 miek.nl. 8vWdBDZ/H4pv/efE3/pfdWR2ZI7qITx68AgvXeKIVxmo+m9Jsw8g5mCrfa9KbippQ/yYvBzJ/CUPSeTC6sl51g==
+
+--- PASS: TestSignDS (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/sign  0.044s
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestSetupParse
+--- PASS: TestSetupParse (0.00s)
+=== RUN   TestHandler
+--- PASS: TestHandler (0.00s)
+=== RUN   TestMultiSection
+--- PASS: TestMultiSection (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/template      0.012s
+=== RUN   TestTempFile
+--- PASS: TestTempFile (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/test  0.007s
+=== RUN   TestTLS
+--- PASS: TestTLS (0.00s)
+=== RUN   TestTLSClientAuthentication
+--- PASS: TestTLSClientAuthentication (0.01s)
+PASS
+ok      github.com/coredns/coredns/plugin/tls   0.027s
+=== RUN   TestTraceParse
+--- PASS: TestTraceParse (0.00s)
+=== RUN   TestStartup
+--- PASS: TestStartup (0.00s)
+=== RUN   TestTrace
+=== RUN   TestTrace/NXDOMAIN
+=== RUN   TestTrace/NOERROR
+--- PASS: TestTrace (0.00s)
+    --- PASS: TestTrace/NXDOMAIN (0.00s)
+    --- PASS: TestTrace/NOERROR (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/trace 0.008s
+=== RUN   TestParse
+--- PASS: TestParse (0.00s)
+=== RUN   TestTransferNonZone
+--- PASS: TestTransferNonZone (0.00s)
+=== RUN   TestTransferNotAXFRorIXFR
+--- PASS: TestTransferNotAXFRorIXFR (0.00s)
+=== RUN   TestTransferAXFRExampleOrg
+2021/03/10 04:36:51 [INFO] plugin/transfer: Outgoing transfer of 4 records of zone example.org. to 10.240.0.1 with 12345 SOA serial
+--- PASS: TestTransferAXFRExampleOrg (0.00s)
+=== RUN   TestTransferAXFRExampleCom
+2021/03/10 04:36:51 [INFO] plugin/transfer: Outgoing transfer of 4 records of zone example.com. to 10.240.0.1 with 12345 SOA serial
+--- PASS: TestTransferAXFRExampleCom (0.00s)
+=== RUN   TestTransferIXFRFallback
+2021/03/10 04:36:51 [INFO] plugin/transfer: Outgoing transfer of 4 records of zone example.org. to 10.240.0.1 with 12345 SOA serial
+--- PASS: TestTransferIXFRFallback (0.00s)
+=== RUN   TestTransferIXFRCurrent
+2021/03/10 04:36:51 [INFO] plugin/transfer: Outgoing transfer of 2 records of zone example.org. to 10.240.0.1 with 12345 SOA serial
+--- PASS: TestTransferIXFRCurrent (0.00s)
+=== RUN   TestTransferNotAllowed
+--- PASS: TestTransferNotAllowed (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/transfer      0.009s
+=== RUN   TestSetup
+--- PASS: TestSetup (0.00s)
+=== RUN   TestWhoami
+--- PASS: TestWhoami (0.00s)
+PASS
+ok      github.com/coredns/coredns/plugin/whoami        0.007s
+=== RUN   TestRequestDo
+--- PASS: TestRequestDo (0.00s)
+=== RUN   TestRequestRemote
+--- PASS: TestRequestRemote (0.00s)
+=== RUN   TestRequestMalformed
+--- PASS: TestRequestMalformed (0.00s)
+=== RUN   TestRequestScrubAnswer
+--- PASS: TestRequestScrubAnswer (0.00s)
+=== RUN   TestRequestScrubExtra
+--- PASS: TestRequestScrubExtra (0.00s)
+=== RUN   TestRequestScrubExtraEdns0
+--- PASS: TestRequestScrubExtraEdns0 (0.00s)
+=== RUN   TestRequestScrubExtraRegression
+--- PASS: TestRequestScrubExtraRegression (0.00s)
+=== RUN   TestTruncation
+--- PASS: TestTruncation (0.12s)
+=== RUN   TestRequestScrubAnswerExact
+--- PASS: TestRequestScrubAnswerExact (0.00s)
+=== RUN   TestRequestMatch
+--- PASS: TestRequestMatch (0.00s)
+=== RUN   TestRequestClear
+--- PASS: TestRequestClear (0.00s)
+PASS
+ok      github.com/coredns/coredns/request      0.129s
+=== RUN   TestAuto
+=== PAUSE TestAuto
+=== RUN   TestAutoNonExistentZone
+=== PAUSE TestAutoNonExistentZone
+=== RUN   TestAutoAXFR
+=== PAUSE TestAutoAXFR
+=== RUN   TestLookupCache
+=== RUN   TestLookupCache/Long_TTL
+=== RUN   TestLookupCache/Short_TTL
+--- PASS: TestLookupCache (0.00s)
+    --- PASS: TestLookupCache/Long_TTL (0.00s)
+    --- PASS: TestLookupCache/Short_TTL (0.00s)
+=== RUN   TestChaos
+--- PASS: TestChaos (0.00s)
+=== RUN   TestCompressScrub
+--- PASS: TestCompressScrub (0.00s)
+=== RUN   TestLookupDS
+=== PAUSE TestLookupDS
+=== RUN   TestEDNS0
+--- PASS: TestEDNS0 (0.00s)
+=== RUN   TestLookupAutoPathErratic
+--- PASS: TestLookupAutoPathErratic (0.00s)
+=== RUN   TestAutoPathErraticNotLoaded
+--- PASS: TestAutoPathErraticNotLoaded (0.00s)
+=== RUN   TestZoneExternalCNAMELookupWithoutProxy
+=== PAUSE TestZoneExternalCNAMELookupWithoutProxy
+=== RUN   TestZoneExternalCNAMELookupWithProxy
+=== PAUSE TestZoneExternalCNAMELookupWithProxy
+=== RUN   TestZoneReload
+--- PASS: TestZoneReload (2.00s)
+=== RUN   TestZoneEDNS0Lookup
+=== PAUSE TestZoneEDNS0Lookup
+=== RUN   TestZoneNoNS
+=== PAUSE TestZoneNoNS
+=== RUN   TestZoneSRVAdditional
+=== PAUSE TestZoneSRVAdditional
+=== RUN   TestTempFile
+=== PAUSE TestTempFile
+=== RUN   TestFileUpstream
+--- PASS: TestFileUpstream (0.00s)
+=== RUN   TestFileUpstreamAdditional
+--- PASS: TestFileUpstreamAdditional (0.00s)
+=== RUN   TestLargeAXFR
+--- PASS: TestLargeAXFR (0.63s)
+=== RUN   TestGrpc
+--- PASS: TestGrpc (0.00s)
+=== RUN   TestHostsInlineLookup
+--- PASS: TestHostsInlineLookup (0.00s)
+=== RUN   TestMetricNaming
+--- PASS: TestMetricNaming (0.07s)
+=== RUN   TestMetricsServer
+--- PASS: TestMetricsServer (0.00s)
+=== RUN   TestMetricsRefused
+--- PASS: TestMetricsRefused (0.00s)
+=== RUN   TestMetricsAuto
+--- PASS: TestMetricsAuto (2.21s)
+=== RUN   TestMetricsSeveralBlocs
+--- PASS: TestMetricsSeveralBlocs (0.16s)
+=== RUN   TestMetricsPluginEnabled
+--- PASS: TestMetricsPluginEnabled (0.00s)
+=== RUN   TestMetricsAvailable
+--- PASS: TestMetricsAvailable (0.08s)
+=== RUN   TestLookupBalanceRewriteCacheDnssec
+=== PAUSE TestLookupBalanceRewriteCacheDnssec
+=== RUN   TestTrailingWhitespace
+--- PASS: TestTrailingWhitespace (0.16s)
+=== RUN   TestFileNameHyphen
+--- PASS: TestFileNameHyphen (0.00s)
+=== RUN   TestLowercaseLog
+--- PASS: TestLowercaseLog (0.07s)
+=== RUN   TestImportTesting
+--- PASS: TestImportTesting (0.06s)
+=== RUN   TestImportOrdering
+--- PASS: TestImportOrdering (0.10s)
+=== RUN   TestProxyThreeWay
+--- PASS: TestProxyThreeWay (6.01s)
+=== RUN   TestLookupProxy
+=== PAUSE TestLookupProxy
+=== RUN   TestReadme
+--- PASS: TestReadme (0.05s)
+=== RUN   TestReload
+--- PASS: TestReload (0.00s)
+=== RUN   TestReloadHealth
+--- PASS: TestReloadHealth (0.00s)
+=== RUN   TestReloadMetricsHealth
+--- PASS: TestReloadMetricsHealth (1.01s)
+=== RUN   TestReloadSeveralTimeMetrics
+--- PASS: TestReloadSeveralTimeMetrics (0.01s)
+=== RUN   TestMetricsAvailableAfterReload
+--- PASS: TestMetricsAvailableAfterReload (0.11s)
+=== RUN   TestMetricsAvailableAfterReloadAndFailedReload
+--- PASS: TestMetricsAvailableAfterReloadAndFailedReload (0.09s)
+=== RUN   TestReverseCorefile
+--- PASS: TestReverseCorefile (0.00s)
+=== RUN   TestRewrite
+=== PAUSE TestRewrite
+=== RUN   TestEmptySecondaryZone
+--- PASS: TestEmptySecondaryZone (0.00s)
+=== RUN   TestSecondaryZoneTransfer
+--- PASS: TestSecondaryZoneTransfer (0.00s)
+=== RUN   TestIxfrResponse
+--- PASS: TestIxfrResponse (0.00s)
+=== RUN   TestClasslessReverse
+--- PASS: TestClasslessReverse (0.00s)
+=== RUN   TestReverse
+--- PASS: TestReverse (0.00s)
+=== RUN   TestReverseInAddr
+--- PASS: TestReverseInAddr (0.00s)
+=== RUN   TestProxyToChaosServer
+=== PAUSE TestProxyToChaosServer
+=== RUN   TestTemplateUpstream
+--- PASS: TestTemplateUpstream (0.00s)
+=== RUN   TestLookupWildcard
+=== PAUSE TestLookupWildcard
+=== CONT  TestAuto
+=== CONT  TestTempFile
+=== CONT  TestZoneExternalCNAMELookupWithProxy
+=== CONT  TestZoneExternalCNAMELookupWithoutProxy
+=== CONT  TestAutoAXFR
+=== CONT  TestAutoNonExistentZone
+=== CONT  TestZoneNoNS
+=== CONT  TestZoneEDNS0Lookup
+=== CONT  TestProxyToChaosServer
+=== CONT  TestLookupProxy
+=== CONT  TestLookupDS
+=== CONT  TestZoneSRVAdditional
+=== CONT  TestLookupBalanceRewriteCacheDnssec
+=== CONT  TestLookupWildcard
+=== CONT  TestRewrite
+--- PASS: TestTempFile (0.00s)
+--- PASS: TestProxyToChaosServer (0.00s)
+--- PASS: TestRewrite (0.00s)
+--- PASS: TestAutoNonExistentZone (0.00s)
+--- PASS: TestLookupWildcard (0.00s)
+--- PASS: TestZoneExternalCNAMELookupWithoutProxy (0.00s)
+--- PASS: TestZoneNoNS (0.00s)
+--- PASS: TestZoneEDNS0Lookup (0.00s)
+--- PASS: TestLookupDS (0.00s)
+--- PASS: TestLookupProxy (0.00s)
+--- PASS: TestZoneSRVAdditional (0.00s)
+--- PASS: TestLookupBalanceRewriteCacheDnssec (0.02s)
+--- PASS: TestZoneExternalCNAMELookupWithProxy (0.05s)
+--- PASS: TestAutoAXFR (1.10s)
+--- PASS: TestAuto (2.60s)
+PASS
+ok      github.com/coredns/coredns/test 15.464s
+[root@localhost coredns]# uname -a
+Linux localhost.localdomain 4.18.0-193.el8.x86_64 #1 SMP Fri May 8 10:59:10 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
