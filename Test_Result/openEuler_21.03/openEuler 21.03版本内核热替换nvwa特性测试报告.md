@@ -85,9 +85,9 @@ nvwa在 openEuler21.03 版本，共计执行用例49个，主要覆盖了基本�
 
 |版本名称|测试用例数|用例执行结果|发现问题单数|
 |:----|:----|:----|:----|
-|openEuler-21.03-RC2|25PASS+2FAIL|2|
-|openEuler-21.03-RC3|37PASS+9FAIL|9|
-|openEuler-21.03-RC4|48PASS+1FAIL|1|
+|openEuler-21.03-RC2|27|25PASS+2FAIL|2|
+|openEuler-21.03-RC3|48|37PASS+9FAIL|9|
+|openEuler-21.03-RC4|49|48PASS+1FAIL|1|
 
 ## 4.2 后续测试建议
 
