@@ -65,7 +65,7 @@ openEuler 21.03是openEuler社区规划的创新版本，目的是合入一些�
 
 1.  内核版本升级到5.10
 2.  新增支持openStack/xfce/GNOME/ROS
-3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/memig/vender信息替换/内核热升级/secGear机密计算安全应用开发套件
+3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/memig/内核热升级/secGear机密计算安全应用开发套件
 4.  删除python2
 5.  补齐/优化社区软件包生态
 6.  修复bug和cve
@@ -106,7 +106,7 @@ openEuler 21.03创新版本具体交付需求列表如下：
 
 | 问题类型       | 问题描述                         | 问题等级 | 应对措施 | 责任人  | 状态    |
 | -------------- | -------------------------------- | -------- | -------- | ------- | ------- |
-| 软件包生态管理 | 版本发布的软件包范围待明确 | 高       |          | solarhu | Opening |
+| 软件包生态管理 | 版本发布的软件包范围待明确 | 高       |          | solarhu | Closed |
 
 # 测试分层策略
 
@@ -118,13 +118,12 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 支持UKUI桌面                               | sig-UKUI                   | sig-UKUI        | UKUIsig组验证UKUI桌面系统在openEuler上的可安装、基本功能和稳定性 |
 | 支持HA软件                                 | sig-HA                     | sig-HA          | HAsig组验证HA软件的安装和基本功能，重点关注软件服务的可靠性和性能等指标 |
 | 支持DDE桌面                                | sig-DDE                    | sig-DDE         | DDEsig组验证DDE在openEuler版本上的功能及其他性能指标         |
-| 支持openStack                              | sig-openstack              | sig-openstack   | openstacksig组重点验证nova\neutron\cinder\glance\keystone\ironic等模块的安装部署、基本功能及各类性能规格指标 |
+| 支持openStack                              | sig-openstack              | sig-openstack   | openstacksig组重点验证nova\placement\neutron\cinder\glance\keystone\ironic等模块的安装部署、基本功能及各类性能规格指标 |
 | 支持xfce 4.14桌面                          | sig-xfce                   | sig-xfce        | xfcesig组验证xfce桌面系统的安装部署、基本功能和稳定性        |
 | 支持热迁移/StratoVirt增强/Risc-v架构热迁移 | sig-virt                   | sig-QA          | QAsig组对虚拟化组件发布范围的基本功能和稳定性及性能指标      |
 | 内核升级到5.10                             | sig-kernel                 | sig-QA          | QAsig组验证5.10内核版本的基本功能、稳定性、性能等指标        |
 | 移除python2                                | sig-python-modules         | sig-QA          | QAsig组验证python2是否移除干净及其他对python2有依赖包的安装和功能 |
 | 支持memig                                  | sig-Storage                | sig-QA          | QAsig组验证memig特性的功能                                   |
-| 支持全量vender信息替换                     | sig-builder                | sig-QA          | QAsig组验证替换工具的功能完整性                              |
 | 支持nvwa                                   | sig-ops                    | sig-QA          | QAsig组验证内核热替换的功能和性能指标                        |
 | 支持secGear                                | sig-confidential-computing | sig-QA          | QAsig组验证开发套件的基本功能                                |
 | 版本发布件中增加StratoVirt的microvm_image  | sig-virt                   | sig-QA          | QAsig组针对此发布件进行镜像的检查和镜像的使用验证，保证镜像启动虚机的基本功能可用性 |
@@ -206,7 +205,7 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 可靠性是版本测试中需重点考虑的测试活动，具体是指在各类资源异常/抢占竞争/压力/故障等背景下，通过功能的并发、反复操作进行长时间的测试；过程中通过监控系统资源、进程运行等状态，及时发现系统/特性隐藏的问题。
 
 可靠性的测试建议从关键特性、重要组件、新增特性的可靠性指标和系统级的稳定性进行分析和设计，已保证特性和系统在各类异常、故障及压力背景下的持续提供服务的能力。
-
+| 测试类型 | 测试内容 |
 | 操作系统长稳 | 系统在各种压力背景下，通过构造资源类和服务类等异常，随机执行LTP、系统管理操作等测试；过程中关注系统重要进程/服务，日志等异常情况；建议稳定性测试时长7\*24 |
 | 特性长稳     | 特性级的可靠性，需结合特性涉及和使用的资源类型，如进程、服务、文件、CPU/内存/IO/网络等；通过模拟各类资源异常/竞争/压力故障场景，并发/反复的进行特性提供的基本功能操作 |
 
