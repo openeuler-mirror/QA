@@ -8,10 +8,11 @@
 | 日期       | 修订版本 | 修改章节 | 修改描述   |
 | ---------- | -------- | -------- | ---------- |
 | 2021/03/23 | 1.1.0    | 初始     | charlie_li |
+| 2021/03/26 | 1.1.1    | 修复OpenStack | charlie_li|
 
 关键词：
 
- openEuler  raspberrypi  UKUI  DDE  HA  iSula  A-Tune  kvm qemu  docker openStack Kubernetes xfce 内核热替换 StratoVirt etmem secGear  
+ openEuler  raspberrypi  UKUI  DDE  HA  iSula  A-Tune  kvm qemu  docker OpenStack Kubernetes xfce 内核热替换 StratoVirt etmem secGear  
 
 摘要：
 
@@ -43,7 +44,7 @@ openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持
 openEuler 21.03版本作为2021年首个创新版本，发布范围主要如下：
 
 1.  内核版本升级到5.10
-2.  新增组件openStack/xfce/Kubernetes
+2.  新增组件OpenStack/xfce/Kubernetes
 3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/etmem/内核热升级/secGear机密计算安全应用开发套件
 4.  删除python2
 5.  补齐/优化社区软件包生态
@@ -81,7 +82,7 @@ openEuler 21.03版本按照社区release-manager团队的计划，共规划4轮�
 
 | 序号 | **需求**                                                     | **状态** | **sig组**                  | **责任人**                                                   |
 | :--: | ------------------------------------------------------------ | -------- | -------------------------- | ------------------------------------------------------------ |
-|  1   | [openEuler 21.03 support openStack](https://gitee.com/openeuler/release-management/issues/I25Y6B?from=project-issue) | Accepted | sig-openstack              | [@joec88](https://gitee.com/joec88) [@liksh](https://gitee.com/liksh) |
+|  1   | [openEuler 21.03 support OpenStack](https://gitee.com/openeuler/release-management/issues/I25Y6B?from=project-issue) | Accepted | sig-openstack              | [@joec88](https://gitee.com/joec88) [@liksh](https://gitee.com/liksh) |
 |  2   | [openEuler 21.03 support virtualization live migration pro](https://gitee.com/openeuler/release-management/issues/I25ZB1?from=project-issue) | Accepted | sig-virt                   | [@alexchen](https://gitee.com/zhendongchen)                  |
 |  3   | [openEuler 21.03 support StratoVirt function enhancement](https://gitee.com/openeuler/release-management/issues/I25ZH0?from=project-issue) | Accepted | sig-virt                   | [@alexchen](https://gitee.com/zhendongchen)                  |
 |  4   | [openEuler 21.03 support Risc-v virt live migration](https://gitee.com/openeuler/release-management/issues/I25ZF1?from=project-issue) | Accepted | sig-virt                   | [@alexchen](https://gitee.com/zhendongchen)                  |
@@ -111,7 +112,7 @@ openEuler 21.03版本按照社区release-manager团队的计划，共规划4轮�
 | 支持UKUI3.0桌面                            | sig-UKUI                   | sig-UKUI        | UKUIsig组验证UKUI桌面系统在openEuler系统上的安装部署、核心功能测试、重要组件的测试和系统插件测试，终端关注基本功能和稳定性 |
 | 支持HA软件                                 | sig-HA                     | sig-HA          | HAsig组验证HA软件的安装部署和基本功能，重点关注软件服务的可靠性(资源异常、网络异常等) |
 | 支持DDE桌面                                | sig-DDE                    | sig-DDE         | DDEsig组验证DDE在openEuler系统上的安装部署、基础组件与预装应用核心功能测试和UI测试 |
-| 支持openStack V版本                        | sig-openstack              | sig-openstack   | openstack sig组重点验证nova\neutron\cinder\glance\keystone\ironic等模块的安装部署、基本功能(虚机/裸机、卷、网络等资源管理)；覆盖API测试、功能测试和集成测试；另外关注组件的长稳测试 |
+| 支持OpenStack V版本                        | sig-openstack              | sig-openstack   | openstack sig组重点验证nova\placement\neutron\cinder\glance\keystone\ironic等模块的安装部署、基本功能(虚机/裸机、卷、网络等资源管理)；覆盖API测试、功能测试和集成测试；另外关注组件的长稳测试 |
 | 支持xfce 4.14桌面                          | sig-xfce                   | sig-xfce        | xfcesig组验证xfce在openEuler系统上的安装部署、重要组件和系统插件的基本功能和稳定性 |
 | 支持热迁移/StratoVirt增强/Risc-v架构热迁移 | sig-virt                   | sig-QA          | QAsig组对StratoVirt组件TLS多通道热迁移和脏页率查询两个特性开展接口、功能、可靠性和性能的测试；支持热迁移发布范围的基本功能和稳定性及性能指标；对内存弹性(balloon)、内存大页支持、iothread、ioqos覆盖功能、可靠性、安全及性能测试 |
 | 内核升级到5.10                             | sig-kernel                 | sig-QA          | QAsig组验证5.10内核的基本功能、稳定性、性能等指标            |
@@ -177,7 +178,7 @@ openEuler 21.03版本详细测试内容包括：
 | 序号 | 特性名称                            | 约束依赖说明                                                 | 遗留问题单          |          质量评估          | 备注                                                         |
 | :--: | ----------------------------------- | :----------------------------------------------------------- | ------------------- | :------------------------: | ------------------------------------------------------------ |
 |  1   | 软件包生态补齐                      | <center>NA</center>                                          | <center>NA</center> | <font color=green>█</font> | 对软件包开展管理(安装/卸载/编译)及命令/服务/软件包加固测试(fuzz/场景)，质量良好 |
-|  2   | 支持openStack                       | <center>NA</center>                                          | <center>NA</center> | <font color=blue>▲</font>  | 使用开源继承测试套Tempest共执行用例1141个，主要覆盖了API测试和功能测试，并开展7*24的长稳测试，整体功能基本可用。注：OpenStack V版中明确废弃的功能和接口 |
+|  2   | 支持OpenStack                       | <center>NA</center>                                          | <center>NA</center> | <font color=blue>▲</font>  | 使用开源继承测试套Tempest共执行用例1141个，主要覆盖了API测试和功能测试，并开展7*24的长稳测试，整体功能基本可用。注：OpenStack V版中明确废弃的功能和接口不在测试范围 |
 |  3   | 虚拟化热迁移加强                    | 不支持异构CPU间迁移                                          | <center>NA</center> | <font color=green>█</font> | 对qemu热迁移特性覆盖接口测试、可靠性测试、性能测试，共计用例58个，质量良好 |
 |  4   | StratoVirt增强                      | 内存弹性约束：内核镜像需支持balloon特性，当前仅支持host与guest端页面大小相同的场景。<br />ioqos约束：限速范围[0, 1000000]，暂不支持热插，只能限制平均iops，无法限制突发流量。<br />iothread约束：总的io线程数量不超过8个，暂不支持热插。<br />内存大页：仅支持在stratovirt启动时在命令行中配置，仅支持静态大页，配置的内存规格不能大于配置的host大页总大小。 | <center>NA</center> | <font color=green>█</font> | stratovirt新增特性，内存弹性共20个用例，ioqos共10个用例，iothread共24个用例，内存大页共61个用例，多平支持共2个用例。覆盖功能测试、可靠性测试、安全测试和性能测试；整体质量良好 |
 |  5   | 移除python2                         | <center>NA</center>                                          | <center>NA</center> | <font color=green>█</font> | 检查版本交付件中python2相关移除情况，验证移除python2后其他软件包的管理操作(安装/卸载/编译) |
