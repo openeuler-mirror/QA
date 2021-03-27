@@ -58,7 +58,6 @@ nvwa在 openEuler21.03 版本，共计执行用例49个，主要覆盖了基本�
 ## 3.2   约束说明
 
 - nvwa需要关闭selinux
-- nvwa日志记录在log_dir中，此处作为保留项，暂未实现
 - 只支持arm架构
 
 
