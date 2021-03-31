@@ -8,7 +8,8 @@
 | 日期       | 修订版本 | 修改章节 | 修改描述   |
 | ---------- | -------- | -------- | ---------- |
 | 2021/03/23 | 1.1.0    | 初始     | charlie_li |
-| 2021/03/26 | 1.1.1    | 修复OpenStack | charlie_li|
+| 2021/03/26 | 1.1.1    | 修复OpenStack名称 | charlie_li|
+| 2021/03/30 | 1.1.2 | 添加遗留问题 | charlie_li |
 
 关键词：
 
@@ -129,7 +130,7 @@ openEuler 21.03版本按照社区release-manager团队的计划，共规划4轮�
 
 openEuler 21.03版本整体测试按照release-manager团队的计划，共完成了两轮全量测试+一轮回归+一轮版本发布验收测试；其中第一轮全量测试聚焦在新特性和系统重要组件的基本功能验证，旨在识别发现阻塞性问题，并开展了安全扫描、性能摸底测试；第二轮对版本发布特性进行全量测试，覆盖新特性和继承特性所有功能，按照版本策略开展各类专项测试，包括安全fuzz测试、可靠性和稳定性及特性性能测试；第三轮回归测试重点对问题单以及问题单较集中模块/组件进行重点覆盖，除验证问题的修复程度还开展相应的组件自动化功能覆盖测试，并且开展文档资料测试和安全漏洞扫描；最后一轮验收测试主要进行问题单回归和文档资料测试及交付件的病毒扫描。
 
-openEuler 21.03创新版本按照既定的测试策略和测试计划完成所有规划测试任务。本版本社区搜集需求23个，实际交付19个，交付率82.6%，3个需求因赶不上版本节奏，release-manager团队按照社区规范绝收，所有交付需求均已完成验证。版本测试共发现问题265个，遗留问题6个(详见遗留问题章节)，其他问题均已修复，回归测试通过，版本整体质量较好。
+openEuler 21.03创新版本按照既定的测试策略和测试计划完成所有规划测试任务。本版本社区搜集需求23个，实际交付19个，交付率82.6%，3个需求因赶不上版本节奏，release-manager团队按照社区规范绝收，所有交付需求均已完成验证。版本测试共发现问题266个，遗留问题7个(详见遗留问题章节)，其他问题均已修复，回归测试通过，版本整体质量较好。
 
 # 4   版本详细测试结论
 
@@ -247,18 +248,18 @@ openEuler 21.03版本详细测试内容包括：
 | **指标大项 ** | **指标小项**                                                 | **指标值**              | 测试结论                                   |
 | ------------- | ------------------------------------------------------------ | ----------------------- | ------------------------------------------ |
 | OS基础性能    | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考LTS版本相应指标基线 | 5.10内核版本系统与4.19内核基础性能基本持平 |
-| 特性相关性能  | etmem特性在MySQL场景下，内存节省达到50%，性能下降不超过15%<br />虚拟机热迁移速度较单通道迁移提升20%<br /> | 参考特性相应性能指标    | 性能规格满足需求指标要求                   |
+| 特性相关性能  | etmem特性在MySQL场景下，内存节省达到50%，性能下降不超过15%<br />虚拟机热迁移速度较单通道迁移提升20% | 参考特性相应性能指标    | 性能规格满足需求指标要求                   |
 
 
 # 5   问题单统计
 
-openEuler 21.03版本共发现问题单265个，有效问题253个，其中修复问题单247个，回归均通过，另外转需求问题单2个，遗留问题单6个。详细分布见下表:
+openEuler 21.03版本共发现问题单266个，有效问题254个，其中修复问题单247个，回归均通过，另外转需求问题单2个，遗留问题单7个。详细分布见下表:
 
 | 测试阶段            | 问题单数 |
 | ------------------- | -------- |
 | openEuler 21.03 RC1 | 157      |
 | openEuler 21.03 RC2 | 77       |
-| openEuler 21.03 RC3 | 27       |
+| openEuler 21.03 RC3 | 28       |
 | openEuler 21.03 RC4 | 4        |
 
 整体看版本问题单收敛趋势明显。
@@ -267,11 +268,12 @@ openEuler 21.03版本共发现问题单265个，有效问题253个，其中修�
 
 ## 遗留问题列表
 
-| 序号 | 问题单号                                                     | 问题简述                                                     | 问题级别 | 影响分析                                                     | 规避措施                            |
-| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ----------------------------------- |
-| 1    | [I39AN0](https://gitee.com/open_euler/dashboard/issues?id=I39AN0) | arm物理机出现内核报错ACPI CPPC: Failed to find PCC channel for subspace 0 | 次要     | 根因：BIOS上报的pcc共享内存属性为loader data,该地址是不允许os request的，需要BIOS上报正确的属性<br />影响：arm 64 cpu调频失败 |                                     |
-| 2    | [I39I7C](https://gitee.com/open_euler/dashboard/issues?id=I39I7C) | arm理机出现内核报错The BMC does not support , but the BMC needs to be fixed | 次要     | 根因：BMC不支持设置接受中断标志位<br />影响：内核检测BMC设置接收中断标志位的能力时，打印不支持报错信息，并设置相应标记变量 |                                     |
-| 3    | [I39MQQ](https://gitee.com/open_euler/dashboard/issues?id=I39MQQ) | 字符界面login处使用上下方向键后导致输入异常，无法正常进行用户登录 | 次要     | 根因：上游社区修复bug引入，当前上游社区无更好解决方案<br />影响：持续跟踪上游社区，用户侧非功能问题，无意中误操作该方式，直接回车重新输入即可，影响较小 | 在login的时候避免使用键盘上下键操作 |
-| 4    | [I3A8YY](https://gitee.com/open_euler/dashboard/issues?id=I3A8YY) | nfs-blkmap服务停止状态failed                                 | 次要     | 根因：nfs-blkmap服务为blkmapd-pNFS块布局映射守护程序的守护服务，该服务目前存在启动后缺少/var/lib/nfs/rpc_pipefs/nfs/blocklayout，上游社区同步存在<br />影响：不影响nfs-utils基本功能，影响较小 | 无                                  |
-| 5    | [I3AB65](https://gitee.com/open_euler/dashboard/issues?id=I3AB65) | SCAP Security guide 不支持对opss（通用操作系统保护配置文件）的检查 | 主要     | 根因：openEuler版本中带有openSACP，使用openSCAP进行扫描时，发现智能使用其他OS厂商的基线库，缺失openEuler对应基线库<br />影响：此功能用例进行安全配置检查和后续审核的自动化，涵盖每个安全规则配置文件的HTML指南，不影响openSCAP的功能使用 | 后续版本增加openEuler配置基线库     |
-| 6    | [I3A52C](https://gitee.com/open_euler/dashboard/issues?id=I3A52C) | 【21.03】samba服务启动失败                                   | 次要     | 根因：samba代码对于SIGTERM的处理，执行结果返回127，实际systemctl stop操作已经生效，samba服务被结束，但显示为fail，上游社区同步存在<br />影响：不影响功能 | 无                                  |
+| 序号 | 问题单号                                                     | 问题简述                                                     | 问题级别 | 影响分析                                                     | 规避措施                                                     |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 1    | [I39AN0](https://gitee.com/open_euler/dashboard/issues?id=I39AN0) | arm物理机出现内核报错ACPI CPPC: Failed to find PCC channel for subspace 0 | 次要     | 根因：BIOS上报的pcc共享内存属性为loader data,该地址是不允许os request的，需要BIOS上报正确的属性<br />影响：arm 64 cpu调频失败 | 协调推动BIOS解决                                             |
+| 2    | [I39I7C](https://gitee.com/open_euler/dashboard/issues?id=I39I7C) | arm理机出现内核报错The BMC does not support , but the BMC needs to be fixed | 次要     | 根因：BMC不支持设置接受中断标志位<br />影响：内核检测BMC设置接收中断标志位的能力时，打印不支持报错信息，并设置相应标记变量 | 协调推动BMC解决                                              |
+| 3    | [I39MQQ](https://gitee.com/open_euler/dashboard/issues?id=I39MQQ) | 字符界面login处使用上下方向键后导致输入异常，无法正常进行用户登录 | 次要     | 根因：上游社区修复bug引入，当前上游社区无更好解决方案<br />影响：持续跟踪上游社区，用户侧非功能问题，无意中误操作该方式，直接回车重新输入即可，影响较小 | 在login的时候避免使用键盘上下键操作                          |
+| 4    | [I3A8YY](https://gitee.com/open_euler/dashboard/issues?id=I3A8YY) | nfs-blkmap服务停止状态failed                                 | 次要     | 根因：nfs-blkmap服务为blkmapd-pNFS块布局映射守护程序的守护服务，该服务目前存在启动后缺少/var/lib/nfs/rpc_pipefs/nfs/blocklayout，上游社区同步存在<br />影响：不影响nfs-utils基本功能，影响较小 | 持续跟踪上游社区解决情况                                     |
+| 5    | [I3AB65](https://gitee.com/open_euler/dashboard/issues?id=I3AB65) | SCAP Security guide 不支持对opss（通用操作系统保护配置文件）的检查 | 主要     | 根因：openEuler版本中带有openSACP，使用openSCAP进行扫描时，发现智能使用其他OS厂商的基线库，缺失openEuler对应基线库<br />影响：此功能用例进行安全配置检查和后续审核的自动化，涵盖每个安全规则配置文件的HTML指南，不影响openSCAP的功能使用 | 后续版本增加openEuler配置基线库                              |
+| 6    | [I3A52C](https://gitee.com/open_euler/dashboard/issues?id=I3A52C) | 【21.03】samba服务启动失败                                   | 次要     | 根因：samba代码对于SIGTERM的处理，执行结果返回127，实际systemctl stop操作已经生效，samba服务被结束，但显示为fail，上游社区同步存在<br />影响：不影响功能 | 持续跟踪上游社区解决情况                                     |
+| 7    | [I3EAS1]( https://gitee.com/open_euler/dashboard/issues?id=I3EAS1) | [21.03]arm/x86 的megaraid卡类型物理机上echo c > /proc/sysrq-trigger后kdump无法生成vmcore | 主要     | 根因：第二内核启动过程中会触发设备复位(reset_devices)操作，但设备复位操作后MegaRAID控制器或磁盘状态故障，导致访问MegaRAID卡下挂的磁盘报错(vmcore文件需要写入这些磁盘保存)；<br/>影响：带有该MegaRAID卡的机器上kdump触发启动第二内核过程中一直报磁盘访问错误，导致第二个内核启动过程中生成vmcore失败； | 1.linux上游社区主线版本同样有问题，持续跟踪上游社区解决情况；<br />2.在物理机/etc/sysconfig/kdump文件中将第二内核启动默认参数中的reset_devices去掉，可以成功生成vmcore，即可规避该问题； |
