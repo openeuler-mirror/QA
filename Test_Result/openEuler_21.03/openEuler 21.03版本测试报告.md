@@ -13,7 +13,7 @@
 
 关键词：
 
- openEuler  raspberrypi  UKUI  DDE  HA  iSula  A-Tune  kvm qemu  docker OpenStack Kubernetes xfce 内核热替换 StratoVirt etmem secGear  
+ openEuler  raspberrypi  UKUI  DDE  HA  iSula  A-Tune  kvm qemu  docker OpenStack Kubernetes xfce 内核热升级 StratoVirt 内存分级扩展 secGear  
 
 摘要：
 
@@ -46,7 +46,7 @@ openEuler 21.03版本作为2021年首个创新版本，发布范围主要如下�
 
 1.  内核版本升级到5.10
 2.  新增组件OpenStack/xfce/Kubernetes
-3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/etmem/内核热升级/secGear机密计算安全应用开发套件
+3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/内存分级扩展/内核热升级/secGear机密计算安全应用开发套件
 4.  删除python2
 5.  补齐/优化社区软件包生态
 6.  修复bug和cve
@@ -91,8 +91,8 @@ openEuler 21.03版本按照社区release-manager团队的计划，共规划4轮�
 |  6   | [openEuler 21.03 kernel update to version 5.10](https://gitee.com/openeuler/release-management/issues/I27YGU?from=project-issue) | Accepted | sig-kernel                 | [@XieXiuQi](https://gitee.com/xiexiuqi)                      |
 |  7   | [openEuler 21.03 remove python 2 from release](https://gitee.com/openeuler/release-management/issues/I29EV9?from=project-issue) | Accepted | sig-python-modules         | [@yaqiangchen](https://gitee.com/yaqiangchen)                |
 |  8   | [openEuler 21.03 support xfce 4.14](https://gitee.com/openeuler/release-management/issues/I29LTB?from=project-issue) | Accepted | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)                |
-|  9   | [openEuler 21.03 support memig](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | Accepted | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
-|  10  | [openEuler 21.03 support nvwa](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | Accepted | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
+|  9   | [openEuler 21.03 support 内存分级扩展](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | Accepted | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
+|  10  | [openEuler 21.03 support 内核热升级](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | Accepted | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
 |  11  | [openEuler 21.03 support secGear](https://gitee.com/openeuler/release-management/issues/I2B0KY?from=project-issue) | Accepted | sig-confidential-computing | [@chenmaodong](https://gitee.com/chenmaodong)                |
 |  12  | [openEuler 21.03 support RaspberryPi](https://gitee.com/openeuler/release-management/issues/I2CVE3) | Accepted | sig-RaspberryPi            | [@woqidaideshi](https://gitee.com/woqidaideshi)              |
 |  13  | [openEuler 21.03 support UKUI](https://gitee.com/openeuler/release-management/issues/I2E61C) | Accepted | sig-UKUI                   | [@dou33](https://gitee.com/dou33)                            |
@@ -118,8 +118,8 @@ openEuler 21.03版本按照社区release-manager团队的计划，共规划4轮�
 | 支持热迁移/StratoVirt增强/Risc-v架构热迁移 | sig-virt                   | sig-QA          | QAsig组对StratoVirt组件TLS多通道热迁移和脏页率查询两个特性开展接口、功能、可靠性和性能的测试；支持热迁移发布范围的基本功能和稳定性及性能指标；对内存弹性(balloon)、内存大页支持、iothread、ioqos覆盖功能、可靠性、安全及性能测试 |
 | 内核升级到5.10                             | sig-kernel                 | sig-QA          | QAsig组验证5.10内核的基本功能、稳定性、性能等指标            |
 | 移除python2                                | sig-python-modules         | sig-QA          | QAsig组验证python2是否移除干净及其他原有对python2有依赖关系的包是否能在移除后的安装和功能完整性 |
-| 支持etmem内存扩展                          | sig-Storage                | sig-QA          | QAsig组验证etmem特性的基本功能、可靠性、性能及稳定性测试     |
-| 支持内核热替换                             | sig-ops                    | sig-QA          | QAsig组验证内核热替换功能的完整性，保证能够快速启动内核和程序的迁移实现 |
+| 支持内存分级扩展                          | sig-Storage                | sig-QA          | QAsig组验证etmem特性的基本功能、可靠性、性能及稳定性测试     |
+| 支持内核热升级                             | sig-ops                    | sig-QA          | QAsig组验证内核热替换功能的完整性，保证能够快速启动内核和程序的迁移实现 |
 | 支持secGear安全机密计算安全应用开发套件    | sig-confidential-computing | sig-QA          | QAsig组验证在X86场景下开发套件的接口、基本功能、可靠性和稳定性 |
 | 发布StratoVirt microvm_image               | sig-virt                   | sig-QA          | QAsig组针对此发布件进行镜像的检查和镜像的使用验证，保证镜像启动虚机的基本功能可用性和虚机启动及底噪性能指标 |
 | 集成 kubernetes及最简部署的依赖组件        | sig-CloudNative            | sig-QA          | QAsig组验证K8S组件在openEuler版本上的安装部署、基本功能一致性 |
@@ -184,8 +184,8 @@ openEuler 21.03版本详细测试内容包括：
 |  4   | StratoVirt增强                      | 内存弹性约束：内核镜像需支持balloon特性，当前仅支持host与guest端页面大小相同的场景。<br />ioqos约束：限速范围[0, 1000000]，暂不支持热插，只能限制平均iops，无法限制突发流量。<br />iothread约束：总的io线程数量不超过8个，暂不支持热插。<br />内存大页：仅支持在stratovirt启动时在命令行中配置，仅支持静态大页，配置的内存规格不能大于配置的host大页总大小。 | <center>NA</center> | <font color=green>█</font> | stratovirt新增特性，内存弹性共20个用例，ioqos共10个用例，iothread共24个用例，内存大页共61个用例，多平支持共2个用例。覆盖功能测试、可靠性测试、安全测试和性能测试；整体质量良好 |
 |  5   | 移除python2                         | <center>NA</center>                                          | <center>NA</center> | <font color=green>█</font> | 检查版本交付件中python2相关移除情况，验证移除python2后其他软件包的管理操作(安装/卸载/编译) |
 |  6   | 支持xfce桌面                        | <center>NA</center>                                          | <center>NA</center> | <font color=green>█</font> | 共经过两轮测试，执行103个测试项，整体核心功能(重要组件和系统插件)稳定正常，整体质量良好 |
-|  7   | 支持etmem                           | 客户端和服务端需要在同一个服务器上部署，不支持跨服务器通信的场景<br />仅支持扫描进程名小于或等于15个字符长度的目标进程 | <center>NA</center> | <font color=green>█</font> | 共计执行90个用例，覆盖范围包括特性的功能、可靠性，安全和性能；整体质量良好 |
-|  8   | 支持内核热替换                      | nvwa需要关闭selinux <br />当前支持arm架构                    | <center>NA</center> | <font color=green>█</font> | 共计执行用例49个，主要覆盖了基本功能测试、可靠性测试、安全测试以及压力测试；整体功能基本可用 |
+|  7   | 内存分级扩展                           | 客户端和服务端需要在同一个服务器上部署，不支持跨服务器通信的场景<br />仅支持扫描进程名小于或等于15个字符长度的目标进程 | <center>NA</center> | <font color=green>█</font> | 共计执行90个用例，覆盖范围包括特性的功能、可靠性，安全和性能；整体质量良好 |
+|  8   | 内核热升级                      | nvwa需要关闭selinux <br />当前支持arm架构                    | <center>NA</center> | <font color=green>█</font> | 共计执行用例49个，主要覆盖了基本功能测试、可靠性测试、安全测试以及压力测试；整体功能基本可用 |
 |  9   | 支持secGear                         | 当前支持x86，依赖对应的sgx硬件平台环境和sgx SDK<br />暂不支持两步签名 | <center>NA</center> | <font color=green>█</font> | 共计执行100个用例，主要覆盖了接口测试、功能测试、组合场景测试、可靠性测试、压力和稳定性测试；质量良好 |
 |  10  | 集成 kubernetes及最简部署的依赖组件 | <center>NA</center>                                          | <center>NA</center> | <font color=blue>▲</font>  | 共执行311个用例，主要覆盖了功能一致性测试，架构x86和arm均测试通过；整体功能基本可用 |
 |  11  | 容器基础镜像大小优化                | <center>NA</center>                                          | <center>NA</center> | <font color=green>█</font> | 验证容器镜像裁剪后大小规格<300M;容器镜像可作为基础镜像的能力；质量良好 |
@@ -256,7 +256,7 @@ openEuler操作系统南向兼容性完成两款整机服务器的验证，详�
 | **指标大项 ** | **指标小项**                                                 | **指标值**              | 测试结论                                   |
 | ------------- | ------------------------------------------------------------ | ----------------------- | ------------------------------------------ |
 | OS基础性能    | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考LTS版本相应指标基线 | 5.10内核版本系统与4.19内核基础性能基本持平 |
-| 特性相关性能  | etmem特性在MySQL场景下，内存节省达到50%，性能下降不超过15%<br />虚拟机热迁移速度较单通道迁移提升20% | 参考特性相应性能指标    | 性能规格满足需求指标要求                   |
+| 特性相关性能  | 内存分级扩展特性在MySQL场景下，内存节省达到50%，性能下降不超过15%<br />虚拟机热迁移速度较单通道迁移提升20% | 参考特性相应性能指标    | 性能规格满足需求指标要求                   |
 
 
 # 5   问题单统计
