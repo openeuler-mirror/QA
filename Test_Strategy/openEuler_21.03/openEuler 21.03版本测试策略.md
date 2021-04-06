@@ -65,7 +65,7 @@ openEuler 21.03是openEuler社区规划的创新版本，目的是合入一些�
 
 1.  内核版本升级到5.10
 2.  新增支持openStack/xfce/GNOME/ROS
-3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/memig/内核热升级/secGear机密计算安全应用开发套件
+3.  竞争力特性：StratoVirt轻量级虚拟化功能增强和优化/内存分级扩展/内核热升级/secGear机密计算安全应用开发套件
 4.  删除python2
 5.  补齐/优化社区软件包生态
 6.  修复bug和cve
@@ -88,9 +88,9 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 8      | [openEuler 21.03 support xfce 4.14](https://gitee.com/openeuler/release-management/issues/I29LTB?from=project-issue) | developing | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)                |
 | 9      | [openEuler 21.03 support GNOME 3.38.1](https://gitee.com/openeuler/release-management/issues/I29LTT?from=project-issue) | reject | GNOME                      | [@dillon_chen](https://gitee.com/dillon_chen)                |
 | 10     | [openEuler 21.03 Increase the dependency library of ROS-base](https://gitee.com/openeuler/release-management/issues/I2D19V?from=project-issue) | reject | sig-ROS                    | [@anchuanxu](https://gitee.com/anchuanxu)                    |
-| 11     | [openEuler 21.03 support memig](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | testing | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
-| 12     | [openEuler 21.03 support replace vender info](https://gitee.com/openeuler/release-management/issues/I2C2JJ?from=project-issue) | testing | Builder                    | [@t.feng](https://gitee.com/t.feng)                          |
-| 13     | [openEuler 21.03 support nvwa](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | testing | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
+| 11     | [openEuler 21.03 support 内存分级扩展](https://gitee.com/openeuler/release-management/issues/I2C2NY?from=project-issue) | testing | memig                      | [@liuzhiqiang26](https://gitee.com/liuzhiqiang26)            |
+| 12     | [openEuler 21.03 support replace vender info](https://gitee.com/openeuler/release-management/issues/I2C2JJ?from=project-issue) | reject | Builder                    | [@t.feng](https://gitee.com/t.feng)                          |
+| 13     | [openEuler 21.03 support 内核热升级](https://gitee.com/openeuler/release-management/issues/I2B057?from=project-issue) | testing | sig-ops                    | [@EulerOSWander](https://gitee.com/EulerOSWander)            |
 | 14     | [openEuler 21.03 support secGear](https://gitee.com/openeuler/release-management/issues/I2B0KY?from=project-issue) | testing | sig-confidential-computing | [@chenmaodong](https://gitee.com/chenmaodong)                |
 | 15     | [openEuler 21.03 support RaspberryPi](https://gitee.com/openeuler/release-management/issues/I2CVE3) | developing | sig-RaspberryPi            | [@woqidaideshi](https://gitee.com/woqidaideshi)              |
 | 16     | [openEuler 21.03 support UKUI](https://gitee.com/openeuler/release-management/issues/I2E61C) | developing | sig-UKUI                   | [@dou33](https://gitee.com/dou33)                            |
@@ -123,8 +123,8 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 支持热迁移/StratoVirt增强/Risc-v架构热迁移 | sig-virt                   | sig-QA          | QAsig组对虚拟化组件发布范围的基本功能和稳定性及性能指标      |
 | 内核升级到5.10                             | sig-kernel                 | sig-QA          | QAsig组验证5.10内核版本的基本功能、稳定性、性能等指标        |
 | 移除python2                                | sig-python-modules         | sig-QA          | QAsig组验证python2是否移除干净及其他对python2有依赖包的安装和功能 |
-| 支持memig                                  | sig-Storage                | sig-QA          | QAsig组验证memig特性的功能                                   |
-| 支持nvwa                                   | sig-ops                    | sig-QA          | QAsig组验证内核热替换的功能和性能指标                        |
+| 支持内存分级扩展                                  | sig-Storage                | sig-QA          | QAsig组验证memig特性的功能                                   |
+| 支持内核热升级                                   | sig-ops                    | sig-QA          | QAsig组验证内核热替换的功能和性能指标                        |
 | 支持secGear                                | sig-confidential-computing | sig-QA          | QAsig组验证开发套件的基本功能                                |
 | 版本发布件中增加StratoVirt的microvm_image  | sig-virt                   | sig-QA          | QAsig组针对此发布件进行镜像的检查和镜像的使用验证，保证镜像启动虚机的基本功能可用性 |
 | 集成 kubernetes及最简部署的依赖组件        | sig-CloudNative            | sig-QA          | QAsig组验证K8S组件在openEuler版本上的可安装、可使用等基本功能 |
@@ -144,13 +144,12 @@ openEuler 21.03创新版本具体交付需求列表如下：
 | 6      | 内核升级到5.10                            | 继承已有测试能力，重点关注内核功能的完整性；并对5.10新版本内核进行基础性能摸底 | 采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证 |        |
 | 7      | 移除python2                               | 验证python2相关软件包移除的正确性及带来的                    | 通过软件包的全量安装验证python2移除后是否有影响；根按照软件包测试策略，验证软件包的命令、服务。 |        |
 | 8      | 支持xfce桌面                              | 验证xfce桌面系统的安装部署、基本功能和稳定性                 | 从系统集成角度验证xfce桌面系统的基本功能，覆盖桌面系统提供的各类选项；验证系统在各类压力、异常系统下的稳定性 |        |
-| 10     | 支持memig                                 | 重点关注特性的基本功能和稳定性                               | 验证特性提供命令接口的功能完整性，进行并发压力测试和长稳测试 |        |
-| 11     | 支持全量vender替换                        | 验证发布镜像全量安装后，涉及vender信息可用成功替换           |                                                              |        |
-| 12     | 支持nvwa                                  | 验证内核热替换功能、稳定性和热替换对业务中断影响的性能指标   | 通过连续反复替换验证功能的稳定性；通过实际业务部署检查对业务带来的中断影响满足指标要求 |        |
-| 13     | 支持secGear                               | 验证开发套件提供的生命周期、签名工具和代码生成工具的基本功能和可靠性，稳定性 | 验证开发套件基本功能，通过反复的测试验证                     |        |
-| 14     | 集成 kubernetes及最简部署的依赖组件       | 验证K8S组件的可安装和基本功能                                | 验证K8S组件在操作系统上的集成能力                            |        |
-| 16     | 容器基础镜像大小优化                      | 验证容器镜像的大小规格和功能完整性                           | 验证容器镜像的大小规格和以此镜像启动容器的基本可用性         |        |
-| 17     | 版本发布件中增加StratoVirt的microvm_image | 通过arm和X86双架构的镜像验证镜像的完整性和可用性             | 验证发布的虚拟机镜像规格和以镜像启动虚机的能力               |        |
+| 10     | 支持内存分级扩展                                 | 重点关注特性的基本功能和稳定性                               | 验证特性提供命令接口的功能完整性，进行并发压力测试和长稳测试 |        |
+| 11     | 支持内核热升级                                  | 验证内核热替换功能、稳定性和热替换对业务中断影响的性能指标   | 通过连续反复替换验证功能的稳定性；通过实际业务部署检查对业务带来的中断影响满足指标要求 |        |
+| 12     | 支持secGear                               | 验证开发套件提供的生命周期、签名工具和代码生成工具的基本功能和可靠性，稳定性 | 验证开发套件基本功能，通过反复的测试验证                     |        |
+| 13     | 集成 kubernetes及最简部署的依赖组件       | 验证K8S组件的可安装和基本功能                                | 验证K8S组件在操作系统上的集成能力                            |        |
+| 14     | 容器基础镜像大小优化                      | 验证容器镜像的大小规格和功能完整性                           | 验证容器镜像的大小规格和以此镜像启动容器的基本可用性         |        |
+| 15     | 版本发布件中增加StratoVirt的microvm_image | 通过arm和X86双架构的镜像验证镜像的完整性和可用性             | 验证发布的虚拟机镜像规格和以镜像启动虚机的能力               |        |
 
 ## 继承feature测试设计策略
 
