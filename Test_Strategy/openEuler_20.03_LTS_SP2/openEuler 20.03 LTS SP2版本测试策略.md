@@ -77,8 +77,8 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 
 |        |                                                              |            |                            |                                                  |
 | ------ | ------------------------------------------------------------ | ---------- | -------------------------- | ------------------------------------------------ |
-| **no** | **feature**                                                  | **status** | **sig**                    | **owner**                                        |
-| 1      | [openEuler 20.03-LTS-SP2版本支持内核热升级](https://gitee.com/openeuler/release-management/issues/I3JDU8?from=project-issue) | Developing | ops                        | [anatas](https://gitee.com/anatas)               |
+| **no** | **feature**                                                  | **status** | **sig**                    | **owner**                                        |             |
+| 1     | [【openEuler 20.03 LTS SP2】【虚拟化】回合openEuler 21.03，vmtop支持x86](https://gitee.com/openeuler/release-management/issues/I3NLWF?from=project-issue) | Discussion |                            |                                                  |
 | 2      | [openEuler 20.03-LTS-SP2支持内存分级扩展特性](https://gitee.com/openeuler/release-management/issues/I2C2NI?from=project-issue) | Developing | storage                    | [liuzhiqiang26](https://gitee.com/liuzhiqiang26) |
 | 3      | [openEuler 20.03-LTS-SP2版本集成secgear组件](https://gitee.com/openeuler/release-management/issues/I3JE3U?from=project-issue) | Developing | sig-confidential-computing | [chenmaodong](https://gitee.com/chenmaodong)     |
 | 4      | openEuler 20.03 LTS SP2 support OpenStack Rocky              | discussion | sig-openstack              | @joec88 @liksh @xiyuanwang @huangtianhua         |
@@ -117,15 +117,13 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 37     | [openEuler 20.03 LTS SP2支持StratoVirt：下一代轻量化虚拟化平台](https://gitee.com/openeuler/release-management/issues/I3N364?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
 | 38     | [【openEuler 20.03 LTS SP2】继承xfce 4.14](https://gitee.com/openeuler/release-management/issues/I3NC3I?from=project-issue) | Discussion | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)    |
 | 39     | [【openEuler 20.03 LTS SP2】继承Kubernetes 1.18](https://gitee.com/openeuler/release-management/issues/I3NC5H?from=project-issue) | Discussion | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)      |
-| 40     | [【openEuler 20.03 LTS SP2】继承pkgship](https://gitee.com/openeuler/release-management/issues/I3O070?from=project-issue) | Discussion |                            |                                                  |
-| 41     | [【openEuler 20.03 LTS SP2】继承门禁检查功能](https://gitee.com/openeuler/release-management/issues/I3O08F?from=project-issue) | Discussion |                            |                                                  |
-| 42     | [openEuler 20.03-LTS-SP2 集成 kubernetes 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I2BHF4?from=project-issue) | Discussion |                            |                                                  |
-| 43     | [openEuler 20.03-LTS-SP2 arm虚拟机支持NMI watchdog](https://gitee.com/openeuler/release-management/issues/I2B4WL?from=project-issue) | Discussion |                            |                                                  |
-| 44     | [openEuler 20.03-LTS-SP2 集成 coredns 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXLJ?from=project-issue) | Discussion |                            |                                                  |
-| 45     | [【openEuler 20.03 LTS SP2】虚拟机热迁移支持TLS](https://gitee.com/openeuler/release-management/issues/I3IE57?from=project-issue) | Discussion |                            |                                                  |
-| 46     | [【kernel-4.19】openEuler kernel nvme 驱动增强](https://gitee.com/openeuler/release-management/issues/I1WGZE?from=project-issue) | Discussion |                            |                                                  |
-| 47     | [openEuler 20.03-LTS-SP2 集成 etcd 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXGJ?from=project-issue) | Discussion |                            |                                                  |
-| 48     | [【openEuler 20.03 LTS SP2】【虚拟化】回合openEuler 21.03，vmtop支持x86](https://gitee.com/openeuler/release-management/issues/I3NLWF?from=project-issue) | Discussion |                            |                                                  |
+| 40     | [【openEuler 20.03 LTS SP2】继承门禁检查功能](https://gitee.com/openeuler/release-management/issues/I3O08F?from=project-issue) | Discussion |                            |                                                  |
+| 41     | [openEuler 20.03-LTS-SP2 集成 kubernetes 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I2BHF4?from=project-issue) | Discussion |                            |                                                  |
+| 42     | [openEuler 20.03-LTS-SP2 arm虚拟机支持NMI watchdog](https://gitee.com/openeuler/release-management/issues/I2B4WL?from=project-issue) | Discussion |                            |                                                  |
+| 43     | [openEuler 20.03-LTS-SP2 集成 coredns 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXLJ?from=project-issue) | Discussion |                            |                                                  |
+| 44     | [【openEuler 20.03 LTS SP2】虚拟机热迁移支持TLS](https://gitee.com/openeuler/release-management/issues/I3IE57?from=project-issue) | Discussion |                            |                                                  |
+| 45     | [【kernel-4.19】openEuler kernel nvme 驱动增强](https://gitee.com/openeuler/release-management/issues/I1WGZE?from=project-issue) | Discussion |                            |                                                  |
+| 46     | [openEuler 20.03-LTS-SP2 集成 etcd 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXGJ?from=project-issue) | Discussion |                            |                                                  |
 
 
 # 风险
@@ -159,17 +157,16 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | *序号* | *Feature*                                         | *重点*                                                                            | *设计思路*                                 | *备注* |
 | ------ | ------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------ | ------ |
 | 1      | 软件包生态补齐                                    | 软件包的管理(安装/卸载/升级/降级) 软件包涉及命令/服务 软件包加固测试(fuzz/场景等) | 根据包优先级划分，按照对应测试策略进行覆盖 |        |
-| 2      | 内核热替换                                        | 验证内核热替换功能、稳定性和热替换对业务中断影响的性能指标                                                  |通过连续反复替换验证功能的稳定性；通过实际业务部署检查对业务带来的中断影响满足指标要求||
-| 3      | 内存分级扩展特性                                  | 重点关注特性的基本功能和稳定性 |验证特性提供命令接口的功能完整性，进行并发压力测试和长稳测试||
-| 4      | 集成secgear组件                                   |验证开发套件提供的生命周期、签名工具和代码生成工具的基本功能和可靠性，稳定性|验证开发套件基本功能，通过反复的测试验证||
-| 5      | OpenStack Rocky                                   |重点验证R版本需要发布的各个模块的基本功能和稳定性|从系统集成角度验证openStack发布各个模块的基本功能和稳定性和性能规格||
-| 6      | CPU核故障在线隔离解决方案                         |验证CPU核在发生故障时，隔离功能的有效性|结合多进程大并发，绑核，0核CPU操作等场景开展功能测试和稳定性测试||
-| 7      | 多应用版本构建和发布                              |验证集成到构建工程中的多版本支持的能力，及构建出来包的可安装可卸载能力|通过构建工程验证多版本支持的能力功能完整性及结果的可用性||
-| 8      | 内存UCE故障降级，用户数据保持一致，业务可持续运行 |验证内存UCE故障发生时，故障降级的功能，结合OpenGauss业务进行业务连续性的保证|通过触发各类内存UCE故障，覆盖故障降级的正确性，并结合openGauss业务进行故障降级发生时对业务无影响的验证||
-| 9    | IO_URING全栈使能                                  |验证特性合入后性能上的提升|基于实际的应用场景，需要应用软件比如mysql/nginx等性能测试带来的性能提升效果||
-| 10    | xfce                                              |验证xfce桌面系统的安装部署、基本功能和稳定性|从系统集成角度验证xfce桌面系统的基本功能，覆盖桌面系统提供的各类选项；验证系统在各类压力、异常系统下的稳定性||
-| 11    | Kubernetes                                        |验证K8S组件的可安装和基本功能及可靠性|验证K8S组件在操作系统上的集成能力，重点关注基础功能及对应的可靠性和性能||
-| 12   | 集成 coredns 及其依赖组件                         |配合K8S组件，重点验证集群DNS的能力|通过接口和功能测试，对coreDNS特性进行验证||
+| 2      | 内存分级扩展特性                                  | 重点关注特性的基本功能和稳定性 |验证特性提供命令接口的功能完整性，进行并发压力测试和长稳测试||
+| 3      | 集成secgear组件                                   |验证开发套件提供的生命周期、签名工具和代码生成工具的基本功能和可靠性，稳定性|验证开发套件基本功能，通过反复的测试验证||
+| 4      | OpenStack Rocky                                   |重点验证R版本需要发布的各个模块的基本功能和稳定性|从系统集成角度验证openStack发布各个模块的基本功能和稳定性和性能规格||
+| 5      | CPU核故障在线隔离解决方案                         |验证CPU核在发生故障时，隔离功能的有效性|结合多进程大并发，绑核，0核CPU操作等场景开展功能测试和稳定性测试||
+| 6      | 多应用版本构建和发布                              |验证集成到构建工程中的多版本支持的能力，及构建出来包的可安装可卸载能力|通过构建工程验证多版本支持的能力功能完整性及结果的可用性||
+| 7      | 内存UCE故障降级，用户数据保持一致，业务可持续运行 |验证内存UCE故障发生时，故障降级的功能，结合OpenGauss业务进行业务连续性的保证|通过触发各类内存UCE故障，覆盖故障降级的正确性，并结合openGauss业务进行故障降级发生时对业务无影响的验证||
+| 8    | IO_URING全栈使能                                  |验证特性合入后性能上的提升|基于实际的应用场景，需要应用软件比如mysql/nginx等性能测试带来的性能提升效果||
+| 9    | xfce                                              |验证xfce桌面系统的安装部署、基本功能和稳定性|从系统集成角度验证xfce桌面系统的基本功能，覆盖桌面系统提供的各类选项；验证系统在各类压力、异常系统下的稳定性||
+| 10    | Kubernetes                                        |验证K8S组件的可安装和基本功能及可靠性|验证K8S组件在操作系统上的集成能力，重点关注基础功能及对应的可靠性和性能||
+| 1   | 集成 coredns 及其依赖组件                         |配合K8S组件，重点验证集群DNS的能力|通过接口和功能测试，对coreDNS特性进行验证||
 
 ## 继承feature/组件测试设计策略
 
