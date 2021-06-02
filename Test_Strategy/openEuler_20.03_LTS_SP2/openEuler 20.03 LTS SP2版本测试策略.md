@@ -10,7 +10,7 @@
 | 日期       | 修订版本 | CR号 | 修改  章节 | 修改描述 | 作者                                                         |
 | ---------- | -------- | ---- | ---------- | -------- | ------------------------------------------------------------ |
 | 2021-04-26 | 1.1.0    |      |            | 初稿     | charlie_li/lutianxiong/lemon-higgins/rigorous/dou33/panchenbo/SupMario/ |
-|            |          |      |            |          |                                                              |
+| 2021-06-02 | 1.1.1    |      |需求章节    | 删除未合入的需求     |charlie_li                                                   |
 
 
 目 录
@@ -99,31 +99,29 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 19     | [openEuler 20.03 LTS SP2支持config_acpi_nfit](https://gitee.com/openeuler/release-management/issues/I3N31B?from=project-issue) | Developing |                            |                                                  |
 | 20     | [openEuler 20.03 LTS SP2 虚拟化增强](https://gitee.com/openeuler/release-management/issues/I3N31E?from=project-issue) | Developing | virt                       | [@KuhnChen](https://gitee.com/KuhnChen)          |
 | 21     | [openEuler 20.03 LTS SP2 支持 UKUI桌面](https://gitee.com/openeuler/release-management/issues/I3N31F?from=project-issue) | Developing | sig_UKUI                   | [@dou33](https://gitee.com/dou33)                |
-| 22     | [openEuler 20.03 LTS SP2 支持openGauss](https://gitee.com/openeuler/release-management/issues/I3N31I?from=project-issue) | Developing |                            |                                                  |
-| 23     | [openEuler 20.03 LTS SP2 支持DDE桌面](https://gitee.com/openeuler/release-management/issues/I3N31J?from=project-issue) | Developing | sig-DDE                    | [@panchenbo](https://gitee.com/panchenbo)        |
-| 24     | [openEuler 20.03 LTS SP2 编译器支持openjdk](https://gitee.com/openeuler/release-management/issues/I3N31M?from=project-issue) | Developing |                            |                                                  |
-| 25     | [openEuler 20.03 LTS SP2支持HA](https://gitee.com/openeuler/release-management/issues/I3N31O?from=project-issue) | Developing | sig-HA                     | [@yangzhao_kl](https://gitee.com/yangzhao_kl)    |
-| 26     | [openEuler 20.03 LTS SP2 加速库版本同步](https://gitee.com/openeuler/release-management/issues/I3N31Q?from=project-issue) | Developing |                            |                                                  |
-| 27     | [openEuler 20.03 LTS SP2支持金融领域软件包](https://gitee.com/openeuler/release-management/issues/I3N311?from=project-issue) | Developing |                            |                                                  |
-| 28     | [openEuler 20.03 LTS SP2支持kmod功能](https://gitee.com/openeuler/release-management/issues/I3N30C?from=project-issue) | Developing |                            |                                                  |
-| 29     | [openEuler 20.03 LTS SP2支持华为多路径](https://gitee.com/openeuler/release-management/issues/I3N2XS?from=project-issue) | Developing |                            |                                                  |
-| 30     | [openEuler 20.03 LTS SP2 CPU核故障在线隔离解决方案](https://gitee.com/openeuler/release-management/issues/I3N36L?from=project-issue) | Developing |                            |                                                  |
-| 31     | [openEuler 20.03 LTS SP2 支持多应用版本构建和发布](https://gitee.com/openeuler/release-management/issues/I3N36K?from=project-issue) | Developing |                            |                                                  |
-| 32     | [openEuler 20.03 LTS SP2 内存UCE故障降级，用户数据保持一致，业务可持续运行](https://gitee.com/openeuler/release-management/issues/I3N36H?from=project-issue) | Developing |                            |                                                  |
-| 33     | [openEuler 20.03 LTS SP2 故障预测框架](https://gitee.com/openeuler/release-management/issues/I3N36F?from=project-issue) | Developing |                            |                                                  |
-| 34     | [openEuler 20.03 LTS SP2 IO_URING全栈使能](https://gitee.com/openeuler/release-management/issues/I3N36C?from=project-issue) | Developing |                            |                                                  |
-| 35     | [openEuler 20.03 LTS SP2 Qemu：虚拟化可靠性和可维护性增强](https://gitee.com/openeuler/release-management/issues/I3N369?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
-| 36     | [openEuler 20.03 LTS SP2 Qemu：热迁移pro，提升热迁移性能+安全](https://gitee.com/openeuler/release-management/issues/I3N368?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
-| 37     | [openEuler 20.03 LTS SP2支持StratoVirt：下一代轻量化虚拟化平台](https://gitee.com/openeuler/release-management/issues/I3N364?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
-| 38     | [【openEuler 20.03 LTS SP2】继承xfce 4.14](https://gitee.com/openeuler/release-management/issues/I3NC3I?from=project-issue) | Discussion | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)    |
-| 39     | [【openEuler 20.03 LTS SP2】继承Kubernetes 1.18](https://gitee.com/openeuler/release-management/issues/I3NC5H?from=project-issue) | Discussion | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)      |
-| 40     | [【openEuler 20.03 LTS SP2】继承门禁检查功能](https://gitee.com/openeuler/release-management/issues/I3O08F?from=project-issue) | Discussion |                            |                                                  |
-| 41     | [openEuler 20.03-LTS-SP2 集成 kubernetes 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I2BHF4?from=project-issue) | Discussion |                            |                                                  |
-| 42     | [openEuler 20.03-LTS-SP2 arm虚拟机支持NMI watchdog](https://gitee.com/openeuler/release-management/issues/I2B4WL?from=project-issue) | Discussion |                            |                                                  |
-| 43     | [openEuler 20.03-LTS-SP2 集成 coredns 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXLJ?from=project-issue) | Discussion |                            |                                                  |
-| 44     | [【openEuler 20.03 LTS SP2】虚拟机热迁移支持TLS](https://gitee.com/openeuler/release-management/issues/I3IE57?from=project-issue) | Discussion |                            |                                                  |
-| 45     | [【kernel-4.19】openEuler kernel nvme 驱动增强](https://gitee.com/openeuler/release-management/issues/I1WGZE?from=project-issue) | Discussion |                            |                                                  |
-| 46     | [openEuler 20.03-LTS-SP2 集成 etcd 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXGJ?from=project-issue) | Discussion |                            |                                                  |
+| 22     | [openEuler 20.03 LTS SP2 支持DDE桌面](https://gitee.com/openeuler/release-management/issues/I3N31J?from=project-issue) | Developing | sig-DDE                    | [@panchenbo](https://gitee.com/panchenbo)        |
+| 23     | [openEuler 20.03 LTS SP2 编译器支持openjdk](https://gitee.com/openeuler/release-management/issues/I3N31M?from=project-issue) | Developing |                            |                                                  |
+| 24     | [openEuler 20.03 LTS SP2支持HA](https://gitee.com/openeuler/release-management/issues/I3N31O?from=project-issue) | Developing | sig-HA                     | [@yangzhao_kl](https://gitee.com/yangzhao_kl)    |
+| 25     | [openEuler 20.03 LTS SP2 加速库版本同步](https://gitee.com/openeuler/release-management/issues/I3N31Q?from=project-issue) | Developing |                            |                                                  |
+| 26     | [openEuler 20.03 LTS SP2支持金融领域软件包](https://gitee.com/openeuler/release-management/issues/I3N311?from=project-issue) | Developing |                            |                                                  |
+| 27     | [openEuler 20.03 LTS SP2支持kmod功能](https://gitee.com/openeuler/release-management/issues/I3N30C?from=project-issue) | Developing |                            |                                                  |
+| 28     | [openEuler 20.03 LTS SP2 CPU核故障在线隔离解决方案](https://gitee.com/openeuler/release-management/issues/I3N36L?from=project-issue) | Developing |                            |                                                  |
+| 29     | [openEuler 20.03 LTS SP2 支持多应用版本构建和发布](https://gitee.com/openeuler/release-management/issues/I3N36K?from=project-issue) | Developing |                            |                                                  |
+| 30     | [openEuler 20.03 LTS SP2 内存UCE故障降级，用户数据保持一致，业务可持续运行](https://gitee.com/openeuler/release-management/issues/I3N36H?from=project-issue) | Developing |                            |                                                  |
+| 31     | [openEuler 20.03 LTS SP2 故障预测框架](https://gitee.com/openeuler/release-management/issues/I3N36F?from=project-issue) | Developing |                            |                                                  |
+| 32     | [openEuler 20.03 LTS SP2 IO_URING全栈使能](https://gitee.com/openeuler/release-management/issues/I3N36C?from=project-issue) | Developing |                            |                                                  |
+| 33     | [openEuler 20.03 LTS SP2 Qemu：虚拟化可靠性和可维护性增强](https://gitee.com/openeuler/release-management/issues/I3N369?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
+| 34     | [openEuler 20.03 LTS SP2 Qemu：热迁移pro，提升热迁移性能+安全](https://gitee.com/openeuler/release-management/issues/I3N368?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
+| 35     | [openEuler 20.03 LTS SP2支持StratoVirt：下一代轻量化虚拟化平台](https://gitee.com/openeuler/release-management/issues/I3N364?from=project-issue) | Developing | sig-virt                   | [@KuhnChen](https://gitee.com/KuhnChen)          |
+| 36     | [【openEuler 20.03 LTS SP2】继承xfce 4.14](https://gitee.com/openeuler/release-management/issues/I3NC3I?from=project-issue) | Discussion | xfce                       | [@dillon_chen](https://gitee.com/dillon_chen)    |
+| 37     | [【openEuler 20.03 LTS SP2】继承Kubernetes 1.18](https://gitee.com/openeuler/release-management/issues/I3NC5H?from=project-issue) | Discussion | sig-cloudnative            | [@jingxiaolu](https://gitee.com/jingxiaolu)      |
+| 38     | [【openEuler 20.03 LTS SP2】继承门禁检查功能](https://gitee.com/openeuler/release-management/issues/I3O08F?from=project-issue) | Discussion |                            |                                                  |
+| 39     | [openEuler 20.03-LTS-SP2 集成 kubernetes 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I2BHF4?from=project-issue) | Discussion |                            |                                                  |
+| 40     | [openEuler 20.03-LTS-SP2 arm虚拟机支持NMI watchdog](https://gitee.com/openeuler/release-management/issues/I2B4WL?from=project-issue) | Discussion |                            |                                                  |
+| 41     | [openEuler 20.03-LTS-SP2 集成 coredns 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXLJ?from=project-issue) | Discussion |                            |                                                  |
+| 42     | [【openEuler 20.03 LTS SP2】虚拟机热迁移支持TLS](https://gitee.com/openeuler/release-management/issues/I3IE57?from=project-issue) | Discussion |                            |                                                  |
+| 43     | [【kernel-4.19】openEuler kernel nvme 驱动增强](https://gitee.com/openeuler/release-management/issues/I1WGZE?from=project-issue) | Discussion |                            |                                                  |
+| 44     | [openEuler 20.03-LTS-SP2 集成 etcd 及其依赖组件](https://gitee.com/openeuler/release-management/issues/I3MXGJ?from=project-issue) | Discussion |                            |                                                  |
 
 
 # 风险
@@ -132,6 +130,7 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | ---------------- | ------------------------ | -------- | -------- | --------- | ------- |
 | 软件包生态管理   | 升级和补齐软件包范围确定 | 高       |          | solarhu   | opening |
 | 版本发布资料范围 | 版本发布资料范围待明确   | 中       |          | qiaominna | opening |
+
 # 测试分层策略
 
 本次SP版本的具体测试分层策略如下：
@@ -147,8 +146,6 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 支持Kubernetes      | sig-cloudnative            | sig-cloudnative            | 验证Kubernetes软件的安装和基本功能，重点关注服务的可靠性和性能等指标 |
 | 集成secgear组件     | sig-confidential-computing | sig-confidential-computing | 验证secgear组件的安装和软件的基本功能                        |
 | 版本其它需求        |                            | sig-QA                     | 版本发布范围内其他需求的质量保障和操作系统的整体集成能力     |
-| 支持openGauss       | openGauss                  | openGauss                  | 由openGauss社区QA团队基于openEuler本次发布版本进行验证       |
-| 支持华为多路径      | 华为                       | 华为                       | 由华为相关团队基于openEuler版本进行验证                      |
 
 # 测试分析设计策略
 
@@ -184,8 +181,6 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 支持UKUI桌面                              | 继承已有测试能力，关注桌面系统的安装和基本功能，另外关注桌面在系统压力场景下的稳定性 |
 | 支持DDE桌面                               | 继承已有测试能力，关注桌面系统的安装和基本功能，另外关注桌面在系统压力场景下的稳定性 |
 | 树莓派                                    | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
-| 支持华为多路径                            | 继承已有测试能力，关注UlraPath的local和san boot两种安装方式，覆盖(ext2/ext3/ext4/xfs)文件系统 |
-| 支持openGauss                             | 继承已有测试能力，关注openGauss 2.0.0版本的适配，重点覆盖(单节点/集群)安全装卸，基本功能 |
 | 支持飞腾2000+/64                          | 继承已有测试能力，通过兼容性和系统集成测试保证OS在飞腾2000+上的功能 |
 | 支持1822 HBA卡驱动                        | 继承已有测试能力，覆盖三类FC卡形态在只读 只写 混合读写情况下的功能；开展异常测试和故障注入及压力等可靠性测试 |
 
