@@ -15,7 +15,7 @@ openEuler  LTS  SP2  raspberrypi  UKUI  DDE xfce  HA  iSula  A-Tune stratovirt k
 
 摘要：
 
-文本主要描述openEuler 20.03LTS SP2版本的整体测试过程，详细叙述测试覆盖情况，并通过问题分析对版本整体质量进行评估和总结。
+文本主要描述openEuler 20.03 LTS SP2版本的整体测试过程，详细叙述测试覆盖情况，并通过问题分析对版本整体质量进行评估和总结。
 
 缩略语清单：
 
@@ -40,11 +40,11 @@ openEuler  LTS  SP2  raspberrypi  UKUI  DDE xfce  HA  iSula  A-Tune stratovirt k
 
 openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持鲲鹏及其它多种处理器，能够充分释放计算芯片的潜能，是由全球开源贡献者构建的高效、稳定、安全的开源操作系统，适用于数据库、大数据、云计算、人工智能等应用场景。
 
-本文主要描述openEuler 20.03LTS SP2版本的总体测试活动，按照社区开发模式进行运作，结合社区release-manager团队制定的版本计划规划相应的测试计划及活动。测试报告覆盖新需求、继承需求的测试执行情况和评估，并结合各类专项测试活动和版本问题单总体情况进行整体的说明和质量评估。
+本文主要描述openEuler 20.03 LTS SP2版本的总体测试活动，按照社区开发模式进行运作，结合社区release-manager团队制定的版本计划规划相应的测试计划及活动。测试报告覆盖新需求、继承需求的测试执行情况和评估，并结合各类专项测试活动和版本问题单总体情况进行整体的说明和质量评估。
 
 # 2   测试版本说明
 
-openEuler 20.03LTS SP2版本是20.03LTS的补丁版本，发布范围相较20.03 LTS和20.03 LTS SP1版本主要变动如下：
+openEuler 20.03 LTS SP2版本是20.03 LTS的补丁版本，发布范围相较20.03 LTS和20.03 LTS SP1版本主要变动如下：
 
 1. 回合openEuler 21.03创新版本中部分特性：
 
@@ -88,7 +88,7 @@ openEuler 20.03 LTS SP2版本按照社区release-manager团队的计划，共规
 | 联想启天台式机<br>M425-N000         | CPU 型号：Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz<br>CPU内核总数：6<br>内存容量：16G  |                           |
 | FT-2000+64核服务器                  | CPU型号：FT-2000+<br />CPU核数：64<br />内存：镁光16G*32<br />网卡：I350              |                           |
 
-openEuler 20.03LTS SP2版本交付需求列表如下：
+openEuler 20.03 LTS SP2版本交付需求列表如下：
 
 详见：[https://gitee.com/openeuler/release-management/blob/master/openEuler-20.03-LTS-SP2/release-plan.md](https://gitee.com/openeuler/release-management/blob/master/openEuler-20.03-LTS-SP2/release-plan.md)
 
@@ -198,7 +198,7 @@ SP2版本详细测试内容包括：
 | 14   | 安装部署                                  | <font color=green>█</font> | 覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署；安装部署功能质量良好    |
 |  | 支持飞腾2000+/64 | <font color=green>█</font> | 由于内核层面能够保证KABI的前向兼容，所以继承SP1版本测试结论；另外对SP2版本发布的重要组件：容器、虚拟化和系统集成测试在飞腾服务器上执行验证通过，无问题；质量良好 |
 | 16 | 支持内存分级扩展 | <font color=green>█</font> | 共计执行90个用例，覆盖范围包括特性的功能、可靠性，安全和性能；整体质量良好<br/>约束：1、客户端和服务端需要在同一个服务器上部署，不支持跨服务器通信的场景<br/>2、仅支持扫描进程名小于或等于15个字符长度的目标进程 |
-| 17 | 集成secgear组件 | <font color=green>█</font> | 共计执行100个用例，主要覆盖了接口测试、功能测试、组合场景测试、可靠性测试、压力和稳定性测试；质量良好 |
+| 17 | 集成secgear组件 | <font color=blue>▲</font> | 共计执行100个用例，主要覆盖了接口测试、功能测试、组合场景测试、可靠性测试、压力和稳定性测试；质量良好</br>约束：依赖BIOS版本 |
 | 18 | 虚拟化热迁移及其他加强 | <font color=green>█</font> | 对qemu热迁移特性覆盖接口测试、可靠性测试、性能测试，共计用例58个，质量良好<br/>说明：支持同型号CPU间迁移 |
 | 19 | 支持StratoVirt：下一代轻量化虚拟化平台 | <font color=green>█</font> | stratovirt新增特性，内存弹性共20个用例，ioqos共10个用例，iothread共24个用例，内存大页共61个用例，多平台支持2个用例。覆盖功能测试、可靠性测试、安全测试和性能测试；整体质量良好<br/>内存弹性约束：内核镜像需支持balloon特性，当前仅支持host与guest端页面大小相同的场景。<br/>ioqos约束：限速范围[0, 1000000]，暂不支持热插，只能限制平均iops，无法限制突发流量。<br/>iothread约束：总的io线程数量不超过8个，暂不支持热插。<br/>内存大页：仅支持在stratovirt启动时在命令行中配置，仅支持静态大页，配置的内存规格不能大于配置的host大页总大小。 |
 | 20 | 集成xfce 4.14 | <font color=green>█</font> | 共经过两轮测试，执行103个测试项，整体核心功能(重要组件和系统插件)稳定正常，整体质量良好 |
