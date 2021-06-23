@@ -330,6 +330,6 @@ openEuler 20.03 LTS SP2版本共发现问题单193个，有效问题186个，其
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 |
 | ---- | -------- | -------- | -------- | -------- | -------- |
-| 1    | I3RA9K | 【20.03-LTS-SP2】arm物理机message日志出现错误：usbhid: probe of 1-1.1:1.1 failed with error -32 |  主要   | 根因：暂未定位出来<br/>影响：从当前分析情况看，即使出现描述错误，usb设备功能也是正常的，并且该问题偶现，影响较小 | 暂无规避措施，继续定位分析，在后续update版本解决  |
-| 2    | I3QYSQ | 【20.03-LTS-SP2】[x86\arm]nfs-blkmap启动后报错“Can't open PID file”，关闭后状态变成failed |  次要  | 根因：nfs-blkmap服务为blkmapd-pNFS块布局映射守护程序的守护服务，该服务目前存在启动后缺少/var/lib/nfs/rpc_pipefs/nfs/blocklayout，上游社区同步存在<br/>影响：不影响nfs-utils基本功能，影响较小 | 保持现状，同时跟踪上游社区解决情况 |
-| 3    | I3UNYX | 【20.03-LTS-SP2】【arm/x86】booth-arbitrator.service、booth@.service服务启动失败 | 主要 | 根因：未正确配置服务相关运行环境<br/>影响： | 保持现状，同时跟踪上游社区解决情况 |
+| 1    | I3RA9K | 【20.03-LTS-SP2】arm物理机message日志出现错误：usbhid: probe of 1-1.1:1.1 failed with error -32 |  主要   | 根因：暂未定位出来<br/>影响：从当前分析情况看，即使出现描述错误，usb设备功能也是正常的，并且该问题偶现，影响较小 | 版本问题遗留  |
+| 2    | I3QYSQ | 【20.03-LTS-SP2】[x86\arm]nfs-blkmap启动后报错“Can't open PID file”，关闭后状态变成failed |  次要  | 根因：nfs-blkmap服务为blkmapd-pNFS块布局映射守护程序的守护服务，该服务目前存在启动后缺少/var/lib/nfs/rpc_pipefs/nfs/blocklayout，上游社区同步存在<br/>影响：不影响nfs-utils基本功能，影响较小 | 版本问题遗留，同时跟踪上游社区解决情况 |
+| 3    | I3UNYX | 【20.03-LTS-SP2】【arm/x86】booth-arbitrator.service、booth@.service服务启动失败 | 此要 | 根因：booth功能用于扩展pacemaker对于跨地域集群的支持。</br>booth@.service服务运行在HA集群当中，连接到在其他集群运行的booth守护进程并交换连接细节。</br>booth-arbitrator服务在两个booth实例之间的通讯中断时，提供额外的仲裁实例来就决策（例如跨站点的资源故障转移）达成共识。影响：不支持跨地域的HA集群功能。 | 版本问题遗留 |
