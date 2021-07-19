@@ -43,7 +43,7 @@ openEuler LTS SP 测试策略
 
 Abstract 摘要：
 
-本文是openEuler 20.03LTS SP2版本的整体测试策略，用于指导该版本测试活动开展
+本文是openEuler 20.03 LTS SP2版本的整体测试策略，用于指导该版本测试活动开展
 
 缩略语清单：
 
@@ -81,7 +81,7 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 1     | [【openEuler 20.03 LTS SP2】【虚拟化】回合openEuler 21.03，vmtop支持x86](https://gitee.com/openeuler/release-management/issues/I3NLWF?from=project-issue) | Discussion |                            |                                                  |
 | 2      | [openEuler 20.03-LTS-SP2支持内存分级扩展特性](https://gitee.com/openeuler/release-management/issues/I2C2NI?from=project-issue) | Developing | storage                    | [liuzhiqiang26](https://gitee.com/liuzhiqiang26) |
 | 3      | [openEuler 20.03-LTS-SP2版本集成secgear组件](https://gitee.com/openeuler/release-management/issues/I3JE3U?from=project-issue) | Developing | sig-confidential-computing | [chenmaodong](https://gitee.com/chenmaodong)     |
-| 4      | openEuler 20.03 LTS SP2 support OpenStack Rocky              | discussion | sig-openstack              | @joec88 @liksh @xiyuanwang @huangtianhua         |
+| 4      | openEuler 20.03 LTS SP2 support OpenStack Rocky&Queens              | discussion | sig-openstack              | @joec88 @liksh @xiyuanwang @huangtianhua         |
 | 5      | [openEuler 20.03 LTS SP2支持osinfo软件包](https://gitee.com/openeuler/release-management/issues/I3N30H?from=project-issue) | Developing |                            |                                                  |
 | 6      | [openEuler 20.03 LTS SP2开源openEuler-rpm-config宏定义文件](https://gitee.com/openeuler/release-management/issues/I3N30J?from=project-issue) | Developing | Base-service               |                                                  |
 | 7      | [openEuler 20.03 LTS SP2 支持 compat-openssl10、libzip等](https://gitee.com/openeuler/release-management/issues/I3N30L?from=project-issue) | Developing |                            |                                                  |
@@ -142,9 +142,12 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 支持DDE桌面         | sig-DDE                    | sig-DDE                    | 验证DDE在openEuler版本上的可安装、基本功能及DDE桌面的底噪    |
 | 支持XFCE桌面        | sig-xfce                   | sig-xfce                   | 验证xfce在openEuler版本上的可安装、基本功能和稳定性          |
 | 支持HA软件          | sig-Ha                     | sig-Ha                     | 验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标 |
-| 支持openStack Rocky | sig-openstack              | sig-openstack              | 验证openStack R版本发布组件的安装部署和基本功能，重点关注各个组件的可靠性和性能规格等指标 |
+| 支持openStack Rocky&Queens | sig-openstack              | sig-openstack              | 验证openStack R版本发布组件的安装部署和基本功能，重点关注各个组件的可靠性和性能规格等指标 |
 | 支持Kubernetes      | sig-cloudnative            | sig-cloudnative            | 验证Kubernetes软件的安装和基本功能，重点关注服务的可靠性和性能等指标 |
 | 集成secgear组件     | sig-confidential-computing | sig-confidential-computing | 验证secgear组件的安装和软件的基本功能                        |
+| 支持加速库     | sig-kae | sig-kae | 验证硬件加速库的基本功能和性能                        |
+| 支持飞腾arm64架构CPU     | NA | sig-Compatibility-Infra/sig-QA | 通过执行硬件兼容性测试套对飞腾FT2000+进行兼容性测试
+系统重要组件和特性在飞腾FT2000+上的集成验证                        |
 | 版本其它需求        |                            | sig-QA                     | 版本发布范围内其他需求的质量保障和操作系统的整体集成能力     |
 
 # 测试分析设计策略
