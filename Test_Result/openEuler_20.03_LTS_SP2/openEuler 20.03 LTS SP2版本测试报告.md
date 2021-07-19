@@ -52,13 +52,13 @@ openEuler 20.03 LTS SP2版本是20.03 LTS的补丁版本，发布范围相较20.
 
 2. 新增特性：
 
-   IO_URING全栈使能/CPU核故障在线隔离/内存UCE故障降级/构建工程多版本支持/支持OpenStack R版本/支持网络安装/vmtopX86支持
+   IO_URING全栈使能/CPU核故障在线隔离/内存UCE故障降级/构建工程多版本支持/支持OpenStack R&Q版本/支持网络安装/vmtopX86支持
 
 3. 补齐/优化社区软件包生态
 
 4. 修复bug和cve
 
-openEuler 20.03 LTS SP2版本按照社区release-manager团队的计划，共规划5轮测试，实际执行6论测试，详细的版本信息和测试时间如下表：
+openEuler 20.03 LTS SP2版本按照社区release-manager团队的计划，共规划5轮测试，实际执行6轮测试，详细的版本信息和测试时间如下表：
 
 | 版本名称                                                     | 测试起始时间 | 测试结束时间 |
 | ------------------------------------------------------------ | ------------ | ------------ |
@@ -97,7 +97,7 @@ openEuler 20.03 LTS SP2版本交付需求列表如下：
 | 1      | [【openEuler 20.03 LTS SP2】【虚拟化】回合openEuler 21.03，vmtop支持x86](https://gitee.com/openeuler/release-management/issues/I3NLWF?from=project-issue) | Accepted   | virt                       | @alexchen                                        |
 | 2      | [openEuler 20.03-LTS-SP2支持内存分级扩展特性](https://gitee.com/openeuler/release-management/issues/I2C2NI?from=project-issue) | Accepted   | storage                    | [liuzhiqiang26](https://gitee.com/liuzhiqiang26) |
 | 3      | [openEuler 20.03-LTS-SP2版本集成secgear组件](https://gitee.com/openeuler/release-management/issues/I3JE3U?from=project-issue) | Accepted   | sig-confidential-computing | [chenmaodong](https://gitee.com/chenmaodong)     |
-| 4      | openEuler 20.03 LTS SP2 support OpenStack Rocky              | Accepted   | sig-openstack              | @joec88 @liksh @xiyuanwang @huangtianhua         |
+| 4      | openEuler 20.03 LTS SP2 support OpenStack Rocky&Queens              | Accepted   | sig-openstack              | @joec88 @liksh @xiyuanwang @huangtianhua         |
 | 5      | [openEuler 20.03 LTS SP2支持osinfo软件包](https://gitee.com/openeuler/release-management/issues/I3N30H?from=project-issue) | Accepted   | packaging                  | @solarhu                                         |
 | 6      | [openEuler 20.03 LTS SP2开源openEuler-rpm-config宏定义文件](https://gitee.com/openeuler/release-management/issues/I3N30J?from=project-issue) | Accepted   | Base-service               | @overweight                                      |
 | 7      | [openEuler 20.03 LTS SP2 支持 compat-openssl10、libzip等](https://gitee.com/openeuler/release-management/issues/I3N30L?from=project-issue) | Accepted   | packaging                  | @solarhu                                         |
@@ -218,10 +218,11 @@ SP2版本详细测试内容包括：
 | -------- | ---------------------------------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
 | 1        | 软件包生态补齐                                       | 对新增软件包开展管理(安装/卸载/编译)及命令/服务，另外对L1和L2的软件包开展加固测试(fuzz/场景)，质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
 | 2        | 支持OpenStack Rocky版本                              | 共计执行Tempest用例1197个，主要覆盖了API测试和功能测试，Skip用例101个（全是openStack Rocky版中已废弃的功能或接口，如KeystoneV1、Cinder V1等），其他1096个用例全部通过，发现问题已解决，整体质量良好。 | NA               | NA             | <font color=blue>▲</font>  | 后续建议增加对openstack各个组件底噪消耗的基线验证以及相应的稳定性测试 |
-| 3        | 支持网络安装                                         | 共执行四轮测试，共执行用例216用例，主要覆盖了物理机和虚拟机，场景覆盖了所有常用安装按键及其组合，质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
-| 4        | CPU核故障在线隔离解决方案/内存UCE故障降级/内存页隔离 | 共执行3轮测试，共执行用例108条，覆盖了基础功能、性能、可靠测试，整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
-| 5        | 支持多应用版本构建和发布                             | 完成2轮测试，覆盖工程对软件多版本构建和发布的基本能力验证，并完成软件包发布后的安装验证，整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
-| 6        | x86场景vmtop支持                                     | 共执行2轮测试，执行用例6个，覆盖单/多虚机场景下的基本功能；另外在并发和hostOS大压力场景下，测试vmtop的运行和执行情况；整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
+|3| 支持OpenStack Queens版本 | 攻击执行用例1164个，其中Skip 52个，Fail 3个，其他全通过。|NA|NA|<font color=blue>▲</font>  | 后续建议增加对openstack各个组件底噪消耗的基线验证以及相应的稳定性测试|
+| 4        | 支持网络安装                                         | 共执行四轮测试，共执行用例216用例，主要覆盖了物理机和虚拟机，场景覆盖了所有常用安装按键及其组合，质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
+| 5        | CPU核故障在线隔离解决方案/内存UCE故障降级/内存页隔离 | 共执行3轮测试，共执行用例108条，覆盖了基础功能、性能、可靠测试，整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
+| 6        | 支持多应用版本构建和发布                             | 完成2轮测试，覆盖工程对软件多版本构建和发布的基本能力验证，并完成软件包发布后的安装验证，整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
+| 7        | x86场景vmtop支持                                     | 共执行2轮测试，执行用例6个，覆盖单/多虚机场景下的基本功能；另外在并发和hostOS大压力场景下，测试vmtop的运行和执行情况；整体质量良好 | NA               | NA             | <font color=green>█</font> |                                                              |
 
 
 
