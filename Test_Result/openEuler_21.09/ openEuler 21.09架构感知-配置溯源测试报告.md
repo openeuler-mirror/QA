@@ -81,7 +81,7 @@
 | 1    |          | [配置溯源：文档描述与实际接口不一致 ](https://gitee.com/openeuler/A-Ops/issues/I46UBB?from=project-issue) | 低       | 后续可靠性变更，文档会继续修改       |
 | 2    |          | [配置溯源：特性根目录为755，普通用户可直接操作文件管理配置域 ](https://gitee.com/openeuler/A-Ops/issues/I479LM?from=project-issue) | 高       | 普通用户有操作权限，可能配置域被删除 |
 | 3    |          | [配置溯源：deleteDomain接口并发，执行失败 ](https://gitee.com/openeuler/A-Ops/issues/I479XH?from=project-issue) | 低       | 接口并发，前台可规避，影响较低       |
-| 4    |          | [gala-spider：获取数据时如果涉及haproxy探针数据，接口会500错误 ](https://gitee.com/openeuler/A-Ops/issues/I4A0SV?from=project-issue) | 高       | 工行暂不使用，本release影响较低      |
+| 4    |          | [gala-spider：获取数据时如果涉及haproxy探针数据，接口会500错误 ](https://gitee.com/openeuler/A-Ops/issues/I4A0SV?from=project-issue) | 高       | 下个release需求，本release影响较低      |
 | 5    |          | [gala-spider：手动构造tcpline.txt格式异常数据，get_entities接口会有Traceback打印 ](https://gitee.com/openeuler/A-Ops/issues/I4A51W?from=project-issue) | 低       | 中间文件用户不可见，影响较低         |
 
 ### 3.3.2 问题统计
