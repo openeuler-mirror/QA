@@ -78,14 +78,7 @@ A-ops特性web页面，共计执行85个用例，覆盖特性web页面的基本�
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-| 序号 | 问题单号 | 问题描述                                                             | 问题级别 | 问题影响和规避措施 | 当前状态 |
-|:-----|:-------|:-------------------------------------------------------------------|:-------|:------------------|:--------|
-| 1    | I49F20 | [添加主机时，没有对主机名称做特殊字符的校验](https://gitee.com/src-openeuler/A-Ops/issues/I49F20?from=project-issue) | 中 | 主机名中可能会有特殊字符，避开特殊字符的设置| 待办 |
-| 2    | I49N8Z | [故障诊断新增故障树时导入故障树文件校验不正确](https://gitee.com/src-openeuler/A-Ops/issues/I49N8Z?from=project-issue) | 中 | 故障树导入不成功，只要导入正确格式的json文件就可规避 | 待办 |
-| 3    | I49MRT | [部署任务新增playbook模板时导入的playbook文件内容不符合yaml格式，前台提示没有做处理](https://gitee.com/src-openeuler/A-Ops/issues/I49MRT?from=project-issue) | 中 | 后台报错前台未处理，不影响功能使用，只要使用内容正确的yaml文件即可规避 | 待办 |
-| 4    | I4BFHQ | [建议在后台的日志中加上部署任务是否执行成功与否的提示](https://gitee.com/src-openeuler/A-Ops/issues/I4BFHQ?from=project-issue) | 中 | 部署任务执行成功没有提示，只能自己挨个查日志排除，无法规避 | 待办 |
-| 5    | I4BOBA | [诊断报告列表的表名不准确](https://gitee.com/src-openeuler/A-Ops/issues/I4BOBA?from=project-issue) | 低 | 展示的表名不准备，不影响功能的使用 | 待办 |
-| 6    | I4BO4X | [页面的提示语不正确，且有的提示语有的是中文有的是英文](https://gitee.com/src-openeuler/A-Ops/issues/I4BO4X?from=project-issue) | 低 | 提示语不统一，不影响功能的使用 | 待办 |
+无
 
 ### 3.3.2 问题统计
 
