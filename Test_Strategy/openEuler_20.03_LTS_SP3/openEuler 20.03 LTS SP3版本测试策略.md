@@ -89,7 +89,6 @@ openEuler 20.03LTS SP3版本交付需求列表如下：
 | 10     | [openEuler 20.03 LTS SP3 内核特性增强](https://e.gitee.com/open_euler/issues/list?issue=I4GAUL) | Accepted   | sig-kernel              | [gatieme](https://gitee.com/gatieme)           |
 | 11     | [openEuler 20.03 LTS SP3 官网上线北向兼容性清单](https://e.gitee.com/open_euler/issues/list?issue=I4GATR) | Accepted   | sig-Compatibility-Infra | [lovelijunyi](https://gitee.com/lovelijunyi)   |
 | 12     | [openEuler 20.03 LTS SP3 支持intel ice lake](https://e.gitee.com/open_euler/issues/list?issue=I4GASF) | Accepted   | sig-kernel              | [gatieme](https://gitee.com/gatieme)           |
-| 13     | openEuler 20.03-LTS SP3支持secPaver                          | Accepted   | sig-security_facility   | huaxinluGitee                                  |
 
 # 风险
 
@@ -118,7 +117,6 @@ openEuler 20.03LTS SP3版本交付需求列表如下：
 | 支持isulad shimV2对接K8S        | sig-CloudNative       | sig-CloudNative   | 验证使用shimV2方式时，isula容器引擎对容器尤其安全容器场景下的基本管理功能，过程中检查相应进程的运行情况 |
 | 支持intel ice lake              | sig-kernel            | sig-QA            | 验证相关补丁使能情况，另外通过LTP、syzkaller、性能对内核进行保证 |
 | eggo支持K8S在X86和ARM双平面部署 | sig-CloudNative       | sig-CloudNative   | 验证eggo提供的部署K8S集群的能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性； |
-| 支持secPaver                    | sig-Security_facility | sig-QA            | 验证secPaver策略开发工具在openEuler上的安装及基本哦功能，关注服务端的稳定性 |
 
 # 测试分析设计策略
 
@@ -153,7 +151,6 @@ openEuler 20.03LTS SP3版本交付需求列表如下：
 | 支持kubeOS                                | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
 | 支持eggo                                  | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
 | 支持HA                                    | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
-| 支持secPaver                              | 继承已有测试能力，重点关注secPaver对安全策略机制的机制，覆盖接口、基本功能和服务能力 |
 
 ## 专项测试策略
 
@@ -205,7 +202,7 @@ openEuler社区发行版本支持LTS升级到对应的SP版，所以在软件包
 
 | 需求分类       | 测试范围                                                     | 测试方法                                                     |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 南向兼容性测试 | 1.整机包括：taishan 200 2280 、fusionserver 2288H V5、飞腾 FT-2000。<br />2.板卡：<br />1）SP1版本测试的170张板卡，涉及53类芯片型号,SP3也都会覆盖。<br/>2）按芯片归类测试，及同芯片的卡，只测试一张，其它卡直接同步测试结果。<br />3）目前已有34类芯片的物料，还缺少19类芯片的物料。<br/>备注：其余整机和板卡会持续进行测试。 | 1.针对整机进行system、memory、cpufreq、watchdog、acpi等10几个方面开展测试，<br />2.1822/mellanox使用openEuler的inbox驱动，其它驱动通过源码编译，基于典型配置优先规划。 |
+| 南向兼容性测试 | 1.整机包括：taishan 200 2280 、fusionserver 2288H V5、飞腾 FT-2000。<br />2.板卡：<br />1）SP1版本测试的170张板卡，涉及53类芯片型号,SP3也都会覆盖。<br/>2）按芯片归类测试，及同芯片的卡，只测试一张，其它卡直接同步测试结果。<br /> | 1.针对整机进行system、memory、cpufreq、watchdog、acpi等10几个方面开展测试，<br />2.1822/mellanox使用openEuler的inbox驱动，其它驱动通过源码编译，基于典型配置优先规划。 |
 | 北向兼容性测试 | 1.软件兼容：sysbench、unixbench、lmbench3、mysql、ngnix、netpert、hackbench<br />2. 包构建测试：(1 archlinux官网获取到的pkgbuild在openeuler操作系统自动构建打包测试(2 南向适配表中涉及的65款开源软件的包构建测试（其余230款开源软件将持续进行包构建测试） | 1.  unixbench,lmench3等性能测试工具在compass-ci平台上通过提交job的方式在执行机上对不同版本os进行性能测试。<br />2. 通过git clone获取官网上的pkgbuild文件，针对不同版本openeuler操作系统进行自动化构建打包测试，目前已成功构建出3950个包。 |
 
 ### 资料测试
