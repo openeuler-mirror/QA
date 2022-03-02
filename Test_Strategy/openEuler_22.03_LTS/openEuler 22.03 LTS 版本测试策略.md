@@ -206,7 +206,61 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 
 ### 兼容性测试
 
-*compatibility/QA合作补充*
+南向兼容性测试分板卡测试和整机适配测试两个部分。
+
+本次LTS版本的板卡兼容性适配测试，适配的板卡类型有FC/IB/NIC/RAID/SSD/GPU六种，主要使用oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布本次LTS版本的板卡兼容性清单。
+
+板卡兼容性交付清单如下：
+
+| **板卡类型**  | **覆盖范围**  | **测试主体** | **chipVendor** |**boardModel**  | **chipModel** |
+|--|--|--|--|--|--|
+| FC | 适配FC板卡5张 | sig-Compatibility | | |
+| | | | Qlogic | QLE2560 | ISP2532 |
+| | | | Emulex | LPe31002 | XE501 |
+| | | | Emulex | LPE16002 | XE201 |
+| | | | Emulex | LPe32002-AP | XE201 |
+| | | | Emulex | LPe16002B-M6| LPe16002B-M6 |
+| GPU | 适配GPU板卡2张 | sig-Compatibility | | | |
+| | | | NVIDIA |	Tesla T4 |	TU104-895
+| | | | NVIDIA |	GV100GL [Tesla V100 PCIe 16GB] |	GV100GL
+| IB | 适配IB板卡2张 | sig-Compatibility | | | |
+| | | | Mellanox |	SP351 |	MT27808A0-FCCF-EV
+| | | | Mellanox |	MCX653105A-EFAT |	CX6
+| NIC | 适配NIC板卡7张 | sig-Compatibility | | | |
+| | | | Mellanox |	SP380 |	CX-4 Lx EN
+| | | | Mellanox |	MCX4121A-XCAT |	CX4
+| | | | Mellanox |	MCX516A-CCAT |	CX5
+| | | | Intel |	SP310 |	82599
+| | | | Intel |	SP332 |	XL710
+| | | | Intel |	Intel I350F2G1P20 914215 |	I350
+| | | | Huawei |	SP582 |	Hi1822
+| RAID | 适配RAID板卡4张 | sig-Compatibility | | | |
+| | | | Avago |	SR150-M	 | LSI SAS3408
+| | | | Avago |	SP150IT-M |	3408IT
+| | | | Avago |	SP460C-M |	SAS3516
+| | | | Avago |	SR430C-M |	3108
+| SSD | 适配SSD板卡1张 | sig-Compatibility | | | |
+| | | | Huawei |	ES3600C V5-3200GB |	Hi1812E V100
+
+
+本次LTS版本的整机兼容性适配测试会从acpi、impi、memory、系统兼容性、CPU特性、kabi规范性、稳定性等方面进行适配，适配完成后将在社区发布本次LTS版本的整机兼容性清单。
+
+整机适配兼容性测试交付清单如下：
+
+| **服务器**  | **CPU型号**  | **测试主体** | **测试计划** |
+|--|--|--|--|
+| 兆芯 | KH-30000, KH-20000 | sig-Compatibility | Test round 4之前完成整机适配 |
+| 申威 | SW3231 |  sig-Compatibility |  |
+| 龙芯 | 龙芯三号 | sig-Compatibility | |
+| Intel	| Icelake | sig-Compatibility | |
+| AMD	| AMD milan (EPYC 7003) | sig-Compatibility | Test round 3开始整机适配|
+| 飞腾 | | | |
+| | 青松 | sig-Compatibility | Test round 4开始整机适配|
+| | FT2000+、FT2500 | sig-Compatibility | Test round 3开始第一轮整机适配，Test round 4开始第二轮整机适配 | 
+| 海光	| 71xx, 72xx 系列 | sig-Compatibility | 预计Test round 5开始整机适配 |
+| 鲲鹏960 |	泰山200 | sig-Compatibility | Test round 3开始整机适配 |
+| Intel | 2288H V5 | sig-Compatibility | Test round 3开始整机适配 |
+
 
 ### 资料测试
 
