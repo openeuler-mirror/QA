@@ -112,6 +112,7 @@ openEuler 22.03 LTS版本交付[需求列表](https://gitee.com/openeuler/releas
 | 支持secGear | sig-Security_facility | sig-QA | 继承已有测试能力，关注secGear特性的功能完整性 |
 | 发布eggo                  | sig-CloudNative       | sig-CloudNative | 验证eggo在openEuler上的安装部署以及提供的部署K8S集群的能力   |
 | 新增容器OS支持                  | sig-CloudNative       | sig-CloudNative   | 验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级 |
+| 新增NestOS                  | sig-CloudNative       | sig-CloudNative   | 验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
 | 支持OpenResty             | sig-OpenResty         | sig-OpenResty   | 验证openResty平台在openEuler版本上的可安装性和基本功能       |
 | etmem内存分级扩展框架      | sig-Storage           | sig-QA          | 验证新发布模块memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力 |
 | 支持intel ice lake              | sig-kernel            | sig-QA            | 验证相关补丁使能情况，另外通过LTP、syzkaller、性能对内核进行保证 |
@@ -134,6 +135,7 @@ openEuler 22.03 LTS版本交付[需求列表](https://gitee.com/openeuler/releas
 | 4 | StratoVirt安全容器支持直通设备热插拔 | Virt/QA合作补充 | Virt/QA合作补充 | |
 | 5 | libcareplus提供Qemu热补丁能力 | Virt/QA合作补充 | Virt/QA合作补充 | |
 | 6 | 新增支持gazelle高性能用户态协议栈 | high-performance-network/QA合作补充 | high-performance-network/QA合作补充 | |
+| 7 | 新增NestOS功能特性测试 | CloudNative/QA合作补充 | CloudNative/QA合作补充 | |
 
 
 ## 继承feature/组件测试设计策略
