@@ -69,12 +69,12 @@ openEuler embedded 22.03版本交付需求列表如下：
 
 | **no** | **feature**                                                  | **status** | **sig**                 | **owner**                                      |
 | ------ | ------------------------------------------------------------ | ---------- | ----------------------- | ---------------------------------------------- |
-| 1 | 基于Linux 5.10内核提供软实时能力 | Accepted | sig-yocto |  |
-| 2 | 实现soc内实时和非实时多平面混合部署 | Accepted | sig-embedded |  |
-| 3 | 开放基于Yocto构建包的小型化定制裁剪能力 | Accepted | sig-yocto | |
-| 4 | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | Accepted | sig-yocto | |
-| 5 | 支持树莓派4B作为嵌入式通用硬件 | Accepted | sig-embedded | |
-| 6 | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | Accepted | sig-yocto | |
+| [I4YMW9](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMW9) | 基于Linux 5.10内核提供软实时能力 | Accepted | sig-yocto |  |
+| [I4YMUM](https://gitee.com/src-openeuler/OpenAMP/issues/I4YMUM) | 实现soc内实时和非实时多平面混合部署 | Accepted | sig-embedded |  |
+| [I4YMUX](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMUX) <br/> [I4Q7W7](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4Q7W7) | 开放基于Yocto构建包的小型化定制裁剪能力 | Accepted | sig-yocto | |
+| [I4YMVX](https://gitee.com/src-openeuler/gcc-cross/issues/I4YMVX) | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | Accepted | sig-yocto | |
+| [I4YMV8](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMV8) | 支持树莓派4B作为嵌入式通用硬件 | Accepted | sig-embedded | |
+| [I4YMTP](https://gitee.com/openeuler/dsoftbus_standard/issues/I4YMTP) | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | Accepted | sig-yocto | |
 
 本次SP3版本测试活动分工如下：
 
