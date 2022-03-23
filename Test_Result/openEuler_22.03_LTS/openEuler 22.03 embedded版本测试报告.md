@@ -76,7 +76,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 | [I4YMV8](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMV8) | 支持树莓派4B作为嵌入式通用硬件 | Accepted | sig-embedded | |
 | [I4YMTP](https://gitee.com/openeuler/dsoftbus_standard/issues/I4YMTP) | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | Accepted | sig-yocto | |
 
-本次embedded版本测试活动分工如下：
+本次openEuler 22.03 embedded版本测试活动分工如下：
 
 | **需求**                     | **开发主体**      | **测试主体**      | **测试策略**                                                 |
 | ---------------------------- | ----------------- | ----------------- | ------------------------------------------------------------ |
