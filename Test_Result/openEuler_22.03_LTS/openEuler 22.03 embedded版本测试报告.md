@@ -152,7 +152,7 @@ openEuler embedded 22.03作为首个嵌入式版本不涉及升级兼容性测�
 
 ### 4.2.3   北向兼容性
 
-openEuler embedded 22.03作为首个嵌入式版本不涉及升级兼容性测试
+openEuler embedded 22.03作为首个嵌入式版本不涉及兼容性测试
 
 ## 4.3   专项测试结论
 
