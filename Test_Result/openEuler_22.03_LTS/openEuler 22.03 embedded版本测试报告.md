@@ -241,5 +241,5 @@ openEuler 22.03 embedded版本共发现问题单63个，有效问题51个，其�
 
 | 序号 | 问题单号 | 问题简述                                                     | 问题级别 | 影响分析                                                     | 规避措施 |
 | ---- | -------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1 | [I4ZPYD](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZPYD) |  | 系统存在调试工具检 strace 和 gdb | 不重要 | 无需规避，嵌入式版本无包管理，默认带调试工具，暂不需要规避 |
-| 2 | [I4ZKGL](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZKGL) |  | 环境上不支持service | 不重要 | 无需规避，版本不提供service命令，暂不需要规避 |
+| 1 | [I4ZPYD](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZPYD) | 系统存在调试工具检 strace 和 gdb | 不重要 | 无需规避，嵌入式版本无包管理，默认带调试工具，暂不需要规避 | |
+| 2 | [I4ZKGL](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZKGL) | 环境上不支持service | 不重要 | 无需规避，版本不提供service命令，暂不需要规避 | |
