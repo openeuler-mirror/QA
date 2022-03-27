@@ -83,7 +83,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 | 基于Linux 5.10内核提供软实时能力 | sig-yocto | sig-Yocto| 重点对软实时能力进行性能摸底 |
 | 实现soc内实时和非实时多平面混合部署 | sig-embedded | sig-embedded | 重点对openAMP通信基础功能进行验证 |
 | 开放基于Yocto构建包的小型化定制裁剪能力 | sig-yocto | sig-yocto | 重点对yocto构建、裁剪以及相关资料进行验证 |
-| 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | sig-compiler | sig-yocto | 针对交叉编译工具链的可用性进行验证 |
+| 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | sig-compiler | sig-compiler | 针对交叉编译工具链的可用性进行验证 |
 | 支持树莓派4B作为嵌入式通用硬件 | sig-yocto | sig-yocto | 对发布件在树莓派4B上的安装、基础功能、稳定性及新增特性的测试 |
 | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | sig-embedded | sig-embedded | 对openEuler 22.03 embedded设备间互联互通进行测试 |
 
