@@ -72,7 +72,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 | [I4YMW9](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMW9) | 基于Linux 5.10内核提供软实时能力 | Accepted | sig-yocto |  |
 | [I4YMUM](https://gitee.com/src-openeuler/OpenAMP/issues/I4YMUM) | 实现soc内实时和非实时多平面混合部署 | Accepted | sig-embedded |  |
 | [I4YMUX](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMUX) <br/> [I4Q7W7](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4Q7W7) | 开放基于Yocto构建包的小型化定制裁剪能力 | Accepted | sig-yocto | |
-| [I4YMVX](https://gitee.com/src-openeuler/gcc-cross/issues/I4YMVX) | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | Accepted | sig-yocto | |
+| [I4YMVX](https://gitee.com/src-openeuler/gcc-cross/issues/I4YMVX) | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | Accepted | sig-compiler | |
 | [I4YMV8](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMV8) | 支持树莓派4B作为嵌入式通用硬件 | Accepted | sig-embedded | |
 | [I4YMTP](https://gitee.com/openeuler/dsoftbus_standard/issues/I4YMTP) | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | Accepted | sig-yocto | |
 
@@ -83,7 +83,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 | 基于Linux 5.10内核提供软实时能力 | sig-yocto | sig-Yocto| 重点对软实时能力进行性能摸底 |
 | 实现soc内实时和非实时多平面混合部署 | sig-embedded | sig-embedded | 重点对openAMP通信基础功能进行验证 |
 | 开放基于Yocto构建包的小型化定制裁剪能力 | sig-yocto | sig-yocto | 重点对yocto构建、裁剪以及相关资料进行验证 |
-| 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | sig-yocto | sig-yocto | 针对交叉编译工具链的可用性进行验证 |
+| 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | sig-compiler | sig-yocto | 针对交叉编译工具链的可用性进行验证 |
 | 支持树莓派4B作为嵌入式通用硬件 | sig-yocto | sig-yocto | 对发布件在树莓派4B上的安装、基础功能、稳定性及新增特性的测试 |
 | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | sig-embedded | sig-embedded | 对openEuler 22.03 embedded设备间互联互通进行测试 |
 
@@ -107,7 +107,7 @@ openEuler embedded 22.03版本整体测试按照release-manager团队的计划�
 
 1、完成基础OS质量保障，包括内核、系统调用、glibc以及80款基础软件包的功能测试；
 
-2、对关键特性，如软实时能力、分布式软总线、yocto小型定制裁剪以及混合部署进行了专项特性测试；
+2、对关键特性，如软实时能力、分布式软总线、yocto小型定制裁剪以及混合部署、ARM版本交叉编译工具链进行了专项特性测试；
 
 3、其他专项测试包括安全专项、兼容性测试以及可靠性测试；
 
@@ -140,6 +140,42 @@ openEuler embedded 22.03版本整体测试按照release-manager团队的计划�
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
 
 <font color=green>█</font>： 表示特性质量良好
+
+### 4.1.3 基于社区10.3版本gcc提供ARM版本交叉编译工具链
+
+特性测试主要包括交叉编译GCC 64、32位工具链整体测试，详细叙述测试覆盖情况，并通过问题分析对版本整体进行评估和总结。
+
+| 特性名称 | 测试开始时间 | 测试结束时间 |
+| ---- | ----------------------------------------- | :-------------------------: |
+| 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | 2022/3/14 | 2022/3/21 |
+
+**环境信息**
+
+| 硬件配置 |
+| ---- |
+| Intel(R) Xeon Platinum 8176M CPU@2.10GHz |
+| Linux #166-Ubuntu SMP x86_64 GNU/Linux |
+
+该版本主要验证了编译器一般使用场景——打开常用编译优化选项O1/O2/O3/Os/Ofast情况下的功能以及可靠性测试（并发、超规格用例测试），基本功能正常，deja等测试套相对开源社区gcc10.3源码编译版本无额外新增失败用例，质量良好。
+
+**可靠性测试**
+
+1.超规格用例测试编译运行无问题；
+2.csmith/yarpgen 128线程并发生成用例并编译运行，均无问题，用例正常编译运行通过。
+
+**随机测试**
+
+| 类型 | 执行情况 |
+| ---- | ----------------------------------------- |
+| csmith普通版本（c/c++） | 100w+用例无问题 |
+| csmith浮点版本 | 100w+用例无问题 |
+| yarpgen普通版本（c/c++） | 100w+用例无问题 |
+
+**遗留问题**
+
+| 问题描述 | 问题级别 | 影响分析 | 规避措施 |
+| ---- | ---- | ---- | ---- |
+| 开启结构体拆分特性，arm32工具链编译运行用例Segmentation fault | 一般 | 自研特性问题，影响范围小 | arm32工具链使用时不开启-fipa-struct-reorg选项 |
 
 ## 4.2   兼容性测试结论
 
