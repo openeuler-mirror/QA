@@ -35,19 +35,19 @@ openEuler LTS  embedded  分布式软总线 混合部署 软实时 SDK
 
 # 1   概述
 
-openEuler Embedded是基于openEuler社区面向嵌入式场景的Linux版本。当前openEuler内核源于Linux实现软实时能力，同时具备soc内多平面混合部署，开放基于Yocto构建包的小型化定制裁剪能力，是由全球开源贡献者构建的高效、稳定、安全的开源操作系统。
+openEuler Embedded是基于openEuler社区面向嵌入式场景的Linux版本，旨在成为一个高质量的以Linux为中心的嵌入式系统软件平台。
 
-本文主要描述openEuler 22.03 embedded版本的总体测试活动，按照社区开发模式进行运作，结合社区release-manager团队制定的版本计划规划相应的测试计划及活动。测试报告覆盖新需求、继承需求的测试执行情况和评估，并结合各类专项测试活动和版本问题单总体情况进行整体的说明和质量评估。
+本文主要描述openEuler 22.03 embedded版本的总体测试活动，按照社区开发模式进行运作，结合社区release-manager团队制定的版本计划规划相应的测试计划及活动。测试报告覆盖新需求的测试执行情况和评估，并结合各类专项测试活动和版本问题单总体情况进行整体的说明和质量评估。
 
 # 2   测试版本说明
 
 openEuler embedded 22.03 版本是基于22年全新的LTS基线版本的Linux 5.10内核，根据嵌入式设备的特点进行实时能力增强和裁剪，主要功能：
 
-1.  基于Linux内核5.10提供软实时能力
+1.  集成openEuler社区软实时补丁，提供软实时能力
 2.  提供soc内实时和非实时多平面混合部署，支持硬实时能力
-3.  继承鸿蒙分布式软总线，实现openEuler设备间的互联互通
+3.  引入鸿蒙分布式软总线，实现openEuler设备间的互联互通
 4.  开放基于yocto构建镜像小型化裁剪能力及ARM交叉编译工具链支持
-5.  以树莓派4B作为嵌入式标准硬件
+5.  支持树莓派4B作为嵌入式标准硬件
 
 openEuler embedded 22.03 版本按照社区release-manager团队的计划，共规划5轮测试，详细的版本信息和测试时间如下表：
 
@@ -71,7 +71,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 
 | **no** | **feature**                                                  | **status** | **sig**                 | **owner**                                      |
 | ------ | ------------------------------------------------------------ | ---------- | ----------------------- | ---------------------------------------------- |
-| [I4YMW9](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMW9) | 基于Linux 5.10内核提供软实时能力 | Accepted | sig-yocto |  |
+| [I4YMW9](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMW9) | 集成openEuler社区软实时补丁 | Accepted | sig-yocto |  |
 | [I4YMUM](https://gitee.com/src-openeuler/OpenAMP/issues/I4YMUM) | 实现soc内实时和非实时多平面混合部署 | Accepted | sig-embedded |  |
 | [I4YMUX](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMUX) <br/> [I4Q7W7](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4Q7W7) | 开放基于Yocto构建包的小型化定制裁剪能力 | Accepted | sig-yocto | |
 | [I4YMVX](https://gitee.com/src-openeuler/gcc-cross/issues/I4YMVX) | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | Accepted | sig-compiler | |
@@ -82,7 +82,7 @@ openEuler embedded 22.03版本交付需求列表如下：
 
 | **需求**                     | **开发主体**      | **测试主体**      | **测试策略**                                                 |
 | ---------------------------- | ----------------- | ----------------- | ------------------------------------------------------------ |
-| 基于Linux 5.10内核提供软实时能力 | sig-yocto | sig-Yocto| 重点对软实时能力进行性能摸底 |
+| 集成openEuler社区软实时补丁 | sig-yocto | sig-Yocto| 重点对软实时能力进行性能摸底 |
 | 实现soc内实时和非实时多平面混合部署 | sig-embedded | sig-embedded | 重点对openAMP通信基础功能进行验证 |
 | 开放基于Yocto构建包的小型化定制裁剪能力 | sig-yocto | sig-yocto | 重点对yocto构建、裁剪以及相关资料进行验证 |
 | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | sig-compiler | sig-compiler | 针对交叉编译工具链的可用性进行验证 |
@@ -93,21 +93,17 @@ openEuler embedded 22.03版本交付需求列表如下：
 
 openEuler embedded 22.03版本整体测试按照release-manager团队的计划，共完成了一轮基础功能测试+一轮新特性测试+一轮专项测试+一轮用户使用场景测试+一轮回归测试；
 
-其中第一轮基础功能测试聚焦在linux系统调用、glibc和基础软件包功能的自动化验证；
+其中一轮基础功能测试聚焦在linux系统调用、glibc和基础软件包功能的自动化验证，旨在识别阻塞性问题；一轮新特性测试开展对版本交付的所有特性的功能验证；另外一轮专项测试，涵盖安全、可靠性以及性能等dfx能力测试；用户使用场景测试模拟社区用户，按照使用指南中指导完成了镜像获取启动、基于SDK的应用开发以及容器构建环境的获取和一键构建；最后一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；
 
-另外一轮新特性测试开展版本交付的所有特性和各类专项测试，另外开展安全CVE扫描及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；
+版本按照测试策略完成了全量功能验证和专项测试(性能、可靠性、兼容性、安全)，所有测试预计发布前按计划完成。本版本计划交付需求6个，实际交付6个，交付率100%，所有发布需求均验证通过。
 
-一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本按照测试策略完成了全量功能验证和专项测试(性能、可靠性、兼容性、安全)
-
-所有测试预计发布前按计划完成。本版本计划交付需求6个，实际交付6个，交付率100%，所有发布需求均验证通过。
-
-​openEuler embedded 22.03版本共发现问题70个，有效问题57个，遗留问题5个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
+​openEuler embedded 22.03版本共发现问题62个，修复问题57个，遗留问题5个(详见遗留问题章节)，其他问题均已修复，待最后一轮回归测试修复验证。版本整体质量较好。
 
 # 4   版本详细测试结论
 
 22.03 版本详细测试内容包括：
 
-1、完成基础OS质量保障，包括内核、系统调用、glibc以及80款基础软件包的功能测试；
+1、完成基础OS质量保障，包括内核、系统调用、glibc以及基础软件包的功能测试；
 
 2、对关键特性，如软实时能力、分布式软总线、yocto小型定制裁剪以及混合部署、ARM版本交叉编译工具链进行了专项特性测试；
 
@@ -130,12 +126,12 @@ openEuler embedded 22.03版本整体测试按照release-manager团队的计划�
 
 | **序号** | **特性名称**                 | **测试覆盖情况**                                             | **约束依赖说明** | **遗留问题单** | **质量评估**               | **备注<img width=50/>**                                      |
 | -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
-| 1        | 基于Linux 5.10内核提供软实时能力 |  在标准镜像的基础上集成软实时补丁，通过yocto构建出RT镜像，在树莓派4B上部署，使用cyclictest开源工具进行性能测试，测得中断加调度的平均时延小于8us | 不正式发布RT镜像，提供工程构建指导 | NA             | <font color=blue>▲</font>  |                                   |
-| 2        | 实现soc内实时和非实时多平面混合部署 | openEuler Embedded作为主设备启动后，从核启动拉起zephyr实时系统，完成了主从设备之间的生命周期管理和基本通信 | NA               | NA             | <font color=blue>▲</font>  |  |
-| 3        | 开放基于Yocto构建包的小型化定制裁剪能力 | 使用yocto的packagegroup类对openeuler的发布包按类型进行分组，便于在image和sdk中添加包 |   | NA             | <font color=green>█</font> |             |
-| 4        | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | 发布件中包含该工具，交叉编译功能在测试活动中已验证 | NA               | NA             | <font color=green>█</font> |                                                              |
-| 5        | 支持树莓派4B作为嵌入式通用硬件 | 树莓派部署、基本OS质量已覆盖，用户可通过资料完成树莓派上镜像的构建、部署和基本使用 | 不直接发布树莓派的部署件，但工程支持构建基本文件系统，提供资料说明如何集成到树莓派 | NA             | <font color=green>█</font> |                                                              |
-| 6        | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | 在标准以太网的连接方式下，测试了两台嵌入式设备间的发现、连接和传输的API接口，验证了不同设备间基于dsoftbus通信的互通互联 | 对外发布二进制、软总线功能库集合以及使用资料 | NA  | <font color=blue>▲</font> |                                                              |
+| 1        | 集成openEuler社区软实时补丁 |  在标准镜像的基础上集成软实时补丁，通过yocto构建出RT镜像，在树莓派4B上部署，使用cyclictest开源工具进行性能测试，测得中断加调度的平均时延小于8us | NA | NA             | <font color=blue>█</font>  |   集成RT补丁，提供工程构建指导 |
+| 2        | 实现soc内实时和非实时多平面混合部署 | openEuler Embedded作为主设备启动后，从核启动拉起zephyr实时系统，完成了主从设备之间的生命周期管理和基本通信 | NA   | NA             | <font color=blue>█</font>  | 功能演示基于qemu环境 |
+| 3        | 开放基于Yocto构建包的小型化定制裁剪能力 | 使用yocto的packagegroup类对openeuler的发布包按类型进行分组，便于在image和sdk中添加包 |  NA | NA             | <font color=green>█</font> |             |
+| 4        | 基于社区10.3版本gcc提供ARM版本交叉编译工具链 | 由sig-compiler验证，同时在开发测试活动中已覆盖 | NA               | NA             | <font color=green>█</font> |                                                              |
+| 5        | 支持树莓派4B作为嵌入式通用硬件 | 树莓派部署、基本OS质量已保证，用户可通过资料完成树莓派上镜像的构建、部署和基本使用 | NA | NA             | <font color=green>█</font> |  集成树莓派补丁，支持工程构建      |
+| 6        | 集成鸿蒙的分布式软总线，实现openEuler设备之间的互联互通 | 在标准以太网的连接方式下，测试了两台嵌入式设备间的发现、连接和传输的API接口，验证了不同设备间基于dsoftbus通信的互通互联 | NA | 见遗留问题  | <font color=blue>▲</font> | https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZX8E |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -218,14 +214,14 @@ openEuler embedded 22.03作为首个嵌入式版本不涉及兼容性测试
 
 | 测试类型     | 测试内容                                                                               | 测试结论                   |
 | ------------ | -------------------------------------------------------------------------------------- | -------------------------- |
-| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； | 操作系统稳定运行2*24小时   |
+| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； | 操作系统当前已稳定运行2\*24小时，会持续跟踪到7\*24   |
 | 断电重启测试 | 系统通过各种复位命令重启，包括系统调用复位重启、咬狗重启、panic重启，各执行100次 | 系统可以正常重启   |
 
 ### 性能测试
 
 | **指标大项** | **指标小项**                                                 | **指标值**                        | 测试结论                 |
 | ------------- | ------------------------------------------------------------ | --------------------------------- | ------------------------ |
-| 软实时性能 | 中断时延加调度时延  |  平均时延小于8微妙 | 在树莓派4B上验证通过 |
+| 软实时性能 | 中断时延加调度时延  |  平均时延小于8微秒 | 在树莓派4B上验证通过 |
 
 ### 资料测试
 
@@ -233,19 +229,19 @@ openEuler embedded 22.03作为首个嵌入式版本不涉及兼容性测试
 |--------------------|------------------------------------------------------------------------|--------------------|
 | openEuler Embedded 快速上手 | 获取镜像、运行镜像、基于SDK的应用开发 | 验收通过   |
 | openEuler Embedded 构建系统 | 快速构建、Yocto介绍、新增软件包指导 | 验收通过   |
-| openEuler Embedded 关键特性 | 混合部署、分布式软总线、树莓派系统 | 验收通过   |
+| openEuler Embedded 关键特性 | 混合部署、分布式软总线、树莓派系统 | 混合部署和分布式软总线文档开发中，330完成 |
 
 # 5   问题单统计
 
-openEuler 22.03 embedded版本共发现问题单70个，有效问题57个，其中修复问题单52个，回归均通过。详细分布见下表:
+openEuler 22.03 embedded版本共发现问题单62个，其中修复问题单57个，回归均通过。详细分布见下表:
 
 | 测试阶段                    | 问题单数 |
 | --------------------------- | -------- |
-| openEuler embedded RC1 | 15  |
-| openEuler embedded RC2 | 12  |
-| openEuler embedded RC3 | 27  |
-| openEuler embedded RC4 | 16  |
-| openEuler embedded RC5 |   |
+| openEuler embedded RC1 | 25  |
+| openEuler embedded RC2 | 18  |
+| openEuler embedded RC3 | 12  |
+| openEuler embedded RC4 | 7  |
+| openEuler embedded RC5 |    |
 
 # 6   附件
 
@@ -253,5 +249,8 @@ openEuler 22.03 embedded版本共发现问题单70个，有效问题57个，其�
 
 | 序号 | 问题单号 | 问题简述                                                     | 问题级别 | 影响分析                                                     | 规避措施 |
 | ---- | -------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | -------- |
-| 1 | [I4ZPYD](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZPYD) | 系统存在调试工具检 strace 和 gdb | 不重要 | 无需规避，嵌入式版本无包管理，默认带调试工具，暂不需要规避 | |
-| 2 | [I4ZKGL](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZKGL) | 环境上不支持service | 不重要 | 无需规避，版本不提供service命令，暂不需要规避 | |
+| 1 | [I4ZPYD](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZPYD) | 系统存在调试工具 strace 和 gdb | 次要 | 嵌入式版本无包管理，默认带调试工具，暂不需要规避 | |
+| 2 | [I4ZV23](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZV23) | libxml2包多编译了catalog模块 | 次要 | 下一轮修复 | |
+| 3 | [I4ZUWZ](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZUWZ) | iptables依赖ko需要自动插入 | 次要 | 下一轮修复 | |
+| 4 | [I4ZQYE](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4ZQYE) | PAM返回码异常 | 次要 | 下一轮修复 | |
+| 5 | [I4YMW9](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I4YMW9) | 分布式软总线特性用户接口调用与服务端通信失败 | 严重 | 下一轮修复 | |
