@@ -86,18 +86,19 @@ openEuler 22.03-LTS版本交付需求列表如下：
 
 |no|feature|status|sig|owner|release|
 |:----|:---|:---|:--|:----|:--|
-|[I4H9BC](https://gitee.com/openeuler/release-management/issues/I4H9BC)|新增支持RISC-V 镜像|Testing|RISC-V|[@xuzhou zhang](https://gitee.com/whoisxxx), [@xijing](https://gitee.com/xijing666)| sig独立发布 |
-|[I4IM2L](https://gitee.com/openeuler/release-management/issues/I4IM2L)|GCC自动反馈优化相关软件包引入及优化效果增强|Testing|Compiler|[@ma-mingze](https://gitee.com/ma-mingze), [@Haijian.Zhang](https://gitee.com/haijianzhang), [@eastb233](https://gitee.com/eastb233)| 社区repo-OS |
-|[I4N83C](https://gitee.com/openeuler/release-management/issues/I4N83C)|openGauss默认集成到openEuler操作系统中|Testing|DB|[@zhang_xubo](https://gitee.com/zhang_xubo), [@bzhaoop](https://gitee.com/bzhaoop)| 社区repo-OS |
-|[I4O21W](https://gitee.com/openeuler/release-management/issues/I4O21W)|新增支持容器场景在离线混合部署|Testing|CloudNative|[@Vanient](https://gitee.com/Vanient)| 社区repo-Epol |
-|[I4PM21](https://gitee.com/openeuler/release-management/issues/I4PM21)|StratoVirt安全容器支持直通设备热插拔|Testing|Virt|[@frankyj915](https://gitee.com/frankyj915), [@imxcc](https://gitee.com/imxcc)| 社区repo-OS |
-|[I4PMNN](https://gitee.com/openeuler/release-management/issues/I4PMNN)|libcareplus提供Qemu热补丁能力|Testing|Virt|[@mdsc](https://gitee.com/mdsc), [@imxcc](https://gitee.com/imxcc)| 社区repo-OS |
-|[I4PMYT](https://gitee.com/openeuler/release-management/issues/I4PMYT)|新增支持gazelle高性能用户态协议栈|Testing|sig-high-performance-network|[@wu-changsheng](https://gitee.com/wu-changsheng)| 社区repo-Everything |
-|[I4QL70](https://gitee.com/openeuler/release-management/issues/I4QL70)|支持树莓派|Testing|RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi)| 社区repo-独立镜像 |
-|[I4S8L8](https://gitee.com/openeuler/release-management/issues/I4S8L8)|支持GNOME|Testing|GNOME|[@weijin-deng](https://gitee.com/weijin-deng) [@dwl301](https://gitee.com/dwl301)| 社区repo-Epol |
-|[I4S7C0](https://gitee.com/openeuler/release-management/issues/I4S7C0)|支持OpenStack Train/Wallaby版本|Testing|SIG-OpenStack| [@joec88](https://gitee.com/joec88) [@huangtianhua](https://gitee.com/huangtianhua) [@xiyuanwang](@https://gitee.com/xiyuanwang)  [@zh-f](https://gitee.com/zh-f)  [@liksh](https://gitee.com/liksh) [@zhangy1317](https://gitee.com/zhangy1317) | 社区repo-Epol |
-|[I4RAOD](https://gitee.com/openeuler/release-management/issues/I4RAOD)|发布kiran-desktop 2.2版本|Testing|sig-KIRAN-DESKTOP|[@tangjie02](https://gitee.com/tangjie02)| 社区repo-Epol |
-|[I4S8D3](https://gitee.com/openeuler/release-management/issues/I4S8D3)|支持xfce|Testing|xfce|[@zhang__3125](https://gitee.com/zhang__3125) [@dwl301](https://gitee.com/dwl301)| 社区repo-Epol |
+|[I4H9BC](https://gitee.com/openeuler/release-management/issues/I4H9BC)|新增支持RISC-V 镜像|Accepted|RISC-V|[@xuzhou zhang](https://gitee.com/whoisxxx), [@xijing](https://gitee.com/xijing666)| sig独立发布 |
+|[I4IM2L](https://gitee.com/openeuler/release-management/issues/I4IM2L)|GCC自动反馈优化相关软件包引入及优化效果增强|Accepted|Compiler|[@ma-mingze](https://gitee.com/ma-mingze), [@Haijian.Zhang](https://gitee.com/haijianzhang), [@eastb233](https://gitee.com/eastb233)| 社区repo-OS |
+|[I4N83C](https://gitee.com/openeuler/release-management/issues/I4N83C)|openGauss默认集成到openEuler操作系统中|Accepted|DB|[@zhang_xubo](https://gitee.com/zhang_xubo), [@bzhaoop](https://gitee.com/bzhaoop)| 社区repo-OS |
+|[I4O21W](https://gitee.com/openeuler/release-management/issues/I4O21W)|新增支持容器场景在离线混合部署|Accepted|CloudNative|[@Vanient](https://gitee.com/Vanient)| 社区repo-Epol |
+|[I4PM21](https://gitee.com/openeuler/release-management/issues/I4PM21)|StratoVirt安全容器支持直通设备热插拔|Accepted|Virt|[@frankyj915](https://gitee.com/frankyj915), [@imxcc](https://gitee.com/imxcc)| 社区repo-OS |
+|[I4PMNN](https://gitee.com/openeuler/release-management/issues/I4PMNN)|libcareplus提供Qemu热补丁能力|Accepted|Virt|[@mdsc](https://gitee.com/mdsc), [@imxcc](https://gitee.com/imxcc)| 社区repo-OS |
+|[I4PMYT](https://gitee.com/openeuler/release-management/issues/I4PMYT)|新增支持gazelle高性能用户态协议栈|Accepted|sig-high-performance-network|[@wu-changsheng](https://gitee.com/wu-changsheng)| 社区repo-Everything |
+|[I4QL70](https://gitee.com/openeuler/release-management/issues/I4QL70)|支持树莓派|Accepted|RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi)| 社区repo-独立镜像 |
+|[I4S8L8](https://gitee.com/openeuler/release-management/issues/I4S8L8)|支持GNOME|Accepted|GNOME|[@weijin-deng](https://gitee.com/weijin-deng) [@dwl301](https://gitee.com/dwl301)| 社区repo-Epol |
+|[I4S7C0](https://gitee.com/openeuler/release-management/issues/I4S7C0)|支持OpenStack Train/Wallaby版本|Accepted|SIG-OpenStack| [@joec88](https://gitee.com/joec88) [@huangtianhua](https://gitee.com/huangtianhua) [@xiyuanwang](@https://gitee.com/xiyuanwang)  [@zh-f](https://gitee.com/zh-f)  [@liksh](https://gitee.com/liksh) [@zhangy1317](https://gitee.com/zhangy1317) | 社区repo-Epol |
+|[I4RAOD](https://gitee.com/openeuler/release-management/issues/I4RAOD)|发布kiran-desktop 2.2版本|Accepted|sig-KIRAN-DESKTOP|[@tangjie02](https://gitee.com/tangjie02)| 社区repo-Epol |
+|[I4S8D3](https://gitee.com/openeuler/release-management/issues/I4S8D3)|支持xfce|Accepted|xfce|[@zhang__3125](https://gitee.com/zhang__3125) [@dwl301](https://gitee.com/dwl301)| 社区repo-Epol |
+|[I4ZJWD](https://gitee.com/openeuler/release-management/issues/I4ZJWD)|新增支持embedded版本|Accepted|embedded|[@beilingxie](https://gitee.com/beilingxie)| 社区repo-独立镜像 |
 
 > 当前社区release分为以下集中方式: 社区repo-OS/everything/Epol/独立镜像，oepkgs(软件所仓库)，sig独立发布(各sig自定义发布链接提供至release-sig)
 
@@ -128,7 +129,7 @@ openEuler 22.03-LTS版本交付需求列表如下：
 
    openEuler 22.03 LTS 版本整体测试按照release-manager团队的计划，共完成了一轮重点特性测试+两轮全量测试+一轮回归测试+版本发布验收测试；其中第一轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫面及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；另外两轮全量测试开展版本交付的所有特性和各类专项测试；一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-​    openEuler 22.03 LTS 版本共发现问题 360 个，有效问题 338 个，遗留问题 6 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
+​    openEuler 22.03 LTS 版本共发现问题 358 个，有效问题 336 个，遗留问题 7 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
 
 # 4 版本详细测试结论
 
@@ -181,15 +182,16 @@ openEuler 22.03 LTS版本详细测试内容包括：
 
 | **序号** | **特性名称** | **测试覆盖情况** | **约束依赖说明** | **遗留问题单** | **质量评估** | **备注<img width=50/>** |
 | -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
-| 1 | 南向芯片厂商适配 | 共执行2轮测试，对AMD(milan EPYC 7003)、飞腾(FT2000+、FT2500)、海光(71xx、72xx)、Intel(icelake)、申威(SW3231)、兆芯(KX-6640A)等厂商，覆盖[整机兼容性测试](https://gitee.com/openeuler/oec-hardware)和[社区集成测试](https://gitee.com/openeuler/mugen)  | NA | NA | <font color=green>█</font>  | NA |
-| 2 | [GCC自动反馈优化相关软件包引入及优化效果增强](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%E7%89%88%E6%9C%ACGCC%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行3轮测试，通过dejagnu、bstest、llvmcase、codedb等测试套覆盖基础功能，通过HPC应用范围软件编译验证自动反馈优化特性，保证编译器整体核心功能正常稳定 | NA | NA | <font color=green>▲</font>  | 后续除HPC场景的软件外，需关注其他场景软件编译自动反馈的性能与稳定性。测试过程中需要增加自动反馈优化性能相关测试 |
-| 3 | [openGauss默认集成到openEuler操作系统中](https://gitee.com/openeuler/QA/blob/c28868290907a38e7fdf9dcedfb4ad01f279a565/Test_Result/openEuler_22.03_LTS/openGauss%203.0.0%20Release%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81openGauss%E9%9B%86%E6%88%90%E5%88%B0openEuler.md) | 共执行4轮测试，共执行用例28423条，5个测试套覆盖基础功能中接入层，SQL层、存储层、管理和安全等维护的测试，其余从可靠性、性能、工具和兼容性四个维护覆盖生态测试 | NA | NA | <font color=green>█</font>  | NA |
+| 1 | [南向芯片厂商适配](https://gitee.com/openeuler/oec-hardware/issues) | 共执行2轮测试，对AMD(milan EPYC 7003)、飞腾(FT2000+、FT2500)、海光(71xx、72xx)、Intel(icelake)、申威(SW3231)、兆芯(KX-6640A)等厂商，覆盖[整机兼容性测试](https://gitee.com/openeuler/oec-hardware)和[社区集成测试](https://gitee.com/openeuler/mugen)  | NA | NA | <font color=green>█</font> | NA |
+| 2 | [GCC自动反馈优化相关软件包引入及优化效果增强](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%E7%89%88%E6%9C%ACGCC%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行3轮测试，通过dejagnu、bstest、llvmcase、codedb等测试套覆盖基础功能，通过HPC应用范围软件编译验证自动反馈优化特性，保证编译器整体核心功能正常稳定 | NA | NA | <font color=green>█</font> | 后续需求需要明确性能规格，并基于规格进行性能测试 |
+| 3 | [openGauss默认集成到openEuler操作系统中](https://gitee.com/openeuler/QA/blob/c28868290907a38e7fdf9dcedfb4ad01f279a565/Test_Result/openEuler_22.03_LTS/openGauss%203.0.0%20Release%E7%89%88%E6%9C%AC%E6%94%AF%E6%8C%81openGauss%E9%9B%86%E6%88%90%E5%88%B0openEuler.md) | 共执行4轮测试，共执行用例28423条，5个测试套覆盖基础功能中接入层，SQL层、存储层、管理和安全等维护的测试，其余从可靠性、性能、工具和兼容性四个维护覆盖生态测试 | NA | NA | <font color=green>█</font> | 后续需要和openGauss社区明确配套版本的性能规格，在社区版本发布时保证openGauss场景下的性能测试结论 |
 | 4 | [新增支持容器场景在离线混合部署(rubik)](https://gitee.com/openeuler/QA/blob/d4d0336e92a0da0d5d0d3bc2b4e494e3cd04dee3/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%E7%89%88%E6%9C%AC%E6%B7%B7%E5%90%88%E9%83%A8%E7%BD%B2%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行2轮全量测试，测试覆盖接口、功能场景、可靠性和安全。重点结合容器场景验证了在线对离线业务的抢占，以及混部情况下的调度优先级测试。 | NA | NA | <font color=green>█</font> | 商用软件开源，继承测试能力，质量可控 |
 | 5 | [StratoVirt安全容器支持直通设备热插拔](https://gitee.com/openeuler/QA/blob/501d1ea98ba63a666ef01ae89ca0a2e8bbd6492f/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%20LTS%E7%89%88%E6%9C%ACStratoVirt%E6%94%AF%E6%8C%81%E8%AE%BE%E5%A4%87%E7%83%AD%E6%8F%92%E6%8B%94%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行2轮全量测试，验证接口功能、可靠性。重点覆盖设备在压力背景下热插后能够正常使用，热拔后是否有残留，以及热插拔后的容器生命周期验证。 | NA | [I4XPUX](https://gitee.com/openeuler/stratovirt/issues/I4XPUX) | <font color=green>█</font> | 商用软件开源，继承测试能力，质量可控 |
-| 6 | [libcareplus提供Qemu热补丁能力](https://gitee.com/openeuler/QA/blob/46baeec0bf3f920d0bcfa8af80c6c54f859fdad0/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%20LTS%E7%89%88%E6%9C%AClibcareplus%E6%94%AF%E6%8C%81qemu%E7%83%AD%E8%A1%A5%E4%B8%81%E8%83%BD%E5%8A%9B%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行2轮全量测试，验证了热补丁框架升级、回退功能，以及升级、回退后的虚拟机生命周期，同时验证了连续升级回退、故障中断等可靠性场景。 | NA | [I4Z6PM](https://gitee.com/openeuler/libcareplus/issues/I4Z6PM) | <font color=blue>▲</font> | 商用软件开源，继承测试能力，质量可控 |
-| 7 | [新增支持gazelle高性能用户态协议栈](https://gitee.com/openeuler/QA/blob/03eb41de1d4b8a5d8eacbbb67b84b3cd0b1c4f35/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%E7%89%88%E6%9C%ACgazelle%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A) | 共执行了2轮全量测试，覆盖了gazella安装部署、命令行接口和配置文件接口测试，重点测试转发业务流和性能规格场景，并结合网络发包仪打流和故障进行长稳验证。 | NA | NA | <font color=blue>▲</font> | 继承了商用测试能力，待众测后观察 |
+| 6 | [libcareplus提供Qemu热补丁能力](https://gitee.com/openeuler/QA/blob/46baeec0bf3f920d0bcfa8af80c6c54f859fdad0/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%20LTS%E7%89%88%E6%9C%AClibcareplus%E6%94%AF%E6%8C%81qemu%E7%83%AD%E8%A1%A5%E4%B8%81%E8%83%BD%E5%8A%9B%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共执行2轮全量测试，验证了热补丁框架升级、回退功能，以及升级、回退后的虚拟机生命周期，同时验证了连续升级回退、故障中断等可靠性场景。 | NA | [I4Z6PM](https://gitee.com/openeuler/libcareplus/issues/I4Z6PM) | <font color=blue>▲</font> | 当前约束条件为开启selinux不可用，使用场景受限 |
+| 7 | [新增支持gazelle高性能用户态协议栈](https://gitee.com/openeuler/QA/blob/03eb41de1d4b8a5d8eacbbb67b84b3cd0b1c4f35/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%E7%89%88%E6%9C%ACgazelle%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A) | 共执行了2轮全量测试，覆盖了gazella安装部署、命令行接口和配置文件接口测试，重点测试转发业务流和性能规格场景，并结合网络发包仪打流和故障进行长稳验证。 | NA | NA | <font color=green>█</font> | 继承了商用测试能力，待众测后观察 |
 | 8 | [支持OpenStack Wallaby版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.03_LTS/openEuler-22.03-LTS-OpenStack%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 覆盖W版本提供组件的API和功能测试，并通过tempest测试套完成集成验证和长稳测试；共计执行用例1161条 | NA | NA | <font color=green>█</font> | 当前社区openStack sig整体流程完善，但开发周期和测试周期较赶 |
 | 9 | [支持kiran桌面](https://gitee.com/openeuler/QA/blob/48f30ebfa49477bcc2ba55f3d7e9f82e61416d5b/Test_Result/openEuler_22.03_LTS/%20openEuler%2022.03%20LTS%E7%89%88%E6%9C%ACKiranUI%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共进行了3轮测试，执行了66条测试用例，覆盖了系统面板、控制中心、基础组件、文件管理器caja和通知区域的功能测试，同时从系统性能和稳定性方面进行了测试 | NA | NA | <font color=green>█</font> | NA |
+| 10 | [支持embedded版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.03_LTS/openEuler%2022.03%20embedded%E7%89%88%E6%9C%AC%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 共进行5轮测试，复用了服务器OS的测试策略，并增加上嵌入式场景单独特性测试覆盖。 | NA | NA | <font color=blue>▲</font> | 针对rt和兼容树莓派的需求，对外发布版本不交付，该发布方式需要和release达成明确结论。 |
 
 
 <font color=red>●</font>： 表示特性不稳定，风险高
@@ -206,14 +208,14 @@ openEuler 22.03-LTS作为5.10内核的第一个LTS版本，不涉及升级兼容
 
 ### 4.2.2   南向兼容性
 
-南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成42张板卡的测试，完成兼容性测试的硬件信息详见链接：[兼容性清单](https://www.openeuler.org/zh/compatibility/)
+南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成42张板卡的测试(该数目仅为测试数量，实际兼容性认证通过数量见社区[兼容性清单](https://www.openeuler.org/zh/compatibility/))
 
 下表列出版本集成验证中涉及的硬件整机信息：
 
 | 硬件型号 | 硬件详细信息 |
 | --------------------- |------------------------------------------------------------------------------------ |
 | TaiShan200 2280服务器 | CPU型号：Kunpeng 920<br />CPU核数：128<br />内存：32G*8<br />网卡：Hi1822 |
-| RH2288H V5服务器 | CPU型号：Intel(R) Xeon(R) Gold 6266C CPU@3.00GHZ<br />CPU核数：44<br />内存：12*32G<br />网卡：Hi1822 |
+| RH2288H V5服务器| CPU型号：Intel(R) Xeon(R) Gold 6266C CPU@3.00GHZ<br />CPU核数：44<br />内存：12*32G<br />网卡：Hi1822 |
 | 树莓派4B卡 | CPU:Cortex-A72 * 4 <br />内存：8GB <br />存储设备：SanDisk Ultra 16GB micro SD |
 | 树莓派3B+卡 | CPU:Cortex-A53 * 4<br />内存：1GB 存储设备<br />SanDisk Ultra 16GB micro SD |
 | 树莓派3B卡 | CPU:Cortex-A53 * 4 <br />内存：1GB <br />存储设备：SanDisk Ultra 16GB micro SD |
@@ -225,16 +227,7 @@ openEuler 22.03-LTS作为5.10内核的第一个LTS版本，不涉及升级兼容
 
 ### 4.2.3   北向兼容性
 
-北向兼容性整体测试按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。从archlinux当前已完成部分见下表：
-
-| 软件名称  | 软件版本信息 |
-| --------- | ------------ |
-| sysbench  | 0.4.8        |
-| unixbench | 5.1.3        |
-| lmbench   | 3-alpha1     |
-| nginx     | 1.14.2       |
-| netperf   | 2.7.0        |
-| hackbench | 1.0          |
+北向兼容性整体测试按照release-manager团队的规划，版本发布后会进行持续的兼容性测试以继承SP1部分结论，后续版本提前明确北向兼容性和版本发布节奏关系：
 
 [虚拟机兼容性](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.03_LTS/openEuler22.03_LTS_RC3%E7%89%88%E6%9C%AC%E8%99%9A%E6%8B%9F%E5%8C%96%E5%85%BC%E5%AE%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)(openEuler虚机镜像在其他发行版os的兼容性)
 
@@ -277,24 +270,26 @@ openEuler 22.03-LTS作为5.10内核的第一个LTS版本，不涉及升级兼容
 
 | **指标大项** | **指标小项** | **指标值** | **测试结论** |
 | ------------- | ------------------------------------------------------------ | --------------------------------- | -------------------- |
-| OS基础性能 | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考20.03 LTS SP3版本相应指标基线 | 相比SP3版本基本持平(64k页场景) |
-| 数据库性能(gazella) | 该用户态网络协议栈主要通过数据库的场景评估性能提升 | 数据库性能提升10% | 性能规格满足需求指标要求 |
+| OS基础性能 | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考20.03 LTS SP3版本相应指标基线 | 比较SP3性能下降5%以内 |
+
+> 该版本未规划基础性能以外的性能需求，继承的性能需求(场景化性能需求/虚拟化性能需求)均纳入SP1版本继承。
 
 # 5   问题单统计
 
-openEuler 22.03-LTS版本共发现问题 360 个，有效问题 338 个，其中修复问题单 314 个，回归均通过。详细分布见下表:
+openEuler 22.03-LTS版本共发现问题 358 个，有效问题 336 个，其中修复问题单 329 个，回归均通过。详细分布见下表:
 
 | 测试阶段 | 问题总数 | 有效问题单数 | 无效问题单数 |
 | ----------------------- | -------- | ----------- | ---------- |
 | openEuler 22.03 LTS RC1 | 115 | 107 | 8 |
 | openEuler 22.03 LTS RC2 | 129 | 120 | 9 |
 | openEuler 22.03 LTS RC3 | 74 | 73 | 1 |
-| openEuler 22.03 LTS RC4 | 33 | 30 | 3 |
+| openEuler 22.03 LTS RC4 | 31 | 28 | 3 |
 | openEuler 22.03 LTS RC5 | 9 | 8 | 1 |
 
 1. 本次版本涉及大批量的软件重新选型升级，Epol范围的软件包、rubygem系列的软件包的升级整改直至round2才合入社区纳入测试。故大批量特性round2才开启测试，round2相比round1问题单呈增长趋势
 2. openStack W/gazella特性/Desktop特性于round3才合入版本测试，round4问题其问题单占80%(24/30);以上新增特性均为Epol范围，为用户态软件对整体基础os测试结论影响可控
 3. 可靠性专项：长稳持续进行(混合压力测试)，未发现问题;文件系统、网络系统等os基础子故障注入专项测试于round3开展，网络专项发现问题，于round4均已闭环
+4. 第五轮新增问题，均为非BaseOS范围内问题，在RC4后工程已管控代码自动同步。针对该类问题进行定向构建工程同步并回归。
 
 整体看核心镜像范围内软件问题单收敛趋势明显。在版本发布过程中，需要联合release-sig强管控特性的合入周期，
 
@@ -309,8 +304,8 @@ openEuler 22.03-LTS版本共发现问题 360 个，有效问题 338 个，其中
 | 3 | [I4WPWR](https://gitee.com/src-openeuler/samba/issues/I4WPWR) | samba.service服务执行stop操作之后状态为failed | 次要 | systemctl stop的操作结果是生效，samba服务对信号SIGTERM的返回值是127，systemd处理其未failed | 版本遗留,跟踪上游社区修改 | [I3A52C](https://gitee.com/src-openeuler/samba/issues/I3A52C) 2103遗留问题|
 | 4 | [I4WPME](https://gitee.com/src-openeuler/freeipmi/issues/I4WPME) | ipmidetectd.service执行stop操作之后状态为failed | 次要 | 原因同问题3 | 版本遗留,跟踪上游社区修改 | [I45FUP](https://gitee.com/src-openeuler/freeipmi/issues/I45FUP) 2003 LTS SP2遗留问题|
 | 5 | [I4VDY7](https://gitee.com/src-openeuler/fence-virt/issues/I4VDY7) | fence_virtd.service服务stop失败，状态为failed | 次要 | 通过规避方式（systemctl start libvirtd.service）服务可以stop成功 | 版本遗留,跟踪上游社区修改 | [I4NFA9](https://gitee.com/src-openeuler/fence-virt/issues/I4NFA9), 2003 LTS SP3遗留问题|
-| 6 | [I4X0TU](https://gitee.com/src-openeuler/dde-control-center/issues/I4X0TU) | 图标主题不能正常显示 | 次要 | 通过把 .cache/deepin/dde-api/theme_thumb删除掉，在执行 rsvg-convert 这个命令，图标主题可以正常显示。如果没有rsvg-convert该命令，安装librsv2-tools软件即可 | 版本遗留,跟踪上游社区修改 | 2203 LTS新增|
-
+| 6 | [I4X0TU](https://gitee.com/src-openeuler/dde-control-center/issues/I4X0TU) | 图标主题不能正常显示 | 次要 | 通过把 .cache/deepin/dde-api/theme_thumb删除掉，在执行 rsvg-convert 这个命令，图标主题可以正常显示。如果没有rsvg-convert该命令，安装librsv2-tools软件即可 | 版本遗留,跟踪上游社区修改 | 2203 LTS新增 |
+| 7 | [I4XALX](https://gitee.com/openeuler/openeuler-os-build/issues/I4XALX) | 虚拟镜像启动卡住黑屏，无法进入登录界面 | 主要 | 当前问题尽在centos 4.14内核上出现该问题，在openEuler 4.19/5.10内核上均未出现过该问题 | 不影响版本发布,后续切换openEuler版本作为构建环境,同步定位问题根因 | 2203 LTS新增 |
 
 
 # 致谢
