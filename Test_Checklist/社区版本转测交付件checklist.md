@@ -1,0 +1,15 @@
+| 序号 | 领域 | 检查项 | 执行 | 达成 | 选项 | 责任团队 | R1 | R2 | R3 | R4 | R5 | LTS | LTS-SPx | 创新 | 说明 |
+| ---- | ---- | ----- | ---- | ---- | --- | -------| -- | -- | -- | -- | -- | --- | -------- | --- | ---- |
+| 1 | 需求管理 | 提供社区继承需求完整清单 | | | 必选 | RM | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 2 | | 提供社区新增需求的完整清单 | | | 必选 | RM | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 3 | | 新增需求已在创新版本发布 | | | 可选 | RM | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | | |
+| 4 | | 提供完整的与<font color="dd0000">**上个关联版本**</font>的软件变化清单（新增/升降级/删除/发布位置变更及原因） | | | 必选 | RM | <font color="00dd00">✔</font> | | | | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 5 | | 提供完整的与<font color="dd0000">**上个转测版本**</font>的软件变化清单（新增/升降级/删除/发布位置变更及原因） | | | 必选 | RM | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 6 | | 除bugfix和cve外，无新增代码合入 | | | 必选 | RM | | | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | (2) |
+| 7 | 版本资料 | 提供社区资料变动清单(继承/新增/删除) | | | 必选 | doc | | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 8 | 开源合规 | 发布软件包开源合规满足度达100% | | | 必选 | infra | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 9 | 转测范围 | 提供交付件未转测软件清单及原因 | | | 必选 | infra | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+| 10 | | 提供交付件转测软件包清单 | | | 必选 | infra | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | <font color="00dd00">✔</font> | |
+
+* (2) R3后的除解决问题外的代码合入，需由提交人组织版本相关团队(RM/QA/归属sig等)进行评审。提交人需提供明确的代码变动和合入原因，并在社区以issue的形式呈现归档。最终评审通过后可合入。
+
