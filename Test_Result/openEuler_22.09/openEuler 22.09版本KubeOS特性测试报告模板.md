@@ -67,7 +67,7 @@ KubeOS特性，共计执行73个用例，主要覆盖了：
 
 | 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | -------- | -------- | -------- | ------------------ | -------- |
-|https://gitee.com/src-openeuler/KubeOS/issues/I5NU58?from=project-issue| KubeOS升级不支持legacy | 一般 |22.09 KubeOS不再支持legacy模式|资料约束关闭|
+|https://gitee.com/src-openeuler/KubeOS/issues/I5NU58?from=project-issue| KubeOS升级不支持legacy | 主要 |22.09 KubeOS不再支持legacy模式|资料约束关闭|
 
 ### 3.3.2 问题统计
 
