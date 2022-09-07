@@ -9,7 +9,9 @@
 |2022年9月6日|初稿|openssl支持商密TLCP协议 测试报告|刘扬媚|
 
 关键词：TLCP
+
 摘要：
+
 缩略语清单：
 | 缩略语 | 英文全名 | 中文解释 |
 | ------ | -------- | -------- |
@@ -58,13 +60,21 @@ openEuler操作系统安装的openSSL软件版本号大于1.1.1m-4。
 
 手动执行情况：
 [root@openEuler src]# ./server
+
 server listen port = 4422
+
 **** connected suite = ECDHE-SM4-CBC-SM3
+
 **** version is = TLCP
+
 [server handler] msg = this is client!
 
 [root@openEuler src]# ./ecc-server
+
 server listen port = 4422
+
 **** connected suite = ECC-SM4-CBC-SM3
+
 **** version is = TLCP
+
 [server handler] msg = this is client!
