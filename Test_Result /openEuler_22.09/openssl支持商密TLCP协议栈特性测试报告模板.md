@@ -56,9 +56,12 @@ openEuler操作系统安装的openSSL软件版本号大于1.1.1m-4。
 
 # 5     附件
 开源用例执行情况：
+
 ../test/recipes/85-test_tlcp.t  .......................ok
 
+
 手动执行情况：
+
 [root@openEuler src]# ./server
 
 server listen port = 4422
@@ -68,6 +71,7 @@ server listen port = 4422
 **** version is = TLCP
 
 [server handler] msg = this is client!
+
 
 [root@openEuler src]# ./ecc-server
 
