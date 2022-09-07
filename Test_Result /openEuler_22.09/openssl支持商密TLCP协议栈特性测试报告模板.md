@@ -63,7 +63,8 @@ server listen port = 4422
 **** version is = TLCP
 [server handler] msg = this is client!
 
-[root@openEuler src]# ./ecc-client
-client conenct port = 4422
+[root@openEuler src]# ./ecc-server
+server listen port = 4422
 **** connected suite = ECC-SM4-CBC-SM3
 **** version is = TLCP
+[server handler] msg = this is client!
