@@ -53,16 +53,28 @@ HSAK特性，共执行120+个测试用例，覆盖特性的基本功能、可靠
 
 ## 3.2   约束说明
 
-1、同一台机器最多使用和管理512个NVMe设备
-2、启用HSAK执行IO相关业务时，需要确保系统有至少500M以上连续的空闲大页内存
-3、启用用户态IO组件执行相关业务时，需要确保硬盘管理组件（ublock）已经启用
-4、启用磁盘管理组件（ublock）执行相关业务时，需确保系统有足够的连续空闲内存，每次初始化ublock组件会申请20MB大页内存
-5、每次运行HSAK之前，产品需要调用setup.sh来配置打野，解绑NVMe设备内核态驱动。
-6、执行libstorage_init_module成功后方可使用HSAK模块提供的其他接口；每个进程仅能执行一次libstorage_init_module调用
-7、执行libstorage_exit_module函数之后不能再使用HSAK提供的其他接口，再多线程场景特别需要注意，在所有线程结束之后再退出HSAK。
-8、HSAK ublock组件在一个服务器上只能启动一个服务，且最大支持64个ublock客户端并发访问，ublock服务端处理客户端请求的处理上限是20次/s。
-9、HSAK ublock组件必须早于数据面IO组件和ublock客户端启动，HSAK提供的命令行工具也必须在ublock服务端启动后才能执行。
-10、不要注册SIGBUS信号处理函数；spdk针对该信号有单独的处理函数；若该函数被覆盖，会导致spdk注册的SIGBUS处理函数失效，产生coredump
+1.	同一台服务器用户态IO组件和硬盘管理组件（Ublock）最多使用和管理512个NVMe设备。
+2.	启用用户态IO组件执行相关业务时，需要确保系统有至少300M以上连续的空闲大页内存。
+3.	启用用户态IO组件执行相关业务时，需要确保硬盘管理组件（Ublock）已经启用。
+4.	启用硬盘管理组件（Ublock）执行相关业务时，需确保系统有足够的连续空闲内存，每次初始化Ublock组件时会申请20MB。
+5.	HSAK用户态IO组件提供动态库方案，在两个RPM包中提供了相同的配置文件nvme.conf.in和setup.sh，所以如果两个RPM包都安装，则后装的会覆盖原先安装的这两个文件，同一个RPM包安装多次也存在同样问题，请注意备份。
+6.	每次运行HSAK之前，产品需要调用setup.sh来配置大页、解绑NVMe设备内核态驱动。
+7.	执行libstorage_init_module成功后方可使用HSAK模块提供的其他接口；每个进程仅能执行一次libstorage_init_module调用。
+8.	要使用热插拔功能必须保证在运行HSAK之前运行Ublock，并保持Ublock进程正常运行。
+9.	执行libstorage_exit_module函数之后不能再使用HSAK提供的其他接口，在多线程场景特别需要注意，在所有线程结束之后再退出HSAK。
+10.	在HSAK执行过程中，执行setup.sh reset等重绑定内核驱动的操作，会造成用户态驱动已经提交的请求在盘侧处理完后，触发内核态驱动去响应，此操作会引发不可预知的问题。如果需要将用户态驱动切换为内核态驱动，需要确保HSAK不再工作。不建议使用setup.sh进行reset操作，建议使用power下电操作，下电完成3s之后再执行rescan操作，这时会自动切换成内核态驱动。
+11.	HSAK Ublock在一个服务器上只能启动一个服务，且最大支持64个Ublock客户端并发访问，Ublock服务端处理客户端请求的处理上限是20次/s。客户端同服务端不支持跨网络访问。
+12.	HSAK Ublock服务端必须早于数据面UIO和Ublock客户端启动，HSAK提供的命令行工具也必须在Ublock服务端启动后才能执行。
+13.	HSAK支持NVMe PCIe SSD盘的通知式热插拔（槽位需具有热插拔能力，在热插拔之前需要执行echo 0 > /sys/bus/pci/slots/$slot/power 通知操作系统对盘下电），不支持NVMe PCIe SSD的暴力热插拔。不支持多盘同时拔插的情况，建议每次操作一个NVME盘的插拔，两个盘的操作间隔时间要大于3s。
+14.	根据ES3000 NVMe PCIe SSD用户指导书，在Linux操作系统下，对ES3000盘的热插拔操作需要配置Linux内核参数，在启动参数中添加“pciehp.pciehp_force=1 pci=pci_bus_perf”，否则会出现Max payload size不一致等问题。具体步骤详见《ES3000 NVMe PCIe SSD用户指南》。
+15.	HSAK支持海思1616及1620 ARM CPU。并且需要关闭SMMU。
+16.	HSAK只支持ARM平台上1P（2 NUMA）和2P（4 NUMA）环境，其他平台的兼容性不做保证。
+17.	不要注册SIGBUS信号处理函数；nvme盘热插拔过程中会产生SIGBUS信号，spdk针对该信号有单独的处理函数；若该函数被覆盖，会导致spdk注册的SIGBUS处理函数失效，产生coredump。
+18.	HSAK在虚拟机环境下使用，需要配置pci直通nvme盘，并且打开物理机的SMMU服务以支持vfio，目前虚拟机的操作系统只支持EulerOS，物理机场景和虚拟机场景只能选择其中一种。nvme盘热插拔相关的功能会导致虚拟机产生pci层面的bug，造成闪退，该功能暂不支持。
+19.	配置文件nvme.conf.in中配置项TransportID必须置空，控制器的创建通过调用libstorage_nvme_create_ctrlr实现，删除控制器通过调用libstorage_nvme_delete_ctrlr实现。
+20.	同一个NVMe盘不能被多个进程创建，大页内存在每个进程上都是独立的，需要再系统启动后根据进程数预留足够的大页内存。
+21.	HSAK在x86平台上运行时，需要关闭BIOS中的VMD功能。
+
 
 ## 3.3   遗留问题分析
 
