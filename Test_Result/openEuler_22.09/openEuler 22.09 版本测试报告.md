@@ -8,6 +8,7 @@
 | 日期       | 修订版本 | 修改章节           | 修改描述   |
 | ---------- | -------- | ------------------ | ---------- |
 | 2022/9/5 | 1.0.0    | 初始, 基于RC1/2/3   | disnight |
+| 2022/9/14| 1.0.1    | 修改模板部分2209问题 | disnight |
 
 关键词：
 
@@ -26,12 +27,9 @@ openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持
 
 # 2   测试版本说明
 
-openEuler 22.09版本是22年收个创新版本，承载了一年内社区孵化的各项新特性，该版本基于master分支拉出，发布范围相较21.09和22.03 LTS版本主要变动：
+openEuler 22.09版本是22年首个创新版本，承载了一年内社区孵化的各项新特性，该版本基于master分支拉出，发布范围相较21.09和22.03 LTS版本主要变动：
 
-1.  内核版本升级到5.10，默认PageSize由64K变更为4K(详情请见[TC决策-20211229](https://etherpad.openeuler.org/p/TC-meetings))
-2.  软件版本选型升级，详情请见[版本变更说明](https://gitee.com/openeuler/release-management/blob/master/openEuler-22.03-LTS/%E7%89%88%E6%9C%AC%E5%8F%98%E6%9B%B4%E8%AF%B4%E6%98%8E.md)
-3.  新增支持：openGauss/gazella/libcareplus/rubik/openStack Wallaby版本
-5.  修复bug和cve
+1. xxx
 
 openEuler 22.09 版本按照社区release-manager团队的计划，共规划5轮测试，详细的版本信息和测试时间如下表：
 
@@ -40,11 +38,11 @@ openEuler 22.09 版本按照社区release-manager团队的计划，共规划5轮
 | openEuler 22.09 RC1(计划) | 2022-08-01 | 2022-08-07 | |
 | openEuler 22.09 RC1(实际) | 2022-08-08(延期7天) | 2022-08-14 | |
 | openEuler 22.09 RC2(计划) | 2022-08-11 | 2022-08-17 | |
-| openEuler 22.09 RC2(实际) | 2022-08-18(延期7天) | 2022-08-17 | |
+| openEuler 22.09 RC2(实际) | 2022-08-18(延期7天) | 2022-08-25 | |
 | openEuler 22.09 RC3(计划) | 2022-08-23 | 2022-08-29 | |
 | openEuler 22.09 RC3(实际) | 2022-08-30(延期7天) | 2022-09-05 | |
 | openEuler 22.09 RC4(计划) | 2022-09-02 | 2022-09-08 | |
-| openEuler 22.09 RC4(实际) | todo | todo | |
+| openEuler 22.09 RC4(实际) | 2022-09-08(延期6天) | 2022-09-14 | |
 | openEuler 22.09 RC5(计划) | 2022-09-12 | 2022-09-18 | |
 | openEuler 22.09 RC5(实际) | todo | todo |
 
