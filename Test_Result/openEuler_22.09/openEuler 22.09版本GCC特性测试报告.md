@@ -67,8 +67,8 @@ openEuler GCC930版本共发现问题4个，其中有效问题4个，遗留问�
 |  序号    | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 |
 | ------ | ------ | ------ | ------ | ------ | ------ |
 |  1    | [I5M8W7](https://gitee.com/openeuler/gcc/issues/I5M8W7) | -O3 -flto -fipa-struct-reorg=1 -flto-partition=one编译vtk ICE:lto1: internal compiler error(at dwarf2out.c:31353) | 一般 | strcut-reorg/relayout 分析有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | fipa-struct-reorg=[1,2,3] |
-| 2 | [13](https://codehub-y.huawei.com/Computing_Product_Line_Compiler_Group/openeuler-gcc/issues/13) | -O3 -flto -fipa-struct-reorg=1 -flto-partition=one编译ICE:during RTL pass: final（at dwarf2out.c:25112） | 一般 | strcut-reorg/relayout 分析有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | fipa-struct-reorg=[1,2,3,4,5] |
-| 3 | [36](https://codehub-y.huawei.com/Computing_Product_Line_Compiler_Group/openeuler-gcc/issues/36) | -O3 -fipa-struct-reorg=5编译ICE:during GIMPLE pass:pre(at tree-ssa-sccvn.c:6005) | 一般 | semi-relayout改写有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | 不使用-fipa-struct-reorg=[4,5] |
+| 2 | #13 | -O3 -flto -fipa-struct-reorg=1 -flto-partition=one编译ICE:during RTL pass: final（at dwarf2out.c:25112） | 一般 | strcut-reorg/relayout 分析有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | fipa-struct-reorg=[1,2,3,4,5] |
+| 3 | #36 | -O3 -fipa-struct-reorg=5编译ICE:during GIMPLE pass:pre(at tree-ssa-sccvn.c:6005) | 一般 | semi-relayout改写有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | 不使用-fipa-struct-reorg=[4,5] |
 
 ### 3.3.2 问题统计
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 非问题 |
