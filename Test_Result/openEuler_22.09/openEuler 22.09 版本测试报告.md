@@ -9,6 +9,7 @@
 | ---------- | -------- | ------------------ | ---------- |
 | 2022/9/5 | 1.0.0    | 初始, 基于RC1/2/3   | disnight |
 | 2022/9/14| 1.0.1    | 修改模板部分2209问题 | disnight |
+| 2022/9/16 | 1.1.0 | 基于RC4的测试情况进行分析 | disnight |
 
 关键词：
 
@@ -29,7 +30,9 @@ openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持
 
 openEuler 22.09版本是22年首个创新版本，承载了一年内社区孵化的各项新特性，该版本基于master分支拉出，发布范围相较21.09和22.03 LTS版本主要变动：
 
-1. xxx
+1. 软件包选型升级
+2. 新增软件：OpenStack Yoga及其部属攻击opensd，Cinnamon桌面，备份还原功能，支持pod带宽管理，磁盘智能多流，新增机密计算switchless特性
+3. 修复bug和cve
 
 openEuler 22.09 版本按照社区release-manager团队的计划，共规划5轮测试，详细的版本信息和测试时间如下表：
 
@@ -117,7 +120,9 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 # 3 版本概要测试结论
 
-   待补充
+   openEuler 22.09 版本整体测试按照release-manager团队的计划，共完成了一轮重点特性测试+两轮全量测试+一轮回归测试+版本发布验收测试；其中第一轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫面及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；另外两轮全量测试开展版本交付的所有特性和各类专项测试；一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
+
+​   openEuler 22.09 版本共发现问题 340 个，有效问题 306 个，遗留问题 x 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
 
 # 4 版本详细测试结论
 
@@ -146,21 +151,21 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 | **序号** | **特性名称** | **测试覆盖情况** | **约束依赖说明** | **遗留问题单** | **质量评估** | **备注<img width=50/>** |
 | -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
-| 1 |[支持OpenStack Yoga版本，并且引入Helm组件](https://gitee.com/openeuler/release-management/issues/I5BIHV)| | | | | |
-| 2 |[正式发布联通开源的OpenStack部署工具opensd，支持OpenStack基本部署](https://gitee.com/openeuler/release-management/issues/I5BIM9)| | | | | |
-| 3 |[发布kiran-desktop 2.3版本](https://gitee.com/openeuler/release-management/issues/I5ASLE?from=project-issue)| | | | | |
-| 4 |[支持树莓派](https://gitee.com/openeuler/release-management/issues/I5BJ7W)| | | | | |
-| 5 |[DDE组件更新支持服务器场景优化](https://gitee.com/openeuler/release-management/issues/I5BMO2)| | | | | |
+| 1 |[支持OpenStack Yoga版本，并且引入Helm组件](https://gitee.com/openeuler/release-management/issues/I5BIHV)| | | | | 待提供 |
+| 2 |[正式发布联通开源的OpenStack部署工具opensd，支持OpenStack基本部署](https://gitee.com/openeuler/release-management/issues/I5BIM9)| | | | | 待提供 |
+| 3 |[发布kiran-desktop 2.3版本](https://gitee.com/openeuler/release-management/issues/I5ASLE?from=project-issue)| | | | | 待提供 |
+| 4 |[支持树莓派](https://gitee.com/openeuler/release-management/issues/I5BJ7W)| | | | | 待提供 |
+| 5 |[DDE组件更新支持服务器场景优化](https://gitee.com/openeuler/release-management/issues/I5BMO2)| | | | | 待提供 |
 | 6 |[Cinnamon桌面环境](https://gitee.com/openeuler/release-management/issues/I59IY0)| | | | | |
-| 7 |[新增软件更新工具支持](https://gitee.com/openeuler/release-management/issues/I5BMNH)| | | | | |
-| 8 |[新增备份还原功能支持](https://gitee.com/openeuler/release-management/issues/I5BMMP)| | | | | |
-| 9 |[openEuler 22.09和22.03 SP1支持鲲鹏底软IO能力（存储、usb、SPI、Pcie、IIC、CXL、GPU和GPIO等）](https://gitee.com/openeuler/release-management/issues/I545LZ)| | | | | |
-| 10 |[openEuler 22.09和22.03 SP1支持鲲鹏性能调优和调测调优（Rasdaemon、Ras、etm、perf、wayca-SC、Mem-kind、HCCS、Hikptool等）](https://gitee.com/openeuler/release-management/issues/I545LT)| | | | | |
-| 11 |[openEuler 22.09和22.03 SP1支持鲲鹏高速网络功能（DPDK、UB、RDMA-core、ROH、Roce、NIC等）](https://gitee.com/openeuler/release-management/issues/I545LP)| | | | | |
-| 12 |[openEuler 22.09和22.03 SP1支持鲲鹏加速器功能（UADK、UADK_engine、starS、SDMA、ACC等）](https://gitee.com/openeuler/release-management/issues/I545LH)| | | | | |
-| 13 |[openEuler 22.09和22.03 SP1 测试工具能力（pktgen）](https://gitee.com/openeuler/release-management/issues/I545M5)| | | | | |
+| 7 |[新增软件更新工具支持](https://gitee.com/openeuler/release-management/issues/I5BMNH)| | | | | 待提供 |
+| 8 |[新增备份还原功能支持](https://gitee.com/openeuler/release-management/issues/I5BMMP)| | | | | 待提供 |
+| 9 |[openEuler 22.09和22.03 SP1支持鲲鹏底软IO能力（存储、usb、SPI、Pcie、IIC、CXL、GPU和GPIO等）](https://gitee.com/openeuler/release-management/issues/I545LZ)| | | | | 待提供 |
+| 10 |[openEuler 22.09和22.03 SP1支持鲲鹏性能调优和调测调优（Rasdaemon、Ras、etm、perf、wayca-SC、Mem-kind、HCCS、Hikptool等）](https://gitee.com/openeuler/release-management/issues/I545LT)| | | | | 待提供 |
+| 11 |[openEuler 22.09和22.03 SP1支持鲲鹏高速网络功能（DPDK、UB、RDMA-core、ROH、Roce、NIC等）](https://gitee.com/openeuler/release-management/issues/I545LP)| | | | | 待提供 |
+| 12 |[openEuler 22.09和22.03 SP1支持鲲鹏加速器功能（UADK、UADK_engine、starS、SDMA、ACC等）](https://gitee.com/openeuler/release-management/issues/I545LH)| | | | | 待提供 |
+| 13 |[openEuler 22.09和22.03 SP1 测试工具能力（pktgen）](https://gitee.com/openeuler/release-management/issues/I545M5)| | | | | 待提供 |
 | 14 |[【openEuler 22.09】openEuler 22.09 支持 pod带宽管理特性](https://gitee.com/openeuler/release-management/issues/I59BQI)| | | | | |
-| 15 |[[openEuler 22.09]StratoVirt 2.0支持标准虚拟化](https://gitee.com/openeuler/release-management/issues/I5BM96)| | | | | |
+| 15 |[[openEuler 22.09]StratoVirt 2.0支持标准虚拟化](https://gitee.com/openeuler/release-management/issues/I5BM96)| | | | | 待提供 |
 | 16 |[[openEuler 22.09]集成k3s边缘解决方案](https://gitee.com/openeuler/release-management/issues/I5BMD4)| | | | | |
 | 17 |[[openEuler 22.09]智能多流技术，延长ssd磁盘寿命](https://gitee.com/openeuler/release-management/issues/I5BMFH)| | | | | |
 | 18 |[[openEuler 22.09]国密算法适配](https://gitee.com/openeuler/release-management/issues/I5BMGZ)| | | | | |
@@ -177,43 +182,37 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 ### 4.2.1   升级兼容性
 
-openEuler 22.09 作为创新版本，不会做
+创新版本不存在前序版本，不涉及前向兼容性
 
 ### 4.2.2   南向兼容性
 
-南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成42张板卡的测试(该数目仅为测试数量，实际兼容性认证通过数量见社区[兼容性清单](https://www.openeuler.org/zh/compatibility/))
-
-下表列出版本集成验证中涉及的硬件整机信息：
-
-| 硬件型号 | 硬件详细信息 |
-| --------------------- |------------------------------------------------------------------------------------ |
-| TaiShan200 2280服务器 | CPU型号：Kunpeng 920<br />CPU核数：128<br />内存：32G*8<br />网卡：Hi1822 |
-| RH2288H V5服务器| CPU型号：Intel(R) Xeon(R) Gold 6266C CPU@3.00GHZ<br />CPU核数：44<br />内存：12*32G<br />网卡：Hi1822 |
-| 树莓派4B卡 | CPU:Cortex-A72 * 4 <br />内存：8GB <br />存储设备：SanDisk Ultra 16GB micro SD |
-| 树莓派3B+卡 | CPU:Cortex-A53 * 4<br />内存：1GB 存储设备<br />SanDisk Ultra 16GB micro SD |
-| 树莓派3B卡 | CPU:Cortex-A53 * 4 <br />内存：1GB <br />存储设备：SanDisk Ultra 16GB micro SD |
-| 长城擎天服务器<br>DF723 | CPU型号：FT2000+<br>CPU核数：64<br>内存：64G<br>硬盘容量：240G |
-| 联想启天台式机<br>M425-N000 | CPU 型号：Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz<br>CPU内核总数：6<br>内存容量：16G |
-| FT-2000+64核服务器 | CPU型号：FT-2000+<br />CPU核数：64<br />内存：镁光16G*32<br />网卡：I350 |
-| Phytium S2500/64C | CPU型号：S2500/64C <br />CPU核数：64<br />内存：16G*16 DDR4<br />网卡：I350 |
-| Supermicro AS-4124GS-TNR | CPU型号：AMD EPYC 7513 32-Core Processor<br />CPU核数：32<br />内存：32G*16 DDR4<br />网卡：I350 |
+创新版本南向兼容性暂不进行测试
 
 ### 4.2.3   北向兼容性
 
-创新版本北向兼容性暂不考虑进行测试
+创新版本北向兼容性暂不进行测试
 
 ## 4.3   专项测试结论
 
 ### 安全测试
 
-待补充
+整体安全测试覆盖：
+
+1、Linux系统安全配置管理类主要包括：服务管理、账号密码管理、文件及用户权限管理、内核参数配置管理、日志管理等进行全量测试
+
+2、通过工具进行CVE漏洞/敏感信息/端口矩阵/编译选项扫描/交付件病毒扫描
+
+3、白盒安全测试主要通过fuzz测试实现对接口参数类和内存管理类进行覆盖；通过部署kasan版本的内核，进行syzkaller测试；对重点软件包开展oss-fuzz测试；利用开源测试工具csmith/javafuzzer/jfuzz对编译器组件行fuzz测试；
+
+4、针对安全加固指南中的加固项，进行全量测试。
+
+整体OS安全测试较充分，风险可控。
 
 ### 可靠性测试
 
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------------------------------------------------------------------------------ | -------------------------- |
-| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； |    |
-| 虚拟化长稳 | 结合Qemu ASAN地址消毒、Avocado-vt对新增特性开展长期测试 |  |
+| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； | 操作系统稳定运行7*24小时 |
 
 
 ### 性能测试
@@ -222,11 +221,34 @@ openEuler 22.09 作为创新版本，不会做
 | ------------- | ------------------------------------------------------------ | --------------------------------- | -------------------- |
 | OS基础性能 | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考22.03 LTS版本相应指标基线 | 比较前一版本持平 |
 
-> 该版本未规划基础性能以外的性能需求
-
 # 5   问题单统计
 
-待补充
+openEuler 22.09 版本共发现问题 340 个，有效问题 306 个，其中修复问题单 xxx 个，回归均通过。详细分布见下表:
+
+| 测试阶段 | 问题总数 | 有效问题单数 | 无效问题单数 |
+| ----------------------- | -------- | ----------- | ---------- |
+| openEuler 22.09 Alphal | 119 | 100 | 19|
+| openEuler 22.09 RC1 | 97 | 86 | 11 |
+| openEuler 22.09 RC2 | 68 | 68 | 0 |
+| openEuler 22.09 RC3 | 36 | 35 | 1 |
+| openEuler 22.09 RC4 | 20 | 20 | 3 |
+| openEuler 22.09 RC5 |  |  |  |
+
+1. 为推动众测，在社区测试流程中增加Aplha测试阶段，发现100问题，提前了问题拦截。
+2. 关注构建偶现问题，占总问题数30%+。用例设计问题，环境问题比例较为平均。当前工程无法支持提供调试环境，也导致部分正向分析不足，待改进。
+3. RC4仍发现部分新增功能问题，分析如下：
+   * [I5QTLG](https://gitee.com/src-openeuler/trafficserver/issues/I5QTLG?from=project-issue)：因RC3问题[I5OV2X](https://gitee.com/src-openeuler/trafficserver/issues/I5OV2X?from=project-issue)解决后，方案及自验设计不完整，引入新问题
+   * [I5QUWR](https://gitee.com/src-openeuler/openstack-plugin/issues/I5QUWR?from=project-issue):因工程未完整构建Epol，导致RC4发布的部分openstack包未更新发布，最新版本已解决问题
+   * [I5QTFH](https://gitee.com/src-openeuler/strongswan/issues/I5QTFH?from=project-issue): 因RC3问题[I5PQZQ](https://gitee.com/src-openeuler/strongswan/issues/I5PQZQ?from=project-issue)引入sqlite后引入问题
+   * [I5QU72](https://gitee.com/src-openeuler/obs-server/issues/I5QU72?from=project-issue): 因mariadb问题被阻塞，RC4才发现后续问题
+   * aops新增特性相关issue
+   * 社区构建问题
+   * 上版本遗留问题
+4. 测试过程中发现的一些质量问题：
+   * gcc12导致镜像构建阻塞： gcc12作为多版本以内，依赖未做到和gcc隔离，导致依赖错误，
+   * gcc导致kernel编译失败：
+   * 问题整改引入新问题：
+   * 工程问题：二进制包根据单包引入，未考虑源码包整体(python-nni-help)；Epol发布时未进行全量重编
 
 # 6   附件
 
