@@ -1,4 +1,4 @@
-![avatar](../images/openEuler.png)
+![avatar](../../images/openEuler.png)
 
 
 版权所有 © 2022  openEuler社区
@@ -70,9 +70,9 @@ Kiran2.3特性测试，共执行了85 个测试用例，主要覆盖了系统面
 
 | 序号 | 问题描述                                                     | gitee链接                                                | 当前状态 |
 | ---- | ------------------------------------------------------------ | -------------------------------------------------------- | -------- |
-| 1    | 系统主题待优化，建议提高用户使用感                           | https://e.gitee.com/open_euler/issues/table?issue=I5P0T2 | 已挂起   |
-| 2    | 右键音量图标的混合设置里第一个音量是全局音量设置，与左键音量图标的设置重复，建议优化 | https://e.gitee.com/open_euler/issues/table?issue=I5HAOF | 已挂起   |
-| 3    | 系统快捷键和截图应用快捷键不一致，建议修改，以免引起误会     | https://e.gitee.com/open_euler/issues/table?issue=I5O86N | 已挂起   |
+| 1    | 系统主题待优化，建议提高用户使用感                           | https://gitee.com/src-openeuler/kiran-desktop/issues/I5P0T2?from=project-issue| 已挂起   |
+| 2    | 右键音量图标的混合设置里第一个音量是全局音量设置，与左键音量图标的设置重复，建议优化 |https://gitee.com/src-openeuler/kiran-desktop/issues/I5HAOF| 已挂起   |
+| 3    | 系统快捷键和截图应用快捷键不一致，建议修改，以免引起误会     | https://gitee.com/src-openeuler/kiran-desktop/issues/I5O86N?from=project-issue| 已挂起   |
 
 ### 3.3.2 问题统计
 
