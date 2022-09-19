@@ -28,6 +28,7 @@ GCC（GNU Compiler Collection，GNU编译器套件）是由GNU开发的编程语
 | 930 RC2 | 2022-08-22 | 2022-08-30 |
 | 930 RC3 | 2022-08-31 | 2022-09-07 |
 | 930 RC4 | 2022-09-08 | 2022-09-16 |
+| 930 RC5 | 2022-09-19 | 2022-09-23 |
 
 描述特性测试的硬件环境信息
 
@@ -41,7 +42,7 @@ GCC（GNU Compiler Collection，GNU编译器套件）是由GNU开发的编程语
 
 ## 3.1   测试整体结论
 
-GCC编译器测试，共转测6个特性选项（ccmp：-fccmp2；矢量化：-ftree-slp-transpose-vectorize；结构体内存布局优化：struct layout重构：-fipa-struct-reorg=1,-fipa-struct-reorg=2；DFE优化：-fipa-struct-reorg=3；Array-widen-compare:-farray-widen-compare），主要覆盖基本功能测试，Fuzz测试，可靠性测试， 浮点精度测试，汇编一致性测试， 自举测试，x86交叉测试和反馈优化专项测试 。共发现问题3个，其中有效问题3个。
+GCC编译器测试，共转测6个特性选项（ccmp：-fccmp2；矢量化：-ftree-slp-transpose-vectorize；结构体内存布局优化：struct layout重构：-fipa-struct-reorg=1,-fipa-struct-reorg=2；DFE优化：-fipa-struct-reorg=3；Array-widen-compare:-farray-widen-compare），主要覆盖基本功能测试，Fuzz测试，可靠性测试， 浮点精度测试，汇编一致性测试， 自举测试，x86交叉测试和反馈优化专项测试 。共发现问题3个，其中有效问题3个。发现问题已解决，回归通过，无遗留风险，整体质量良好。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
@@ -61,13 +62,9 @@ GCC编译器测试，共转测6个特性选项（ccmp：-fccmp2；矢量化：-f
 无
 
 ## 3.3  问题分析
-openEuler GCC930版本共发现问题3个，其中有效问题3个，遗留问题单2个未修复，其中遗留问题2为GCC630版本遗留至本版本
+openEuler GCC930版本共发现问题3个，其中有效问题3个，已修复并验证通过问题3个。
 
 ### 3.3.1 遗留问题影响以及规避措施
-|  序号    | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 |
-| ------ | ------ | ------ | ------ | ------ | ------ |
-|  1    | [I5M8W7](https://gitee.com/openeuler/gcc/issues/I5M8W7) | -O3 -flto -fipa-struct-reorg=1 -flto-partition=one编译vtk ICE:lto1: internal compiler error(at dwarf2out.c:31353) | 一般 | strcut-reorg/relayout 分析有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | fipa-struct-reorg=[1,2,3] |
-| 2 | #13 | -O3 -flto -fipa-struct-reorg=1 -flto-partition=one编译ICE:during RTL pass: final（at dwarf2out.c:25112） | 一般 | strcut-reorg/relayout 分析有误，可在GCC编译阶段进行检测报错，对程序运行无影响 | fipa-struct-reorg=[1,2,3] |
 
 ### 3.3.2 问题统计
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 | 非问题 |
@@ -85,6 +82,7 @@ openEuler GCC930版本共发现问题3个，其中有效问题3个，遗留问�
 | -------- | ---------- | ------------ | ------------ | --------- | -------- |
 | 930 RC1  | 200w+ | 除codedb外其他均成功;kernel编译失败 | 3   | codeDB应用编译失败；kernel编译失败 |  |
 | 930 RC4 | 200w+ | 除codedb外其他均成功 |  2  |  codeDB应用编译失败  |  |
+| 930 RC5 | 2 | 全部通过 |  0  | RC4 2个问题回归验证  |  |
 
 *数据项说明：*
 
