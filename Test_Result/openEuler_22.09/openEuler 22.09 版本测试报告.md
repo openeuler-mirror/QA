@@ -10,10 +10,11 @@
 | 2022/9/5 | 1.0.0    | 初始, 基于RC1/2/3   | disnight |
 | 2022/9/14| 1.0.1    | 修改模板部分2209问题 | disnight |
 | 2022/9/16 | 1.1.0 | 基于RC4的测试情况进行分析 | disnight |
+| 2022/9/27 | 1.2.0 | 基于RC5的测试情况进行分析 | zjl_long |
 
 关键词：
 
-openEuler raspberrypi UKUI DDE xfce gnome kiran Cinnamon HA iSula A-Tune stratovirt kvm qemu docker openstack secpaver secgear
+openEuler raspberrypi UKUI DDE xfce gnome kiran Cinnamon HA iSula A-Tune stratovirt kvm qemu docker openstack secpaver secgear aops
 
 摘要：
 
@@ -47,7 +48,7 @@ openEuler 22.09 版本按照社区release-manager团队的计划，共规划5轮
 | openEuler 22.09 RC4(计划) | 2022-09-02 | 2022-09-08 | |
 | openEuler 22.09 RC4(实际) | 2022-09-08(延期6天) | 2022-09-14 | |
 | openEuler 22.09 RC5(计划) | 2022-09-12 | 2022-09-18 | |
-| openEuler 22.09 RC5(实际) | todo | todo |
+| openEuler 22.09 RC5(实际) | 2022-09-19(延期7天) | 2022-09-23 | |
 
 测试的硬件环境如下：
 
@@ -60,8 +61,6 @@ openEuler 22.09 版本按照社区release-manager团队的计划，共规划5轮
 | 树莓派3B卡 | CPU:Cortex-A53 * 4 <br />内存：1GB <br />存储设备：SanDisk Ultra 16GB micro SD | 硬件兼容性测试环境，数量1 |
 | 支持树莓派的7寸屏 | HDMI接口，1024*600分辨率电容屏 | 数量1 |
 | thinkpad x1 carbon 2019 |  | 远程控制树莓派设备 |
-
-openEuler 22.09版本交付需求列表如下：
 
 openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-management/blob/master/openEuler-22.09/release-plan.md)如下：
 
@@ -120,13 +119,21 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 # 3 版本概要测试结论
 
-   openEuler 22.09 版本整体测试按照release-manager团队的计划，共完成了一轮重点特性测试+两轮全量测试+一轮回归测试+版本发布验收测试；其中第一轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫面及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；另外两轮全量测试开展版本交付的所有特性和各类专项测试；一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
+   openEuler 22.09 版本整体测试按照release-manager团队的计划，共完成了一轮重点特性测试+三轮全量测试+一轮回归测试+版本发布验收测试；其中第一轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫描及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；另外三轮全量测试开展版本交付的所有特性和各类专项测试；一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-​   openEuler 22.09 版本共发现问题 340 个，有效问题 306 个，遗留问题 x 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
+​   openEuler 22.09 版本共发现问题 467 个，有效问题 430 个，已取消问题 37 个。遗留问题 7 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
 
 # 4 版本详细测试结论
 
-   待补充
+openEuler 22.09 版本详细测试内容包括：
+
+1、完成重要组件包括内核、容器、虚拟化、编译器和从历史版本继承特性的全量功能验证，组件和特性质量较好；
+
+2、对发布软件包通过软件包专项完成了软件包的安装卸载、升级回滚（该版本不涉及）、编译、命令行、服务检查等测试，测试较充分，质量良好；
+
+3、系统集成测试覆盖系统配置、文件系统、服务和用户管理及网络、存储等多个方面，系统整体集成验证无风险；
+
+4、专项测试包括性能专项、安全专项、兼容性测试、可靠性测试；
 
 ## 4.1   特性测试结论
 
@@ -136,9 +143,35 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | ---- | ----------------------------------------- | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------- |
-|||||
+| 1 | 内核 | <font color=green>█</font> | 继承内核已有测试能力，通过使用开源测试套LTP和mmtest对内核开展基本功能进行测试；并通过构建地址消毒的内核版本利用syzkaller开源测试套进行fuzz测试；通过构建系统压力，反复长时间随机执行LTP基本系统调用，对内核开展7*24小时的稳定性测试，整体用例执行通过；内核整体质量良好 |
+| 2 | 容器(isula/docker/安全容器/系统容器/镜像） | <font color=green>█</font> | 覆盖容器领域iSula和docker引擎的基本能力，针对安全容器、系统容器、普通容器和容器镜像进行功能/可靠性/稳定性测试，共执行用例742个，用例执行全部通过，整体质量良好 |
+| 3 | [编译器(gcc/jdk)](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACGCC%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 对gcc/jdk组件完成开源功能测试套supertest和开源fuzz测试套csmith\jfuzz的全量覆盖，另外使用SEPCjbb2015对jdk开展性能max-jOPS和critical-jOPS项的测试，编译器组件整体质量良好 |
+| 4 | [虚拟化(qemu/stratovirt)](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACStratoVirt%202.0%E6%94%AF%E6%8C%81%E4%BA%91%E5%9C%BA%E6%99%AF%E6%A0%87%E5%87%86%E8%99%9A%E6%8B%9F%E5%8C%96%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 继承已有测试能力，覆盖虚拟化组件(qemu&stratovirt)的基本功能、可靠性、稳定性及场景测试，使用开源的测试套tp-libvirt和tp-qemu开展各类测试，整体质量良好 |
+| 5 | Kunpeng加速引擎 | <font color=green>█</font> | 继承已有测试能力，完成加速器KAE的基本功能和性能指标验证，共计执行用例176个，全部执行通过，满足发布标准 |
+| 6 | [A-Tune](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACA-Tune%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | A-Tune作为操作系统性能调优引擎，完成特性查询负载类型、分析负载类型并自优化、自调优以及模型训练输入数据集的训练等功能用例全量测试，并从高压力负载和长时间运行两个方面对A-Tune功能进行验证，共计执行用例123个，特性整体质量良好 |
+| 7 | [支持kubeOS](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACKubeOS%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E6%A8%A1%E6%9D%BF.md) | <font color=green>█</font> | 继承已有测试能力，共执行用例14条，覆盖基本功能、测试配置测试、安全及性能测试，特性整体风险较小，质量良好 |
+| 8 | [支持UKUI桌面](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACUKUI%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共执行两轮测试，覆盖UKUI桌面的核心功能、重要组件及系统插件的测试，共计执行用例62条，整体质量良好 |
+| 9 | [支持DDE桌面](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共执行两轮测试，共执行用例240条，主要覆盖了基础组件跟预装应用核心功能以及基本UI测试。发现3个问题，已经回归通过，无遗留问题。整体核心功能基本可满足使用。 |
+| 10 | [支持xfce桌面](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACxfce%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共经过两轮测试，执行103个测试项，整体核心功能(重要组件和系统插件)稳定正常，整体质量良好 |
+| 11 | [支持gnome桌面](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACgnome%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共经过两轮测试，执行201个测试项，整体核心功能(重要组件和系统插件)稳定正常，整体质量良好 |
+| 12 | [支持OpenStack Train版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/%20openEuler%2022.09%E7%89%88%E6%9C%ACOpenStack%20Yoga%20+%20OpenSD%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%AB%98%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 覆盖T版本提供组件的API和功能测试，并通过tempest测试套完成集成验证和长稳测试；共计执行用例1161条 |
+| 13 | [支持高可用pacemaker](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACHA%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共执行三轮测试，执行测试用例87条，主要覆盖HA的基本能力；在各类资源异常失效情况下的切换能力；日志收集功能及网络故障异常场景下的HA功能，通过长时间测试，稳定性良好，特性基本可用。 |
+| 14 | 支持eggo | <font color=green>█</font> | 执行测试用例18条，覆盖eggo提供的对K8S集群的部署、销毁、节点加入及删除的功能 |
+| 15  | [树莓派](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%AC%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A) | <font color=green>█</font> | 对树莓派镜像进行安装、基本功能、管理工具、硬件兼容性和稳定性测试；共执行用例85条，整体质量良好 |
+| 16 | 支持内存分级扩展 | <font color=green>█</font> | 共计执行90个用例，覆盖范围包括特性的功能、可靠性，安全和性能；整体质量良好<br/>约束：1、客户端和服务端需要在同一个服务器上部署，不支持跨服务器通信的场景<br/>2、仅支持扫描进程名小于或等于15个字符长度的目标进程 |
+| 17 | [集成secgear组件](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACsecGear%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 共计执行100个用例，主要覆盖了接口测试、功能测试、组合场景测试、可靠性测试、压力和稳定性测试；质量良好 |
+| 18 | 定制裁剪工具套件oemaker | <font color=green>█</font> | 覆盖裁剪工具的基本命令功能，并对异常参数进行覆盖；另外对裁剪出来的镜像进行安装部署及基本验证，保障裁剪工具的E2E能力完整性 |
+| 19 | 南向芯片厂商适配 | <font color=green>█</font> |  对AMD(milan EPYC 7003)、飞腾(FT2000+、FT2500)、海光(71xx、72xx)、Intel(icelake)、申威(SW3231)、兆芯(KX-6640A)等厂商，覆盖[整机兼容性测试](https://gitee.com/openeuler/oec-hardware)和[社区集成测试](https://gitee.com/openeuler/mugen) |
+| 20 | [GCC自动反馈优化相关软件包引入及优化效果增强](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACGCC%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 通过dejagnu、bstest、llvmcase、codedb等测试套覆盖基础功能，通过HPC应用范围软件编译验证自动反馈优化特性，保证编译器整体核心功能正常稳定 |
+| 21 | openGauss默认集成到openEuler操作系统中 | <font color=green>█</font> | 共执行用例28423条，5个测试套覆盖基础功能中接入层，SQL层、存储层、管理和安全等维护的测试，其余从可靠性、性能、工具和兼容性四个维护覆盖生态测试 |
+| 22 | [新增支持容器场景在离线混合部署(rubik)](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACskylark%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%B7%E5%90%88%E9%83%A8%E7%BD%B2%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 测试覆盖接口、功能场景、可靠性和安全。重点结合容器场景验证了在线对离线业务的抢占，以及混部情况下的调度优先级测试。 |
+| 23 | StratoVirt安全容器支持直通设备热插拔 | <font color=green>█</font> | 验证接口功能、可靠性。重点覆盖设备在压力背景下热插后能够正常使用，热拔后是否有残留，以及热插拔后的容器生命周期验证。 | 
+| 24 | libcareplus提供Qemu热补丁能力 | <font color=green>█</font> | 验证了热补丁框架升级、回退功能，以及升级、回退后的虚拟机生命周期，同时验证了连续升级回退、故障中断等可靠性场景。 |
+| 25 | 新增支持gazelle高性能用户态协议栈 | <font color=green>█</font> | 共执行了2轮全量测试，覆盖了gazella安装部署、命令行接口和配置文件接口测试，重点测试转发业务流和性能规格场景，并结合网络发包仪打流和故障进行长稳验证。 |
+| 26 | [支持OpenStack Wallaby版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/%20openEuler%2022.09%E7%89%88%E6%9C%ACOpenStack%20Yoga%20+%20OpenSD%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%AB%98%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 覆盖W版本提供组件的API和功能测试，并通过tempest测试套完成集成验证和长稳测试；共计执行用例1161条 |
+| 27 | [支持kiran桌面](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACKiran%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 执行了66条测试用例，覆盖了系统面板、控制中心、基础组件、文件管理器caja和通知区域的功能测试，同时从系统性能和稳定性方面进行了测试 |
+| 28 | [支持embedded版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%20embedded%E7%89%88%E6%9C%AC%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | <font color=green>█</font> | 复用了服务器OS的测试策略，并增加上嵌入式场景单独特性测试覆盖。 |
 
-待补充
 <font color=red>●</font>： 表示特性不稳定，风险高
 
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
@@ -151,26 +184,21 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 | **序号** | **特性名称** | **测试覆盖情况** | **约束依赖说明** | **遗留问题单** | **质量评估** | **备注<img width=50/>** |
 | -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
-| 1 |[支持OpenStack Yoga版本，并且引入Helm组件](https://gitee.com/openeuler/release-management/issues/I5BIHV)| | | | | 待提供 |
-| 2 |[正式发布联通开源的OpenStack部署工具opensd，支持OpenStack基本部署](https://gitee.com/openeuler/release-management/issues/I5BIM9)| | | | | 待提供 |
-| 3 |[发布kiran-desktop 2.3版本](https://gitee.com/openeuler/release-management/issues/I5ASLE?from=project-issue)| | | | | 待提供 |
-| 4 |[支持树莓派](https://gitee.com/openeuler/release-management/issues/I5BJ7W)| | | | | 待提供 |
-| 5 |[DDE组件更新支持服务器场景优化](https://gitee.com/openeuler/release-management/issues/I5BMO2)| | | | | 待提供 |
-| 6 |[Cinnamon桌面环境](https://gitee.com/openeuler/release-management/issues/I59IY0)| | | | | |
-| 7 |[新增软件更新工具支持](https://gitee.com/openeuler/release-management/issues/I5BMNH)| | | | | 待提供 |
-| 8 |[新增备份还原功能支持](https://gitee.com/openeuler/release-management/issues/I5BMMP)| | | | | 待提供 |
-| 9 |[openEuler 22.09和22.03 SP1支持鲲鹏底软IO能力（存储、usb、SPI、Pcie、IIC、CXL、GPU和GPIO等）](https://gitee.com/openeuler/release-management/issues/I545LZ)| | | | | 待提供 |
-| 10 |[openEuler 22.09和22.03 SP1支持鲲鹏性能调优和调测调优（Rasdaemon、Ras、etm、perf、wayca-SC、Mem-kind、HCCS、Hikptool等）](https://gitee.com/openeuler/release-management/issues/I545LT)| | | | | 待提供 |
-| 11 |[openEuler 22.09和22.03 SP1支持鲲鹏高速网络功能（DPDK、UB、RDMA-core、ROH、Roce、NIC等）](https://gitee.com/openeuler/release-management/issues/I545LP)| | | | | 待提供 |
-| 12 |[openEuler 22.09和22.03 SP1支持鲲鹏加速器功能（UADK、UADK_engine、starS、SDMA、ACC等）](https://gitee.com/openeuler/release-management/issues/I545LH)| | | | | 待提供 |
-| 13 |[openEuler 22.09和22.03 SP1 测试工具能力（pktgen）](https://gitee.com/openeuler/release-management/issues/I545M5)| | | | | 待提供 |
-| 14 |[【openEuler 22.09】openEuler 22.09 支持 pod带宽管理特性](https://gitee.com/openeuler/release-management/issues/I59BQI)| | | | | |
-| 15 |[[openEuler 22.09]StratoVirt 2.0支持标准虚拟化](https://gitee.com/openeuler/release-management/issues/I5BM96)| | | | | 待提供 |
-| 16 |[[openEuler 22.09]集成k3s边缘解决方案](https://gitee.com/openeuler/release-management/issues/I5BMD4)| | | | | |
-| 17 |[[openEuler 22.09]智能多流技术，延长ssd磁盘寿命](https://gitee.com/openeuler/release-management/issues/I5BMFH)| | | | | |
-| 18 |[[openEuler 22.09]国密算法适配](https://gitee.com/openeuler/release-management/issues/I5BMGZ)| | | | | |
-| 19 |[[openEuler 22.09]libstorage高性能用户态IO](https://gitee.com/openeuler/release-management/issues/I5BMI3)| | | | | |
-| 20 |[增强embedded版本分布式软总线及混合部署能力](https://gitee.com/openeuler/release-management/issues/I5H6DI)| | | | | |
+| 1 |[支持OpenStack Yoga版本，并且引入Helm组件](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/%20openEuler%2022.09%E7%89%88%E6%9C%ACOpenStack%20Yoga%20+%20OpenSD%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%AB%98%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| ```OpenStack Yoga``` 版本，共计执行 ```Tempest``` 用例 ```1452``` 个，主要覆盖了 ```API``` 测试和功能测试，通过 ```7*24``` 的长稳测试，```Skip``` 用例 ```95``` 个（ ```OpenStack Yoga``` 版中已废弃的功能或接口，如Keystone V1、Cinder V1等），失败用例 ```0``` 个（FLAT网络未实际联通及存在一些超时问题），其他 ```1357``` 个用例通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 2 |[正式发布联通开源的OpenStack部署工具opensd，支持OpenStack基本部署](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/%20openEuler%2022.09%E7%89%88%E6%9C%ACOpenStack%20Yoga%20+%20OpenSD%20+%20%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%AB%98%E4%BD%8E%E4%BC%98%E5%85%88%E7%BA%A7%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| ```opensd```支持```Yoga```版本```mariadb、rabbitmq、memcached、ceph_client、keystone、glance、cinder、placement、nova、neutron```共10个项目的部署，发现问题已解决，回归通过，无遗留风险。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 3 |[发布kiran-desktop 2.3版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACKiran%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| Kiran2.3特性测试，共执行了85 个测试用例，主要覆盖了系统面板、开始菜单、桌面图标及功能、控制中心、基础组件、文件管理器、所有应用测试、同时进行了性能测试和LTP7*24小时的稳定性测试。经测试发现的问题都已解决，回归通过，无遗留风险，整体质量良好 | NA | NA | NA | <font color=green>█</font> | NA |
+| 4 |[支持树莓派](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%AC%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A)| 树莓派镜像版本测试完成了功能测试，测试范围包括镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；完成了硬件兼容性测试，包括树莓派 3B、3B+、4B 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。以上测试内容均未发现问题。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 5 |[DDE组件更新支持服务器场景优化](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| DDE 特性总共进行三轮轮测试，合计执行用例420条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。整体核心功能基本可满足使用。一些比较偏的功能点跟易用性并未关注。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 6 |[Cinnamon桌面环境](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACCinnamon%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| 软件总体评估，Cinnamon 5.2 在openEuler-22.09 版本，共经过两轮完全测试，执行53个测试项，整体核心功能稳定正常；重要组件测试中，共执行了52个测试项，第三轮测试中全部通过，第四轮测试中全部通过。1个选测因无该功能硬件阻塞未测试。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 7 |[新增软件更新工具支持](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| DDE 特性总共进行三轮轮测试，合计执行用例420条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。整体核心功能基本可满足使用。一些比较偏的功能点跟易用性并未关注。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 8 |[新增备份还原功能支持](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| DDE 特性总共进行三轮轮测试，合计执行用例420条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。整体核心功能基本可满足使用。一些比较偏的功能点跟易用性并未关注。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 9 |[【openEuler 22.09】openEuler 22.09 支持 pod带宽管理特性](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACpod%E5%B8%A6%E5%AE%BD%E7%AE%A1%E7%90%86%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| pod带宽管理，共计执行46个用例，主要覆盖了：1、命令行接口测试，包括使能/网卡Qos功能，设置cgroup优先级、在线水线、离线带宽，带宽管理信息查询，在离线业务的实时带宽检测等；2、带宽管理功能场景测试，包括普通网口、bond、vlan、bridge等多种类型网卡Qos功能测试，覆盖用户使用场景pod内的带宽抢占功能测试；3、命令行并发测试，异常流程、网卡故障以及ebpf程序篡改等故障注入测试；4、功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试。 综上，整体质量良好。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 10 |[[openEuler 22.09]StratoVirt 2.0支持标准虚拟化](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%ACskylark%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B7%B7%E5%90%88%E9%83%A8%E7%BD%B2%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| 共执行3轮测试，测试范围主要包括基础场景、特性交互、文档检视等，累计执行用例106条，覆盖了libvirt支持stratovirt驱动、vhost-user-net、guest numa/vcpu拓扑呈现等标准虚拟化场景相关特性的基础能力，累计发现7个问题，整体质量良好。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 11 |[[openEuler 22.09]集成k3s边缘解决方案](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%AC%20k3s%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| 使用openEuler 22.09 版本rc4 iso进行装机并下载k3s进行部署，成功在server和agent端部署，服务端可纳管agent节点。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 12 |[[openEuler 22.09]智能多流技术，延长ssd磁盘寿命](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler-22.09%E7%89%88%E6%9C%ACIO%E6%99%BA%E8%83%BD%E5%A4%9A%E6%B5%81%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| 在当前mysql场景下进行实测，通过使用astream工具，NVMe SSD磁盘在长稳运行后期稳定保持12%的WA下降幅度，即性能较前提升12% | NA | NA | NA | <font color=green>█</font> | NA |
+| 13 |[[openEuler 22.09]国密算法适配](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/%20openssl%E6%94%AF%E6%8C%81%E5%95%86%E5%AF%86%E6%96%87%E4%BB%B6%E5%AE%8C%E6%95%B4%E6%80%A7%E4%BF%9D%E6%8A%A4%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| openssl支持商密文件完整性保护，共计执行40个用例，主要覆盖了：1、原生IMA度量模式、评估模式（hash）、评估模式（签名）支持商密算法，实现文件完整性保护测试；2、IMA摘要列表评估模式、IMA摘要列表度量模式支持商密算法，实现文件内容与扩展属性的完整性保护测试；gen_digest_lists命令支持生成SM3摘要列表测试，以及手动/自动导入/删除摘要列表测试；evmctl save命令功能测试；运行度量测试、受保护文件的攻击篡改测试；自定义IMA策略导入及生效测试；各种内核策略模式和内核参数组合测试；3、轻量级入侵检测AIDE支持商密算法，检测被保护文件变化测试。综上，整体质量良好。 <br><br> KTLS及国密软件栈支持特性，共计执行17个用例，另外手动验证自动签名，手动签名，模块加载校验，从生成证书配置文件，签名私钥，签名请求以及证书，通过内核编译选项中配置使用SM3算法进行内核模块签名，以及调用sign_file对指定内核模块进行签名，在内核启动参数中添加module.sig_enforce，开启内核模块强制签名校验这些方式，主要覆盖了接口测试、功能测试，安全测试，发现问题已解决，回归通过，无遗留风险，整体质量良好。<br><br> 国密磁盘加密特性，主要覆盖了功能测试，包括测试使用SM3、SM4算法对磁盘进行加密的场景与测试安全擦除加密磁盘的场景，使用国密算法加密磁盘后进行IO操作、接口合法性测试，以及向加密磁盘下发IO命令时进行拔盘操作的故障注入。<br><br> openssl支持商密TLCP协议特性，共计执行3个用例，主要覆盖了功能测试，暂未发现问题，回归通过，无遗留风险，整体质量良好。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 14 |[[openEuler 22.09]libstorage高性能用户态IO](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%2022.09%E7%89%88%E6%9C%AChsak%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| HSAK特性，共执行120个测试用例，覆盖特性的基本功能、可靠性测试。无遗留风险，整体质量良好。 | NA | NA | NA | <font color=green>█</font> | NA |
+| 15 |[增强embedded版本分布式软总线及混合部署能力](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_22.09/openEuler%202209%20embedded%E7%89%88%E6%9C%AC%E5%85%B3%E9%94%AE%E6%B7%B7%E5%90%88%E9%83%A8%E7%BD%B2%E5%A2%9E%E5%BC%BA%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md)| embedded版本关键混合部署增强特性实现了基于soc内实时和非实时多平面混合部署，openEuler Embedded作为主设备启动后，从核启动拉起zephyr实时系统，完成了基础的Linux端与Client OS的消息通信，以及通过Linux shell命令行访问Client OS，共计执行2个用例，主要覆盖了接口测试、功能测试，整体质量良好。 <br><br> embedded版本分布式软总线增强特性实现多个设备之间的通信，通过群组管理的方式让设备与设备之间实现认证和连通，并继承了330的软总线需求，在标准以太网和无线局域网两种连接方式下，是实现了多设备之间的发现、连接和数据传输，设备互通互联，设备之间可以正常通信，验证了认证模块和IPC模块支持多client的有效性，共计执行3个用例，主要覆盖了接口测试、功能测试，整体质量良好。<br><br>  embedded版本支持硬实时特性实现了硬实时特性要求，在适配硬件后编译成功可烧写到开发板中，适配RhealStone性能测试编译成功并在开发板中执行测试，测试结果上下文切换时延2us，中断时延1us。 | NA | NA | NA | <font color=green>█</font> | NA |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -223,18 +251,18 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 # 5   问题单统计
 
-openEuler 22.09 版本共发现问题 340 个，有效问题 306 个，其中修复问题单 xxx 个，回归均通过。详细分布见下表:
+openEuler 22.09 版本共发现问题 467 个，有效问题 423 个，其中修复问题单 403 个，回归均通过。详细分布见下表:
 
-| 测试阶段 | 问题总数 | 有效问题单数 | 无效问题单数 |
-| ----------------------- | -------- | ----------- | ---------- |
-| openEuler 22.09 Alphal | 119 | 100 | 19|
-| openEuler 22.09 RC1 | 97 | 86 | 11 |
-| openEuler 22.09 RC2 | 68 | 68 | 0 |
-| openEuler 22.09 RC3 | 36 | 35 | 1 |
-| openEuler 22.09 RC4 | 20 | 20 | 3 |
-| openEuler 22.09 RC5 |  |  |  |
+| 测试阶段 | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 |
+| ----------------------- | -------- | ----------- | ---------- | -------- |
+| openEuler 22.09 Alphal | 148 | 127 | 21 | 1 |
+| openEuler 22.09 RC1 | 131 | 123 | 8 | 1 |
+| openEuler 22.09 RC2 | 86 | 86 | 0 | 1 |
+| openEuler 22.09 RC3 | 53 | 47 | 6 | 3 |
+| openEuler 22.09 RC4 | 38 | 37 | 1 | 0 |
+| openEuler 22.09 RC5 | 11 | 10 | 1 | 1 |
 
-1. 为推动众测，在社区测试流程中增加Aplha测试阶段，发现100问题，提前了问题拦截。
+1. 为推动众测，在社区测试流程中增加Aplha测试阶段，发现127个问题，提前了问题拦截。
 2. 关注构建偶现问题，占总问题数30%+。用例设计问题，环境问题比例较为平均。当前工程无法支持提供调试环境，也导致部分正向分析不足，待改进。
 3. RC4仍发现部分新增功能问题，分析如下：
    * [I5QTLG](https://gitee.com/src-openeuler/trafficserver/issues/I5QTLG?from=project-issue)：因RC3问题[I5OV2X](https://gitee.com/src-openeuler/trafficserver/issues/I5OV2X?from=project-issue)解决后，方案及自验设计不完整，引入新问题
@@ -256,7 +284,6 @@ openEuler 22.09 版本共发现问题 340 个，有效问题 306 个，其中修
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
 | ---- | ------- | -------- | -------- | ------- | -------- | --------- | 
-|      |         |         |         |          |         |             |
 
 
 # 致谢
