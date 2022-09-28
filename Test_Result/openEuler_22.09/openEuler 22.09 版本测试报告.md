@@ -11,6 +11,7 @@
 | 2022/9/14| 1.0.1    | 修改模板部分2209问题 | disnight |
 | 2022/9/16 | 1.1.0 | 基于RC4的测试情况进行分析 | disnight |
 | 2022/9/27 | 1.2.0 | 基于RC5的测试情况进行分析 | zjl_long |
+| 2022/9/28 | 1.2.1 | 刷新遗留问题 | disnight |
 
 关键词：
 
@@ -121,7 +122,7 @@ openEuler 22.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
    openEuler 22.09 版本整体测试按照release-manager团队的计划，共完成了一轮重点特性测试+三轮全量测试+一轮回归测试+版本发布验收测试；其中第一轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫描及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；另外三轮全量测试开展版本交付的所有特性和各类专项测试；一轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-​   openEuler 22.09 版本共发现问题 467 个，有效问题 430 个，已取消问题 37 个。遗留问题 7 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
+​   openEuler 22.09 版本共发现问题 467 个，有效问题 430 个，已取消问题 37 个。遗留问题 6 个(详见遗留问题章节)，其他问题均已修复，回归测试结果正常。版本整体质量较好。
 
 # 4 版本详细测试结论
 
@@ -251,11 +252,11 @@ openEuler 22.09 版本详细测试内容包括：
 
 # 5   问题单统计
 
-openEuler 22.09 版本共发现问题 467 个，有效问题 423 个，其中修复问题单 403 个，回归均通过。详细分布见下表:
+openEuler 22.09 版本共发现问题 467 个，有效问题 423 个，其中遗留问题 6 个，回归均通过。详细分布见下表:
 
 | 测试阶段 | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 |
 | ----------------------- | -------- | ----------- | ---------- | -------- |
-| openEuler 22.09 Alphal | 148 | 127 | 21 | 1 |
+| openEuler 22.09 Alphal | 148 | 127 | 21 | 0 |
 | openEuler 22.09 RC1 | 131 | 123 | 8 | 1 |
 | openEuler 22.09 RC2 | 86 | 86 | 0 | 1 |
 | openEuler 22.09 RC3 | 53 | 47 | 6 | 3 |
@@ -284,6 +285,12 @@ openEuler 22.09 版本共发现问题 467 个，有效问题 423 个，其中修
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
 | ---- | ------- | -------- | -------- | ------- | -------- | --------- | 
+| 1 | [I5LZXD](https://gitee.com/src-openEuler/openldap/issues/I5LZXD) | openldap build problem in openEuler:22.09 | 次要 | 构建过程中，用例执行失败。为用例设计问题，影响可控，通过sleep的方式等待操作执行完成，在高负载下偶先失败 | skip相关用力，并持续跟踪上游社区解决 | |
+| 2 | [I5NLZI](https://gitee.com/src-openEuler/dde/issues/I5NLZI) | 【openEuler 22.09 rc2】启动器中个别应用图标显示异常 | 次要 | 仅为DDE桌面启动器的图标显示异常，无功能影响，易用性问题整体影响可控 | 建议切换主题规避 | |
+| 3 | [I5P5HM](https://gitee.com/src-openEuler/afterburn/issues/I5P5HM) | 【22.09_RC3_EPOL】【arm/x86】卸载afterburn提示Failed to stop afterburn-sshkeys@.service | 次要 | | | |
+| 4 | [I5PQ3O](https://gitee.com/src-openEuler/openmpi/issues/I5PQ3O) | 【openEuler-22.09-RC3】ompi-clean -v  -d参数执行报错 | 主要 | 该包为NestOS使用软件包，使用范围较为局限，默认为 NestOS 中的“core”用户启用，对服务器版本影响较小 | sig暂未提供规避手段 | |
+| 5 | [I5Q2FE](https://gitee.com/src-openEuler/udisks2/issues/I5Q2FE) | udisks2 build problem in openEuler:22.09 | 次要 | 构建过程中，用例执行失败。环境未保留，长期本地构建未复现 | 持续跟踪社区构建成功率 | |
+| 6 | [I5SJ0R](https://gitee.com/src-openEuler/podman/issues/I5SJ0R) | [22.09RC5 arm/x86]podman create --blkio-weight-device /dev/loop0:123:15 fedora ls 执行报错 | 次要 | blkio-weight为4.xx版本内核特性。5.10版本不支持 | 需跟进升级podman组件 | |
 
 
 # 致谢
