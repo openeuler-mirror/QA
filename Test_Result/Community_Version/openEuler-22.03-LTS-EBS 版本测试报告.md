@@ -1,15 +1,16 @@
 ![openEuler ico](../../images/openEuler.png)
 
-版权所有 © <date +%Y>  openEuler社区
+版权所有 © 2022  openEuler社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
 |  日期       | 修订版本  | 修改描述 | 作者      |
 | ---------- | -------- | ------- | -------- |
-| <date +%Y-%m-%d> | 1.0.0 | openEuler-<os_version>-update_<date +%Y-%m-%d>版本测试报告 | zjl_long |
+| 2022-11-06 | 1.0.0 | openEuler-22.03-LTS-EBS 版本测试报告 | zjl_long |
+| 2022-11-08 | 1.0.1 | 修正执行测试用例数量，并补充1条issue | zjl_long |
 
 关键词：  
-    维护版本测试策略 测试报告
+    测试策略 测试报告
 摘要：
     
 缩略语清单：
@@ -21,7 +22,8 @@
 
 
 # 1     版本测试概述
-按照openEuler社区维护版本测试策略，对openEuler-<os_version>-update_<date +%Y-%m-%d>版本进行AT冒烟，RPM包管理（编译、安装、卸载、升级、回滚），单包能力（命令、服务），系统集成，系统冷热重启以及内核LTP测试。
+按照openEuler 22.03 LTS 社区版本测试策略，对openEuler-22.03-LTS-EBS 版本进行如下测试：<br> OS安装部署，AT冒烟测试，RPM包管理（自编译、安装、卸载），单包能力（命令、服务），以及内核LTP测试。
+其他测试项继承openEuler 22.03 LTS 版本测试结论。
 
 
 # 2     版本测试信息
@@ -29,7 +31,7 @@
 
 | 版本名称             | 测试起始时间   | 测试结束时间   |
 | ------------------- | ------------ | ------------ |
-| openEuler-<os_version>-update_<date +%Y-%m-%d> |   |   |
+| openEuler-22.03-LTS-EBS RC1 |  2022-11-04  |  2022-11-08  |
 
 描述版本测试的环境信息
 |  环境  | 系统架构 |  配置信息                            | 备注 |
@@ -39,28 +41,24 @@
 | 物理机 | arm架构 | CPU：Kunpeng 920<br> 内存：32G*32=1024G<br> 硬盘容量：1.09T |     |
 | 物理机 | x86架构 | CPU：Intel(R) Xeon(R) Gold 6266C CPU @ 3.00GHz<br> 内存：32G\*12=384G<br> 硬盘容量：744.126G*2 |     |
 
-测试repo源[根据实际情况去获取]
-OS<br> everything<br> EPOL<br> update<br> EPOL-UPDATE<br> source<br> update_<date +%Y-%m-%d><br> update_<date +%Y-%m-%d>\_source<br> EPOL_update_<date +%Y-%m-%d><br> EPOL_update_<date +%Y-%m-%d>\_source<br>
+测试repo源   
+RC1：   
+http://121.36.84.172/dailybuild/openEuler-22.03-LTS-unity-build/test_openeuler-2022-11-04-15-58-33/
 
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
-openEuler-<os_version>-update_<date +%Y-%m-%d>版本，共计执行 XX 个测试用例，
-1）发现0个问题，
-2）发现XX个问题，且已经验收通过。
-整体质量良好，满足出口质量标准。
+openEuler-22.03-LTS-EBS 版本，共计执行 6682*2 个测试用例，发现 4 个问题，整体质量良好，满足出口质量标准。
 
 | 测试活动    | 活动评价                                          |
 | ---------- | ----------------------------------------------- |
+| OS安装部署  | 通过执行baseOS安装测试用例，保证OS可以正常安装，无异常现象 |
 | AT冒烟      | 通过执行AT测试用例，保证系统基础功能正常，验证版本满足基本转测试条件 |
 | 源码包自编译 | 验证在openEuler系统arm和x86架构下，编译源码包，能够生成可用的二进制包，说明源码包正常可用 |
-| 软件包管理   | 通过软件包管理测试，对转测试的二进制包的可安装、卸载、升级、回滚进行整体保证 |
+| 软件包管理   | 通过软件包管理测试，对转测试的二进制包的可安装、卸载进行整体保证 |
 | 单包能力验证 | 通过对二进制包的命令、服务、应用等测试，保证软件包的基础功能正常 |
-| 系统集成测试 | 多组件多模块集成的正确性和整体系统的完整性验证，符合预期 |
-| 系统冷热重启 | 验证系统在安装了本此发布的软件包以后，系统冷热重启功能正常 |
 | 内核LTP     | 内核LTP测试保证系统在各种压力背景下，系统功能无异常 |
-| 转测包作为其一级依赖（包括安装依赖和编译依赖）的软件包的功能校验 | 系统安装了本次转测的软件包以后，转测包作为其一级依赖（包括安装依赖和编译依赖）的软件包的功能不受影响 |
 
 ## 3.2   约束说明
 
@@ -69,18 +67,20 @@ openEuler-<os_version>-update_<date +%Y-%m-%d>版本，共计执行 XX 个测试
 ### 3.3.1 遗留问题影响以及规避措施
 | 问题单号 | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | ------- | ------ | ------- | --------------- | ------- |
-|         |        |         |                 |         |
 
 ### 3.3.2 问题统计
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | ------- | --- | --- | --- | ----- |
-|  数目   |        |      |     |     |       |
-|  百分比 |        |      |     |     |       |
+|  数目   |   4    |  1  |  3   |  0  |   0   |
+|  百分比 |  100%  | 25% | 75%  |  0  |   0   |
 
 ### 3.3.3 问题列表
 | 问题单(issue链接) | 问题描述 | 问题级别 | 问题影响和规避措施 | 当前状态 |
 | ------- | ------ | ------- | --------------- | ------ |
-|      |    |    |    |    |
+| https://gitee.com/src-openeuler/grub2/issues/I5ZOBN?from=project-issue | [22.03-LTS-EBS-1104][x86]安装完成后无法启动 | 严重 |   |  已完成  |
+| https://gitee.com/src-openeuler/openEuler-repos/issues/I5ZOAJ?from=project-issue | [22.03-LTS-EBS-1104]iso自带的RPM-GPG-KEY-openEuler无法使用 | 主要 |   |  已完成  |
+| https://gitee.com/src-openeuler/openEuler-latest-release/issues/I5ZO8T?from=project-issue | [22.03-LTS-EBS-1104]/etc/openEuler-latest文件内版本信息有误 | 主要 |   |  已完成  |
+| https://gitee.com/src-openeuler/openwsman/issues/I5ZYTN?from=project-issue | 【22.03-LTS-EBS-1104】【x86】openwsmand服务启动后有错误Can't open PID file /run/wsmand.pid (yet?) after start: Operation not permitted | 主要 | 属于软件包内部问题，跟ebs构建系统没有关联，开发已提交PR整改 |  已完成  |
 
 
 # 4     测试执行
@@ -91,8 +91,7 @@ openEuler-<os_version>-update_<date +%Y-%m-%d>版本，共计执行 XX 个测试
 
 |  版本名称  | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | --------- | -------- | ---------- | ---------- |
-| openEuler-<os_version>-update_<date +%Y-%m-%d> |     | succeed/fail |      |
-
+| openEuler-22.03-LTS-EBS RC1 | 6682 | succeed |   4   |
 
 *数据项说明：*
 
@@ -102,7 +101,10 @@ openEuler-<os_version>-update_<date +%Y-%m-%d>版本，共计执行 XX 个测试
 
 ## 4.2   后续测试建议
 
-后续测试需要关注点(可选)
+后续测试需要关注点(可选)    
+增加RC2测试     
+首先，针对RC1测试发现的问题（I5ZOAJ、I5ZO8T、I5ZYTN）需要重新制作ISO，进行回归验证；  
+其次，扩展验证arm和x86安装完成后，系统无法启动的问题，保证ISO可以正常安装，无异常现象。
 
 
 # 5     附件
