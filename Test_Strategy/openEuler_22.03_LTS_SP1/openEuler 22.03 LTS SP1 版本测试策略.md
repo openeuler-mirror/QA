@@ -131,7 +131,7 @@ openEuler 22.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 | 支持IO智能多流astream | Kernel | sig-QA | 验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
 | 支持pkgship      | sig-EasyLife | sig-QA | 验证软件包依赖查询、生命周期管理、补丁查询等功能 | 
 | 支持鲲鹏安全库     | sig-security-facility | sig-QA | 验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
-| 支持midspore     | ai | ai |  | 
+| 支持mindspore     | ai | ai |  | 
 | 支持pod带宽管理oncn-bwm | sig-high-performance-network | sig-high-performance-network | 验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试  | 
 | 支持基于分布式软总线扩展生态互联互通 | sig-embedded | sig-embedded | 验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
 | 支持混合关键部署技术扩展 | sig-embedded | sig-embedded | 验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
@@ -201,7 +201,7 @@ openEuler 22.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 | 支持IO智能多流astream | 继承已有测试能力，验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
 | 支持pkgship      | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 | 
 | 支持鲲鹏加速库     | 继承已有测试能力，验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
-| 支持midspore     | 继承已有测试能力 | 
+| 支持mindspore     | 继承已有测试能力 | 
 | 支持pod带宽管理oncn-bwm | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 | 
 | 支持基于分布式软总线扩展生态互联互通 | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
 | 支持混合关键部署技术扩展  | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS | 
@@ -272,7 +272,7 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 | FC | 适配4张 | sig-Compatibility | | |
 | | | | Marvell/Qlogic | QLE2560 | ISP2532 |
 | | | | Emulex | LPe31002-M6 | LPe31000/LPe32000 |
-| | | | Emulex | LPe32002-M6 | LPe31000/LPe32000 |
+| | | | Emulex | LPe32002-M2 | LPe31000/LPe32000 |
 | | | | Emulex | LPE16002B-M6 | LPe15000/LPe16000 |
 | GPU | 适配3张 | sig-Compatibility | | | |
 | | | | NVIDIA | Tesla T4 |	TU104GL |
@@ -306,12 +306,13 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 | 华为 | 泰山200 | 鲲鹏920 | sig-Compatibility |
 | | 青松服务器 | FT S2500 | sig-Compatibility |
 | 超聚变 | 2288H V5 | Intel cascade | sig-Compatibility |
-| | 2288H V6 | Intel SPR |  |
+| | 2288H V6 | Intel SPR | sig-Compatibility |
 | 中科可控 | R6230HA | Hygon 2号 | sig-Compatibility |
-| AMD | Supermicro AS-4124GS-TNR | AMD Milan |  |
-| 飞腾 | 公版 | FT2000+ |
-| | TR2531F | FT S2500 |  |
-| 兆芯 | ThinkSystem SR658Z | KH-30000 |  
+|  | X7840H0 | Hygon 3号 | sig-Compatibility |
+| AMD | Supermicro AS-4124GS-TNR | AMD Milan | sig-Compatibility |
+| 飞腾 | 公版 | FT2000+ | sig-Compatibility |
+| | 公版 | FT S2500 | sig-Compatibility |
+| 兆芯 | ThinkSystem SR658Z | KH-30000 | sig-Compatibility |
 
 ### 资料测试
 
