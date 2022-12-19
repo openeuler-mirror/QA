@@ -64,7 +64,6 @@ openEuler 22.03 LTS SP1 是基于5.10内核22.03-LTS的增强扩展版本，面�
 1.  软件版本选型升级，详情请见[版本变更说明]()
 2.  修复bug和cve
 3.  新增支持：分布式软总线与openHarmony互联互通；混合部署支持在树莓派硬件；硬实时能力新增STM32F407ZGT6开发板支持，支持混合部署及基础POSIX接口
-4.  新增70+软件包支持
 
 ## 需求范围
 
@@ -77,7 +76,6 @@ openEuler 22.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 | [I5YINT](https://gitee.com/openeuler/UniProton/issues/I5YINT) | 硬实时uniProton支持南向开发板 | Discussion |sig-embedded |  | uniProton源码及构建指导 |     |
 | [I5YIOS](https://gitee.com/openeuler/UniProton/issues/I5YIOS) | 硬实时uniProton支持混合部署 | Discussion |sig-embedded |  | uniProton源码及构建指导 |     |
 | [I5YIQW](https://gitee.com/openeuler/UniProton/issues/I5YIQW) | 硬实时uniProton支持POSIX接口 | Discussion |sig-embedded |  | uniProton源码及构建指导 |     |
-| [I5YIZB](https://gitee.com/openeuler/yocto-meta-openeuler/issues/I5YIZB) | 支持电力行业基础软件包 | Discussion |sig-Yocto |  | embedded_img |     |
 
 # 风险
 
@@ -96,8 +94,6 @@ openEuler 22.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 | 硬实时uniProton支持南向开发板     | sig-embedded  | sig-embedded  | 测试uniPoton支持的南向开发板的编译、烧录以及任务执行 |
 | 硬实时uniProton支持混合部署     | sig-embedded  | sig-embedded  | 在树莓派4B上使用混合部署框架混合部署框架进行生命周期管理测试，能够拉起、停止uniProton，uniProton任务执行正常 |
 | 硬实时uniProton支持POSIX接口     | sig-embedded  | sig-embedded  | 使用业界通用开源POSIX测试套对POSIX接口进行测试 |
-| 支持电力行业基础软件包     | sig-Yocto  | sig-Yocto  | 对新引入的重点软件包进行测试其使用和基础能力 |
-
 
 
 # 测试分析设计策略
@@ -109,7 +105,6 @@ openEuler 22.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 | 1 | 硬实时uniProton支持南向开发板 | 工程编译、资料、在开发板上的烧录和运行 | 根据资料指导编写任务并编译uniProton，烧录到对应的开发板，通过串口等可观察手段观察任务输出是否正常 | |
 | 2 | 硬实时uniProton支持混合部署 | 在树莓派上的部署及uniProton的生命周期管理 | 在树莓派上启动缓和部署，执行相应命令启动、停止uniProton，观察uniProton中任务输出 | |
 | 3 | 硬实时uniProton支持POSIX接口 | 测试POSIX标准对外接口 | 使用业界通用开源POSIX测试套对POSIX接口进行测试 | |
-| 4 | 支持电力行业基础软件包 | 执行重点软件包随源码附带的测试用例，软件包所包含的可执行程序是否可执行 | 通过sdk编译源码包中的测试用例，拷贝到系统中执行，观察执行结果 | |
 
 ## 继承feature/组件测试设计策略
 
