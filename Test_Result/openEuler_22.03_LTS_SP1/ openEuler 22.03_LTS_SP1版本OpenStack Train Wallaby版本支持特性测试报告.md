@@ -124,6 +124,11 @@ OpenStack
 |数目|2|1|0|1|0|
 |百分比|100|50|0|50|0|
 
+| ISSUE Link |
+|:----|
+| https://gitee.com/openeuler/openstack/issues/I64OL3 |
+| https://gitee.com/openeuler/openstack/issues/I66IEB |
+
 ## 4 测试执行
 
 ### 4.1 测试执行统计数据
@@ -133,7 +138,7 @@ OpenStack
 |版本名称|测试用例数|用例执行结果|发现问题单数|
 |:----|:----|:----|:----|
 |openEuler 22.03 LTS SP1 OpenStack Train|1354|通过1289个，skip 64个，Fail 0个|2|
-|openEuler 22.03 LTS SP1 OpenStack Wallaby|1164|通过1088个，skip 70个，Fail 0个|2|
+|openEuler 22.03 LTS SP1 OpenStack Wallaby|1164|通过1088个，skip 70个，Fail 0个|1|
 
 ### 4.2 后续测试建议
 
