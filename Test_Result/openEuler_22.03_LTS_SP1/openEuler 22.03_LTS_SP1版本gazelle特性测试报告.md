@@ -55,8 +55,6 @@ gazelle是一款高性能用户态协议栈。它基于DPDK在用户态直接读
 
 gazelle特性测试，共计执行80个用例，主要覆盖新增业务场景功能测试，接口测试以及继承功能的接口，功能，可靠性，测试过程发现问题17个，现已全部解决，无遗留问题。
 
-鲲鹏虚拟化高性能云盘场景，ceph的业务测试原始性能tpmC为xx万，使用gazelle加速后性能为xx万，提升xx%
-
 | 测试活动   | 活动评价                                                     |
 | ---------- | ------------------------------------------------------------ |
 | 接口测试   |覆盖lstack命令行接口、配置文件接口正常和异常测试，新增posix接口测试             |
@@ -99,7 +97,8 @@ gazelle特性测试，共计执行80个用例，主要覆盖新增业务场景�
 | openEuler 22.03_LTS_SP1 RC1 | 80         |  FAIL       | 7            |
 | openEuler 22.03_LTS_SP1 RC2 | 80         |  FAIL      | 4            |
 | openEuler 22.03_LTS_SP1 RC3 | 80         |  FAIL      | 5            |
-| openEuler 22.03_LTS_SP1 RC4 | 80         | ALL PASS     | 1            |
+| openEuler 22.03_LTS_SP1 RC4 | 80         |  FAIL     | 1            |
+| openEuler 22.03_LTS_SP1 RC5 | 80         |  ALL PASS     | 0            |
 
 
 
