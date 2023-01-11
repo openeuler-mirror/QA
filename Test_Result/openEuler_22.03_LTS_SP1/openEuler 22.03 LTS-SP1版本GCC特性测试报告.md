@@ -27,24 +27,26 @@ GCC（GNU Compiler Collection，GNU编译器套件）是由GNU开发的编程语
 | openEuler22.03 LTS SP1 RC1 | 2022-11-23 | 2022-11-29 |
 | openEuler22.03 LTS SP1 RC2 | 2022-12-02 | 2022-12-08 |
 | openEuler22.03 LTS SP1 RC3 | 2022-12-09 | 2022-12-15 |
+| openEuler22.03 LTS SP1 RC4 | 2022-12-16 | 2022-12-22 |
 
 描述特性测试的硬件环境信息
 
 | 硬件型号 | 硬件配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| TaiShan 200 | 96U 512G | aarch64 |
-| TaiShan 200K | 96U 256G | aarch64 codedb测试专用 |
-| 虚拟机 | 64U 186G | x86_64 |
+| TaiShan 200（Model 2280） | 96U 512G | aarch64 |
+| TaiShan 200K（Model 2280K） | 96U 256G | aarch64 codedb测试专用 |
+| TaiShan 200（Model 2280） | 128U 512G | aarch64 cpubench性能测试专用 |
+| 2288H V5 | 64U 186G | x86_64 |
 
 # 3     测试结论概述
 
 ## 3.1   测试整体结论
 
-GCC编译器测试，共转测5个特性（Mul64: -fmerge-mull; 指针压缩：-fipa-struct-reorg=4 --param compressed-pointer-size=[8,16,32]、-fipa-struct-reorg=5; 循环拆分：-ftree-slp-transpose-vectorize; semi-relayout:-fipa-struct-reorg=6 --param semi-relayout-level=[11,12,13,14,15]），主要覆盖基本功能测试，继承特性选项测试，浮点精度测试，汇编一致性测试，可靠性测试，Fuzz测试，覆盖率测试，asan测试，自举测试，x86交叉测试，性能测试; 共3个问题，回归通过1个，2个暂未解决。
+GCC编译器测试，共转测5个特性（Mul64: -fmerge-mull; 指针压缩：-fipa-struct-reorg=4 --param compressed-pointer-size=[8,16,32]、-fipa-struct-reorg=5; 循环拆分：-ftree-slp-transpose-vectorize; semi-relayout:-fipa-struct-reorg=6 --param semi-relayout-level=[11,12,13,14,15]），主要覆盖基本功能测试，继承特性选项测试，浮点精度测试，汇编一致性测试，可靠性测试，Fuzz测试，覆盖率测试，asan测试，自举测试，x86交叉测试，性能测试; 共3个问题，回归通过3个，无遗留问题，整体质量良好。
 
 | 测试活动 | 活动评价 |
 | -------- | -------- |
-| 基本功能测试 | 执行测试套：冒烟测试、dejanu、继承特性测试用例、bstest、llvmcase、Anghabench、jotai-benchmarks、codeDB基本功能正常，共2个问题，2个暂未解决； |
+| 基本功能测试 | 执行测试套：冒烟测试、dejagnu、库上特性用例、bstest、llvmcase、Anghabench、jotai-benchmarks、codeDB基本功能正常，共2个问题，已回归通过，无遗留问题； |
 | 特性选项测试 | 通过deja测试套分别执行预取特性，特性功能使用正常； |
 | 浮点精度测试 | 执行测试套FPTEST，无新增FAIL用例； |
 | 汇编一致性测试 | 根据speccpu2017生成二进制并反汇编，比对结果一致； |
@@ -54,20 +56,26 @@ GCC编译器测试，共转测5个特性（Mul64: -fmerge-mull; 指针压缩：-
 | asan测试 | 测试增量代码是否存在内存泄露问题，发现问题全部解决，回归通过，无风险； |
 | 自举测试 | arm环境编译gcc源码，生成二进制，并成功运行deja等测试套； |
 | x86交叉测试 | x86环境编译gcc源码，生成二进制，并成功运行deja等测试套； |
-| 性能测试 | 分别测试cpubench, APBC INT超海光5%, 测试spec2017\spec2006跑分，全部符合预期； |
+| 性能测试 | 使用第4轮转测GCC版本测试cpubench,预期在海光76.91分的基础上超5%，在华为2280上openEuler GCC实际得分81.95，性能提升6.55%，符合性能预期； |
 
 
-## 3.2   约束说明
+## 3.2   cpubench性能数据
+
+| 版本名称 | 华为2280 |  海光   |   提升百分比   |
+| -------- | -------- |  -------- |  -------- |
+|openEuler22.03 LTS SP1 RC4| 81.95 | 76.91 | 6.55% |
+
+## 3.3   约束说明
 
 无
 
-## 3.3   遗留问题分析
+## 3.4   遗留问题分析
 
-### 3.3.1 遗留问题影响以及规避措施
+### 3.4.1 遗留问题影响以及规避措施
 
 无
 
-### 3.3.2 问题统计
+### 3.4.2 问题统计
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
@@ -85,6 +93,7 @@ GCC编译器测试，共转测5个特性（Mul64: -fmerge-mull; 指针压缩：-
 | openEuler22.03 LTS SP1 RC1 | 200w+ | 除yarpgen c++外其他均成功 | 1     |  [I6415J](https://gitee.com/openeuler/gcc/issues/I6415J) |
 | openEuler22.03 LTS SP1 RC2 | 200w+ | 除codedb/Anghabench测试外其他均成功 | 2   |[I65A1O](https://gitee.com/openeuler/gcc/issues/I65A1O)  [I65164](https://gitee.com/openeuler/gcc/issues/I65164) |
 | openEuler22.03 LTS SP1 RC3 | 200w+ | 全部通过 |  0    |  NA  |
+| openEuler22.03 LTS SP1 RC4 | 2 | issue回归通过 |  0    |  NA  |
 
 *数据项说明：*
 
