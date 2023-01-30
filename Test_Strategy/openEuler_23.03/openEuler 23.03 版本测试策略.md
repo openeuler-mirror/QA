@@ -74,12 +74,10 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 |1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)|Testing|sig-high-performance-network|@MrRlu|extras|kmesh|
 |2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)|Testing|sig-kernel|@sunying2022|extras|kconfigDetector|
 |3|[【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH)|Discussion|sig-RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi)|EPOL|raspberrypi-firmware,raspberrypi-bluetooth,raspi-config,pigpio,raspberrypi-userland,raspberrypi-eeprom|
-|4|[【openEuler 23.03】iSulad新增native network特性](https://gitee.com/openeuler/release-management/issues/I6AD13)|Testing|sig-CloudNative|[@zh_xiaoyu](https://gitee.com/zh_xiaoyu)|oepkgs|iSulad|
-|5|[【openEuler 23.03】 虚拟机热迁移](https://e.gitee.com/open_euler/issues/table?issue=I6CFK4)|Testing|virt SIG|@yezengruan)|oepkgs||
-|6|[【openEuler 23.03】DPU虚机热迁移：内核态vDPA支持，异构网卡直通](https://e.gitee.com/open_euler/issues/table?issue=I6CFNF)|Discussion|virt SIG|@yezengruan|oepkgs||
-|7|[【openEuler 23.03】直连聚合虚机管理无感卸载](https://e.gitee.com/open_euler/issues/table?issue=I6CFPV)|Discussion|sig-DPU|@Apricity|oepkgs|DPU|
-|8|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)|Discussion|Compiler|@wangding|oepkgs|GCC|
-|9|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)|Testing|Kernel |@zhengzengkai|oepkgs|Kernel|
+|4|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)|Discussion|Compiler|@wangding|oepkgs|GCC|
+|5|[【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z)|Discussion|Kernel |@jiangzhongbing|oepkgs|Kernel|
+|6|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)|Testing|Kernel |@zhengzengkai|oepkgs|Kernel|
+|7|[【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3)|Testing|DB |@openGemini|ISO|Kernel|
 
 
 # 风险
@@ -101,46 +99,31 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 | 支持Kiran桌面    | sig-KIRAN-DESKTOP | sig-KIRAN-DESKTOP | 验证kiran桌面在openEuler版本上的可安装卸载和基本功能 |
 | 支持Cinnamon桌面 | sig-cinnamon | sig-cinnamon | 验证Cinnamon桌面系统在openEuler版本上的可安装和基本功能 |
 | 支持南向兼容性    | sig-Compatibility-Infra | sig-QA | 验证openEuler版本在不同处理器上的可安装和可使用性，覆盖整机兼容性测试和社区集成测试 |
-| 支持北向兼容性    | sig-Compatibility-Infra | sig-QA |  |
 | 支持树莓派发布件  | sig-RaspberryPi | sig-RaspberryPi | 对树莓派发布件进行安装、基本功能、兼容性及稳定性的测试 |
 | 支持RISC-V      | sig-RISC-V | sig-RISC-V | 验证openEuler版本在RISV-V处理器上的可安装和可使用性 |
 | 内核            | Kernel | Kernel | 关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基基本持平，波动范围小于5%以内 |
 | 容器(isula/docker/安全容器/系统容器/镜像) | sig-CloudNative | sig-CloudNative | 关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
 | 虚拟化           | Virt | Virt | 重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
-| 编译器(gcc/jdk)  | Compiler | sig-QA | 基于开源测试套对gcc和jdk相关功能进行验证 |
+| 编译器(gcc)  | Compiler | sig-QA | 基于开源测试套对gcc相关功能进行验证 |
+| bishengjdk  | Compiler | sig-QA | 基于开源测试套对bishengjdk相关功能进行验证 |
 | 支持HA软件       | sig-Ha | sig-Ha | 验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标 |
 | 支持KubeSphere  | sig-K8sDistro | sig-K8sDistro | 验证kubeSphere的安装部署和针对容器应用的基本自动化运维能力  |
-| 支持OpenStack Train 和 Wallaby | sig-OpenStack | sig-OpenStack | 重点验证openstack T和W版本发布主要组件的安装部署、基本功能 |
-| 支持A-Tune      | A-Tune | A-Tune | 重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
-| 支持secPave     | sig-security-facility | sig-QA | 验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性 |
-| 支持secGear     | sig-confidential-computing | sig-QA | 关注secGear特性的功能完整性 |
-| 发布eggo        | sig-CloudNative | sig-CloudNative | 验证eggo在openEuler上的安装部署以及对K8S集群的部署、销毁、节点加入及删除的能力 |
-| 支持kubeOS      | sig-CloudNative | sig-CloudNative | 验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级 |
 | 支持NestOS      | sig-CloudNative | sig-CloudNative | 验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
-| 支持OpenResty   | sig-OpenResty   | sig-OpenResty   | 验证openResty平台在openEuler版本上的可安装性和基本功能 |
-| 支持etmem内存分级扩展 | Storage | sig-QA | 验证新发布模块memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力 |
-| 支持定制裁剪工具(inageTailor和oemaker) | sig-OS-Builder | sig-QA | 验证可定制化的能力，包括裁剪工具的基本命令功能，并对异常参数进行覆盖；另外对裁剪出来的镜像进行安装部署及基本验证，保障裁剪工具的E2E能力完整性 |
 | 支持openGauss   | DB | DB | 验证openGauss数据库基础功能中接入层、SQL层、存储层、管理和安全等，另外从可靠性、性能、工具和兼容性四个维度覆盖生态测试 |
 | 支持虚拟化热补丁libcareplus | Virt | Virt | 关注libcareplus提供Qemu热补丁能力 |
 | 支持用户态协议栈gazelle     | sig-high-performance-network | sig-high-performance-network |关注gazelle高性能用户态协议栈功能  |
-| 支持容器场景在离线混合部署rubik | sig-CloudNative | sig-CloudNative | 结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
-| 支持智能运维A-ops | sig-ops | sig-QA | 关注智能定位（异常检测、故障诊断）功能、可靠性 |
-| 支持libstorage针对NVME的IO栈hsak | Storage | Storage | 验证libstorage针对NVMe SSD存储介质提供高带宽低时延的IO软件栈，提升IO的读写性能；同时提供nvme磁盘状态管理以及查询功能，监测nvme磁盘的健康状态 | 
-| 支持国密算法      | sig-security-facility | sig-security-facility | 验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 | 
-| 支持k3s          | sig-K8sDistro | sig-K8sDistro | 验证k3s软件的部署测试过程 | 
 | 支持IO智能多流astream | Kernel | sig-QA | 验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
 | 支持pkgship      | sig-EasyLife | sig-QA | 验证软件包依赖查询、生命周期管理、补丁查询等功能 | 
 | 支持鲲鹏安全库     | sig-security-facility | sig-QA | 验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
-| 支持mindspore     | ai | ai |  | 
-| 支持pod带宽管理oncn-bwm | sig-high-performance-network | sig-high-performance-network | 验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试  | 
 | 支持基于分布式软总线扩展生态互联互通 | sig-embedded | sig-embedded | 验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
 | 支持混合关键部署技术扩展 | sig-embedded | sig-embedded | 验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
 | 支持硬实时系统    | sig-embedded | sig-embedded | 验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | 
 | 支持kubernetes  | sig-CloudNative | sig-CloudNative | 验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
 | 安装部署         | sig-OS-Builder | sig-OS-Builder | 验证覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| Kunpeng加速引擎 | sig-AccLib | sig-AccLib | 验证对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加速器KAE的基本功能和性能测试 |
 | 新增备份还原功能支持       | sig-Migration | sig-Migration | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常  |
-| 新增ROS基础版和ROS2基础版  | sig-ROS | sig-ROS | |
+| 新增ROS基础版和ROS2基础版  | sig-ROS | sig-ROS | 验证ROS基础版和ROS2基础版安装卸载以及基础功能正常 |
+
+
 
 
 
@@ -150,27 +133,28 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 
 | *序号* | *Feature*             | *重点*          | *设计思路*        | *备注* |
 | ----- | ---------------------- | --------------- | ---------------- | ------ |
-|1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)| *待**sig-high-performance-network**评审后补充* | | |
-|2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)| *待**sig-kernel**评审后补充* | | |
+|1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)| *现**sig-high-performance-network**已提交测试策略PR，当前未合入* | | |
+|2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)| [kconfigDetector特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%ACkconfigDetector%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | | |
 |3|[【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH)| *待**sig-RaspberryPi**评审后补充* | | |
-|4|[【openEuler 23.03】iSulad新增native network特性](https://gitee.com/openeuler/release-management/issues/I6AD13)| *待**sig-CloudNative**评审后补充* | | |
-|5|[【openEuler 23.03】 虚拟机热迁移](https://e.gitee.com/open_euler/issues/table?issue=I6CFK4)| *待**sig-virt**评审后补充* | | |
-|6|[【openEuler 23.03】DPU虚机热迁移：内核态vDPA支持，异构网卡直通](https://e.gitee.com/open_euler/issues/table?issue=I6CFNF)| *待**sig-virt**评审后补充* | | |
-|7|[【openEuler 23.03】直连聚合虚机管理无感卸载](https://e.gitee.com/open_euler/issues/table?issue=I6CFPV)| *待**sig-DPU**评审后补充* | | |
-|8|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)| *待**sig-Compiler**评审后补充* | | |
-|9|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)| *待**sig-kernel**评审后补充* | | |
+|4|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)| *待**sig-Compiler**评审后补充* | | |
+|5|[【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z)|Discussion|Kernel | *待**sig-kernel**评审后补充* | | |
+|6|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)| *6.1内核继承内核继承特性的测试策略* | | |
+|7|[【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3)| *现**sig-DB**已提交测试策略PR，当前未合入* | | |
+
 
 
 ## 继承feature/组件测试设计策略
 
 从老版本继承的功能特性的测试策略如下：
+*经embeded-sig评审，嵌入式23.03版本不跟随社区内核升级，源码仍使用5.10内核版本源码，涉及继承特性有：分布式软总线、混合部署、硬实时*
 
 | Feature/组件 |  策略                           |
 | ----------- | ------------------------------- |
 | 内核         | 直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线基本持平，波动范围小于5%以内 |
 | 容器(isula/docker/安全容器/系统容器/镜像) | 继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
 | 虚拟化           | 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
-| 编译器(gcc/jdk)  | 继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
+| 编译器(gcc)  | 继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
+| bishengjdk  | 继承已有测试能力，基于开源测试套对jdk相关功能进行验证   |
 | 支持DDE桌面      | 继承已有测试能力，关注DDE桌面系统的安装和基本功能           |
 | 支持UKUI桌面     | 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
 | 支持xfce桌面     | 继承已有测试能力，重点关注xfce桌面的可安装性和提供组件的能力 |
@@ -178,45 +162,31 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 | 支持Kiran桌面    | 增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
 | 支持Cinnamon桌面 | 继承已有测试能力，关注Cinnamon桌面系统的安装和基本功能       |
 | 支持南向兼容性    | 继承已有测试能力，关注板卡和整机适配的兼容性测试 |
-| 支持北向兼容性    | 继承已有测试能力 |
 | 支持树莓派       | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
 | 支持RISC-V      | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性 |
 | 支持HA软件      | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
 | 支持KubeSphere  | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力   |
-| 支持openstack Train 和 Wallaby  | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
-| 支持A-Tune      | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
-| 支持secPave     | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
-| 支持secGear     | 继承已有测试能力，关注secGear特性的功能完整性          |
-| 支持eggo        | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
-| 支持kubeOS      | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
 | 支持NestOS      | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
-| 支持OpenResty   | 继承已有测试能力，关注openResty平台在openEuler版本上的可安装性和基本功能   |
-| 支持etmem内存分级扩展 | 继承已有测试能力，重点验证特性的基本功能和稳定性   |
-| 支持定制裁剪工具套件(oemaker/imageTailor) | 继承已有测试能力，验证可定制化的能力   |
 | 支持openGauss   | 继承已有测试能力，关注openGauss数据库的功能、性能和可靠性   |
 | 支持虚拟化热补丁libcareplus | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力  |
 | 支持用户态协议栈gazelle     | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能  |
-| 支持容器场景在离线混合部署rubik | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
-| 支持智能运维A-ops | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
-| 支持libstorage针对NVME的IO栈hsak | 继承已有测试能力，验证libstorage针对NVMe SSD存储介质提供高带宽低时延的IO软件栈，提升IO的读写性能；同时提供nvme磁盘状态管理以及查询功能，监测nvme磁盘的健康状态 | 
-| 支持国密算法      | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 | 
-| 支持k3s          | 继承已有测试能力，验证k3s软件的部署测试过程 | 
 | 支持IO智能多流astream | 继承已有测试能力，验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
 | 支持pkgship      | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 | 
-| 支持鲲鹏加速库     | 继承已有测试能力，验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
-| 支持mindspore     | 继承已有测试能力 | 
-| 支持pod带宽管理oncn-bwm | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 | 
+| 支持鲲鹏安全库     | sig-security-facility | sig-QA | 继承已有测试能力，验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
 | 支持基于分布式软总线扩展生态互联互通 | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
 | 支持混合关键部署技术扩展  | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS | 
 | 支持硬实时系统    | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | 
 | 支持kubernetes  | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
 | 安装部署         | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| Kunpeng加速引擎 | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
+| 新增ROS基础版和ROS2基础版  | sig-ROS | sig-ROS | 继承已有测试能力，验证ROS1 Noetic 版的ROS_COMM和ROS1 Foxy 版的ROS_BASE是否能够成功安装和卸载，测试用例能否通过 |
+
 
 
 ## 专项测试策略
 
 ### 安全测试
+
+[openEuler 23.03 安全测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md)
 
 openEuler作为社区开源版本，在系统整体安全上需要进行保证，以发现系统中存在的安全脆弱性与风险，为版本的安全提供切实的依据，推动产品完成安全问题整改，提高产品的安全。整体安全测试需要覆盖：
 
@@ -256,13 +226,9 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 
 ### 兼容性测试
 
-#### 南向兼容性
-
 南向兼容性测试分板卡测试和整机适配测试两个部分。
 
-此版本的板卡兼容性适配测试，适配的板卡类型有RAID/FC/GPU/SSD/IB/NIC/六种，在aarch64/x86_64架构上进行适配，主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的板卡兼容性清单。
-
-本版本作为创新版本，在内核进行6.x的升级情况下，牵引达成以下清单的兼容性基线目标。
+本版本作为创新版本，在内核进行6.x的升级情况下，牵引达成以下清单的兼容性基线目标，使能新硬件。主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的兼容性清单。
 
 *待兼容性sig补充 6.x内核版本基线兼容性清单*
 
@@ -301,7 +267,6 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 | 虚拟化用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
 | StratoVirt用户指南 | 文档描述与版本的行为是否一致                   | 英文描述的准确性   |
 | 容器用户指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
-| A-Tune用户指南    | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
 | 应用开发指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
 | 工具集用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
 
