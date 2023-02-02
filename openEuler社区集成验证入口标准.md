@@ -190,7 +190,7 @@ sig-Compliance仓库地址：https://gitee.com/openeuler/compliance
 
    ```shell
    cd WORK_DIR/rpmbuild/SPECS/
-   dnf install dnf-plugins-core -y
+   dnf install dnf-plugins-core rpmdevtools -y
    dnf builddep xxx.spec
    rpmbuild -ba xxx.spec
    ```
@@ -203,7 +203,7 @@ sig-Compliance仓库地址：https://gitee.com/openeuler/compliance
 1. 切换到**章节 2.1.1.自编译**验证中，执行rpmbuild后默认存放的目录
 
    ```shell
-   cd WORK_DIR/rpmbuild/RPM/xxx/
+   cd WORK_DIR/rpmbuild/RPMS/xxx/
    ```
 
 2. 安装RPM包
