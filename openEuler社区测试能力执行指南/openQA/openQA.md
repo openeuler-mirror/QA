@@ -148,7 +148,7 @@ secret = xxxx
 ```
 ### 1.8 openqa worker启动<br />
 ```
-systemtcl start openqa-worker@1 openqa-worker@2
+systemctl start openqa-worker@1 openqa-worker@2
 ```
 ### 1.9 放入openeuler用例到  /var/lib/openqa/share/tests，修改所属组和权限<br />
 ```
