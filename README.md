@@ -67,7 +67,6 @@ PS：除1为必选项外，其余满足一项即可，最终结论以例会评�
 
 项目名称：QA
 repository地址：
-  - https://gitee.com/openeuler/avocado
   - https://gitee.com/openeuler/avocado-vt
   - https://gitee.com/openeuler/tp-libvirt
   - https://gitee.com/openeuler/tp-qemu
