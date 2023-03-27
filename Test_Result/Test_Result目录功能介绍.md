@@ -1,22 +1,25 @@
 
 #### 介绍
 
-Test_Result目录存放open Euler各个发行版本的测试执行结果。按照release-manager团队指定的版本策略建立相应的目录，分别在各目录下存放版本相关组件、特性及集成测试用例，以及用例执行结果和issue情况。
+Test_Result目录存放openEuler各个发行版本的测试执行结果。按照release-manager团队指定的版本策略建立相应的目录，分别在各目录下存放版本相关组件、特性及集成测试用例，以及用例执行结果和issue情况。
 
 #### 软件架构
 
+```
 ├── Test_Result
-│   ├── openEuler_20.09
-│   │   └── README.md
-
-│   │   └── openEuler20.09版本XXX特性测试结果概要.md
+│   ├── openEuler_20.03_LTS_SP3 # 该目录下存放版本基线发布软件的测试报告
+│   │   └── openEuler 20.03 SP3 版本XXX特性测试结果概要.md
+│   │   ├── update_Test_Result # 该目录下存放版本维护周期内新增软件/特性的测试报告
+│   │   |   └── openEuler 20.03 SP3 版本XXX特性测试结果概要.md
 
 │   ├── openEuler_XXX
-
-│   │   └── README.md
+│   │   └── openEuler XXX版本XXX特性测试结果概要.md
+│   │   ├── update_Test_Result # 该目录下存放版本维护周期内新增软件/特性的测试报告
+│   │   |   └── openEuler XXX版本XXX特性测试结果概要.md
 
 │   ├── openEulerXXX版本XXX特性测试结果概要.md
 │   └── README.md
+```
 
 #### 使用说明
 
