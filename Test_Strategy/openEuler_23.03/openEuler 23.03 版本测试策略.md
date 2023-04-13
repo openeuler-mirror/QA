@@ -10,6 +10,8 @@
 | 日期       | 修订版本 | 修改  章节       | 修改描述               | 作者       |
 | ---------- | -------- | ---------------- | ---------------------- | ---------- |
 | 2023-2-2  | 1.0.0    |                  | 初稿                   | disnight |
+| 2023-2-11 | 1.1.0 | 1.2/3/4.1/4.2/4.3 | 基于最新需求清单进行修改 | Ethan-Zhang |
+| 2023-3-20 | 1.1.1 | 1.2/4.1/4.3 | 基于最新需求清单进行修改<br />补充特性测试策略跳转链接<br />基于兼容性sig结论补充南向兼容性清单 | Ethan-Zhang |
 
 
 目 录
@@ -65,19 +67,22 @@ openEuler 23.03 是基于6.1内核的创新版本，面向服务器、云、边�
 2.  (*待补充*)修复bug和cve
 3.  (*待细化*)核心基础软件升级：kernel 5.10->6.1; openssl 1.1.1m->3.0.7
 
-## 需求范围(*待release刷新后协同刷新，发布方式需要更新*)
+## 需求范围
 
 openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-management/blob/master/openEuler-23.03/release-plan.md)如下：
 
-|no|feature|status|sig|owner|发布方式|涉及软件包列表|
-|:----|:---|:---|:--|:----|:----|:----|
-|1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)|Testing|sig-high-performance-network|@MrRlu|extras|kmesh|
-|2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)|Testing|sig-kernel|@sunying2022|extras|kconfigDetector|
-|3|[【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH)|Discussion|sig-RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi)|EPOL|raspberrypi-firmware,raspberrypi-bluetooth,raspi-config,pigpio,raspberrypi-userland,raspberrypi-eeprom|
-|4|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)|Discussion|Compiler|@wangding|oepkgs|GCC|
-|5|[【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z)|Discussion|Kernel |@jiangzhongbing|oepkgs|Kernel|
-|6|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)|Testing|Kernel |@zhengzengkai|oepkgs|Kernel|
-|7|[【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3)|Testing|DB |@openGemini|ISO|Kernel|
+| no   | feature                                                      | status  | sig                          | owner                                                   | 发布方式 | 涉及软件包列表                                               |
+| :--- | :----------------------------------------------------------- | :------ | :--------------------------- | :------------------------------------------------------ | :------- | :----------------------------------------------------------- |
+| 1    | [【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue) | Accepted | sig-high-performance-network | @MrRlu                                                  | ISO     | kmesh                                                        |
+| 2    | [【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue) | Accepted | sig-kernel                   | @sunying2022                                            | EPOL     | kconfigDetector                                              |
+| 3    | [【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH) | Accepted | sig-RaspberryPi              | [@woqidaideshi](https://gitee.com/woqidaideshi)         | EPOL     | raspberrypi-firmware,raspberrypi-bluetooth,raspi-config,pigpio,raspberrypi-userland,raspberrypi-eeprom |
+| 4    | [【openEuler 23.03】iSulad支持镜像RO数据管理目录拆分](https://gitee.com/openeuler/release-management/issues/I6E2SI) | Accepted | sig-CloudNative              | [@driedyellowpeach](https://gitee.com/driedyellowpeach) | ISO   | iSulad                                                       |
+| 5    | [【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I) | Accepted | Kernel                       | @zhengzengkai                                           | ISO   | Kernel                                                       |
+| 6    | [【openEuler 23.03】支持embedded版本](https://gitee.com/openeuler/release-management/issues/I6DS1J?from=project-issue) | Accepted | sig-embedded                 | @fanglinxu                                              | 独立发布 | Embedded                                                     |
+| 7    | [【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z) | Accepted | Kernel                       | @jiangzhongbing                                         | EPOL   | Kernel                                                       |
+| 8    | [【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3) | Accepted | DB                           | @openGemini                                             | EPOL      | Kernel                                                       |
+| 9    | [【openEuler 23.03】secGear支持安全通道](https://gitee.com/openeuler/release-management/issues/I6EZTD?from=project-issue) | Accepted | sig-confidential-computing   | @houmingyong                                            | ISO      | secGear                                                      |
+| 10   | [【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F) | Accepted | Compiler                     | @wangding                                               | ISO   | GCC                                                          |
 
 
 # 风险
@@ -110,18 +115,16 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 | 支持KubeSphere  | sig-K8sDistro | sig-K8sDistro | 验证kubeSphere的安装部署和针对容器应用的基本自动化运维能力  |
 | 支持NestOS      | sig-CloudNative | sig-CloudNative | 验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
 | 支持openGauss   | DB | DB | 验证openGauss数据库基础功能中接入层、SQL层、存储层、管理和安全等，另外从可靠性、性能、工具和兼容性四个维度覆盖生态测试 |
-| 支持虚拟化热补丁libcareplus | Virt | Virt | 关注libcareplus提供Qemu热补丁能力 |
+| 支持syscare热补丁 | Virt | Virt | 关注syscare提供的热补丁能力 |
 | 支持用户态协议栈gazelle     | sig-high-performance-network | sig-high-performance-network |关注gazelle高性能用户态协议栈功能  |
-| 支持IO智能多流astream | Kernel | sig-QA | 验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
-| 支持pkgship      | sig-EasyLife | sig-QA | 验证软件包依赖查询、生命周期管理、补丁查询等功能 | 
-| 支持鲲鹏安全库     | sig-security-facility | sig-QA | 验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
+| 支持pkgship      | sig-EasyLife | sig-QA | 验证软件包依赖查询、生命周期管理、补丁查询等功能 |
 | 支持基于分布式软总线扩展生态互联互通 | sig-embedded | sig-embedded | 验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
 | 支持混合关键部署技术扩展 | sig-embedded | sig-embedded | 验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
 | 支持硬实时系统    | sig-embedded | sig-embedded | 验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | 
 | 支持kubernetes  | sig-CloudNative | sig-CloudNative | 验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
 | 安装部署         | sig-OS-Builder | sig-OS-Builder | 验证覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| 新增备份还原功能支持       | sig-Migration | sig-Migration | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常  |
-| 新增ROS基础版和ROS2基础版  | sig-ROS | sig-ROS | 验证ROS基础版和ROS2基础版安装卸载以及基础功能正常 |
+| dde备份还原功能支持       | sig-Migration | sig-Migration | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常  |
+| 支持ROS基础版和ROS2基础版  | sig-ROS | sig-ROS | 验证ROS基础版和ROS2基础版安装卸载以及基础功能正常 |
 
 
 
@@ -131,15 +134,18 @@ openEuler 23.03 版本交付[需求列表](hhttps://gitee.com/openeuler/release-
 
 ## 新增feature测试设计策略
 
-| *序号* | *Feature*             | *重点*          | *设计思路*        | *备注* |
-| ----- | ---------------------- | --------------- | ---------------- | ------ |
-|1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)| *现**sig-high-performance-network**已提交测试策略PR，当前未合入* | | |
-|2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)| [kconfigDetector特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%ACkconfigDetector%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | | |
-|3|[【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH)| *待**sig-RaspberryPi**评审后补充* | | |
-|4|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://e.gitee.com/open_euler/issues/table?issue=I6CK4F)| *待**sig-Compiler**评审后补充* | | |
-|5|[【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z)|Discussion|Kernel | *待**sig-kernel**评审后补充* | | |
-|6|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)| *6.1内核继承内核继承特性的测试策略* | | |
-|7|[【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3)| *现**sig-DB**已提交测试策略PR，当前未合入* | | |
+| *序号* | *Feature*             | *测试设计策略* | *测试重点* |
+| ----- | ---------------------- | --------------- | ------ |
+|1|[【openEuler 23.03】新增高性能服务网格数据面Kmesh](https://gitee.com/openeuler/release-management/issues/I65S7M?from=project-issue)| *[高性能服务网格数据面Kmesh特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%AC%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E7%BD%91%E6%A0%BC%E6%95%B0%E6%8D%AE%E9%9D%A2Kmesh%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md)* | kmesh功能可满足需求设计规格要求；时延性能达到需求预期目标 |
+|2|[【openEuler 23.03】新增内核配置项错误值检查工具kconfigDetector](https://gitee.com/openeuler/release-management/issues/I69YOZ?from=project-issue)| [kconfigDetector特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%ACkconfigDetector%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | kconfigDectector安装、卸载，以及check_kconfig_dep指令功能测试 |
+|3|[【openEuler 23.03】支持树莓派](https://gitee.com/openeuler/release-management/issues/I6AACH)| [树莓派测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%AC%E6%A0%91%E8%8E%93%E6%B4%BE%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | 检验内核版本、各项基本功能的回归测试、各支持机型的硬件兼容性测试 |
+|4|[【openEuler 23.03】iSulad支持镜像RO数据管理目录拆分](https://gitee.com/openeuler/release-management/issues/I6E2SI)| [iSulad支持镜像RO数据管理目录拆分特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E6%96%B0%E5%A2%9EiSulad%E6%94%AF%E6%8C%81%E9%95%9C%E5%83%8FRO%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E7%9B%AE%E5%BD%95%E6%8B%86%E5%88%86%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | iSulad容器镜像功能，iSulad业务功能 |
+|5|[【openEuler 23.03】NFS客户端支持多路径](https://gitee.com/openeuler/kernel/issues/I6CR7Z)||  |
+|6|[【openEuler 23.03】支持embedded版本](https://gitee.com/openeuler/release-management/issues/I6DS1J?from=project-issue)|[嵌入式版本测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%89%88%E6%9C%AC%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md)| 特性功能测试与安全、可靠性、兼容性、性能专项测试 |
+|7|[【openEuler 23.03】openEuler 23.03 创新版本选择 6.1 内核](https://gitee.com/openeuler/kernel/issues/I6834I)|  | *6.1内核继承内核继承特性的测试策略* |
+|8|[【openEuler 23.03】新增openGemini时序数据库](https://gitee.com/openeuler/release-management/issues/I6EQV3)| [openGemini测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E7%89%88%E6%9C%ACopenGemini%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | openGemini部署、业务功能测试，SRE场景测试以及可靠性、性能、长稳专项测试 |
+|9|[【openEuler 23.03】secGear支持安全通道](https://gitee.com/openeuler/release-management/issues/I6EZTD?from=project-issue)| [secGear支持安全通道特性测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_23.03/openEuler%2023.03%20%E6%96%B0%E5%A2%9EsecGear%E6%94%AF%E6%8C%81%E5%AE%89%E5%85%A8%E9%80%9A%E9%81%93%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | secGear已有功能，secGear安全通道数据传输功能 |
+|10|[【openEuler 23.03】GCC编译器插件框架支持LTO复杂优化，实现插件IR覆盖Gimple 80%的功能](https://gitee.com/openeuler/release-management/issues/I6CK4F?from=project-issue)| [GCC支持LTO复杂优化测试策略]() | 18类Gimple正常使用运行；插件框架支持flto编译优化 |
 
 
 
@@ -226,11 +232,16 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 
 ### 兼容性测试
 
+#### 南向兼容性
+
 南向兼容性测试分板卡测试和整机适配测试两个部分。
 
 本版本作为创新版本，在内核进行6.x的升级情况下，牵引达成以下清单的兼容性基线目标，使能新硬件。主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的兼容性清单。
 
-*待兼容性sig补充 6.x内核版本基线兼容性清单*
+| **整机厂商** | **整机型号** | **CPU型号**   | **测试主体**      |
+| ------------ | ------------ | ------------- | ----------------- |
+| 华为         | 泰山200 2280 | 鲲鹏920       | sig-Compatibility |
+| 超聚变       | 2288H V5     | Intel cascade | sig-Compatibility |
 
 #### 北向兼容性
 
@@ -278,21 +289,21 @@ openEuler 23.03 版本按照社区release-manger团队既定的版本计划，�
 
 openEuler 23.03 版本按照社区开发模式进行运作，结合社区release-manager团队制定的版本计划规划相应的测试活动。
 
-| Stage  name          | Begin time | End time   | Days | Note                                      |
-| -------------------- | ---------- | ---------- | ---- | ----------------------------------------- |
-| Collect key features | 2022/12/01  | 2023/1/15 | 46   | 收集23.03版本关键特性（各SIG自行录入release-plan）   |
-| Develop | 2023/1/4  | 2023/2/20 | 46   | 特性完成开发和自验证，代码提交合入23.03   |
-| 内核升级 | 2023/1/4  | 2023/1/16 | 12   | master主线升级内核到6.1   |
-| BaseOS构建 | 2023/1/16  | 2023/1/31 | 15   | Master主线BaseOS构建，基础包能用   |
-| BaseOS测试 | 2023/2/1  | 2023/2/3 | 3   | 内核升级后BaseOS可用   |
-| 分支全量Build | 2023/2/6  | 2023/2/10 | 4   | 从master拉23.03分支，完成分支全量构建，基础包升级完毕   |
-| Alpha | 2023/2/13  | 2023/2/17 | 4   | 软件包升级完成，首版本发布   |
-| Test round 1 | 2023/2/20  | 2023/2/24 | 5   | 版本启动测试，内核冻结   |
-| Test round 2 | 2023/2/27  | 2023/3/3 | 5   |   |
-| Test round 3 | 2023/3/6  | 2023/3/10 | 5   | 特性合入冻结，不再接纳新特性代码合入   |
-| Test round 4 | 2023/3/13  | 2023/3/17 | 5   |    |
-| Test round 5 | 2023/3/20  | 2023/3/22 | 5   |    |
-| Release | 2023/3/30  | 2023/3/30 | 1   |    |
+| Stage name           | Begin time | End time  | Days | Note                                                  |
+| -------------------- | ---------- | --------- | ---- | ----------------------------------------------------- |
+| Collect key features | 2022/12/01 | 2023/1/15 | 46   | 收集23.03版本关键特性（各SIG自行录入release-plan）    |
+| Develop              | 2023/1/4   | 2023/2/20 | 46   | 特性完成开发和自验证，代码提交合入23.03               |
+| 内核升级             | 2023/1/4   | 2023/1/16 | 12   | master主线升级内核到6.1                               |
+| BaseOS构建           | 2023/1/16  | 2023/1/31 | 15   | Master主线BaseOS构建，基础包能用                      |
+| BaseOS测试           | 2023/2/1   | 2023/2/3  | 3    | 内核升级后BaseOS可用                                  |
+| 分支全量Build        | 2023/2/6   | 2023/2/10 | 4    | 从master拉23.03分支，完成分支全量构建，基础包升级完毕 |
+| Alpha                | 2023/2/13  | 2023/2/22 | 4    | 软件包升级完成，首版本发布                            |
+| Test round 1         | 2023/2/23  | 2023/3/1  | 5    | 版本启动测试，内核冻结                                |
+| Test round 2         | 2023/3/2   | 2023/3/7  | 5    |                                                       |
+| Test round 3         | 2023/3/8   | 2023/3/12 | 5    | 特性合入冻结，不再接纳新特性代码合入                  |
+| Test round 4         | 2023/3/21  | 2023/3/24 | 4    |                                                       |
+| Test round 5         | 2023/3/27  | 2023/3/29 | 3    |                                                       |
+| Release              | 2023/3/30  | 2023/3/30 | 1    |                                                       |
 
 
 
