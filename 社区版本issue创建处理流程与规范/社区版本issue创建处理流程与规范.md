@@ -18,22 +18,9 @@ openEuler是一个开源、免费的Linux发行版平台，通过开放的社区
 
 ## 缺陷类ISSUE处理流程
 
-```flow
-start=>start: ISSUE创建
-todo=>operation: 待办
-fixing=>operation: 进行中
-remain=>condition: 问题遗留评判
-tracing=>operation: 已挂起
-finished=>operation: 已完成
-accepted=>operation: 已验收
-end=>end: 版本内闭环(挂起问题持续跟踪)
+![缺陷类ISSUE处理流程](./缺陷类ISSUE处理流程.png)
 
-start->todo->fixing->remain
-remain(yes)->tracing
-remain(no)->finished->accepted
-tracing->end
-accepted->end
-```
 - 问题遗留需在release-sig例会上公开评审并给出结论。(挂起状态应由release成员进行修改)
+- `已完成`状态为问题修复责任开发者在修复问题或者给出一定闭环结论后修改的状态，并不等于`已验收`，后续需要问题提出者进行回归闭环
 - 已经过测试验收的已验收状态是为问题解决。（已验收状态应由测试人员(问题创建人)/QA committer/maintainer进行修改）
 - 版本`已挂起`的问题需要在后续版本持续跟踪
