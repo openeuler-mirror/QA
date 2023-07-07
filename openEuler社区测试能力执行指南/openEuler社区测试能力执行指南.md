@@ -745,8 +745,7 @@ Mail results [default yes]: no (设置为no)
 - 基础依赖包安装
 
   ```bash
-  dnf install rpm-build -y
-  dnf install docker -y
+  dnf -y install rpm-build docker git
   ```
 
 - 下载docker并打标签 
@@ -756,14 +755,26 @@ Mail results [default yes]: no (设置为no)
   docker pull lutianxiong/base-runner
   docker pull lutianxiong/base-msan-builder
   docker pull lutianxiong/msan-builder
-  docker pull lutianxiong/msan-libs-builder
+  docker pull xxrz/msan-libs-builder
   docker tag lutianxiong/base-builder gcr.io/oss-fuzz-base/base-builder
   docker tag lutianxiong/base-runner gcr.io/oss-fuzz-base/base-runner
   docker tag lutianxiong/base-msan-builder gcr.io/oss-fuzz-base/base-msan-builder
   docker tag lutianxiong/msan-builder gcr.io/oss-fuzz-base/msan-builder
-  
+  docker tag xxrz/msan-libs-builder gcr.io/oss-fuzz-base/msan-libs-builder
   ```
 
+- 查看镜像包适配的环境
+
+  ```bash 
+  docker image inspect “image的ID（需修改）” | grep Architecture
+  ```
+
+- 设置rpm打包环境
+
+  ```bash
+  dnf -y install rpmdevtools
+  rpmdev-setuptree    #自动在用户家目录生成一个rpmbuild的文件夹，作为工作路径
+  ```
 
 **测试安装部署：**
 
@@ -771,67 +782,137 @@ Mail results [default yes]: no (设置为no)
 
   ```bash
   git clone https://github.com/google/oss-fuzz.git
-  git clone https://gitee.com/src-openeuler/liblouis.git -b openEuler-22.03-LTS
+  git clone https://gitee.com/src-oepkgs/sleuthkit
   ```
-
 
 **测试执行准备：**
 
-- 查看有无/root/rpmbuild/SOURCES目录，没有则创建。把下载好的sleuthkit源码的spec文件复制到该目录下
-
+- 复制下载的sleuthkit源码包到/root/rpmbuild/SOURCES
   ```bash
-  mkdir -p /root/rpmbuild/SOURCES
   cp -r ./sleuthkit/* /root/rpmbuild/SOURCES
   ```
-
-- 解压下载好的源码包并打补丁
-
+- 切换到对应目录，解压对应源码包并打补丁
   ```bash
   cd /root/rpmbuild/SOURCES
   rpmbuild -bp sleuthkit.spec
   ```
-
 - 复制解压并打了补丁的源码文件到oss-fuzz框架sleuthkit目录下
-
   ```bash
   cd /root/rpmbuild/BUILD
-  cp -r sleuthkit-4.6.7/ ./openEuler/oss_fuzz/oss-fuzz-master/projects/sleuthkit/
+  cp -r sleuthkit-4.9.0/ /root/oss-fuzz/projects/sleuthkit
+  ```
+- 编辑Dockerfile文件
+  ```bash
+  cd /root/oss-fuzz/projects/sleuthkit
+  vim Dockerfile
   ```
 
-- 编辑Dockerfile文件，把下载sleuthkit的代码行替换为COPY sleuthkit-4.6.7 sleuthkit
-
   ```bash
-  vim Dockerfile
   FROM gcr.io/oss-fuzz-base/base-builder
-  RUN apt-get update && apt-get install -y make autoconf automake libtool
-  COPY sleuthkit-4.6.7 sleuthkit
+  RUN apt-get update && apt-get install -y make autoconf automake libtool zlib1g-dev libstdc++6
+  COPY sleuthkit-4.9.0 sleuthkit
   WORKDIR $SRC/sleuthkit
   COPY build.sh buildcorpus.sh sleuthkit_mem_img.h *_fuzzer.cc $SRC/
   ```
 
+- 创建daemon.json文件
+  ```bash
+  touch /etc/docker/daemon.json
+  ```
+- 在daemon.json文件中设置：
+  ```bash
+  { 
+    "experimental": true 
+  }
+  ```
+- 重启docker服务
+  ```bash
+  systemctl restart docker
+  ```
+- 查看experimental值为true
+  ```bash
+  docker info | grep -i 'experimental'
+  ```
+- 创建bootstrap文件
+  ```bash
+  vim /root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0/bootstrap
+  ```
+  ```bash
+  #!/bin/sh
+  aclocal \
+      && (libtoolize -c --force || glibtoolize -c --force) \
+      && automake --foreign --add-missing --copy \
+      && autoconf
 
+  echo "c_FileTypeSigModule"
+  (cd modules/c_FileTypeSigModule; sh ./bootstrap)
+  echo "c_LibExifModule"
+  (cd modules/c_LibExifModule; sh ./bootstrap)
+  ```
+- 赋权
+  ```bash
+  chmod a+x /root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0/bootstrap
+  ```
+- 复制modules文件到/root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0
+
+
+
+  ```bash
+  cd /opt/
+  git clone https://gitee.com/src-openeuler/sleuthkit（只下载复制其中的modules文件，因为4.9.0里面没有这个文件）
+  tar -xvf sleuthkit/sleuthkit-4.6.7.tar.gz
+  cp -rf /opt/sleuthkit-4.6.7/framework/modules /root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0/
+  ```
+  
 **测试执行及结果分析：**
 
 - 编译fuzz文件
 
   ```bash
+  cd /root/oss-fuzz/
   python3 infra/helper.py build_fuzzers --sanitizer undefined sleuthkit
-  python3 infra/helper.py build_fuzzers --sanitizer memory hisleuthkitredis
+  python3 infra/helper.py build_fuzzers --sanitizer memory sleuthkit
   python3 infra/helper.py build_fuzzers --sanitizer address sleuthkit
   ```
+- 出现报错missing libstdc++的规避措施（未研究出解决办法，只能注释代码）：
+  注释/root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0/configure中的两行
+  查询libstdc++
+  ```bash
+  #else
+  #  as_fn_error $? "missing libstdc++" "$LINENO" 5
+  ```
+  注释/root/oss-fuzz/projects/sleuthkit/sleuthkit-4.9.0/configure.ac中的一行
+  查询libstdc++
+  ```bash
+  #AC_CHECK_LIB(stdc++, main, , AC_MSG_ERROR([missing libstdc++]))
+  ```
+- 修改/root/oss-fuzz/infra/helper.py文件，添加执行最大时间参数和超时参数
+  ```bash
+  在344行添加如下代码：
+  run_fuzzer_parser.add_argument('-max_total_time',
+                                 help='seconds to run fuzzer',
+                                 default=1800)
+  run_fuzzer_parser.add_argument('-timeout',
+                                 help='timeout seconds to run fuzzer',
+                                 default=180)
 
-- 执行fuzz文件
+  在1392行添加如下代码：
+  args.fuzzer_args = [
+          f'-max_total_time={args.max_total_time}', f'-timeout={args.timeout}'
+      ]
+  ```
+- 执行fuzz文件，默认最大执行时间为1800秒，超时时间为180秒，如需修改可在下方执行语句后添加-max_total_time=1800 -timeout=180（修改具体值即可）
 
   ```bash
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_ext_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_fat_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_hfs_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_iso9660_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_ntfs_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_dos_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_gpt_fuzzer -max_total_time=1800 -timeout=180  
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_mac_fuzzer -max_total_time=1800 -timeout=180 
-  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_sun_fuzzer -max_total_time=1800 -timeout=180  
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_ext_fuzzer  
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_fat_fuzzer 
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_hfs_fuzzer  
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_iso9660_fuzzer 
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_fls_ntfs_fuzzer   
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_dos_fuzzer   
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_gpt_fuzzer 
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_mac_fuzzer  
+  python3 infra/helper.py run_fuzzer sleuthkit sleuthkit_mmls_sun_fuzzer
   
   ```
 
@@ -841,6 +922,19 @@ Mail results [default yes]: no (设置为no)
 
   ```bash
   python3 infra/helper.py reproduce sleuthkit sleuthkit_fls_hfs_fuzzer  crash-cdff9a3162823e34d63c04591442071ff1a9df72
+  ```
+- 日志解读
+  ```bash
+  #588154 NEW    cov: 263 ft: 484 corp: 219/112Kb lim: 4096 exec/s: 5026 rss: 31Mb L: 526/1048 MS: 1 ChangeASCIIInt-
+
+  cov：执行当前语料库覆盖的代码块或边缘总数
+  ft：libFuzzer 使用不同的信号来评估代码覆盖率，(edge coverage, edge counters, value profiles, indirect caller/callee)，这些信号的组合即为特性ft
+  crop：当前内存测试语料库中的条目数及其字节大小
+  Lim：当前对语料库中新词条长度的限制。随时间增加，直到达到最大长度（-max_len）
+  exec/s：每秒模糊器迭代次数
+  rss：当前内存消耗，对于 NEW 和 REDUCE 事件，输出行还包括有关产生新输入的变异操作的信息
+  L：新输入的大小 (字节)
+  MS：用于生成输入的变异操作的计数和列表
   ```
 
 ### 4.2、syzkaller
