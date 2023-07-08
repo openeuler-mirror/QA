@@ -371,16 +371,16 @@ openEuler 22.03-LTS-SP2 作为 openEuler 22.03-LTS SP1版本的增强扩展版�
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
 | 华为         | 泰山200                  | 鲲鹏920       | sig-Compatibility | PASS         |
-|              | 青松服务器               | FT S2500      | sig-Compatibility |              |
+|              | 青松服务器               | FT S2500      | sig-Compatibility | PASS         |
 | 超聚变       | 2288H V3                 | Intel cascade | sig-Compatibility | PASS         |
 |              | 2288H V5                 | Intel cascade | sig-Compatibility | PASS         |
-|              | 2288H V6                 | Intel SPR     | sig-Compatibility |              |
-| 中科可控     | R6230HA                  | Hygon 2号     | sig-Compatibility |              |
-|              | X7840H0                  | Hygon 3号     | sig-Compatibility |              |
-| AMD          | Supermicro AS-4124GS-TNR | AMD Milan     | sig-Compatibility |              |
-| 飞腾         | 公版                     | FT2000+       | sig-Compatibility |              |
-|              | 公版                     | FT S2500      | sig-Compatibility |              |
-| 兆芯         | ThinkSystem SR658Z       | KH-30000      | sig-Compatibility |              |
+|              | 2288H V6                 | Intel SPR     | sig-Compatibility | PASS         |
+| 中科可控     | R6230HA                  | Hygon 2号     | sig-Compatibility | PASS         |
+|              | X7840H0                  | Hygon 3号     | sig-Compatibility | PASS         |
+| AMD          | Supermicro AS-4124GS-TNR | AMD Milan     | sig-Compatibility | PASS         |
+| 飞腾         | 公版                     | FT2000+       | sig-Compatibility | PASS         |
+|              | 公版                     | FT S2500      | sig-Compatibility | PASS         |
+| 兆芯         | ThinkSystem SR658Z       | KH-30000      | sig-Compatibility | PASS         |
 
 整机兼容性清单以sig-Compatibility-Infra提供为主，社区各sig测试过程中使用的机器因未进行oec-hardware测试(进入社区兼容性清单质量要求)，故无法直接进行兼容性清单不在此描述。
 
