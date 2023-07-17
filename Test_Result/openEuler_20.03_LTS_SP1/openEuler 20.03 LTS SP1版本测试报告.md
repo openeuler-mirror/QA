@@ -157,7 +157,7 @@ SP1版本详细测试内容包括：
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注     |
 | ---- | -------- | :------------------------: | -------- |
 | 1    | 内核 | <font color=green>█</font> | 继承内核已有测试能力，通过使用开源测试套LTP和mmtest对内核基本功能进行测试，通过syzkaller进行fuzz测试，内核整体质量良好 |
-| 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | 覆盖容器领域iSula和docker引擎，安全容器、系统容器、普通容器和容器镜像的全量功能测试，整体质量良好 |
+| 2    | 容器(iSula/Docker/安全容器/系统容器/镜像) | <font color=green>█</font> | 覆盖容器领域iSula和Docker引擎，安全容器、系统容器、普通容器和容器镜像的全量功能测试，整体质量良好 |
 | 3    | 编译器(gcc/jdk) | <font color=green>█</font> |对gcc/jdk组件完成开源功能测试套supertest和开源fuzz测试套csmith\jfuzz的全量覆盖，组件整体质量良好|
 | 4    | vCPU热插  | <font color=green>█</font> | 虚拟机支持vCPU热插，特性用例全量测试，质量良好|
 | 5    | vMEM热插  | <font color=green>█</font> | 虚拟机支持vMEM热插，特性用例全量测试，质量良好 |
