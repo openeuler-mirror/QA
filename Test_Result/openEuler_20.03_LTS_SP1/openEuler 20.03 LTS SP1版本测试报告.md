@@ -43,13 +43,13 @@ openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持
 
 openEuler 20.03LTS SP1版本是20.03LTS的补丁版本，发布范围相较20.03LTS版本主要变动如下：
 
-1.  回合openEuler 20.09版本中部分特性
+1.  回合openEuler 20.09版本中部分特性；
 
-2.  增加UKUI/DDE桌面系统和树莓派交付件
+2.  增加UKUI/DDE桌面系统和树莓派交付件；
 
-3.  补齐/优化社区软件包生态
+3.  补齐/优化社区软件包生态；
 
-4.  修复bug和cve
+4.  修复bug和cve；
 
 openEuler 20.03 LTS SP1版本按照社区release-manager团队的计划，共规划5轮测试，详细的版本信息和测试时间如下表：
 
