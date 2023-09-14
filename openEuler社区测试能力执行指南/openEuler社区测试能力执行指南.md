@@ -31,7 +31,7 @@ bash mugen.sh -c --ip $ip --password $passwd --user $user --port $port
 ip：测试机的ip地址
 user：测试机的登录用户，默认为root
 password: 测试机的登录密码
-port：测试机ssh登陆端口，默认为22
+port：测试机ssh登录端口，默认为22
 环境变量文件：./conf/env.json
 {
     "NODE": [
