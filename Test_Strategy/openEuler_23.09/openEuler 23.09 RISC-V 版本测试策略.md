@@ -216,5 +216,5 @@ openEuler 23.09 RISC-V 版本按照社区开发模式进行运作，结合社区
 
 # 附件
 
-- 详细测试报告：https://gitee.com/yunxiangluo/open-euler-risc-v-23.09-test
+- 详细测试报告：https://gitee.com/yunxiangluo/openeuler-riscv-23.09-test
 - openEuler RISC-V 23.09 BaseOS 软件包发布列表：https://gitee.com/openeuler/RISC-V/tree/master/release/openEuler-23.09/baseos_list
