@@ -114,10 +114,10 @@ openEuler 22.03 LTS龙芯全量版本详细测试内容包括：
 | 2 | 容器(isula/docker/镜像)| <font color=green>█</font> | 覆盖容器领域iSula和docker引擎的基本能力，针对普通容器和容器镜像进行基础功能测试，用例执行全部通过，整体质量良好 |
 | 3 | 编译器(gcc/jdk) | <font color=green>█</font> | 对gcc/jdk组件完成测试套FPTEST、csmith、yarpgen基础功能的全量覆盖，全部测试通过，编译器组件整体质量良好 |
 | 4 | 虚拟化(qemu)| <font color=green>█</font> | 共在两个平台上分别执行测试，执行2×116个测试项，执行继承已有测试能力，覆盖虚拟化组件(qemu) 的基本功能、可靠性、稳定性及场景测试，使用开源的测试套tp-libvirt和tp-qemu开展各类测试，整体质量良好 |
-| 5 |安装部署| <font color=green>█</font>|共在五个平台上分别执行测试，执行5×74个测试项，覆盖各个安装选择环境以及pxe、网络源等重点测项，整体安装模块质量良好，全部测试通过，整个核心功能均可正常满足|        |
-| 6| A-Tune |<font color=red>●</font>|暂不支持 |社区仓库没有atune和atune-engine这两个安装包，所以本次测试暂不涉及该部分用例|
-| 7 | 支持UKUI桌面| <font color=red>●</font> | 暂不支持|安装过程中缺少依赖，部分软件包正在构建中，将该问题转至相应的sig组  |
-| 8 | 支持DDE桌面| <font color=red>●</font>| 暂不支持 |安装过程中缺少依赖，部分软件包正在构建总，将该问题转至相应的sig组|
+| 5 |安装部署| <font color=green>█</font>|共在五个平台上分别执行测试，执行5×74个测试项，覆盖各个安装选择环境以及pxe、网络源等重点测项，整体安装模块质量良好，全部测试通过，整个核心功能均可正常满足| 
+| 6| A-Tune |<font color=red>●</font>|暂不支持，社区仓库没有atune和atune-engine这两个安装包，所以本次测试暂不涉及该部分用例 |
+| 7 | 支持UKUI桌面| <font color=red>●</font> | 暂不支持，安装过程中缺少依赖，部分软件包正在构建中，将该问题转至相应的sig组|
+| 8 | 支持DDE桌面| <font color=red>●</font>| 暂不支持，安装过程中缺少依赖，部分软件包正在构建总，将该问题转至相应的sig组 |
 | 9 | 支持xfce桌面 | <font color=blue>▲</font> | 共在两个平台上分别执行测试，执行2×93个测试项，整体核心功能(重要组件和系统插件)稳定正常，发现3个问题，，3个问题遗留，整体核心功能可正常满足使用，整体质量良好 |
 | 10 | 支持kiran桌面 | <font color=blue>▲</font> | 共在两个平台上分别执行测试，执行2×93个测试项，整体核心功能(重要组件和系统插件)稳定正常，发现3个问题，其中2个问题为无效问题，1个问题遗留，整体质量良好 |
 | 11| 支持gnome桌面 | <font color=green>█</font>| 共在两个平台上分别执行测试，执行2×63个测试项，整体核心功能(重要组件和系统插件)稳定正常，全部测试通过，整体核心功能可正常满足，整体质量良好 |
@@ -125,8 +125,8 @@ openEuler 22.03 LTS龙芯全量版本详细测试内容包括：
 | 13 | 支持内存分级扩展| <font color=green>█</font> | 共在两个平台上分别执行测试，根据测试代码https://gitee.com/openeuler/mugen/pulls/1027 展开测试，测试全部通过；整体质量良好<br/>约束：1、客户端和服务端需要在同一个服务器上部署，不支持跨服务器通信的场景<br/>2、仅支持扫描进程名小于或等于15个字符长度的目标进程 |
 |14 | 定制裁剪工具套件oemaker( | <font color=green>█</font> | 覆盖裁剪工具的基本命令功能，并对异常参数进行覆盖；另外对裁剪出来的镜像进行安装部署及基本验证，保障裁剪工具的E2E能力完整性 |
 | 15 | 支持eggo | <font color=red>●</font>|暂不支持|everything仓库没有提供openstack相关软件包|
-| 16 |支持secGear |<font color=red>●</font>| 暂不支持                         | 源里没有相应的软件包  |
-| 17 |支持secPave | <font color=red>●</font>| 暂不支持                         | 暂不支持pav相关命令的测试 |
+| 16 |支持secGear |<font color=red>●</font>| 暂不支持，源里没有相应的软件包  |
+| 17 |支持secPave | <font color=red>●</font>| 暂不支持，暂不支持pav相关命令的测试 |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
