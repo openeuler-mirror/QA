@@ -403,16 +403,21 @@ gcc bc make libtool automake gcc-c++ libtirpc-devel
 
 **基本概念**
 
-Unixbench是一个类unix戏台下的开源性能测试工具，被广泛用于测试linux系统主机的综合性能，测试结果不仅依赖硬件配置（CPU/内存/硬盘），还取决于操作系统、库甚至编译器的差异。既可以评估单进程性能，也可以评估多进程性能。
+Unixbench是一个类unix系统下的开源性能测试工具，被广泛用于测试linux系统主机的综合性能，测试结果不仅依赖硬件配置（CPU/内存/硬盘），还取决于操作系统、库甚至编译器的差异。既可以评估单进程性能，也可以评估多进程性能。
 
-**工具下载**
+**预置条件**
 
-工具版本：5.1.3
-下载地址：https://github.com/kdlucas/byte-unixbench.git
+1.获取Unixbench软件包5.1.3版本  
+下载地址：https://github.com/kdlucas/byte-unixbench/archive/refs/tags/v5.1.3.tar.gz  
 
 **编译安装**
 
-1、下载工具并解压
+1.安装依赖包
+```shell
+yum install perl -y
+```
+
+2.下载工具并解压
 
 ```shell
 wget https://github.com/kdlucas/byte-unixbench/archive/refs/tags/v5.1.3.tar.gz
@@ -420,14 +425,14 @@ tar -xzf v5.1.3.tar.gz
 cd byte-unixbench-5.1.3/UnixBench/
 ```
 
-2、修改Run参数
-由于工具默认只支持测试最大16线程测试，需要将Run第109行的maxCopies参数更改为系统的逻辑核数以满足超过16线程的多线程测试，比如2p 6426配置参数需要更改为128,建议改为通用128以适配各种场景。
+3.修改Run运行文件的参数
+由于工具默认只支持测试最大16线程测试，需要将Run第109行的maxCopies参数更改为系统的逻辑核数以满足超过16线程的多线程测试。
 
 ```shell
 sed -i "s/\('system.*'maxCopies'\) => 16/\1 => `nproc`/" Run
 ```
 
-3、编译
+4.编译
 
 ```shell
 make all
@@ -435,13 +440,13 @@ make all
 
 **测试执行**
 
-**1）单进程测试**
+1.单进程测试
 
 ```shell
 ./Run -c 1
 ```
 
-**2）#多进程测试，进程数根据配置环境逻辑核数调整**
+2.多进程测试，进程数根据配置环境逻辑核数调整
 
 ```shell
 ./Run -c 96
@@ -449,262 +454,311 @@ make all
 
 **结果查看**
 
-测试完成后结果会在运行界打印出来，或可进入results文件查看。
+测试完成后结果会在运行界面打印出来，或可进入results文件查看。
 
 ### 2.2、netperf
 
 **基本概念**
 
-Netperf是一种网络性能测试工具，主要基于TCP或UDP的传输。etperf根据应用的不同，可以进行不同模式的网络性能测试，即批量数据传输（bulk data transfer）模式和请求/应答（request/reponse）模式。可以测量TCP和UDP传输的吞吐量、时延、CPU 占用率等性能参数。Netperf测试结果所反映的是一个系统能够以多快的速度向另一个系统发送数据，以及另一个系统能够以多快的速度接收数据。
+netperf是一种网络性能测试工具，主要基于TCP或UDP的传输。netperf根据应用的不同，可以进行不同模式的网络性能测试，即批量数据传输（bulk data transfer）模式和请求/应答（request/response）模式。可以测量TCP和UDP传输的吞吐量、时延、CPU 占用率等性能参数。netperf测试结果所反映的是一个系统能够以多快的速度向另一个系统发送数据，以及另一个系统能够以多快的速度接收数据。
 
-**工具下载**
+**预置条件**
 
-工具版本：2.7.0
-下载地址：https://github.com/HewlettPackard/netperf/archive/netperf-2.7.0.tar.gz
+1.获取netperf软件包  
+下载地址：https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz  
+2.客户端主机和服务端主机通过板载光口直连通信  
+3.服务端主机关闭防火墙
 
 **编译安装**
 
-1、安装依赖包
+1.安装依赖包
 
 ```shell
-yum install automake -y
+yum install automake texinfo -y
 ```
 
-2、下载源码并编译
+2.在客户端主机和服务端主机分别安装netperf软件包
 
 ```shell
-wget https://github.com/HewlettPackard/netperf/archive/netperf-2.7.0.tar.gz
-tar -xzf netperf-netperf-2.7.0.tar.gz
+wget https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz
+tar xvf netperf-2.7.0.tar.gz
 cd netperf-netperf-2.7.0
-echo 'ac_cv_func_setpgrp_void=yes' > config.cache
-./autogen.sh
+```
+根据架构生成对应Makefile：  
+arm:
+```shell
+./configure CFLAGS=-fcommon --host=arm-linux --build=arm-linux
+```
+x86:
+```shell
+./configure CFLAGS=-fcommon --host=x86-linux --build=x86-linux
 ```
 
-以arm环境为例，x86请将参数改为x86
-
+执行编译
 ```shell
-./configure CC=${CROSS_COMPILE}gcc CFLAGS=-static --host=arm --build=arm  CFLAGS=-fcommon --config-cache
-make && make install
+make clean && make -j
 ```
 
 **测试执行**
 
-1、切换到src目录
-2、目录下生成test-netper.sh测试脚本内容如下
+1.服务端主机运行netserver
+
+```shell
+systemctl stop firewalld
+cd src
+./netserver
+```
+2.客户端主机执行压测命令，压测脚本命令如下：
 
 ```shell
 #!/bin/bash
 host_ip=$1
-for i in 1 64 128 256 512 1024 1500 2048 4096 9000 16384 32768 65536;do
+for i in 1 64 512 65536;do
 ./netperf -t TCP_STREAM -H $host_ip -l 60 -- -m $i
 done
-for i in 1 64 128 256 512 1024 1500 2048 4096 9000 16384 32768;do
-./netperf -t UDP_STREAM -H $host_ip -l 60 -- -m $i -R 1
+
+for i in 1 64 128 256 512 32768;do
+./netperf -t UDP_STREAM -H $host_ip -l 60 -- -m $i
 done
+
 ./netperf -t TCP_RR -H $host_ip
 ./netperf -t TCP_CRR -H $host_ip
 ./netperf -t UDP_RR -H $host_ip
 ```
 
-3、在客户端启动netserver
+3.执行测试脚本时传入服务端主机ip
+
+**请替换真实服务端ip**
 
 ```shell
-yum install netperf -y
-netserver
-```
-
-4、执行测试脚本传入测试环境ip
-**请替换为真实客户机ip**
-
-```shell
-sh test-netper.sh {client_ip}
+sh test-netperf.sh ${server_ip}
 ```
 
 **结果查看**
 
-测试完成后结果会在运行界打印出来
+测试完成后结果会在运行界面打印出来。
 
-### 2.3、libmicro
+### 2.3、iozone
 
 **基本概念**
 
-衡量各自系统调用和lib库调用的性能，选择了259个常用的系统调用来评测操作系统系统调用方面的性能。
+ iozone是一个性能测试工具，用于评估存储系统（如磁盘、文件系统、网络文件系统等）的I/O性能。它可以进行各种读取和写入操作的测试，并提供了一系列的性能指标和报告。iozone可以测试顺序读取、随机读取、顺序写入、随机写入等不同类型的操作，并测量吞吐量、延迟、文件系统缓存效果等性能指标。
 
-**工具下载**
+**预置条件**
 
-工具版本：0.4.0
-下载地址：https://codeload.github.com/redhat-performance/libMicro/zip/0.4.0-rh
+1.获取iozone3_430软件包  
+下载地址：https://www.iozone.org/src/current/iozone3_430.tar  
+2.测试硬盘为NVMe盘
 
 **编译安装**
 
 ```shell
-wget https://codeload.github.com/redhat-performance/libMicro/zip/0.4.0-rh
-unzip 0.4.0-rh
-cd libMicro-0.4.0-rh
-make CFLAGS=-static CC=${CROSS_COMPILE}gcc ARCH=${ARCH}
+wget https://www.iozone.org/src/current/iozone3_430.tar
+tar xvf iozone3_430.tar
+cd iozone3_430/src/current
+make clean && make CFLAGS=-fcommon linux
 ```
 
 **测试执行**
 
+注：以下代码以shell脚本形式承载。
+
+1.挂载待测NVMe数据盘
+
+$disk替换为挂载数据盘名称
 ```shell
-sh bench.sh
+umount /dev/$disk && rm -rf /test && mkdir /test
+mkfs.ext4 -F -E lazy_itable_init=0 /dev/$disk
+mount -odioread_lock /dev/$disk /test
 ```
 
+2.获取主机内存大小
+
+```shell
+num_dimm=`dmidecode -t 17 | grep "Size: [0-9]" | sed 's/^[\t]*//g' | grep ^"S" | wc -l`
+
+dmidecode -t 17 | grep "Size: [0-9]" | grep "32768 MB" >/dev/null 2>&1 && dimm_size=32
+dmidecode -t 17 | grep "Size: [0-9]" | grep "32 GB" >/dev/null 2>&1 && dimm_size=32
+dmidecode -t 17 | grep "Size: [0-9]" | grep "64 GB" >/dev/null 2>&1 && dimm_size=64
+dmidecode -t 17 | grep "Size: [0-9]" | grep "128 GB" >/dev/null 2>&1 && dimm_size=128
+
+mem_size=`expr $num_dimm \* ${dimm_size}`
+half_mem_size=`expr $mem_size / 2`
+double_mem_size=`expr $mem_size + $mem_size`
+```
+
+3.针对测试文件为主机内存大小的1/2、1倍、2倍进行测试，测试命令如下：
+```shell
+for i in $double_mem_size $mem_size $half_mem_size
+do
+    sync
+    echo 3 > /proc/sys/vm/drop_caches
+    taskset -c 3 ./iozone -i 0 -i 1 -i 2 -s ${i}g -r 16m -f /test/tmptest -Rb iozone_${i}g.xls
+    sleep 5
+done
+```
 **结果查看**
 
-测试完成后结果会在运行界面打印出来
+测试完成后记录所有结果，即write、rewrite、read、reread、random_write、random_reed。
 
 ### 2.4、fio
 
 **基本概念**
 
-Fio是测试IOPS的工具，用来对磁盘进行压力测试和验证。磁盘IO是检查磁盘性能的重要指标，可以按照负载情况分成顺序读写、随机读写两大类。FIO是一个可以产生很多线程或进程并执行用户指定的特定类型I/O操作的工具，Fio的典型用法是编译和模拟的I/O负载匹配的作业文件。也就是说Fio是一个多线程io生成工具，可以生成多种IO模式，用来测试磁盘设备的性能（也包括文件系统：如针对网络文件系统NFS的IO测试）
+Fio是测试IOPS的工具，用来对磁盘进行压力测试和验证。磁盘IO是检查磁盘性能的重要指标，可以按照负载情况分成顺序读写、随机读写两大类。FIO是一个可以产生很多线程或进程并执行用户指定的特定类型I/O操作的工具，Fio的典型用法是编译和模拟的I/O负载匹配的作业文件。也就是说Fio是一个多线程IO生成工具，可以生成多种IO模式，用来测试磁盘设备的性能（也包括文件系统：如针对网络文件系统NFS的IO测试）。
 
-**工具下载**
+**预置条件**
 
-工具版本：3.12
-下载地址：https://git.kernel.dk/cgit/fio/snapshot/fio-3.12.tar.gz
+1.获取fio-3.33版本软件包  
+下载地址：https://github.com/axboe/fio/archive/refs/tags/fio-3.33.zip  
+2.测试硬盘为NVMe盘
 
 **编译安装**
 
+1.安装依赖包
 ```shell
-wget https://git.kernel.dk/cgit/fio/snapshot/fio-3.12.tar.gz
-tar -xzf fio-3.12.tar.gz
-cd fio-3.12
-./configure  --cc=${CROSS_COMPILE}gcc --extra-cflags=-static --extra-cflags=-static
-make && make install
+yum install -y libaio-devel
+```
+
+2.编译安装
+```shell
+wget https://github.com/axboe/fio/archive/refs/tags/fio-3.33.zip
+unzip fio-fio-3.33.zip
+cd fio-fio-3.33
+make clean
+./configure --extra-cflags=-fcommon
+make -j
 ```
 
 **测试执行**
 
-1、生成fio-test.sh测试脚本,
+1.生成fio-test.sh测试脚本，测试命令如下：
 
 ```shell
 #!/bin/bash
+disk=nvme0n1
 numjobs=10
 iodepth=10
-mkdir /test
+mkdir -p /test
 for rw in read write randread randwrite randrw;do
-for bs in 4 16 32 64 128 256 512 1024;do
-mkfs.ext4 -F /dev/nvme0n1
-mount /dev/nvme0n1 /test
-if[ $rw == "randrw" ];then
-./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -rwmixread=70 -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reporting -name=job1
-else
-./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reportin -name=job1
-fi
-umount /test
-sleep 30
-done
+    for bs in 4 16 32 64 128 256 512 1024;do
+        mkfs.ext4 -F -E lazy_itable_init=0 /dev/$disk
+        mount /dev/$disk /test
+        if[ $rw == "randrw" ];then
+            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -rwmixread=70 -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reporting -name=job1
+        else
+            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reporting -name=job1
+        fi
+        umount /test
+        sleep 20
+    done
 done
 ```
 
 **结果查看**
 
-测试完成后结果会在运行界面打印出来
+测试完成后,记录每个测试项的IOPS和带宽值。
 
 ### 2.5、stream
 
 **基本概念**
 
-stream是通过对数组的copy，scale，add，triad操作来测试CPU的内存访问带宽和浮点运算能力。Copy为最简单的操作，即从一个内存单元中读取一个数，并复制到另一个内存单元，有2次访存操作。Scale是乘法操作，从一个内存单元中读取一个数，与常数Scale相乘，得到的结果写入另一个内存单元，有2次访存。Add是加法操作，从两个内存单元中分别读取两个数，将其进行加法操作，得到的结果写入另一个内存单元中，有2次读和1次写共3次访存。Triad是前面三种的结合，先从内存中读取一个数，与scale相乘得到一个乘积，然后从一个内存单元中读取一个数与之前的乘积相加，得到的结果再写入内存，所以，有2次读和1次写共三次访存操作。
+stream是通过对数组的copy,scale,add,triad操作来测试CPU的内存访问带宽和浮点运算能力。Copy为最简单的操作，即从一个内存单元中读取一个数，并复制到另一个内存单元，有2次访存操作。Scale是乘法操作，从一个内存单元中读取一个数，与常数Scale相乘，得到的结果写入另一个内存单元，有2次访存。Add是加法操作，从两个内存单元中分别读取两个数，将其进行加法操作，得到的结果写入另一个内存单元中，有2次读和1次写共3次访存。Triad是前面三种的结合，先从内存中读取一个数，与scale相乘得到一个乘积，然后从一个内存单元中读取一个数与之前的乘积相加，得到的结果再写入内存，所以，有2次读和1次写共三次访存操作。
 
-**工具下载**
+**预置条件**
 
-工具版本：5.10
-下载地址：https://gitee.com/thesamename/STREAM.git
+1.获取stream软件包  
+下载地址：https://github.com/jeffhammond/STREAM/archive/master.zip
 
 **编译安装**
 
-1、下载源码
+1.下载软件包解压缩
 
 ```shell
-git clone https://gitee.com/thesamename/STREAM.git
-cd STREAM
+wget https://github.com/jeffhammond/STREAM/archive/master.zip
+unzip STREAM-master.zip
+chmod -R +x STREAM-master
+cd STREAM-master
 ```
 
-2、安装依赖 gcc、gfortran
+2.编译安装
 
 ```shell
-yum install gcc gfortran
+gcc -fopenmp -O -DSTREAM_ARRAY_SIZE=100000000 stream.c -o fstream100M
 ```
-
-2、修改Makefile文件
-
-```shell
-sed -i "s/CC =.*/CC = gcc/" Makefile
-sed -i "s/FC =.*/FC = gfortran/" Makefile
-```
-
-3、编译
-
-```shell
-make
-```
+注：参数-DSTREAM_ARRAY_SIZE表示测试数组大小，该参数的数值需要远大于CPU最高级缓存（一般为L3 Cache）的大小，通常是四倍以上。  
 
 **测试执行**
 
+1.执行单核测试：
 ```shell
-./stream_c.exe
+export OMP_NUM_THREADS=1
+export GOMP_CPU_AFFINITY=0
+sync && sysctl -w vm.drop_caches=3
+./fstream100M
+```
+2.执行满核测试：
+```shell
+export OMP_NUM_THREADS=`nproc`
+export GOMP_CPU_AFFINITY=0-`expr $(nproc) - 1`
+sync && sysctl -w vm.drop_caches=3
+./fstream100M
 ```
 
 **结果查看**
 
-测试完成后结果会在运行界打印出来
+测试完成后结果会在运行界面打印出来。
 
 ### 2.6、lmbench
 
 **基本概念**
 
-lmbench是个用于评价系统综合性能的多平台开源benchmark，能够测试包括文档读写、内存操作、进程创建销毁开销、网络等性能，测试方法简单。
+lmbench是一套简易可移植的，符合 ANSI/C 标准为 UNIX/POSIX 而制定的微型测评工具。一般来说，它衡量两个关键特征：反应时间和带宽。它能够测试包括文档读写、内存操作、进程创建销毁开销、网络等性能。
 
-**工具下载**
+**预置条件**
 
-工具版本：3.0
-下载地址：https://github.com/intel/lmbench.git
+1.获取lmbench软件包  
+下载地址：https://sourceforge.net/projects/lmbench/files/OldFiles/lmbench-3.0-a4.tgz/download  
 
 **编译安装**
 
-1、下载源码
-
+1.安装依赖包
 ```shell
-git clone https://github.com/intel/lmbench.git
-cd lmbench
+yum install -y libtirpc libtirpc-devel
 ```
 
-2、安装依赖包
-
+2.安装lmbench软件包
 ```shell
-yum install libtirpc libtirpc-devel
-cp /usr/include/netdb.h /usr/include/tirpc/rpc/
+tar xvf lmbench-3.0-a4.tgz
+cd lmbench-3.0-a4
 ```
 
-注意：如果是openEuler环需要修改scripts/build文件
-
+3.修改相关配置使编译通过  
+修改scripts/gnu-os脚本，将158、166、823行的`arm*`改为`aarch64*` (注：只针对ARM架构，x86架构不用修改)。  
+修改src/disk.c文件，将292行和294行的`llseek`函数修改为`lseek64`。  
+修改scripts/build脚本，在`LDLIBS=-lm`下面添加两行：
 ```shell
- sed -i 's#LDLIBS=-lm.*#LDLIBS="-lm -ltirpc"\nCFLAGS="${CFLAGS} -I /usr/include/tirpc"#' build
+LDLIBS="${LDLIBS} -ltirpc"
+CFLAGS="${CFLAGS} -I/usr/include/tirpc"
 ```
 
-3、执行编译命令
-
+4.执行编译命令
 ```shell
-make
+make clobber clean && make
 ```
 
 **测试执行**
 
-1、进入交互式模式
-
+1.进入交互模式
 ```shell
 make results
 ```
 
-2、输出指令
-
+2.配置测试所需config参数
 ```shell
 MULTIPLE COPIES[DEFAULT 1]: (默认回车)
 Job placement selection[DEFAULT 1]: （默认回车）
-MB[default 182159]:4096  (输入4096)
+MB[default 182159]:512  (输入512)
 SUBSET （ALL|HARWARE|OS|DEVELOPMENT）[default all]:(默认回车)
 FASTMEM[default no]:(默认回车)
 SLOWFS[default no]: (默认回车)
@@ -718,7 +772,7 @@ Mail results [default yes]: no (设置为no)
 
 **结果查看**
 
-测试完成后结果会在运行界面打印出来
+测试完成后结果会在运行界面打印出来。
 
 ## 3、DFX测试
 
