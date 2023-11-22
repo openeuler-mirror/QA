@@ -120,6 +120,8 @@ openEuler 20.03 LTS SP4版本交付[需求列表](hhttps://gitee.com/openeuler/r
 | ----- | ---------------------- | --------------- | ------ |
 |1|支持eNFS|||
 |2|支持metalink|||
+|3|支持openstack Train   | 重点验证openstack T版本发布主要组件的安装部署、基本功能| |
+|4|支持DDE桌面            | 验证DDE在openEuler版本上的功能及其他性能指标 | |
 
 
 ## 继承feature/组件测试设计策略
