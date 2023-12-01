@@ -273,7 +273,51 @@ openEuler 20.03-LTS-SP4 作为 openEuler 20.03-LTS SP3版本的增强扩展版�
 
 | **板卡类型** | **覆盖范围**    | **测试主体**      | **chipVendor** | **boardModel**     | **chipModel**      | **测试结果** |
 | ------------ | --------------- | ----------------- | -------------- | ------------------ | ------------------ | ------------ |
-| 待刷新         |              |                    |                |                    |                    |              |
+| RAID         | 适配7张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Avago          | 9560-8i            | SAS3908            | PASS         |
+|              |                 |                   | Avago          | SP460C-M           | SAS3516            | PASS         |
+|              |                 |                   | Avago          | SR150-M            | SAS3408            | PASS         |
+|              |                 |                   | Avago          | SR430C-M           | SAS-3 3108         | PASS         |
+|              |                 |                   | Avago          | SR450C-M           | SAS3508         | PASS         |
+|              |                 |                   | Avago          | SR130              | SAS3008            | PASS         |
+|              |                 |                   | Avago          | PMC3152           | PM8204            | PASS         |
+| FC           | 适配11张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Emulex         | LPe36002-M64       | LPe35000/LPe36000  | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2560            | ISP2532            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2690          | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2692            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2740            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2742            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2870            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2872            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2770            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2772            | ISP2812            | PASS         |
+|              |                 |                   | Emulex         | LPe31002-M6        | LPe31000/LPe32000  | PASS         |
+| GPU          | 适配3张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | NVIDIA         | Tesla T4           | TU104GL            | PASS         |
+|              |                 |                   | NVIDIA         | Tesla V100         | GV100GL            | PASS         |
+|              |                 |                   | NVIDIA         | Tesla A100         | GA100              | PASS         |
+| SSD          | 适配1张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Huawei         | ES3600C V5-3200GB  | ES3000       | PASS         |
+| IB           | 适配2张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Mellanox       | SP350              | ConnectX-5         | PASS         |
+|              |                 |                   | Mellanox       | MCX653105A-EFAT    | ConnectX-6         | PASS         |
+| NIC          | 适配NIC板卡13张 | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Intel          | BCM957414A4142CC        |BCM57414           | PASS         |
+|              |                 |                   | Intel          | E810-XXV-2        |E810-XXV           | PASS         |
+|              |                 |                   | Huawei         | SP580              | Hi1822             | PASS         |
+|              |                 |                   | Mellanox       | SP382              | ConnectX-5         | PASS         |
+|              |                 |                   | Mellanox       | SP380              | ConnectX-4 Lx      | PASS         |
+|              |                 |                   | Intel          | I350-F2            | I350               | PASS         |
+|              |                 |                   | Intel          | SP310            | 82599ES               | PASS         |
+|              |                 |                   | Netswift       | RP1000      | RP1000      | PASS         |
+|              |                 |                   | Netswift       | RP2000      | RP2000      | PASS         |
+|              |                 |                   | Netswift          | SF200HT         | SF200HT              | PASS         |
+|              |                 |                   | Netswift       | SF200T             | SF200T | PASS         |
+|              |                 |                   | Netswift          | SF 400HT              | SF 400HT               | PASS         |
+|              |                 |                   | Netswift          | SF 400T         | SF400T               | PASS         |
+
+
 
 
 此版本的整机兼容性适配测试主要使用社区开源硬件兼容性测试工具oec-hardware，从整机的系统兼容性、CPU调频特性、kabi规范性、稳定性、硬件配置兼容性等方面进行适配，适配完成后将在社区发布此版本的整机兼容性清单。
@@ -282,7 +326,11 @@ openEuler 20.03-LTS-SP4 作为 openEuler 20.03-LTS SP3版本的增强扩展版�
 
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
-| 待刷新       |                          |               |                   |              |
+| 华为         | 泰山200                  | 鲲鹏920        | sig-Compatibility | PASS         |
+| 超聚变       | 2288H V5                 | Intel cascade | sig-Compatibility | PASS         |
+|              | 2288H V6                 | icelake      | sig-Compatibility | PASS         |
+| AMD          | ERYC 3                   | cascade      | sig-Compatibility | PASS         |
+
 
 
 整机兼容性清单以sig-Compatibility-Infra提供为主，社区各sig测试过程中使用的机器因未进行oec-hardware测试(进入社区兼容性清单质量要求)，故无法直接进行兼容性清单不在此描述。
@@ -344,7 +392,7 @@ openEuler 20.03 LTS SP4 版本共发现问题 239 个，有效问题 226 个，�
 | openEuler 20.03 LTS SP4 RC1 |     80     |     77      |       3       |     0       | Beta版本                  |
 | openEuler 20.03 LTS SP4 RC2 |     15     |     14      |       1       |     0       | 重点特性测试                |
 | openEuler 20.03 LTS SP4 RC3 |     10     |      8      |       2       |      0       | 全量集成                   |
-| openEuler 20.03 LTS SP4 RC4 |          |           |              |             | 全量集成                   |
+| openEuler 20.03 LTS SP4 RC4 |      6    |        5   |           1   |        0     | 全量集成                   |
 | openEuler 20.03 LTS SP4 RC5 |          |           |              |             | 回归测试                   |
 | openEuler 20.03 LTS SP4 RC6 |          |           |              |             | 版本发布验收测试(回归测试) |
 
