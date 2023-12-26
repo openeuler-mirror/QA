@@ -8,7 +8,8 @@
 | 日期       | 修订版本 | 修改章节          | 修改描述    |
 | ---------- | -------- | ----------------- | ----------- |
 | 2023/12/18 | 1.0.0    | 初稿, 基于RC1/2/3 | ga_beng_cui |
-| 2023/12/24 | 1.0.1    | 刷新测试结论 | disnight |
+| 2023/12/24 | 1.0.1    | 刷新测试结论  　　　| disnight |
+| 2023/12/26 | 1.0.2    | 刷新兼容性测试结论  | ga_beng_cui |
 
 
 关键词：
@@ -125,7 +126,6 @@ openEuler 22.03 LTS SP3版本交付需求列表如下，详情见[openEuler-22.0
 | 支持Kiran桌面                             | sig-KIRAN-DESKTOP            | sig-KIRAN-DESKTOP            | 验证kiran桌面在openEuler版本上的可安装卸载和基本功能         |
 | 支持南向兼容性                            | sig-Compatibility-Infra      | sig-QA                       | 验证openEuler版本在不同处理器上的可安装和可使用性，覆盖整机兼容性测试和社区集成测试 |
 | 支持树莓派发布件                          | sig-RaspberryPi              | sig-RaspberryPi              | 对树莓派发布件进行安装、基本功能、兼容性及稳定性的测试       |
-| 支持RISC-V                                | sig-RISC-V                   | sig-RISC-V                   | 验证openEuler版本在RISV-V处理器上的可安装和可使用性          |
 | 内核                                      | Kernel                       | Kernel                       | 关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
 | 容器(isula/docker/安全容器/系统容器/镜像) | sig-CloudNative              | sig-CloudNative              | 关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
 | 虚拟化                                    | Virt                         | Virt                         | 重点关注回合新特性后，新版本上虚拟化相关组件的基本功能       |
@@ -169,7 +169,7 @@ openEuler 22.03 LTS SP3版本交付需求列表如下，详情见[openEuler-22.0
 
    openEuler 22.03 LTS SP3 版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 1轮重点特性测试 + 2轮全量测试 + 1轮回归测试 + 1轮版本发布验收测试；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项；第2轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫描及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；第3、4轮全量测试开展版本交付的所有特性和各类专项测试；第5轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；第6轮版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-   openEuler 22.03 LTS SP3 版本共发现问题 328 个，有效问题 316 个，无效问题 12 个。遗留问题 0 个(详见遗留问题章节)。版本整体质量良好。
+   openEuler 22.03 LTS SP3 版本共发现问题 392 个，有效问题 371 个，无效问题 21 个。遗留问题 3 个(详见遗留问题章节)。版本整体质量良好。
 
 
 
@@ -199,8 +199,10 @@ openEuler 22.03 LTS SP3 版本详细测试内容包括：
 
 ### 4.1.2 整体软件范围变化分析
 
-经比较，openEuler-22.03-LTS-SP3对比openEuler-22.03-LTS-SP2存在13项版本号降级，但存在74项release号降级的软件，经定位系SP2 update版本同步升级时开发者处理流程不规范导致，此87项软件均已提单跟踪，于RC4完成闭环。
-
+经比较，openEuler-22.03-LTS-SP3对比openEuler-22.03-LTS-SP2存在13项版本号降级，但存在74项release号降级的软件，经定位系SP2 update版本同步升级时开发者处理流程不规范导致，此87项软件均已提单跟踪，除pytorch和sentencepiece外，其他均于RC4完成闭环。
+issue链接：
+https://gitee.com/src-openeuler/pytorch/issues/I8JEVL?from=project-issue
+https://gitee.com/src-openeuler/sentencepiece/issues/I8I5C3?from=project-issue
 迭代测试过程中，全量测试环节openEuler-22.03-LTS-SP3 RC3到RC4不存在软件版本降级，同时也不存在release降级。
 
 
@@ -225,36 +227,35 @@ openEuler 22.03 LTS SP3 版本详细测试内容包括：
 | 10   | 支持南向兼容性                            | <font color=green>█</font> | 继承已有测试能力，关注板卡和整机适配的兼容性测试             |
 | 11   | 支持北向兼容性                            | <font color=green>█</font> | 继承已有测试能力，关注软件所仓库对已正式release版本的北向软件的功能验证 |
 | 12   | 支持树莓派                                | <font color=green>█</font> | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
-| 13   | 支持RISC-V                                | <font color=green>█</font> | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性(因构建效率原因，RISC-V版本会在openEuler版本正式release后开启构建与测试) |
-| 14   | 支持HA软件                                | <font color=green>█</font> | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
-| 15   | 支持KubeSphere                            | <font color=green>█</font> | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力 |
-| 16   | 支持openstack Train 和 Wallaby            | <font color=green>█</font> | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
-| 17   | 支持A-Tune                                | <font color=green>█</font> | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
-| 18   | 支持secPave                               | <font color=green>█</font> | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
-| 19   | 支持secGear                               | <font color=green>█</font> | 继承已有测试能力，关注secGear特性的功能完整性                |
-| 20   | 支持eggo                                  | <font color=green>█</font> | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
-| 21   | 支持kubeOS                                | <font color=green>█</font> | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
-| 22   | 支持NestOS                                | <font color=green>█</font> | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
-| 23   | 支持etmem内存分级扩展                     | <font color=green>█</font> | 继承已有测试能力，重点验证特性的基本功能和稳定性             |
-| 24   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> | 继承已有测试能力，验证可定制化的能力                         |
-| 25   | 支持虚拟化热补丁libcareplus               | <font color=green>█</font> | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力      |
-| 26   | 支持用户态协议栈gazelle                   | <font color=green>█</font> | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能      |
-| 27   | 支持容器场景在离线混合部署rubik           | <font color=green>█</font> | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
-| 28   | 支持智能运维A-ops                         | <font color=green>█</font> | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
-| 29   | 支持国密算法                              | <font color=green>█</font> | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
-| 30   | 支持k3s                                   | <font color=green>█</font> | 继承已有测试能力，验证k3s软件的部署测试过程                  |
-| 31   | 支持KubeEdge                              | <font color=green>█</font> | 继承已有测试能力，验证KubeEdge的部署测试过程                 |
-| 32   | 支持pkgship                               | <font color=green>█</font> | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 |
-| 33   | 支持mindspore                             | <font color=green>█</font> | 继承已有测试能力，针对openCV、opencl-clhpp、onednn、Sentencepiece4个模块，复用开源测试能力覆盖安装、接口测试、功能测试，重点关注对mindspore提供能力的稳定性 |
-| 34   | 支持pod带宽管理oncn-bwm                   | <font color=green>█</font> | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
-| 35   | 支持基于分布式软总线扩展生态互联互通      | <font color=green>█</font> | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 |
-| 36   | 支持混合关键部署技术扩展                  | <font color=green>█</font> | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
-| 37   | 支持硬实时系统                            | <font color=green>█</font> | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 |
-| 38   | 支持kubernetes                            | <font color=green>█</font> | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
-| 39   | 安装部署                                  | <font color=green>█</font> | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| 40   | Kunpeng加速引擎                           | <font color=green>█</font> | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
-| 41   | 备份还原功能支持                          | <font color=green>█</font> | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
-| 42   | 支持ROS基础版和ROS2基础版42               | <font color=green>█</font> | 验证ROS-COMM和ROS-BASE的安装卸载与基础功能正常               |
+| 13   | 支持HA软件                                | <font color=green>█</font> | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
+| 14   | 支持KubeSphere                            | <font color=green>█</font> | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力 |
+| 15   | 支持openstack Train 和 Wallaby            | <font color=green>█</font> | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
+| 16   | 支持A-Tune                                | <font color=green>█</font> | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
+| 17   | 支持secPave                               | <font color=green>█</font> | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
+| 18   | 支持secGear                               | <font color=green>█</font> | 继承已有测试能力，关注secGear特性的功能完整性                |
+| 19   | 支持eggo                                  | <font color=green>█</font> | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
+| 20   | 支持kubeOS                                | <font color=green>█</font> | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
+| 21   | 支持NestOS                                | <font color=green>█</font> | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
+| 22   | 支持etmem内存分级扩展                     | <font color=green>█</font> | 继承已有测试能力，重点验证特性的基本功能和稳定性             |
+| 23   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> | 继承已有测试能力，验证可定制化的能力                         |
+| 24   | 支持虚拟化热补丁libcareplus               | <font color=green>█</font> | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力      |
+| 25   | 支持用户态协议栈gazelle                   | <font color=green>█</font> | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能      |
+| 26   | 支持容器场景在离线混合部署rubik           | <font color=green>█</font> | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
+| 27   | 支持智能运维A-ops                         | <font color=green>█</font> | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
+| 28   | 支持国密算法                              | <font color=green>█</font> | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
+| 29   | 支持k3s                                   | <font color=green>█</font> | 继承已有测试能力，验证k3s软件的部署测试过程                  |
+| 30   | 支持KubeEdge                              | <font color=green>█</font> | 继承已有测试能力，验证KubeEdge的部署测试过程                 |
+| 31   | 支持pkgship                               | <font color=green>█</font> | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 |
+| 32   | 支持mindspore                             | <font color=green>█</font> | 继承已有测试能力，针对openCV、opencl-clhpp、onednn、Sentencepiece4个模块，复用开源测试能力覆盖安装、接口测试、功能测试，重点关注对mindspore提供能力的稳定性 |
+| 33   | 支持pod带宽管理oncn-bwm                   | <font color=green>█</font> | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
+| 34   | 支持基于分布式软总线扩展生态互联互通      | <font color=green>█</font> | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 |
+| 35   | 支持混合关键部署技术扩展                  | <font color=green>█</font> | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
+| 36   | 支持硬实时系统                            | <font color=green>█</font> | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 |
+| 37   | 支持kubernetes                            | <font color=green>█</font> | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
+| 38   | 安装部署                                  | <font color=green>█</font> | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
+| 39   | Kunpeng加速引擎                           | <font color=green>█</font> | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
+| 40   | 备份还原功能支持                          | <font color=green>█</font> | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
+| 41   | 支持ROS基础版和ROS2基础版42               | <font color=green>█</font> | 验证ROS-COMM和ROS-BASE的安装卸载与基础功能正常               |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -324,7 +325,7 @@ openEuler 22.03-LTS-SP3 作为 openEuler 22.03-LTS SP2版本的增强扩展版�
 
 ### 4.3.2   南向兼容性
 
-南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成29张板卡的测试(该数目仅为测试数量，实际兼容性认证通过数量见社区[兼容性清单](https://www.openeuler.org/zh/compatibility/))
+南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成41张板卡的测试(该数目仅为测试数量，实际兼容性认证通过数量见社区[兼容性清单](https://www.openeuler.org/zh/compatibility/))
 
 此版本的板卡兼容性适配测试，适配的板卡类型有（待刷新）种，在aarch64/x86_64架构上进行适配，主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的板卡兼容性清单。
 
@@ -332,7 +333,53 @@ openEuler 22.03-LTS-SP3 作为 openEuler 22.03-LTS SP2版本的增强扩展版�
 
 | **板卡类型** | **覆盖范围**    | **测试主体**      | **chipVendor** | **boardModel**     | **chipModel**      | **测试结果** |
 | ------------ | --------------- | ----------------- | -------------- | ------------------ | ------------------ | ------------ |
-|待刷新|
+| RAID         | 适配7张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Avago          | 9560-8i            | SAS3908            | PASS         |
+|              |                 |                   | Broadcom          | SP460C-M           | SAS3516            | PASS         |
+|              |                 |                   | Avago          | SR150-M            | SAS3408            | PASS         |
+|              |                 |                   | Avago          | SR430C-M           | SAS-3 3108         | PASS         |
+|              |                 |                   | Avago          | SR450C-M           | SAS3508         | PASS         |
+|              |                 |                   | Avago          | SR130              | SAS3008            | PASS         |
+|              |                 |                   | PMC          | PMC3152           | PM8204            | PASS         |
+| FC           | 适配11张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Emulex         | LPe36002-M64       | LPe35000/LPe36000  | PASS         |
+|              |                 |                   | Qlogic         | QLE2560            | ISP2532            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2690          | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2692            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2740            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2742            | ISP2722            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2870            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2872            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2770            | ISP2812            | PASS         |
+|              |                 |                   | Marvell/Qlogic | QLE2772            | ISP2812            | PASS         |
+|              |                 |                   | Emulex         | LPe31002-M6        | LPe31000/LPe32000  | PASS         |
+| GPU          | 适配3张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | NVIDIA         | Tesla T4           | TU104GL            | PASS         |
+|              |                 |                   | NVIDIA         | Tesla V100         | GV100GL            | PASS         |
+|              |                 |                   | NVIDIA         | Tesla A100         | GA100              | PASS         |
+| SSD          | 适配1张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Huawei         | ES3600C V5-3200GB  | ES3000       | PASS         |
+| IB           | 适配2张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Mellanox       | SP350              | ConnectX-5         | PASS         |
+|              |                 |                   | Mellanox       | MCX653105A-EFAT    | ConnectX-6         | PASS         |
+| NIC          | 适配NIC板卡17张 | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Intel          | E810-XXV-2        |E810-XXV           | PASS         |
+|              |                 |                   | Huawei         | SP580              | Hi1822             | PASS         |
+|              |                 |                   | Mellanox       | SP382              | ConnectX-5         | PASS         |
+|              |                 |                   | Mellanox       | SP380              | ConnectX-4 Lx      | PASS         |
+|              |                 |                   | Intel          | I350-F2            | I350               | PASS         |
+|              |                 |                   | Intel          | SP310            | 82599ES               | PASS         |
+|              |                 |                   | Intel          | XL710-Q1            | XL710               | PASS         |
+|              |                 |                   | Huawei          | SP680            | Hi1822               | PASS         |
+|              |                 |                   | Ramaxel          | 3S910            | Gemini               | PASS         |
+|              |                 |                   | Ramaxel          | 3S580            | Aires               | PASS         |
+|              |                 |                   | Netswift       | RP1000      | RP1000      | PASS         |
+|              |                 |                   | Netswift       | RP2000      | RP2000      | PASS         |
+|              |                 |                   | Netswift          | SF200HT         | SF200HT              | PASS         |
+|              |                 |                   | Netswift       | SF200T             | SF200T | PASS         |
+|              |                 |                   | Netswift        | SF400HT            | SF 400HT               | PASS         |
+|              |                 |                   | Netswift          | SF 400T         | SF400T               | PASS         |
+|              |                 |                   | Yunsilicon      | metaConnect-50      | metaConnect               | PASS         |
 
 此版本的整机兼容性适配测试主要使用社区开源硬件兼容性测试工具oec-hardware，从整机的系统兼容性、CPU调频特性、kabi规范性、稳定性、硬件配置兼容性等方面进行适配，适配完成后将在社区发布此版本的整机兼容性清单。
 
@@ -340,7 +387,14 @@ openEuler 22.03-LTS-SP3 作为 openEuler 22.03-LTS SP2版本的增强扩展版�
 
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
-| 待刷新 |
+| 华为          | 泰山200                  | 鲲鹏920       | sig-Compatibility | PASS         |
+|              | S920X20                  | 鲲鹏920B     | sig-Compatibility | PASS         |
+| 中科可控      | Suma R6240HA             | Hygon3     | sig-Compatibility | PASS         |
+| AMD          | AS-4124GS-TNR            | AMD EPYC 7513     | sig-Compatibility | PASS     |
+| 超聚变        | 2288H V5                 | Intel cascade | sig-Compatibility | PASS         |
+| 飞腾         | Phytium S5000C Server    | S5000C       | sig-Compatibility | PASS         |
+| 新华三        | R4950G6                 | AMD eypc4      | sig-Compatibility | PASS         |
+| 兆芯         | ThinkSystem SR658Z       | KH-30000      | sig-Compatibility | PASS         |
 
 整机兼容性清单以sig-Compatibility-Infra提供为主，社区各sig测试过程中使用的机器因未进行oec-hardware测试(进入社区兼容性清单质量要求)，故无法直接进行兼容性清单不在此描述。
 
@@ -392,16 +446,17 @@ openEuler 22.03-LTS-SP3 作为 openEuler 22.03-LTS SP2版本的增强扩展版�
 
 # 5   问题单统计
 
-openEuler 22.03 LTS SP3 版本共发现问题 354 个，有效问题 332 个，其中遗留问题 1 个。详细分布见下表:
+openEuler 22.03 LTS SP3 版本共发现问题 392 个，有效问题 371 个，其中遗留问题 3 个。详细分布见下表:
 
 | 测试阶段               | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 | 备注        |
 | --------------------------- | -------- | ------------ | ------------ | ------------ | -------------------------- |
-| openEuler 22.03 LTS SP3 alpha | 28    | 25      | 1      | 0      | Alpha轮次   |
-| openEuler 22.03 LTS SP3 RC1   | 121   | 115     | 5      | 1      | Beta轮次  |
-| openEuler 22.03 LTS SP3 RC2   | 56    | 52      | 4      | 0      | 全量集成 |
-| openEuler 22.03 LTS SP3 RC3   | 46    | 46      | 0      | 0      | 全量集成  |
-| openEuler 22.03 LTS SP3 RC4   | 27     | 27       | 0      | 0      | 回归测试    |
-| openEuler 22.03 LTS SP3 RC5   |       |         |        |        | 版本发布验收测试(回归测试) |
+| openEuler 22.03 LTS SP3 dailybuild | 56    | 55      | 1   | 1      | 每日构建   |
+| openEuler 22.03 LTS SP3 alpha      | 28    | 25      | 3   | 1      | Alpha轮次   |
+| openEuler 22.03 LTS SP3 RC1        | 119   | 112     | 5   | 1      | Beta轮次  |
+| openEuler 22.03 LTS SP3 RC2        | 62    | 55      | 7   | 0      | 全量集成 |
+| openEuler 22.03 LTS SP3 RC3        | 70    | 65      | 5   | 0      | 全量集成  |
+| openEuler 22.03 LTS SP3 RC4        | 28    | 28      | 0   | 0      | 回归测试    |
+| openEuler 22.03 LTS SP3 RC5        |  0    |  0      | 0   | 0      | 版本发布验收测试(回归测试) |
 
 
 
@@ -409,7 +464,7 @@ openEuler 22.03 LTS SP3 版本共发现问题 354 个，有效问题 332 个，�
 
 #### 6.1 问题单分析
 
-除去开发自验轮次，本次版本测试各迭代有效问题数量呈收敛趋势，没有问题溢出的风险。其中第一轮迭代中的115个有效问题中，有1项严重问题，75项主要问题，部分被修复，部分已完成回归；第二轮迭代中共56个有效问题，其中16项主要问题，部分被修复。
+除去开发自验轮次，本次版本测试各迭代有效问题数量呈收敛趋势，没有问题溢出的风险。其中第一轮迭代中的112个有效问题中，有1项严重问题，75项主要问题，均已修复，全部完成回归；第二轮迭代中共62个有效问题，其中13项主要问题，均已修复。
 
 - 关键问题类型：软件版本/release号相较openEuler-22.03-LTS-SP2最新update较低
 
@@ -529,9 +584,12 @@ openEuler 22.03 LTS SP3 版本共发现问题 354 个，有效问题 332 个，�
 
 ## 遗留问题列表
 
-| 序号 | 问题单号                                                     | 问题简述                                                    | 问题级别 | 影响分析                                                     | 规避措施                                                     | 历史发现场景                                                 |
+| 序号 | 问题单号    | 问题简述    | 问题级别 | 影响分析   | 规避措施       | 历史发现场景     |
 | ---- | ------------------------------------------------------------ | ----------------------------------------------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 待刷新|
+| 1    | [I8JEVL](https://gitee.com/src-openeuler/pytorch/issues/I8JEVL?from=project-issue) | 【[22.03-LTS-SP3]pytorch在22.03-LTS-SP3中相比22.03-LTS-SP2版本降级 | 主要  | 属于AI sig，版本预期包含的软件包，版本降级，需解决，风险低，无人维护 | 安装成功，待评估是否遗留 | |
+| 2    | [I8I5C3](https://gitee.com/src-openeuler/sentencepiece/issues/I8I5C3?from=project-issue) | 22.03-SP3-alpha】sentencepiece包在22.03-LTS-SP3中相比22.03-LTS-SP2版本降级 | 主要  | 属于AI sig，版本预期包含的软件包，版本降级，需解决，风险低，无人维护 | 安装成功，待评估是否遗留 | |
+| 3    | [I8QXIA](https://gitee.com/src-openeuler/opencv/issues/I8QXIA?from=project-issue) | 【[EulerMaker] opencv build problem in openEuler-22.03-LTS-SP3:epol | 不重要     | 属于AI sig，构建过程测试用例执行失败，需解决，风险低，无人维护 | 规避check阶段可构建成功 | |
+
 
 
 # 致谢
