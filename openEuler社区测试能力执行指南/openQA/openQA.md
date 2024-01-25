@@ -21,7 +21,23 @@ ip： 172.168.131.94<br />
 新jenkins链接：https://jenkins.openeuler.org/ <br />
 # openqa 环境搭建 <br />
 ## 1. openqa服务端搭建 <br />
-### 1.1 yum 源配置 <br />
+
+### 1.1 postgresql安装启动 <br />
+安装软件包： <br />
+```
+yum  -y install postgresql -y
+yum  -y install postgresql-libs
+yum  -y install postgresql-server
+yum -y qemu-system-aarch64 qemu edk2* libvirt*
+iptables -F
+```
+初始化库： <br />
+```
+postgresql-setup  initdb 
+systemctl enable postgresql
+systemctl start postgresql
+```
+### 1.2 yum 源配置 <br />
 ```
 cat /etc/yum.repos.d/fedora.repo
 [fedora]
@@ -32,25 +48,12 @@ gpgcheck=0
 sslverify=0
 gpgkey=https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/29/Everything/aarch64/os/
 ```
-### 1.2 postgresql安装启动 <br />
-安装软件包： <br />
-```
-yum  -y install postgresql -y
-yum  -y install postgresql-libs
-yum  -y install postgresql-server
-```
-初始化库： <br />
-```
-postgresql-setup  initdb 
-systemctl enable postgresql
-systemctl start postgresql
-```
-### 1.4 修改hosts,，配置域名解析 <br /> 
+### 1.3 修改hosts,，配置域名解析 <br /> 
 ```
 echo "172.168.131.95 server" >> /etc/hosts
 hostnamectl set-hostname server
 ```
-### 1.5 openqa server安装启动 <br />
+### 1.4 openqa server安装启动 <br />
 * 安装软件包：<br />  
 ```
 yum install openqa openqa-local-db openqa-httpd openqa-worker 
@@ -82,6 +85,9 @@ cp /etc/httpd/conf.d/openqa-ssl.conf.template  /etc/httpd/conf.d/openqa-ssl.conf
 yum install mod_ssl -y
 ```
 密钥设置:<br />
+第一条命令回车后需要输入密码，按要求输入即可<br />
+第二条命令回车后也需要输入密码，密码即为上一条命令设置的密码<br />
+后续几条命令直接执行，遇到需要输入信息时，直接回车即可，命令执行不报错，即为成功<br />
 ```
 openssl  genrsa -des3 -out server.key 2048
 openssl  rsa -in server.key -out server.key 
@@ -94,7 +100,7 @@ chmod 644 /etc/pki/tls/certs/server.crt
 chmod 644 /etc/pki/tls/certs/server.key
 cp server.key  /etc/pki/tls/private/
 ```
-修改/etc/httpd/conf.d/openqa-ssl.conf<br />
+修改/etc/httpd/conf.d/openqa-ssl.conf，只修改并保留以下内容，其他注释掉<br />
 ```
 cat /etc/httpd/conf.d/openqa-ssl.conf
 <VirtualHost *:443>
@@ -106,17 +112,18 @@ cat /etc/httpd/conf.d/openqa-ssl.conf
     Include /etc/httpd/conf.d/openqa-common.inc
 </VirtualHost>
 ```
-修改/etc/httpd/conf.d/ssl.conf 中如下参数<br />
+修改/etc/httpd/conf.d/ssl.conf 中如下参数，其他内容不要修改，也不要注释，保持原有状态<br />
 ```
 SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5
 SSLProxyCipherSuite PROFILE=SYSTEM
 SSLCertificateFile /etc/pki/tls/certs/server.crt
 SSLCertificateKeyFile /etc/pki/tls/private/server.key
 ```
-* 关闭selinux<br />
+* 关闭selinux，关闭firewalld<br />
 ```
 getenforce
 setenforce 0
+systemctl stop firewalld
 ```
 * 启动httpd<br />
 * openqa 服务启动，文件权限修改<br />
@@ -201,6 +208,7 @@ yum install -y openqa-worker
 ### 2.5 设置qemu-system-aarch64命令权限<br />
 ```
 setcap cap_net_admin+ep  /usr/bin/qemu-system-aarch64
+chmod 666 /dev/kvm
 ```
 ### 2.6 给_openqa-worker用户添加sudo权限<br />
 ```
@@ -209,7 +217,7 @@ _openqa-worker  ALL=(ALL)   NOPASSWD: ALL
 ### 2.7 nfs挂载<br />
 ```
 systemctl start nfs-server rpcbind
-mount -t nfs  172.16.1.224:/var/lib/openqa/ share /var/lib/openqa/share
+mount -t nfs  172.168.131.95:/var/lib/openqa/ share /var/lib/openqa/share
 chown _openqa-worker:_openqa-worker  /var/lib/openqa/ -R
 ```
 ### 2.8 修改 /etc/openqa/worker.ini 和/etc/openqa/client.conf
@@ -249,7 +257,7 @@ yum install tftp-server -y
 systemctl start tftp-server 
 ```
 ### 2.2 存放引导文件 grub<br />
-arm 在/var/lib/tftpboot/openEuler/GUI_20.03_LTS_SP2/<br />
+arm 在/var/lib/tftpboot/openEuler/GUI_20.03_LTS_SP1/<br />
 x86 在/var/lib/tftpboot/openEuler/GUI_20.03_LTS_SP1_x86/<br />
 ![grub路径](./images/grub路径.png)<br />
 grubaa64.efi 和 grubx64.efi   是从镜像里拷过来的<br />
