@@ -358,41 +358,28 @@ bash
 
 ### 1.2、LTP
 
-**环境准备**
+**测试准备**   
 
-- 准备镜像
-  从转测的正式地址获取镜像包(官方源: http://repo.openeuler.org)
+- 准备ltp测试套和脚本        
+  ltp源码下载地址: https://github.com/linux-test-project/ltp    
+  ltp脚本获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/ltp       
+   
+**用例执行**   
+     
+执行如下脚本运行用例：`sh start_ltp_test.sh`    
+> 上述命令包含如下3部分：
+> 1).装依赖包(见start_ltp_test.sh中的install_rpm)；
+> 2).编译ltp包(见start_ltp_test.sh中的compile_ltp)；
+> 3).运行用例(见start_ltp_test.sh中的run_testcases)。
 
-- 准备ltp测试套
-  ltp源码下载地址: https://github.com/linux-test-project/ltp
-  ltp脚本和测试套获取：https://gitee.com/hanson_fang/ltpstress-for-openeuler
+**结果分析**    
 
-**环境安装**
-
-- 机器安装（物理机安装参照安装指南）
-
-- yum源配置(见start_ltp_test.sh中set_yum_env)
-
-  '''sh start_ltp_test.sh compile 0803'''
-
-**用例执行**
-
-- 安装依赖包(见start_ltp_test.sh中的install_rpm)
-
-- 编译ltp包(见start_ltp_test.sh中的compile_ltp)
-
-- 运行用例(见start_ltp_test.sh中的run_testcases)
-
-  '''sh start_ltp_test.sh run'''
-
-**结果分析**
-
-- 过滤失败用例
-  grep -ir fail results/LTP*.log
-- 重新执行
-  ./runltp -s case_name
-- 提单
-  在问题单仓库(https://gitee.com/openeuler/kernel/issues)查看是否有单，如果不存在问题单则提单跟踪  
+1. 过滤失败用例   
+  `grep -ir fail results/LTP*.log`   
+2. 重新执行    
+  `./runltp -s case_name`   
+3. 分析失败用例并提单    
+  确认是问题后在问题单仓库`(https://gitee.com/openeuler/kernel/issues)`查看是否有单，如果不存在问题单则提单跟踪  
 
 ## 2、基础性能测试
 
@@ -993,22 +980,21 @@ Mail results [default yes]: no (设置为no)
 
 ### 4.2、syzkaller
 
-**环境准备**
+**测试准备**
 
-- 准备syzkaller测试套
-  脚本和测试套获取：https://gitee.com/hanson_fang/ltpstress-for-openeuler
-  
-**环境安装**
+- 准备syzkaller测试套    
+  脚本和测试套获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/syzkaller
+    
+**搭建环境**
 
-- 机器安装（物理机安装参照安装指南）
-- 安装依赖服务
-  执行sh syzdelop.sh deploy脚本qemu和syzkaller。
-- 编译kernel
+1. 安装依赖服务
+  执行sh syzdelop.sh deploy安装qemu和syzkaller
+2. 编译kernel
   执行sh syzdelop.sh build ubsan进行编译
-- 创建虚拟vm
-  执行sh syzdelop.sh createvm，然后通过tigervnc页面进行安装(安装同物理机安装)，也可参照syzkaller测试方法.docx
-- 配置config文件
-  执行sh syzdelop.sh config进行配置文件的配置，然后查看kernel的安装情况，'''rpm -q kernel'''
+3. 创建虚拟vm
+  执行sh syzdelop.sh createvm，然后通过tigervnc页面进行安装(同物理机安装)
+4. 配置config文件
+  执行sh syzdelop.sh config进行配置文件的配置，然后查看kernel的安装情况，`rpm -q kernel`    
 
 **用例执行**
 
@@ -1017,9 +1003,9 @@ Mail results [default yes]: no (设置为no)
 
 **结果分析**
 
-- 查看运行结果
+- 查看运行结果   
   在url中输入ip：1234来查看服务的运行情况，没有crash出现，服务也没有中断即可
-- 失败分析
+- 失败分析   
   如果出现crash或出现服务中断需要提单
 
 ### 4.3、nmap 
@@ -1365,6 +1351,126 @@ make && make install
 ./trinity -qq -l off -C16
 ```
 
+### 6.2、 LTP
+
+**测试准备**
+
+- 准备ltp测试套和脚本    
+  ltp测试套下载地址: https://github.com/linux-test-project/ltp    
+  ltp脚本获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/ltp    
+
+**用例执行**  
+  
+执行如下脚本执行用例：`sh start_ltp_test.sh`   
+> 上述命令包含如下3部分：
+> 1).安装依赖包(见start_ltp_test.sh中的install_rpm)；
+> 2).编译ltp包(见start_ltp_test.sh中的compile_ltp); 
+> 3).运行用例(见start_ltp_test.sh中的run_testcases)。
+
+**结果分析**   
+ 
+1. 过滤失败用例    
+  `grep -ir fail results/LTP*.log`    
+2. 重新执行失败用例   
+  `./runltp -s case_name`   
+3. 分析失败用例并提单    
+ 确认是问题后在问题单仓库`(https://gitee.com/openeuler/kernel/issues)`查看是否有单，如果不存在问题单则提单跟踪 
+
+### 6.3、 posix
+
+**测试准备**
+
+- 准备ltp测试套和脚本        
+  ltp测试套下载地址: https://github.com/linux-test-project/ltp/archive/refs/tags/20210927.zip    
+  ltp脚本获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/ltp
+
+**用例执行** 
+          
+执行如下脚本：`sh posix_test.sh|tee posix_test.log`
+
+**结果分析**
+    
+查看上述脚本执成功，且结果中的用例通过率>=97%即可。
+
+### 6.4、long stress
+
+**测试准备**
+
+- 准备long_stress测试套      
+  ltp测试套源码下载地址: https://github.com/linux-test-project/ltp   
+  ltpstress脚本获取地址: https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/ltpstress
+
+**用例执行**    
+
+运行ltpstress工具套，执行如下脚本`sh run_ltpstress.sh`
+  > 可以修改长稳执行的参数，如：sh ltpstree.sh -n -m 512 -t 168
+
+**结果分析**
+
+执行如下脚本查看运行结果：`sh result_check.sh`
+  > 需要查看服务是否出现中断，是否有core、crash、大文件生成等。
+
+### 6.5、syzkaller
+
+**测试准备**
+
+- 准备镜像    
+  从官方地址获取镜像包(官方源: http://repo.openeuler.org)
+
+- 准备syzkaller测试套    
+  脚本获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/syzkaller  
+      
+**搭建环境**
+
+1. 安装依赖服务
+  执行`sh syzdelop.sh deploy`，安装qemu和syzkaller
+2. 编译kernel
+  执行`sh syzdelop.sh build ubsan`进行编译
+3. 创建虚拟vm
+  执行`sh syzdelop.sh createvm`
+> 1).准备一个对应版本和架构的iso镜像，待安装使用；
+> 2).启动脚本后，从菜单栏tigervnc view通过ip:31挂载镜像进行安装(安装部署)；
+> 3).安装完成后保留安装虚拟机的窗口。
+4. 配置config文件
+  执行`sh syzdelop.sh config`
+> 1).在虚拟机上查看kernel的安装情况，如：`rpm -q kernel`看到新内核已安装
+> 2).安装完成后reboot重启虚拟机，使虚拟机的配置和新安装的内核生效；
+> 3).shutdown -h now关闭虚拟机。
+
+**运行用例**
+
+- 运行syzkaller服务
+  执行`sh syzdelop.sh fuzz`启动服务
+> 1.如果目标机器的ip错误，需手工修改/home/fuzz.cfg中对应的机器的ip；
+> 2.执行sh syzdelop.sh fuzz启动syzkaller服务运行3天；
+
+**结果分析**
+
+- 查看运行结果   
+  在url中输入ip：1234在web页面查看日志信息，没有crash等错误出现，服务也没有中断
+- 失败分析   
+  如果日志有报错，在社区根据历史问题单进行查询和定位
+
+### 6.6、 mmtests
+
+**测试准备**
+
+- mmtests测试脚本和文档获取地址：https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/mmtests
+
+**用例执行**   
+ 
+执行如下脚本：`sh start_mmtests_test.sh`
+> 1.脚本中包含两部分，安装mmtests等工具和执行用例；
+> 2.用例列表默认是cnf-v0.25.txt中定义的，可根据configs目录自定义用例列表。
+
+**结果分析**    
+
+执行如下脚本过滤出通过的用例：`grep -iEl "test exit :: .* 0|143" log/*`
+> 1.使用上述命令过滤过执行通过的用例，然后再具体分析失败用例；
+> 2.备份归档执行成功的用例名，不建议备份较大的日志文件；
+> 3.失败用例会出现下载失败，编译失败，执行失败等情况。
+
+
 ## 7、接口测试
 
 ### 7.1、api sanity checker: an automatic generator of basic unit tests for a C/C++ library API
@@ -1633,19 +1739,19 @@ VERSION.xml is XML-descriptor:
 
 ### 8.1、long stress
 
-**环境准备**
+**测试准备**
 
-- 准备long_stress测试套
-  ltp脚本和测试套获取: https://gitee.com/hanson_fang/ltpstress-for-openeuler
+- 准备long_stress测试套   
+  ltp脚本和测试套获取: https://gitee.com/openeuler/test-tools/tree/master/kernel-testsuite/ltpstress
 
-**用例执行**
+**用例执行**   
 
-- 运行ltpstress工具套
-  执行sh run_ltpstress.sh，如sh run_ltpstree.sh -m 512 -t 48H
+- 运行ltpstress工具套   
+  执行sh run_ltpstress.sh，如sh run_ltpstree.sh -m 512 -t 48
 
 **结果分析**
 
-- 查看运行结果
+- 查看运行结果   
   需要查看服务是否出现中断，crash文件生成，大文件生成等，具体检查项见dfx.txt
 
 
