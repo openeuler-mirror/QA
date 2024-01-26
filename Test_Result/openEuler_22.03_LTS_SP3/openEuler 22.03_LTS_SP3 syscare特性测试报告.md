@@ -12,7 +12,7 @@
 
 关键词：  syscare 补丁管理工具 用户态补丁 内核态补丁
 
-摘要：22.03-LTS-SP3版本继承20.03-LTS-SP3版本syscare功能，提供一键式集成用户态和内核态热补丁编译以及补丁生命周期管理工具。本文针对22.03-LTS-SP3版本测试过程进行记录说明，重点记录功能、可靠性、长稳、并发等测试活动，并给出测试评估与总结。
+摘要：22.03-LTS-SP3版本继承20.03-LTS-SP3版本syscare功能，提供一键式集成用户态和内核态热补丁编译以及补丁生命周期管理工具。本文针对22.03-LTS-SP3版本测试过程进行记录说明，重点记录功能、可靠性、长稳、并发、安全等测试活动，并给出测试评估与总结。
 
 
 缩略语清单：
@@ -35,7 +35,7 @@
 
 # 2     特性测试信息
 
-本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
+本节描述被测对象的版本信息和测试的时间及测试轮次。
 
 | 版本信息                   | 测试起始时间 | 测试结束时间 |测试活动|
 | --------------------------- | ------------ | ------------ |------------ |
@@ -55,7 +55,7 @@
 
 ## 3.1   测试整体结论
 
-syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包括syscare build以及syscare管理功能，包括接口正向，负向的功能测试、以及可靠性测试，并发测试，长稳测试，资料测试，安全测试。测试过程共发现问题12个，当前遗留8个问题。
+syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包括syscare build以及syscare管理功能，包括接口正向，负向的功能测试、以及可靠性测试，并发测试，长稳测试，资料测试，安全测试。测试过程共发现问题14个，当前遗留4个问题。
 
 ## 3.2   约束说明
 继承20.03-LTS-SP3版本约束
@@ -68,35 +68,33 @@ syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包
 ### 3.3.1 遗留问题影响以及规避措施
 
 遗留问题分析：
-| 编号 |  issue名称   |  遗留原因|遗留风险|   闭环日期 |
-| -------- | ------------ | ------ | ------ | ----------- |
-| 1       | 加载内核模块失败，提示信息不明确           | 方案待定 |部分内核模块加载失败场景，提示信息不明确 |       |
-| 2       | 编译用户态补丁时，偶现报错：Cannot find a local symbol in '***.c'          | 方案待定 |部分场景补丁编译失败 |       |
-| 3       | syscare build偶现错误：“/usr/libexec/syscare/upatch-diff: ERROR: 0x106d66.o: upatch_create_patches_sections: 156: lookup_relf failed.”           | 方案待定 |部分场景补丁编译失败 |       |
-| 4       | ...           | 方案待定 |部分场景补丁编译失败 |       |
-
-
-
+| 编号 |  issue名称   |  遗留原因|
+| -------- | ------------ | ------ | 
+| 1       | 加载内核模块失败，提示信息不明确           | 方案待定 |
+| 2       | 编译用户态补丁时，偶现报错：Cannot find a local symbol in '***.c'          | 方案待定 |
+| 3       | syscare build偶现错误：“/usr/libexec/syscare/upatch-diff: ERROR: 0x106d66.o: upatch_create_patches_sections: 156: lookup_relf failed.”           | 方案待定 |
+| 4       | syscare服务涉及文件权限检查未通过，不符合红线要求 | 方案待定 |
 
 
 ### 3.3.2 问题统计
-本轮测试共发现问题12个，其中功能问题4个，DFX问题8个，问题列表如下：
+本轮测试共发现问题14个，其中功能问题4个，DFX问题10个，问题列表如下：
 
 | 编号 | issue名称                                                                                                                            | issue链接                                                              | issue状态 |
 |----|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
-| 1  | syscare资料部分描述需要修改                                                                                                                  | https://gitee.com/openeuler/syscare/issues/I8PYZU?from=project-issue | 未解决     |
-| 2  | syscare制作内核模块补丁时，所使用的方式和普通补丁不同，但是syscare build -h的帮助信息中未显示，资料中也未说明                                                                 | https://gitee.com/openeuler/syscare/issues/I8OIV7?from=project-issue | 未解决     |
-| 3  | yum install 下载syscare和syscare-build之后，部分包未下载成功                                                                                     | https://gitee.com/openeuler/syscare/issues/I8NUBH?from=project-issue | 未解决     |
-| 4  | syscare补丁应用优化建议                                                                                                                    | https://gitee.com/openeuler/syscare/issues/I8NBEC?from=project-issue | 未解决     |
-| 5  | 2203-LTS-SP3-x86版本并发创建补丁失败                                                                                                         | https://gitee.com/openeuler/syscare/issues/I8LNWM?from=project-issue | 未解决     |
-| 6  | 加载内核模块失败，提示信息不明确                                                                                                                   | https://gitee.com/openeuler/syscare/issues/I8PCAE?from=project-issue | 未解决     |
-| 7  | 编译用户态补丁时，偶现报错：Cannot find a local symbol in '***.c'                                                                                | https://gitee.com/openeuler/syscare/issues/I8OTLB?from=project-issue | 未解决     |
-| 8  | "syscare build偶现错误：“/usr/libexec/syscare/upatch-diff: ERROR: 0x106d66.o: upatch_create_patches_sections: 156: lookup_relf failed. | https://gitee.com/openeuler/syscare/issues/I8Q7J3?from=project-issue                                                               | 未解决                                                                  |
-| 9  | 卸载不完全                                                                                                                              | https://gitee.com/openeuler/syscare/issues/I8PVR7?from=project-issue | 已解决     |
-| 10 | 【内存泄漏】复制进程的fdmaps文件描述符后未释放导致内存泄漏                                                                                                   | https://gitee.com/openeuler/syscare/issues/I8PVLU?from=project-issue | 已解决     |
-| 11 | upatch-manage并输出到/tmp目录下导致任意进程的物理地址泄漏                                                                                              | https://gitee.com/openeuler/syscare/issues/I8PVIY?from=project-issue | 已解决     |
-| 12 | 锁文件路径问题                                                                                                                            | https://gitee.com/openeuler/syscare/issues/I8PVE1?from=project-issue | 已解决    |
-
+| 1  | syscare资料部分描述需要修改                                                                                                                  | https://gitee.com/openeuler/syscare/issues/I8PYZU?from=project-issue | 已解决    |
+| 2  | syscare制作内核模块补丁时，所使用的方式和普通补丁不同，但是syscare build -h的帮助信息中未显示，资料中也未说明                                                                 | https://gitee.com/openeuler/syscare/issues/I8OIV7?from=project-issue | 已解决     |
+| 3  | yum install 下载syscare和syscare-build之后，部分包未下载成功                                                                                     | https://gitee.com/openeuler/syscare/issues/I8NUBH?from=project-issue | 已解决     |
+| 4  | syscare补丁应用优化建议                                                                                                                    | https://gitee.com/openeuler/syscare/issues/I8NBEC?from=project-issue | 已解决     |
+| 5  | 2203-LTS-SP3-x86版本并发创建补丁失败                                                                                                         | https://gitee.com/openeuler/syscare/issues/I8LNWM?from=project-issue | 已解决    |
+| 6  | 加载内核模块失败，提示信息不明确                                                                                                                   | https://gitee.com/openeuler/syscare/issues/I8PCAE?from=project-issue | 挂起     |
+| 7  | 编译用户态补丁时，偶现报错：Cannot find a local symbol in '***.c'                                                                                | https://gitee.com/openeuler/syscare/issues/I8OTLB?from=project-issue | 挂起    |
+| 8  | "syscare build偶现错误：“/usr/libexec/syscare/upatch-diff: ERROR: 0x106d66.o: upatch_create_patches_sections: 156: lookup_relf failed. | https://gitee.com/openeuler/syscare/issues/I8Q7J3?from=project-issue                                                               | 挂起                                                                  |
+| 9  | 卸载不完全 | https://gitee.com/openeuler/syscare/issues/I8PVR7?from=project-issue | 已解决     |
+| 10 | 【内存泄漏】复制进程的fdmaps文件描述符后未释放导致内存泄漏  | https://gitee.com/openeuler/syscare/issues/I8PVLU?from=project-issue | 已解决     |
+| 11 | upatch-manage并输出到/tmp目录下导致任意进程的物理地址泄漏     | https://gitee.com/openeuler/syscare/issues/I8PVIY?from=project-issue | 已解决 |
+| 12 | 锁文件路径问题| https://gitee.com/openeuler/syscare/issues/I8PVE1?from=project-issue | 已解决    |
+| 13 |syscare服务涉及文件权限检查未通过，不符合红线要求 | https://gitee.com/openeuler/syscare/issues/I8K3OZ?from=project-issue | 挂起     |
+| 14 | syscare-build 偶现失败，upatch-diff产生coredump | https://gitee.com/openeuler/syscare/issues/I8QMBU?from=project-issue | 已解决    |
 
 
 # 4 详细测试结论
@@ -127,7 +125,7 @@ syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包
 | 17 | 内核模块多补丁制作                            | 通过                                                                        |
 | 18 | 日志明文，不能泄漏用户信息；超高权限755；日志风暴【明确日志转储规则】 | 通过                                                                        |
 | 19 | 内核态制作补丁设置依赖 | 通过                                                                        |
-| 20 | 内核模块支持多补丁功能 | 遗留部分问题待解决                                                                        |
+| 20 | 内核模块支持多补丁功能 | 通过                                                                       |
 | 21 | 内核态补丁状态重启后自动恢复 | 通过                                                                        |
 | 22 | 内核态补丁状态保存与恢复 | 通过                                                                        |
 | 23 | 内核支持多补丁功能 | 通过                                                                        |
@@ -163,7 +161,7 @@ syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包
 
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
-|   资料测试      |   https://gitee.com/openeuler/docs/pulls/12696    |     遗留部分问题待解决     |
+|   资料测试      |   https://gitee.com/openeuler/docs/pulls/12696    |     通过     |
 
 ## 4.5 安全测试结论
 | 测试类型  |  测试内容 |  测试结论 |
@@ -179,6 +177,6 @@ syscare特性测试，共计执行31个用例，覆盖60个测试点，主要包
 
 | 版本信息                   | 测试活动                   | 测试用例数  |测试用例通过个数| 发现问题单数 |
 | --------------------------- | --------------------------- | ------------ | ------------ |----------- |
-| openEuler 22.03-LTS-SP3   | 功能、SDV测试 | 19       |  18           |1        |
-| openEuler 22.03-LTS-SP3   | SIT测试  | 28     |24           |11            |
+| openEuler 22.03-LTS-SP3   | 功能、SDV测试 | 19       |  18           |2        |
+| openEuler 22.03-LTS-SP3   | SIT测试  | 28     |24           |12            |
 | openEuler 22.03-LTS-SP3   | 回归测试  | 31       | 31            |0           |
