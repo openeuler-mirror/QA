@@ -2057,6 +2057,52 @@ yarpgen是一个随机程序生成器，可生成正确的可运行 C/C++ 和 DP
 
 ## 11、自编译测试
 
+**工具介绍**
+
+社区使用[compile-mock](https://gitee.com/openeuler/test-tools/tree/master/compile_mock)作为自编译测试工具，对source镜像的源码包采取抽样检测的方式进行验证，一般随机抽取500个软件包，其中kernel、gcc、glibc为必测软件包。
+
+**部署环境**
+1.  机器安装成功后，采用本地挂载everything和source的镜像的方式配置repo源 
+2.  将自编译工具compile-mock拷贝到执行机器
+3.  配置工具参数  
+    * 进入compile_mock/common目录，获取source镜像的全部软件包source_list.bak
+
+    ```
+    cd compile_mock/common
+    dnf list --available --repo=source | awk '{print $1}'| awk -F. 'OFS="."{$NF="";print}'| awk '{print substr($0, 1, length($0)-1)}' >source_list.bak
+    ```
+    * 随机选取500个包进行测试
+    ```
+    shuf -n500 source_list.bak >source_list
+    ```
+    * 加上kernel、gcc、glibc这3个必测包，注意去重
+    ```
+    sed -i "1i kernel\ngcc\nglibc" source_list
+    ```
+    * 修改工具对应架构的配置文件openEuler-aarch64.cfg或者openEuler-x86_64.cfg，将测试源配置到 # repo 中
+
+**测试步骤**
+1.  进入../total_pkg目录，调度编译脚本total_pkg.sh
+    ```
+    cd ../total_pkg
+    source_list中的所有包一起自编译：bash total_pkg.sh all （all是指所有的包）
+    source_list中的单个包abc自编译：bash total_pkg.sh abc  (abc是包名)
+    ```
+
+**备注**   
+若有工具无法编译成功的包，可以通过rpmbuild命令单独编译
+1.  下载源码包
+  ```yumdownloader --source XXX```
+2.  安装源码包
+  ```rpm -ivh XXX.src.rpm```
+3.  进入编译用户test_user的SPEC目录，开始编译，如果缺少编译依赖直接安装即可
+  ```
+  cd /home/test_user/rpmbuild/SPECS/
+  rpmbuild -ba XXX.spec
+  ```
+4.  查看编译过程中是否有错误
+
+
 ## 12、北向兼容性测试
 
 从全栈的角度看，操作系统处于中间层，软件处于上方，北向兼容性即操作系统的软件兼容性
