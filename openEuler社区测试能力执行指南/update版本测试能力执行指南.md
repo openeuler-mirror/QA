@@ -152,9 +152,9 @@ bash mugen.sh -f ltp-test -x
 ### 1.在本地机器安装docker镜像，以update_20240103为例<br />
 ```
 version=$(grep PRETTY_NAME /etc/os-release | awk -F '"' '{print $2}' | sed 's/[()]//g;s/ /-/g')
-update_ver="update_20240103"
+update_ver="update_20240131"
 docker_name="openEuler_test"
-docker_img=http://121.36.84.172/repo.openeuler.org/${version}/docker_img/${update_ver}/$(uname -i)/openEuler-docker.$(uname -i).tar.xz<br />
+docker_img=http://121.36.84.172/repo.openeuler.org/${version}/docker_img/${update_ver}/$(uname -i)/openEuler-docker.$(uname -i).tar.xz
 dnf install -y docker
 echo "download img ${version}"
 wget ${docker_img}
@@ -165,7 +165,7 @@ systemctl start docker
 ### 2.在本地机器启动docker容器<br />
 ```
 echo "create docker"
-docker run -itd --name ${docker_name} --privileged  -u root ${img_name} /bin/b.sh
+docker run -itd --name ${docker_name} --privileged  -u root ${img_name} /bin/bash
 ```
 ### 3.在本地机器配置docker环境中的update repo源<br />
 先确定本地环境update源已配置，参考本文第七章节<br />
