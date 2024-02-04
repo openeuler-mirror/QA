@@ -2055,6 +2055,90 @@ yarpgen是一个随机程序生成器，可生成正确的可运行 C/C++ 和 DP
 
 具体使用：通过自动化批量生成百万级用例来验证编译器
 
+### 10.7、jdk
+
+**基本概念：**
+测试OpenJDK 8  的开源测试套：https://github.com/openjdk/jdk8u-dev.git<br/>
+测试OpenJDK 11 的开源测试套：https://github.com/openjdk/jdk11u-dev.git<br/>
+测试OpenJDK 17 的开源测试套：https://github.com/openjdk/jdk17u-dev.git<br/>
+jtreg是openJDK社区开放的测试框架，提供公共配置和方法以便社区开发者进行测试代码的编写和执行<br/>
+jtreg 获取地址：https://builds.shipilev.net/jtreg/<br/>
+jdk8获取：jtreg4.2-b16.zip<br/>
+jdk11获取: jtreg-6+1.zip<br/>
+jdk17获取: jtreg-6+1.zip<br/>
+
+**测试部署环境准备：**
+**1.下载测试套**<br/>
+根据java-openjdk版本选择测试用例<br/>
+举例版本：<br/>
+当版本为java-1.8.0-openjdk-1.8.0.382.b05-4.oe2309时，下载以下版本的测试用例<br/>
+```
+git config --global http.sslVerify false
+git clone -b jdk8u382-ga https://github.com/openjdk/jdk8u-dev.git
+```
+当版本为java-11-openjdk-11.0.20.8-1.oe2309下载以下版本的测试用例<br/>
+```
+git config --global http.sslVerify false
+git clone -b jdk-11.0.20-ga  https://github.com/openjdk/jdk11u-dev.git
+```
+当版本为java-17-openjdk-17.0.8.7-1.oe2309下载以下版本的测试用例<br/>
+```
+git config --global http.sslVerify false
+git clone -b jdk-17.0.8-ga https://github.com/openjdk/jdk17u-dev.git
+```
+JDK11源代码clone下载之后测试用例在test目录下。<br/>
+若git clone报错fatal: unable to access...，则在git clone之前执行git config --global http.sslVerify false<br/>
+
+**2.安装依赖**<br/>
+```
+dnf install -y git subversion screen samba samba-client gcc gdb cmake automake lrzsz expect libX11* libxt* libXtst* libXt* libXrender* cache* cups* unzip* zip* freetype* mercurial numactl vim tar dejavu-fonts unix2dos dos2unix bc lsof net-tools
+```
+**3.安装openjdk和openjdk-devel**<br/>
+```
+jdk-8 :dnf install -y java-1.8.0-openjdk*
+jdk-11:dnf install -y java-11-openjdk*
+jdk-17:dnf install -y java-17-openjdk*
+```
+**4.设置环境变量**<br/>
+```
+export JAVA_HOME=path/to/JDK
+export PATH=$JAVA_HOME/bin:$PATH
+export JT_HOME=path/to/jtreg_home
+export PATH=$JT_HOME/bin:$PATH
+export LC_ALL=en_US.UTF-8 
+touch exclude.txt
+```
+举例：
+```
+unzip jtreg*
+export JAVA_HOME=$(ls -lr $(ls -lr /usr/bin/java | awk '{print $NF}') |awk '{print $NF}' | awk -F/ '{print $1"/"$2"/"$3"/"$4"/"$5}')
+export PATH=$JAVA_HOME/bin:$PATH
+export JT_HOME=$(pwd)/jtreg
+export PATH=$JT_HOME/bin:$PATH
+export LC_ALL=en_US.UTF-8 
+export LANG=en_US.UTF-8
+touch exclude.txt
+```
+**5.执行测试用例**<br/>
+执行单个用例 jtreg -va XXX/YYY.java<br/>
+eg: jtreg -va hotspot/test/gc/g1/TestLargePageUseForAuxMemory.java<br/>
+**6.执行整个测试套**<br/>
+```
+jdk8u:   
+jtreg -va -ignore:quiet -jit -conc:auto -timeout:5 -tl:3590 -exclude:exclude.txt -vmoptions:"$jvmOptions" jdk8u-dev/hotspot/test:hotspot_tier1 jdk8u-dev/langtools/test:langtools_tier1 jdk8u-dev/jdk/test:jdk_tier1 >log 2>&1 &
+
+jdk11u:   
+jtreg -va -ignore:quiet -jit -conc:auto -timeout:5 -tl:3590 -exclude:exclude.txt -vmoptions:"$jvmOptions" jdk11u-dev/test/langtools:tier1 jdk11u-dev/test/hotspot/jtreg:tier1 jdk11u-dev/test/jdk:tier1 jdk11u-dev/test/jaxp:tier1 >log 2>&1 &
+
+jdk17u:   
+jtreg -va -ignore:quiet -jit -conc:auto -timeout:5 -tl:3590 -exclude:exclude.txt -vmoptions:"$jvmOptions"  jdk17u-dev/test/hotspot/jtreg:tier1 jdk17u-dev/test/langtools:tier1 jdk17u-dev/test/jdk:tier1 jdk17u-dev/test/jaxp:tier1 jdk17u-dev/test/lib-test:tier1 >log 2>&1 &
+```
+**7.查看执行结果**<br/>
+测试套的结果统计在JTreport/html/report.html中<br/>
+测试用例的日志存放在JTwork中，用例XXX/YYY/ZZZ.java的执行日志存在在JTwork/XXX/YYY/ZZZ.jtr文件中<br/>
+jtr文件中test result有三种状态：Passed、Failed、Error，分别对应用例执行通过，执行失败和执行出错<br/>
+
+
 ## 11、自编译测试
 
 **工具介绍**
