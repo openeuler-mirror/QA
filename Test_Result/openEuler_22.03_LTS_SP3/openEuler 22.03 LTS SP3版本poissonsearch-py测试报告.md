@@ -156,3 +156,4 @@ rpm -e python3-poissonsearch-py-7.10.1-2
 安装和卸载均成功，测试通过
 
 ## 功能测试覆盖率
+![img.png](img.png)
