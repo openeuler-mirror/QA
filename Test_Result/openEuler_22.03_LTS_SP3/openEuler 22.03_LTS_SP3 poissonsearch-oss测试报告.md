@@ -53,7 +53,7 @@ poissonsearch-oss, 分布式检索和分析引擎
 
 本次测试仅覆盖在OpenEuler 22.03-LTS-SP3上部署以及用例运行，无法保障在其他版本上部署以及 运行的正确性
 
-poissonsearch-oss依赖Java 11以上，需要用户自行安装
+poissonsearch-oss依赖Java 11以上运行
 
 ### 3.3   遗留问题分析
 
