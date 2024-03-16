@@ -36,6 +36,7 @@ poissonsearch-oss, 分布式检索和分析引擎
 | ----------------------- | ---------- | ---------- | ---- |
 | openEuler 22.03-LTS-SP3 | 2024-02-26 | 2023-03-01 | 功能测试 |
 | openEuler 22.03-LTS-SP3 | 2024-03-01 | 2023-03-05 | 部署测试 |
+| openEuler 22.03-LTS-SP3 | 2024-03-15 | 2023-03-16 | 兼容性测试 |
 
 描述特性测试的硬件环境信息
 
@@ -47,7 +48,9 @@ poissonsearch-oss, 分布式检索和分析引擎
 
 ### 3.1 测试整体结论
 
-版本 ```poissonsearch-oss 1.0.0``` ，共计执行用例 ```16111``` 个，```Skip``` 用例 ```97``` 个（均为原上游软件elasticsearch-oss 7.10.2发布时ignore用例，或者根据openEuler环境信息跳过用例），失败用例 ```0``` 个，其他 ```16014``` 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。    
+版本 ```poissonsearch-oss 1.0.0``` ，共计执行用例 ```16111``` 个，```Skip``` 用例 ```97``` 个（均为原上游软件elasticsearch-oss 7.10.2发布时ignore用例，或者根据openEuler环境信息跳过用例），失败用例 ```0``` 个，其他 ```16014``` 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 
+
+兼容性测试中，测试与[elasticsearch-oss 7.10.2 rpm](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-7.10.2-x86_64.rpm)安装后的兼容性，测试结果显示poissonsearch-oss 1.0.0与elasticsearch-oss 7.10.2的rpm安装路径、在线服务无交叉，可以共同正常运行。
 
 ### 3.2   约束说明
 
@@ -84,7 +87,7 @@ poissonsearch-oss依赖Java 11以上运行
 |:----------------------------------------------- | ---- |:----- |:------------------------- |:------ |
 | openEuler 22.03 LTS SP3 poissonsearch-oss 1.0.0 | 功能测试 | 16111 | 通过16014个，skip 97个，Fail 0个 | 0      |
 | openEuler 22.03 LTS SP3 poissonsearch-oss 1.0.0 | 部署测试 | 8     | 通过8个                      | 0      |
-
+| openEuler 22.03 LTS SP3 poissonsearch-oss 1.0.0 | 兼容性测试 | 1     | 通过1个                      | 0      |
 ### 4.2 后续测试建议
 
 ## 5 附件
