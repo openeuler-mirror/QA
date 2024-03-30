@@ -49,7 +49,7 @@ GCC（GNU Compiler Collection，GNU编译器套件）是由GNU开发的编程语
 
 ## 3.1   测试整体结论
 
-GCC for openEuler编译器兼容性测试，共测试8个OS，主要覆盖基本功能测试，浮点精度测试和dejagnu测试，整体质量良好。
+GCC for openEuler编译器兼容性测试，共测试8个OS，主要覆盖基本功能测试，浮点精度测试和dejagnu测试，无兼容性问题；性能测试，包含SPEC2017和CPUbench测试，性能不回退，整体质量良好。
 
 |测试OS| 测试活动 | 活动评价 |
 | -------- | -------- | -------- |
@@ -62,76 +62,10 @@ GCC for openEuler编译器兼容性测试，共测试8个OS，主要覆盖基本
 | 麒麟V10 | 执行测试套：dejagnu |无兼容性问题|
 | UOS20 | 执行测试套：dejagnu |无兼容性问题|
 |openEuler22.03-LTS-SP3|基本功能测试：执行测试套bstest、llvmcase、Anghabench、jotai以及浮点精度测试 |无兼容性问题|
-
-### SPEC2017 INT结果：
-
-| Benchmarks            | Ratio |
-| --------------------- | ----- |
-| 500.perlbench_r       | 396   |
-| 502.gcc_r             | 231   |
-| 505.mcf_r             | 381   |
-| 520.omnetpp_r         | 182   |
-| 523.xalancbmk_r       | 329   |
-| 525.x264_r            | 880   |
-| 531.deepsjeng_r       | 507   |
-| 541.leela_r           | 444   |
-| 548.exchange2_r       | 1070  |
-| 557.xz_r              | 244   |
-| SPECrate2017_int_base | 401   |
-
-### SPEC2017 FP结果：
-
-| Benchmarks                | Ratio |
-| ------------------------- | ----- |
-| 503.bwaves_r              | 614   |
-| 507.cactuBSSN_r           | 324   |
-| 508.namd_r                | 315   |
-| 510.parest_r              | 156   |
-| 511.povray_r              | 510   |
-| 519.lbm_r                 | 70.4  |
-| 521.wrf_r                 | 258   |
-| 526.blender_r             | 293   |
-| 527.cam4_r                | 310   |
-| 538.imagick_r             | 649   |
-| 544.nab_r                 | 388   |
-| 549.fotonik3d_r           | 183   |
-| 554.roms_r                | 116   |
-| Est. SPECrate2017_fp_base | 272   |
-
-### CPUbench INT结果：
-
-| Benchmark             | Result  |
-| --------------------- | ------- |
-| x264                  | 291.406 |
-| gcc                   | 132.365 |
-| gzip                  | 245.214 |
-| tpcc                  | 173.074 |
-| tpch                  | 163.047 |
-| velvet                | 88.482  |
-| openssl               | 385.942 |
-| rapidjson             | 157.494 |
-| python                | 180.956 |
-| xz                    | 136.515 |
-| IntConcurrent_Typical | 179.877 |
-
-### CPUbench FP结果：
-
-| Benchmark               | Result  |
-| ----------------------- | ------- |
-| lightgbm                | 33.969  |
-| nektar                  | 135.521 |
-| phenglei                | 80.438  |
-| phyml                   | 118.873 |
-| gromacs                 | 154.592 |
-| povray                  | 198.047 |
-| openfoam                | 171.227 |
-| lammps                  | 118.014 |
-| cube                    | 157.086 |
-| wrf                     | 96.659  |
-| FloatConcurrent_Typical | 115.252 |
-
+|openEuler22.03-LTS-SP3|性能测试：SPECCPU2017 INT/FP、CPUbench INT/FP |性能不回退，测试通过|
 
 ## 3.3  问题分析
+
 GCC for openEuler兼容性测试共发现问题单0个。
 
 ### 3.3.1 遗留问题影响以及规避措施
