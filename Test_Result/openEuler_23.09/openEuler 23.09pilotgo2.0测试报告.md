@@ -1,4 +1,4 @@
-![avatar](../images/openEuler.png)
+![avatar](../../images/openEuler.png)
 
 版权所有 © 2023 openEuler 社区
 您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享 4.0 国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问[_https://creativecommons.org/licenses/by-sa/4.0/_](https://creativecommons.org/licenses/by-sa/4.0/) 了解 CC BY-SA 4.0 的概要 (但不是替代)。CC BY-SA 4.0 的完整协议内容您可以访问如下网址获取：[_https://creativecommons.org/licenses/by-sa/4.0/legalcode_](https://creativecommons.org/licenses/by-sa/4.0/legalcode)。
@@ -8,6 +8,7 @@
 | 日期      | 修订版本 | 修改章节         | 修改描述  |
 | --------- | -------- | ---------------- | --------- |
 | 2023-8-28 | 1.0      | PilotGo2.0 测试报告 | @wubijie |
+| 2024-3-12 | 1.1      | PilotGo2.0 平台优化 | @jxy_git |
 
 关键词：PilotGo2.0测试报告
 
@@ -98,3 +99,58 @@ pilotgo2.0版本在openEuler-23.09版本测试阶段完成了功能测试，包�
 ## 6.1 附件 1：遗留问题列表
 
 ## 6.2 附件 2：各种专项测试报告
+
+# 7 PilotGo 平台优化
+
+## 7.1 x86_64 平台优化验证
+
+### 7.1.1 未优化前安装 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/x86_未优化前安装.png)
+
+### 7.1.2 升级 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/x86_升级.png)
+
+### 7.1.3 降级 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/x86_降级.png)
+
+### 7.1.4 卸载旧版本后安装已优化版本 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/x86_安装已优化版本.png)
+
+### 7.1.5 启动 PilotGo-server PilotGo-agent 服务
+![](/images/openEuler_23.09/x86_服务启动成功.png)
+
+### 7.1.6 PilotGo 平台正常运行
+![](/images/openEuler_23.09/x86_平台正常运行.png)
+
+### 7.1.7 停止 PilotGo-server PilotGo-agent 服务
+![](/images/openEuler_23.09/x86_服务停止成功.png)
+
+### 7.1.8 卸载已优化版本 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/x86_卸载已优化版本.png)
+
+## 7.2 aarch64 平台优化验证
+
+### 7.2.1 未优化前安装 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/arm_未优化前安装.png)
+
+### 7.2.2 升级 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/arm_升级.png)
+
+### 7.2.3 降级 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/arm_降级.png)
+
+### 7.2.4 卸载旧版本后安装已优化版本 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/arm_安装已优化版本.png)
+
+### 7.2.5 启动 PilotGo-server PilotGo-agent 服务
+![](/images/openEuler_23.09/arm_服务启动成功.png)
+
+### 7.2.6 PilotGo 平台正常运行
+![](/images/openEuler_23.09/arm_平台正常运行.png)
+
+### 7.2.7 停止 PilotGo-server PilotGo-agent 服务
+![](/images/openEuler_23.09/arm_服务停止成功.png)
+
+### 7.2.8 卸载已优化版本 PilotGo-server PilotGo-agent
+![](/images/openEuler_23.09/arm_卸载已优化版本.png)
+
