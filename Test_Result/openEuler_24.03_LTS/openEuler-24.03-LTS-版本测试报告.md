@@ -8,6 +8,7 @@
 | 日期       | 修订版本 | 修改章节          | 修改描述    |
 | ---------- | -------- | ----------------- | ----------- |
 | 2024/05/13 | 1.0.0    | 初稿, 基于RC1/2/3/4 | ga_beng_cui |
+| 2024/05/29 | 1.0.1    | 基于RC6    　　　   | ga_beng_cui |
 
 
 关键词：
@@ -65,7 +66,7 @@ openEuler 24.03 LTS 版本按照社区release-manager团队的计划，共规划
 
 | 硬件型号               | 硬件配置信息                             | 重点场景       |
 | ---------------------- | ---------------------------------------- | -------------- |
-| TaiShan 200 2280均衡型 | Kunpeng 920                              | OS集成测试     |
+| TaiShan 200 2280均衡型 | Kunpeng 920(支持1.70以上的bios版本)        | OS集成测试     |
 | RH2288H V3            | Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz | OS集成测试     |
 | 树莓派 4B              | BCM2711                                  | 嵌入式版本测试 |
 | STM32F407ZGT6开发板    | CPU:STM32F407ZG(168MHz)                  | 嵌入式版本测试 |
@@ -77,65 +78,65 @@ openEuler 24.03 LTS版本交付需求列表如下，详情见[openEuler-24.03-LT
 
 | no   | feature                                                      | status   | sig                          | owner                                                        | 发布方式         | 备注                                        |
 | ---- | ------------------------------------------------------------ | -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | ------------------------------------------- |
-|[I8WG9C](https://gitee.com/openeuler/release-management/issues/I8WG9C) | 发布kiran-desktop 2.6版本 | Discussion | sig-KIRAN-DESKTOP | [@liubuguiii](https://gitee.com/liubuguiii) |
-|[I8UU1C](https://gitee.com/openeuler/release-management/issues/I8UU1C)|iSulad支持CRI v1.29|Discussion|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
-|[I8UUCX](https://gitee.com/openeuler/release-management/issues/I8UUCX)|iSulad支持CDI|Discussion|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
-|[I8UVAY](https://gitee.com/openeuler/release-management/issues/I8UVAY)|iSulad支持NRI|Discussion|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
-|[I8W6CJ](https://gitee.com/openeuler/release-management/issues/I8W6CJ)|iSulad支持cgroup v2|Discussion|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
-|[I8Y48L](https://gitee.com/openeuler/release-management/issues/I8Y48L)|为 RISC-V 架构增加内核热补丁能力|Discussion|sig-RISC-V|[@laokz](https://gitee.com/laokz)|
-|[I8Y3WV](https://gitee.com/openeuler/release-management/issues/I8Y3WV)|为 RISC-V 架构引入 Penglai TEE 支持|Discussion|sig-RISC-V|[@dongduResearcher](https://gitee.com/dongduResearcher)|
-|[I8YAGF](https://gitee.com/openeuler/release-management/issues/I8YAGF)|wine5.5升级到wine9.0，不需要linux32依赖库情况下支持win32程序|Discussion|sig-compat-winapp|[@niko_yhc](https://gitee.com/niko_yhc)|
-|[I8Y4I0](https://gitee.com/openeuler/release-management/issues/I8Y4I0)|支持树莓派|Discussion|sig-RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi/)|
-|[I914GW](https://gitee.com/openeuler/release-management/issues/I914GW)|DDE支持|Discussion|sig-DDE|[@ut-layne-yang](https://gitee.com/ut-layne-yang)|
-|[I8ZJBA](https://gitee.com/openeuler/release-management/issues/I8ZJBA)|migration-tools增加图形化迁移openeuler功能|Discussion|sig-Migration|[@xingwei-liu](https://gitee.com/xingwei-liu/)|
-|[I8ZJFG](https://gitee.com/openeuler/release-management/issues/I8ZJFG)|增加 utshell 项目发布|Discussion|sig-memsafety|[@wangmengc](https://gitee.com/wangmengc/)|EPOL|utshell|
-|[I8ZJGW](https://gitee.com/openeuler/release-management/issues/I8ZJGW)|增加 utsudo 项目发布|Discussion|sig-memsafety|[@ut-wanglujun](https://gitee.com/ut-wanglujun/)|EPOL|utsudo|
-|[I94ET0](https://gitee.com/openeuler/release-management/issues/I94ET0)|发布Nestos-kubernetes-deployer |Discussion|sig-K8sDistro|[@duyiwei7w](https://gitee.com/duyiwei7w)|
-|[I9780H](https://gitee.com/openeuler/release-management/issues/I9780H)| 支持vCPU热插拔 |Discussion|sig-kernel|[@JiaboFeng](https://gitee.com/JiaboFeng)|
-|[I9780Y](https://gitee.com/openeuler/release-management/issues/I9780Y)| A-Ops gala提供网络L4层TCP主流指标观测能力 |Discussion|sig-ops|[@MrRlu](https://gitee.com/MrRlu)|
-|[I97814](https://gitee.com/openeuler/release-management/issues/I97814)| A-Ops gala提供网络L7层RED指标观测能力 |Discussion|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
-|[I97817](https://gitee.com/openeuler/release-management/issues/I97817)| A-Ops gala提供应用粒度的I/O、CPU、MEM资源占用观测能力|Discussion|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
-|[I9781E](https://gitee.com/openeuler/release-management/issues/I9781E)| A-Ops gala支持可观测行为的动态变更 |Discussion|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
-|[I9781K](https://gitee.com/openeuler/release-management/issues/I9781K)|内存潮汐调度：支持serverless容器热备份 |Discussion|sig-kernel |[@ stkid](https://gitee.com/stkid)|
-|[I9782E](https://gitee.com/openeuler/release-management/issues/I9782E)| LLVM版本升级到17.0.6 |Discussion|sig-Compiler |[@ cf-zhao](https://gitee.com/cf-zhao)|
-|[I9784H](https://gitee.com/openeuler/release-management/issues/I9784H)| 支持系统运维套件x-diagnosis |Discussion|sig-ops ||
-|[ I9784N](https://gitee.com/openeuler/release-management/issues/I9784N)| 支持自动化热升级组件nvwa |Discussion|sig-ops ||
-|[ I9785W](https://gitee.com/openeuler/release-management/issues/I9785W)| 支持DPU直连聚合特性 |Discussion|sig-DPU ||
-|[ I9786D](https://gitee.com/openeuler/release-management/issues/I9786D)| 支持系统热修复组件syscare |Discussion|sig-ops ||
-|[ I9786H](https://gitee.com/openeuler/release-management/issues/I9786H)| 支持内存分级扩展组件etmem |Discussion|sig-Storage|[@swf504](https://gitee.com/swf504)|
-|[ I97878](https://gitee.com/openeuler/release-management/issues/I97878)| iSula容器镜像构建工具isula-build |Discussion|sig-iSulad||
-|[ I9787D](https://gitee.com/openeuler/release-management/issues/I9787D)| 一键式、轻量化、可配置集群部署工具eggo |Discussion|sig-isulad ||
-|[ I9787G](https://gitee.com/openeuler/release-management/issues/I9787G)| 支持容器引擎isulad |Discussion|sig-iSulad ||
-|[ I9787L](https://gitee.com/openeuler/release-management/issues/I9787L)| 支持进程完整性防护特性 |Discussion|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
-|[ I9787O](https://gitee.com/openeuler/release-management/issues/I9787O)| 支持入侵检测框架secDetector|Discussion|sig-security-facility |[@zcfsite](https://gitee.com/zcfsite)|
-|[ I9787P](https://gitee.com/openeuler/release-management/issues/I9787P)| imageTailor支持树莓派镜像定制|Discussion|sig-OS-Builder |[@zhuchunyi](https://gitee.com/zhuchunyi)|
-|[ I9787U](https://gitee.com/openeuler/release-management/issues/I9787U)| 支持secPaver特性 |Discussion|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
-|[ I9788R](https://gitee.com/openeuler/release-management/issues/I9788R)| 支持机密计算安全应用开发组件 secGear |Discussion|sig-confidential-computing |[@houmingyong](https://gitee.com/houmingyong)|
-|[ I9788S](https://gitee.com/openeuler/release-management/issues/I9788S)| 系统性能自优化组件A-Tune |Discussion|sig-A-Tune|[@ gaoruoshu](https://gitee.com/gaoruoshu)|
-|[ I9788W](https://gitee.com/openeuler/release-management/issues/I9788W)| isocut镜像裁剪易用性提升 |Discussion|sig-OS-Builder |[@zhuchunyi](https://gitee.com/zhuchunyi)|
-|[ I97890](https://gitee.com/openeuler/release-management/issues/I97890)| 支持devmaster组件 |Discussion|sig-dev-utils ||
-|[ I9789Q](https://gitee.com/openeuler/release-management/issues/I9789Q)| 支持TPCM特性 |Discussion|sig-Base-service|[@t_feng](https://gitee.com/t_feng)|
-|[ I9789U](https://gitee.com/openeuler/release-management/issues/I9789U)| 支持sysMaster组件 |Discussion|sig-dev-utils ||
-|[ I9789V](https://gitee.com/openeuler/release-management/issues/I9789V)| 安全配置规范框架设计及核心内容构建 |Discussion|sig-security-facility||
-|[ I9789Y](https://gitee.com/openeuler/release-management/issues/I9789Y)| A-OPS智能运维工具 |Discussion|sig-ops||
-|[ I978A1](https://gitee.com/openeuler/release-management/issues/I978A1)| 支持sysmonitor特性 |Discussion|sig-ops|[@foreson](https://gitee.com/foreson)|
-|[ I978A3](https://gitee.com/openeuler/release-management/issues/I978A3)| kmesh-bwm高性能网络带宽管理 |Discussion|sig-high-performance-network|[@yanan-rock](https://gitee.com/yanan-rock)|
-|[ I978A5](https://gitee.com/openeuler/release-management/issues/I978A5)| Gazelle用户态协议栈 |Discussion|sig-high-performance-network |[@yanan-rock](https://gitee.com/yanan-rock)|
-|[ I978A7](https://gitee.com/openeuler/release-management/issues/I978A7)| 混合部署rubik |Discussion|sig-CloudNative||
-|[ I978AC](https://gitee.com/openeuler/release-management/issues/I978A1)| isulad支持oci runtime并且切换默认runtime为runc |Discussion|sig-iSulad ||
-|[ I97DTY](https://gitee.com/openeuler/release-management/issues/I97DTY)| 支持embedded |Discussion|sig-embedded|[@fanglinxu](https://gitee.com/fanglinxu)|
-|[I942Y9](https://gitee.com/openeuler/release-management/issues/I942Y9)|发布PilotGo及其插件特性新版本 |Discussion|sig-ops|[@yangzhao_kl](https://gitee.com/yangzhao_kl)|
-|[I95KTM](https://gitee.com/openeuler/release-management/issues/I95KTM)|UKUI支持|Discussion|sig-UKUI|[@hua_yadong](https://gitee.com/hua_yadong)|
-|[I98UXD](https://gitee.com/openeuler/release-management/issues/I98UXD)|支持ROS2-humble和ROS1-noetic基础版|Discussion|sig-ROS|[@davidhan008](https://gitee.com/davidhan008/)|
-|[I985WB](https://gitee.com/openeuler/release-management/issues/I985WB) | 支持 OpenStack Wallaby、Antelope 多版本 | Discussion | sig-openstack | [@han-guangyu](https://gitee.com/han-guangyu) |
-|[I97AX0](https://gitee.com/openeuler/release-management/issues/I97AX0)| 社区签名体系建立 |Discussion|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
-|[I97D8Z](https://gitee.com/openeuler/release-management/issues/I97D8Z)| 智能问答在线服务 |Discussion| |[@fromhsc](https://gitee.com/fromhsc)|
-|[I97IVO](https://gitee.com/openeuler/release-management/issues/I97IVO)| 支持国密特性 |Discussion|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
-|[ I980D1](https://gitee.com/openeuler/release-management/issues/I980D1)| Gazelle支持UDP协议栈|Discussion|sig-high-performance-network |[@yanan-rock](https://gitee.com/yanan-rock)|
-|[I8ZTS2](https://gitee.com/openeuler/release-management/issues/I8ZTS2)| 增加 AO.space 项目发布 |Discussion|sig-RaspberryPi  |[@jianminw](https://gitee.com/jianminw)|
-|[I8XFUF](https://gitee.com/openeuler/release-management/issues/I8XFUF)| 合入GreatSQL 8.0.32-25及更高版本 |Discussion| |[@GreatSQL_admin](https://gitee.com/GreatSQL_admin)|
-|[I8YUI2](https://gitee.com/openeuler/release-management/issues/I8YUI2)| 发布elastisearch-py 7.13.4版本 |Discussion| |[@lin-shoubao](https://gitee.com/lin-shoubao)|
-|[I9B6RR](https://gitee.com/openeuler/release-management/issues/I9B6RR)| ZGCLab 发布内核安全增强补丁 | Discussion | sig-kernel | [@amjac](https://gitee.com/amjac) |
+|[I8WG9C](https://gitee.com/openeuler/release-management/issues/I8WG9C) | 发布kiran-desktop 2.6版本 | Accepted | sig-KIRAN-DESKTOP | [@liubuguiii](https://gitee.com/liubuguiii) |
+|[I8UU1C](https://gitee.com/openeuler/release-management/issues/I8UU1C)|iSulad支持CRI v1.29|Accepted|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
+|[I8UUCX](https://gitee.com/openeuler/release-management/issues/I8UUCX)|iSulad支持CDI|Accepted|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
+|[I8UVAY](https://gitee.com/openeuler/release-management/issues/I8UVAY)|iSulad支持NRI|Rejected|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
+|[I8W6CJ](https://gitee.com/openeuler/release-management/issues/I8W6CJ)|iSulad支持cgroup v2|Accepted|sig-iSulad|[@xuxuepeng](https://gitee.com/xuxuepeng)|
+|[I8Y48L](https://gitee.com/openeuler/release-management/issues/I8Y48L)|为 RISC-V 架构增加内核热补丁能力|Accepted|sig-RISC-V|[@laokz](https://gitee.com/laokz)|
+|[I8Y3WV](https://gitee.com/openeuler/release-management/issues/I8Y3WV)|为 RISC-V 架构引入 Penglai TEE 支持|Accepted|sig-RISC-V|[@dongduResearcher](https://gitee.com/dongduResearcher)|
+|[I8YAGF](https://gitee.com/openeuler/release-management/issues/I8YAGF)|wine5.5升级到wine9.0，不需要linux32依赖库情况下支持win32程序|Rejected|sig-compat-winapp|[@niko_yhc](https://gitee.com/niko_yhc)|
+|[I8Y4I0](https://gitee.com/openeuler/release-management/issues/I8Y4I0)|支持树莓派|Accepted|sig-RaspberryPi|[@woqidaideshi](https://gitee.com/woqidaideshi/)|
+|[I914GW](https://gitee.com/openeuler/release-management/issues/I914GW)|DDE支持|Accepted|sig-DDE|[@ut-layne-yang](https://gitee.com/ut-layne-yang)|
+|[I8ZJBA](https://gitee.com/openeuler/release-management/issues/I8ZJBA)|migration-tools增加图形化迁移openeuler功能|Accepted|sig-Migration|[@xingwei-liu](https://gitee.com/xingwei-liu/)|
+|[I8ZJFG](https://gitee.com/openeuler/release-management/issues/I8ZJFG)|增加 utshell 项目发布|Accepted|sig-memsafety|[@wangmengc](https://gitee.com/wangmengc/)|EPOL|utshell|
+|[I8ZJGW](https://gitee.com/openeuler/release-management/issues/I8ZJGW)|增加 utsudo 项目发布|Accepted|sig-memsafety|[@ut-wanglujun](https://gitee.com/ut-wanglujun/)|EPOL|utsudo|
+|[I94ET0](https://gitee.com/openeuler/release-management/issues/I94ET0)|发布Nestos-kubernetes-deployer |Accepted|sig-K8sDistro|[@duyiwei7w](https://gitee.com/duyiwei7w)|
+|[I9780H](https://gitee.com/openeuler/release-management/issues/I9780H)| 支持vCPU热插拔 |Accepted|sig-kernel|[@JiaboFeng](https://gitee.com/JiaboFeng)|
+|[I9780Y](https://gitee.com/openeuler/release-management/issues/I9780Y)| A-Ops gala提供网络L4层TCP主流指标观测能力 |Accepted|sig-ops|[@MrRlu](https://gitee.com/MrRlu)|
+|[I97814](https://gitee.com/openeuler/release-management/issues/I97814)| A-Ops gala提供网络L7层RED指标观测能力 |Accepted|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
+|[I97817](https://gitee.com/openeuler/release-management/issues/I97817)| A-Ops gala提供应用粒度的I/O、CPU、MEM资源占用观测能力|Accepted|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
+|[I9781E](https://gitee.com/openeuler/release-management/issues/I9781E)| A-Ops gala支持可观测行为的动态变更 |Accepted|sig-ops |[@MrRlu](https://gitee.com/MrRlu)|
+|[I9781K](https://gitee.com/openeuler/release-management/issues/I9781K)|内存潮汐调度：支持serverless容器热备份 |Accepted|sig-kernel |[@ stkid](https://gitee.com/stkid)|
+|[I9782E](https://gitee.com/openeuler/release-management/issues/I9782E)| LLVM版本升级到17.0.6 |Accepted|sig-Compiler |[@ cf-zhao](https://gitee.com/cf-zhao)|
+|[I9784H](https://gitee.com/openeuler/release-management/issues/I9784H)| 支持系统运维套件x-diagnosis |Rejected|sig-ops ||
+|[ I9784N](https://gitee.com/openeuler/release-management/issues/I9784N)| 支持自动化热升级组件nvwa |Accepted|sig-ops ||
+|[ I9785W](https://gitee.com/openeuler/release-management/issues/I9785W)| 支持DPU直连聚合特性 |Accepted|sig-DPU ||
+|[ I9786D](https://gitee.com/openeuler/release-management/issues/I9786D)| 支持系统热修复组件syscare |Accepted|sig-ops ||
+|[ I9786H](https://gitee.com/openeuler/release-management/issues/I9786H)| 支持内存分级扩展组件etmem |Accepted|sig-Storage|[@swf504](https://gitee.com/swf504)|
+|[ I97878](https://gitee.com/openeuler/release-management/issues/I97878)| iSula容器镜像构建工具isula-build |Accepted|sig-iSulad||
+|[ I9787D](https://gitee.com/openeuler/release-management/issues/I9787D)| 一键式、轻量化、可配置集群部署工具eggo |Accepted|sig-isulad ||
+|[ I9787G](https://gitee.com/openeuler/release-management/issues/I9787G)| 支持容器引擎isulad |Accepted|sig-iSulad ||
+|[ I9787L](https://gitee.com/openeuler/release-management/issues/I9787L)| 支持进程完整性防护特性 |Accepted|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
+|[ I9787O](https://gitee.com/openeuler/release-management/issues/I9787O)| 支持入侵检测框架secDetector|Accepted|sig-security-facility |[@zcfsite](https://gitee.com/zcfsite)|
+|[ I9787P](https://gitee.com/openeuler/release-management/issues/I9787P)| imageTailor支持树莓派镜像定制|Accepted|sig-OS-Builder |[@zhuchunyi](https://gitee.com/zhuchunyi)|
+|[ I9787U](https://gitee.com/openeuler/release-management/issues/I9787U)| 支持secPaver特性 |Accepted|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
+|[ I9788R](https://gitee.com/openeuler/release-management/issues/I9788R)| 支持机密计算安全应用开发组件 secGear |Accepted|sig-confidential-computing |[@houmingyong](https://gitee.com/houmingyong)|
+|[ I9788S](https://gitee.com/openeuler/release-management/issues/I9788S)| 系统性能自优化组件A-Tune |Accepted|sig-A-Tune|[@ gaoruoshu](https://gitee.com/gaoruoshu)|
+|[ I9788W](https://gitee.com/openeuler/release-management/issues/I9788W)| isocut镜像裁剪易用性提升 |Accepted|sig-OS-Builder |[@zhuchunyi](https://gitee.com/zhuchunyi)|
+|[ I97890](https://gitee.com/openeuler/release-management/issues/I97890)| 支持devmaster组件 |Accepted|sig-dev-utils ||
+|[ I9789Q](https://gitee.com/openeuler/release-management/issues/I9789Q)| 支持TPCM特性 |Accepted|sig-Base-service|[@t_feng](https://gitee.com/t_feng)|
+|[ I9789U](https://gitee.com/openeuler/release-management/issues/I9789U)| 支持sysMaster组件 |Accepted|sig-dev-utils ||
+|[ I9789V](https://gitee.com/openeuler/release-management/issues/I9789V)| 安全配置规范框架设计及核心内容构建 |Accepted|sig-security-facility||
+|[ I9789Y](https://gitee.com/openeuler/release-management/issues/I9789Y)| A-OPS智能运维工具 |Accepted|sig-ops||
+|[ I978A1](https://gitee.com/openeuler/release-management/issues/I978A1)| 支持sysmonitor特性 |Accepted|sig-ops|[@foreson](https://gitee.com/foreson)|
+|[ I978A3](https://gitee.com/openeuler/release-management/issues/I978A3)| kmesh-bwm高性能网络带宽管理 |Rejected|sig-high-performance-network|[@yanan-rock](https://gitee.com/yanan-rock)|
+|[ I978A5](https://gitee.com/openeuler/release-management/issues/I978A5)| Gazelle用户态协议栈 |Accepted|sig-high-performance-network |[@yanan-rock](https://gitee.com/yanan-rock)|
+|[ I978A7](https://gitee.com/openeuler/release-management/issues/I978A7)| 混合部署rubik |Accepted|sig-CloudNative||
+|[ I978AC](https://gitee.com/openeuler/release-management/issues/I978A1)| isulad支持oci runtime并且切换默认runtime为runc |Accepted|sig-iSulad ||
+|[ I97DTY](https://gitee.com/openeuler/release-management/issues/I97DTY)| 支持embedded |Accepted|sig-embedded|[@fanglinxu](https://gitee.com/fanglinxu)|
+|[I942Y9](https://gitee.com/openeuler/release-management/issues/I942Y9)|发布PilotGo及其插件特性新版本 |Accepted|sig-ops|[@yangzhao_kl](https://gitee.com/yangzhao_kl)|
+|[I95KTM](https://gitee.com/openeuler/release-management/issues/I95KTM)|UKUI支持|Accepted|sig-UKUI|[@hua_yadong](https://gitee.com/hua_yadong)|
+|[I98UXD](https://gitee.com/openeuler/release-management/issues/I98UXD)|支持ROS2-humble和ROS1-noetic基础版|Accepted|sig-ROS|[@davidhan008](https://gitee.com/davidhan008/)|
+|[I985WB](https://gitee.com/openeuler/release-management/issues/I985WB) | 支持 OpenStack Wallaby、Antelope 多版本 | Accepted | sig-openstack | [@han-guangyu](https://gitee.com/han-guangyu) |
+|[I97AX0](https://gitee.com/openeuler/release-management/issues/I97AX0)| 社区签名体系建立 |Accepted|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
+|[I97D8Z](https://gitee.com/openeuler/release-management/issues/I97D8Z)| 智能问答在线服务 |Accepted| |[@fromhsc](https://gitee.com/fromhsc)|
+|[I97IVO](https://gitee.com/openeuler/release-management/issues/I97IVO)| 支持国密特性 |Accepted|sig-security-facility |[@HuaxinLuGitee](https://gitee.com/HuaxinLuGitee)|
+|[ I980D1](https://gitee.com/openeuler/release-management/issues/I980D1)| Gazelle支持UDP协议栈|Accepted|sig-high-performance-network |[@yanan-rock](https://gitee.com/yanan-rock)|
+|[I8ZTS2](https://gitee.com/openeuler/release-management/issues/I8ZTS2)| 增加 AO.space 项目发布 |Accepted|sig-RaspberryPi  |[@jianminw](https://gitee.com/jianminw)|
+|[I8XFUF](https://gitee.com/openeuler/release-management/issues/I8XFUF)| 合入GreatSQL 8.0.32-25及更高版本 |Accepted| |[@GreatSQL_admin](https://gitee.com/GreatSQL_admin)|
+|[I8YUI2](https://gitee.com/openeuler/release-management/issues/I8YUI2)| 发布elastisearch-py 7.13.4版本 |Rejected| |[@lin-shoubao](https://gitee.com/lin-shoubao)|
+|[I9B6RR](https://gitee.com/openeuler/release-management/issues/I9B6RR)| ZGCLab 发布内核安全增强补丁 | Accepted | sig-kernel | [@amjac](https://gitee.com/amjac) |
 
 > 当前社区release分为以下几种方式: 标准 ISO/everything ISO/EPOL/独立镜像/ 独立发布
 >
@@ -188,7 +189,6 @@ openEuler 24.03 LTS版本交付需求列表如下，详情见[openEuler-24.03-LT
 | Kunpeng加速引擎                           | sig-AccLib                   | sig-AccLib                   | 验证对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加速器KAE的基本功能和性能测试 |
 | 备份还原功能支持                          | sig-Migration                | sig-Migration                | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
 | ROS基础版和ROS2基础版                     | sig-ROS                      | sig-ROS                      | 验证ROS-COMM和ROS-BASE的安装卸载与基础功能正常               |
-| 支持Lustre client软件包      | sig-SDS                                   |   sig-SDS                       |验证Lustre client 基础功能与可靠性 |
 |openEuler docker容器支持sysMaster管理sshd服务| dev-utils                            |    dev-utils                     |验证sysmaster管理sshd服务，在docker容器中的基本功能|
 |支持 OpenStack Wallaby、Train 多版本| sig-openstack                          |                      sig-openstack                 |验证openstack的wallaby和train版本软件包的安装卸载和功能|
 |iSulad支持K8S 1.24 /1.25版本 | iSulad 　　　　　　　　　　　　　　　　　　| iSulad                       |   验证k8s的基础部署功能以及可靠性   |
@@ -201,6 +201,14 @@ openEuler 24.03 LTS版本交付需求列表如下，详情见[openEuler-24.03-LT
 |支持DPU直连聚合特性|sig-DPU|sig-DPU|验证DPU直连聚合特性基本功能，安全以及可靠性|
 |支持系统热修复组件syscare|sig-ops|sig-ops|验证系统热修复组件syscare的功能，并发，长稳，以及安全|
 |支持入侵检测框架secDetector|sig-security-facility|sig-security-facility|验证入侵检测框架secDetector基本功能，安全，可靠性等方面|
+| vCPU热插    | sig-kernel    | sig-kernel | 对虚拟机支持vCPU热插能力进行功能/可靠性/稳定性和场景测试|
+| nvwa 内核热升级     | sig-ops          | sig-ops        | 重点验证基本功能，以及特性启动/重启后的功能及状态 |
+| iSula容器镜像构建工具isula-build | sig-OS-Builder|sig-QA |关注基本功能完整性 |
+| 支持进程完整性防护特性 | sig-security-facility|sig-security-facility|验证配置DIM度量策略，度量用户态进程，度量任一模块，度量内核等功能； |
+| 支持devmaster组件 | sig-dev-utils |sig-dev-utils |依据测试要求，对devmaster特性进行接口测试、功能测试、组合场景测试 |
+| 支持TPCM特性  | sig-Base-service |sig-Base-service | 覆盖基本功能|
+| 支持sysMaster组件 | sig-dev-utils |sig-dev-utils |验证入ysmaster的安装部署、基本功能、配置项进行测试 |
+| isulad支持oci runtime并且切换默认runtime为runc |sig-iSulad|sig-iSulad|覆盖功能，可靠性。|
 
 本次版本新增测试活动分工参见 **2.3 需求清单** 章节，由需求对应sig负责开发与测试
 
@@ -210,7 +218,7 @@ openEuler 24.03 LTS版本交付需求列表如下，详情见[openEuler-24.03-LT
 
    openEuler 24.03 LTS 版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 1轮重点特性测试 + 2轮全量测试 + 1轮回归测试 + 1轮版本发布验收测试；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项；第2轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证，另外开展安全CVE扫描及OS基础性能摸底和系统整体集成验证，旨在识别阻塞性问题；第3、4轮全量测试开展版本交付的所有特性和各类专项测试；第5轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；第6轮版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-   openEuler 24.03 LTS 版本共发现问题 642 个，有效问题 601 个，无效问题 40 个。遗留问题 1 个(详见遗留问题章节)。版本整体质量良好。
+   openEuler 24.03 LTS 版本共发现问题 669 个，有效问题 658 个，无效问题 41 个。遗留问题 2 个(详见遗留问题章节)。版本整体质量良好。
 
 
 
@@ -244,62 +252,69 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 对产品所有继承特性进行评价，用表格形式评价，包括特性列表（与特性清单保持一致），验证质量评估
 
-| 序号 | 组件/特性名称                             |        特性质量评估        | 备注                                                         |
-| ---- | ----------------------------------------- | :------------------------: | ------------------------------------------------------------ |
-| 1    | 内核                                      | <font color=green>█</font> | 直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
-| 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | 继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
-| 3    | 虚拟化(qemu/stratovirt)                   | <font color=green>█</font> | 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
-| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> | 继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
-| 5    | 支持DDE桌面                               | <font color=green>█</font> | 继承已有测试能力，关注DDE桌面系统的安装和基本功能            |
-| 6    | 支持UKUI桌面                              | <font color=green>█</font> | 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
-| 7    | 支持xfce桌面                              | <font color=green>█</font> | 继承已有测试能力，重点关注xfce桌面的可安装性和提供组件的能力 |
-| 8    | 支持gnome桌面                             | <font color=green>█</font> | 继承已有测试能力，关注gnome桌面系统的安装和基本功能          |
-| 9    | 支持Kiran桌面                             | <font color=green>█</font> | 增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
-| 10   | 支持南向兼容性                            | <font color=green>█</font> | 继承已有测试能力，关注板卡和整机适配的兼容性测试             |
-| 11   | 支持北向兼容性                            | <font color=green>█</font> | 继承已有测试能力，关注软件所仓库对已正式release版本的北向软件的功能验证 |
-| 12   | 支持树莓派                                | <font color=green>█</font> | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
-| 13   | 支持HA软件                                | <font color=green>█</font> | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
-| 14   | 支持KubeSphere                            | <font color=green>█</font> | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力 |
-| 15   | 支持openstack Train 和 Wallaby            | <font color=green>█</font> | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
-| 16   | 支持A-Tune                                | <font color=green>█</font> | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
-| 17   | 支持secPave                               | <font color=green>█</font> | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
-| 18   | 支持secGear                               | <font color=green>█</font> | 继承已有测试能力，关注secGear特性的功能完整性                |
-| 19   | 支持eggo                                  | <font color=green>█</font> | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
-| 20   | 支持kubeOS                                | <font color=green>█</font> | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
-| 21   | 支持NestOS                                | <font color=green>█</font> | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
-| 22   | 支持etmem内存分级扩展                     | <font color=green>█</font> | 继承已有测试能力，重点验证特性的基本功能和稳定性             |
-| 23   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> | 继承已有测试能力，验证可定制化的能力                         |
-| 24   | 支持虚拟化热补丁libcareplus               | <font color=green>█</font> | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力      |
-| 25   | 支持用户态协议栈gazelle                   | <font color=green>█</font> | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能      |
-| 26   | 支持容器场景在离线混合部署rubik           | <font color=green>█</font> | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
-| 27   | 支持智能运维A-ops                         | <font color=green>█</font> | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
-| 28   | 支持国密算法                              | <font color=green>█</font> | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
-| 29   | 支持k3s                                   | <font color=green>█</font> | 继承已有测试能力，验证k3s软件的部署测试过程                  |
-| 30   | 支持KubeEdge                              | <font color=green>█</font> | 继承已有测试能力，验证KubeEdge的部署测试过程                 |
-| 31   | 支持pkgship                               | <font color=green>█</font> | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 |
-| 32   | 支持mindspore                             | <font color=green>█</font> | 继承已有测试能力，针对openCV、opencl-clhpp、onednn、Sentencepiece4个模块，复用开源测试能力覆盖安装、接口测试、功能测试，重点关注对mindspore提供能力的稳定性 |
-| 33   | 支持pod带宽管理oncn-bwm                   | <font color=green>█</font> | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
-| 34   | 支持基于分布式软总线扩展生态互联互通      | <font color=green>█</font> | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 |
-| 35   | 支持混合关键部署技术扩展                  | <font color=green>█</font> | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
-| 36   | 支持硬实时系统                            | <font color=green>█</font> | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 |
-| 37   | 支持kubernetes                            | <font color=green>█</font> | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
-| 38   | 安装部署                                  | <font color=green>█</font> | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| 39   | Kunpeng加速引擎                           | <font color=green>█</font> | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
-| 40   | 备份还原功能支持                          | <font color=green>█</font> | 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
-| 41   | 支持ROS基础版和ROS2基础版42               | <font color=green>█</font> | 验证ROS-COMM和ROS-BASE的安装卸载与基础功能正常               |
-| 42   | 支持Lustre client软件包      | <font color=green>█</font>    |继承已有测试能力，验证Lustre client 基础功能与可靠性 |
-| 43   | openEuler docker容器支持sysMaster管理sshd服务| <font color=green>█</font>  |继承已有测试能力，验证sysmaster管理sshd服务，在docker容器中的基本功能|
-| 44   | 支持 OpenStack Wallaby、Train 多版本| <font color=green>█</font>               |继承已有测试能力，验证openstack的wallaby和train版本软件包的安装卸载和功能|
-| 45   | iSulad支持K8S 1.24 /1.25版本 |<font color=green>█</font>|   继承已有测试能力，验证k8s的基础部署功能以及可靠性   |
-| 46   | Rubik混部支持精细化资源QoS感知和控制 | <font color=green>█</font> |  继承已有测试能力，验证rubik支持精细化资源感知和控制的基础功能                 |
-| 47   | 支持 sysmonitor 特性 |<font color=green>█</font> |   继承已有测试能力，验证sysmonitro继承需求的可靠性和基础功能                |
-| 48   | Gazelle |<font color=green>█</font>|  继承已有测试能力，验证gaelle继承功能                   |
-| 49   | 安全配置规范框架设计及核心内容构建|<font color=green>█</font>|   继承已有测试能力，验证安全配置规范框架设计及核心内容构建        |
-| 50   | gala-gopher新增性能火焰图、线程级性能Profiling特性 |<font color=green>█</font> | 继承已有测试能力，验证gala-gopher新增性能火焰图、线程级性能Profiling特性          |
-| 51   | 新增NestOS K8S部署方案 |<font color=green>█</font> |继承已有测试能力，验证在netos-installer安装，容器引擎等应用场景进行k8s部署|
-| 52   | 支持DPU直连聚合特性|<font color=green>█</font>|继承已有测试能力，验证DPU直连聚合特性基本功能，安全以及可靠性|
-| 53   | 支持系统热修复组件syscare|<font color=green>█</font>|继承已有测试能力，验证系统热修复组件syscare的功能，并发，长稳，以及安全|
-| 54   | 支持入侵检测框架secDetector|<font color=green>█</font>|继承已有测试能力，验证入侵检测框架secDetector基本功能，安全，可靠性等方面|
+| 序号 | 组件/特性名称                     | **aarch64/x86_64质量评估**  |**risc-v质量评估**  |   **loongarch质量评估**    |  **powerpc质量评估**    | 备注                                                         |
+| ---- | ----------------------- | :-------: | :--------: | :--------: | :-------: | ------------------------------------------------------------ |
+| 1    | 内核                                      | <font color=green>█</font> | |||直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
+| 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | |||继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
+| 3    | 虚拟化(qemu/stratovirt)                   | <font color=green>█</font> | ||| 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
+| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> |  |||继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
+| 5    | 支持DDE桌面                               | <font color=green>█</font> | ||| 继承已有测试能力，关注DDE桌面系统的安装和基本功能            |
+| 6    | 支持UKUI桌面                              | <font color=green>█</font> | ||| 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
+| 7    | 支持xfce桌面                             | <font color=red>●</font> |  |||无人维护，共有用例103条 |
+| 8    | 支持gnome桌面                            | <font color=red>●</font> |  |||无人维护，共有用例53条 |
+| 9    | 支持Kiran桌面                             | <font color=green>█</font> |  |||增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
+| 10   | 支持南向兼容性                            | <font color=green>█</font> |  |||继承已有测试能力，关注板卡和整机适配的兼容性测试             |
+| 11   | 支持北向兼容性                            | <font color=green>█</font> |  |||继承已有测试能力，关注软件所仓库对已正式release版本的北向软件的功能验证 |
+| 12   | 支持树莓派                                | <font color=green>█</font> |  |||继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
+| 13   | 支持HA软件                                | <font color=green>█</font> |  |||继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
+| 14   | 支持KubeSphere                            | <font color=green>█</font> |  |||继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力 |
+| 15   | 支持openstack Train 和 Wallaby            | <font color=green>█</font> |  |||继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
+| 16   | 支持A-Tune                                | <font color=green>█</font> |  |||继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
+| 17   | 支持secPave                               | <font color=green>█</font> |  |||继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
+| 18   | 支持secGear                               | <font color=green>█</font> |  |||继承已有测试能力，关注secGear特性的功能完整性                |
+| 19   | 支持eggo                                  | <font color=green>█</font> | ||| 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
+| 20   | 支持kubeOS                                | <font color=green>█</font> |  |||继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
+| 21   | 支持NestOS                                | <font color=green>█</font> | ||| 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
+| 22   | 支持etmem内存分级扩展                     | <font color=green>█</font> | ||| 继承已有测试能力，重点验证特性的基本功能和稳定性             |
+| 23   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> |  |||继承已有测试能力，验证可定制化的能力                         |
+| 24   | 支持虚拟化热补丁libcareplus               | <font color=green>█</font> | ||| 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力      |
+| 25   | 支持用户态协议栈gazelle                   | <font color=green>█</font> |  |||继承已有测试能力，重点关注gazelle高性能用户态协议栈功能      |
+| 26   | 支持容器场景在离线混合部署rubik           | <font color=green>█</font> | ||| 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
+| 27   | 支持智能运维A-ops                         | <font color=green>█</font> | ||| 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
+| 28   | 支持国密算法                              | <font color=green>█</font> | ||| 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
+| 29   | 支持k3s                                   | <font color=green>█</font> | ||| 继承已有测试能力，验证k3s软件的部署测试过程                  |
+| 30   | 支持KubeEdge                              | <font color=green>█</font> |  |||继承已有测试能力，验证KubeEdge的部署测试过程                 |
+| 31   | 支持pkgship                               | <font color=green>█</font> |  |||继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 |
+| 32   | 支持mindspore                             | <font color=green>█</font> |  |||继承已有测试能力，针对openCV、opencl-clhpp、onednn、Sentencepiece4个模块，复用开源测试能力覆盖安装、接口测试、功能测试，重点关注对mindspore提供能力的稳定性 |
+| 33   | 支持pod带宽管理oncn-bwm                   | <font color=green>█</font> | ||| 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
+| 34   | 支持基于分布式软总线扩展生态互联互通      | <font color=green>█</font> |  |||继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 |
+| 35   | 支持混合关键部署技术扩展                  | <font color=green>█</font> | ||| 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS | |||
+| 36   | 支持硬实时系统                            | <font color=green>█</font> | |||继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | |||
+| 37   | 支持kubernetes                            | <font color=green>█</font> | |||继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 | |||
+| 38   | 安装部署                                  | <font color=green>█</font> |||| 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 | |||
+| 39   | Kunpeng加速引擎                           | <font color=green>█</font> | |||继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
+| 40   | 备份还原功能支持                          | <font color=green>█</font> | ||| 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
+| 41   | 支持ROS基础版和ROS2基础版42               | <font color=green>█</font> |  |||验证ROS-COMM和ROS-BASE的安装卸载与基础功能正常               |
+| 43   | openEuler docker容器支持sysMaster管理sshd服务| <font color=green>█</font>  | |||继承已有测试能力，验证sysmaster管理sshd服务，在docker容器中的基本功能|
+| 44   | 支持 OpenStack Wallaby、Train 多版本| <font color=green>█</font>               | |||继承已有测试能力，验证openstack的wallaby和train版本软件包的安装卸载和功能|
+| 45   | iSulad支持K8S 1.24 /1.25版本 |<font color=green>█</font>|   ||| 继承已有测试能力，验证k8s的基础部署功能以及可靠性   |
+| 46   | Rubik混部支持精细化资源QoS感知和控制 | <font color=green>█</font> |   |||继承已有测试能力，验证rubik支持精细化资源感知和控制的基础功能                 |
+| 47   | 支持 sysmonitor 特性 |<font color=green>█</font> |   ||| 继承已有测试能力，验证sysmonitro继承需求的可靠性和基础功能                |
+| 48   | Gazelle |<font color=green>█</font>|  |||继承已有测试能力，验证gaelle继承功能                   |
+| 49   | 安全配置规范框架设计及核心内容构建|<font color=green>█</font>|  |||  继承已有测试能力，验证安全配置规范框架设计及核心内容构建        |
+| 50   | gala-gopher新增性能火焰图、线程级性能Profiling特性 |<font color=green>█</font> |  |||继承已有测试能力，验证gala-gopher新增性能火焰图、线程级性能Profiling特性          |
+| 51   | 新增NestOS K8S部署方案 |<font color=green>█</font> | |||继承已有测试能力，验证在netos-installer安装，容器引擎等应用场景进行k8s部署|
+| 52   | 支持DPU直连聚合特性|<font color=green>█</font>| |||继承已有测试能力，验证DPU直连聚合特性基本功能，安全以及可靠性|
+| 53   | 支持系统热修复组件syscare|<font color=green>█</font>| |||继承已有测试能力，验证系统热修复组件syscare的功能，并发，长稳，以及安全|
+| 54   | 支持入侵检测框架secDetector|<font color=green>█</font>| |||继承已有测试能力，验证入侵检测框架secDetector基本功能，安全，可靠性等方面|
+| 56   | vCPU热插                             | <font color=green>█</font> |  |||对虚拟机支持vCPU热插能力进行功能/可靠性/稳定性和场景测试，共执行用例93条，覆盖基本功能、并发压力场景下的反复热插、长时间的生命周期操作；用例全部执行通过，特性质量良好 |sig-kernel
+| 57   | nvwa 内核热升级             | <font color=green>█</font>       |  |||继承已有测试能力，重点验证基本功能，以及特性启动/重启后的功能及状态 |
+| 58   | iSula容器镜像构建工具isula-build | <font color=green>█</font> | |||继承版本已有测试能力，关注基本功能完整性 |
+| 59   | 支持进程完整性防护特性 | <font color=green>█</font> | |||验证配置DIM度量策略，度量用户态进程，度量任一模块，度量内核等功能； |
+| 60   | 支持devmaster组件 | <font color=green>█</font> | |||依据测试要求，对devmaster特性进行接口测试、功能测试、组合场景测试 |
+| 61   | 支持TPCM特性  | <font color=green>█</font> |  |||TPCM需求，共1轮测试，设计场景3个，共有用例11个。覆盖基本功能|
+| 62   | 支持sysMaster组件 | <font color=green>█</font> | |||继承已有测试能力，验证入ysmaster的安装部署、基本功能、配置项进行测试 |
+| 63   | isulad支持oci runtime并且切换默认runtime为runc | <font color=green>█</font> | ||| 继承已有测试能力，覆盖功能，可靠性。|
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -311,67 +326,36 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 建议以表格的形式汇总新特性测试执行情况及遗留问题单情况的评估,给出特性质量评估结论。
 
-| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **质量评估**    | **备注** |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | -------- |
-|  1 | [发布kiran-desktop 2.6版本](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  2 | [iSulad支持CRI v1.29](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  3 | [iSulad支持CDI](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  4 | [iSulad支持NRI](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  5 | [iSulad支持cgroup v2](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  6 | [为 RISC-V 架构增加内核热补丁能力](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  7 | [为 RISC-V 架构引入 Penglai TEE 支持](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  8 | [wine5.5升级到wine9.0，不需要linux32依赖库情况下支持win32程序](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  9 | [支持树莓派](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  10 | [DDE支持](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  11 | [migration-tools增加图形化迁移openeuler功能](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  12 | [增加 utshell 项目发布](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  13 | [增加 utsudo 项目发布](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  14 | [发布Nestos-kubernetes-deployer](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  15 | [支持vCPU热插拔](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  16 | [A-Ops gala提供网络L4层TCP主流指标观测能力](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  17 | [A-Ops gala提供网络L7层RED指标观测能力](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  18 | [A-Ops gala提供应用粒度的I/O、CPU、MEM资源占用观测能力](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  19 | [A-Ops gala支持可观测行为的动态变更](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  20 | [内存潮汐调度：支持serverless容器热备份](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  21 | [LLVM版本升级到17.0.6](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  22 | [支持系统运维套件x-diagnosis](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  23 | [支持自动化热升级组件nvwa](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  24 | [支持DPU直连聚合特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  25 | [支持系统热修复组件syscare](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  26 | [支持内存分级扩展组件etmem](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  27 | [iSula容器镜像构建工具isula-build](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  28 | [一键式、轻量化、可配置集群部署工具eggo](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  29 | [支持容器引擎isulad](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  30 | [支持进程完整性防护特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  31 | [支持入侵检测框架secDetector](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  32 | [imageTailor支持树莓派镜像定制](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  33 | [支持secPaver特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  34 | [支持机密计算安全应用开发组件 secGear](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  35 | [系统性能自优化组件A-Tune](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  36 | [isocut镜像裁剪易用性提升 ](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  37 | [支持devmaster组件](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  38 | [支持TPCM特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  39 | [支持sysMaster组件](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  40 | [安全配置规范框架设计及核心内容构建](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  41 | [A-OPS智能运维工具](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  42 | [支持sysmonitor特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  43 | [kmesh-bwm高性能网络带宽管理](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  44 | [Gazelle用户态协议栈](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  45 | [混合部署rubik](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  46 | [isulad支持oci runtime并且切换默认runtime为runc](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  47 | [支持embedded](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  48 | [发布PilotGo及其插件特性新版本](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  49 | [UKUI支持](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  50 | [支持ROS2-humble和ROS1-noetic基础版](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  51 | [支持 OpenStack Wallaby、Antelope 多版本](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  52 | [社区签名体系建立](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  53 | [智能问答在线服务](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  54 | [支持国密特性](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  55 | [Gazelle支持UDP协议栈](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  56 | [增加 AO.space 项目发布](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  57 | [合入GreatSQL 8.0.32-25及更高版本](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  58 | [发布elastisearch-py 7.13.4版本](待刷新) | 待刷新 |  |  | 待刷新 | |
-|  59 | [ZGCLab 发布内核安全增强补丁](待刷新) | 待刷新 |  |  | 待刷新 | |
+| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v质量评估**    |   **loongarch质量评估**    |  **powerpc质量评估**    | **备注** |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- | -------------------------- | -------- |
+|  1 | [发布kiran-desktop 2.6版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03%E7%89%88%E6%9C%ACKiran%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | Kiran2.6特性测试，覆盖测试用例114个，执行覆盖率100%。主要覆盖了功能测试、安全测试和可靠性测试，满足了功能和通用指标要求，通过了7天压力测试。一共发现65个有效缺陷，延后3个，缺陷遗留率为4.62%；整体质量良好，测试通过。 |  |  | <font color=green>█</font> | | | | |
+|  2 | [iSulad支持CRI v1.29](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/isulad%20%E6%94%AF%E6%8C%81cri%20V1.29%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 300+ 个，主要覆盖了功能测试和可靠性测试，通过 7*24 的长稳测试，失败用例 0 个，新增10个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
+|  3 | [iSulad支持CDI](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03_LTS%E7%89%88%E6%9C%ACiSulad%E6%94%AF%E6%8C%81CDI%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 27 个，主要覆盖了功能测试， 27 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  4 | [iSulad支持cgroup v2](https://gitee.com/openeuler/QA/pulls/690) | iSulad支持cgroup v2特性测试，共计执行2397个用例，主要覆盖功能测试、可靠性测试、性能测试以及继承用例测试，测试过程发现有效问题5个，已提issue解决。 |  |  | <font color=green>█</font> | | | | |
+|  5 | [为 RISC-V 架构增加内核热补丁能力](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%20RISC-V%2024.03%E7%89%88%E6%9C%ACsyscare%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | syscare特性，共计执行24个用例，主要覆盖了功能场景测试，同时联调验证过特性质量。未发现问题，功能质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  6 | [为 RISC-V 架构引入 Penglai TEE 支持](https://gitee.com/openeuler/QA/pulls/707) | 蓬莱 TEE 特性测试，对蓬莱提供的7个 demo 示例进行了编译运行测试，全部可以按照预期方式运行，测试通过。 |  |  | <font color=green>█</font> | | | | |
+|  7 | [支持树莓派](https://gitee.com/openeuler/QA/pulls/716) | openEuler 24.03 LTS 树莓派镜像版本测试完成了功能测试，测试范围包括镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；完成了硬件兼容性测试，包括树莓派 3B、3B+、4B 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。以上测试内容均未发现问题。 |  |  | <font color=green>█</font> | | | | |
+|  8 | [DDE支持](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | DDE 特性总共进行3轮测试，合计执行用例378条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。 |  |  | <font color=green>█</font> | | | | |
+|  9 | [migration-tools增加图形化迁移openeuler功能](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | DDE 特性总共进行3轮测试，合计执行用例378条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。 |  |  | <font color=green>█</font> | | | | |
+|  10 | [增加 utshell 项目发布](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | DDE 特性总共进行3轮测试，合计执行用例378条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。 |  |  | <font color=green>█</font> | | | | |
+|  11 | [增加 utsudo 项目发布](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03%E7%89%88%E6%9C%ACDDE%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | DDE 特性总共进行3轮测试，合计执行用例378条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。 |  |  | <font color=green>█</font> | |
+|  12 | [发布Nestos-kubernetes-deployer](待刷新) |  |  |  | <font color=red>●</font> | | | | NKD 24.03 LTS 版本需等待 NestOS 24.03 LTS 版本发布后再进行测试|
+|  13 | [A-Ops gala提供网络L4层TCP主流指标观测能力](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03_LTS%E7%89%88%E6%9C%ACgala-gopher%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 47 个，主要覆盖了 API 测试和功能测试，通过 7*24 的长稳测试，失败用例 0 个，其他 47 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  14 | [A-Ops gala提供网络L7层RED指标观测能力](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03_LTS%E7%89%88%E6%9C%ACgala-gopher%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 47 个，主要覆盖了 API 测试和功能测试，通过 7*24 的长稳测试，失败用例 0 个，其他 47 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  15 | [A-Ops gala提供应用粒度的I/O、CPU、MEM资源占用观测能力](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03_LTS%E7%89%88%E6%9C%ACgala-gopher%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 47 个，主要覆盖了 API 测试和功能测试，通过 7*24 的长稳测试，失败用例 0 个，其他 47 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  16 | [A-Ops gala支持可观测行为的动态变更](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03_LTS%E7%89%88%E6%9C%ACgala-gopher%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 本特性，共计执行用例 47 个，主要覆盖了 API 测试和功能测试，通过 7*24 的长稳测试，失败用例 0 个，其他 47 个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | |
+|  17 | [内存潮汐调度：支持serverless容器热备份](待刷新) | 20个用例，包含继承用例18个，新增用例2个。覆盖功能，性能，可靠性，安全等场景，发现问题１个，已解决 |  |  | <font color=green>█</font> | | | | |
+|  18 | [LLVM版本升级到17.0.6](待刷新) | 执行６个测试套，共计33978个测试用例，覆盖功能，性能，可靠性，安全等场景，发现问题４４个，已解决 |  |  | <font color=green>█</font> | | | | |
+|  19 | [支持embedded](https://gitee.com/openeuler/QA/pulls/717) | openEuler 24.03 lts embedded版本目前共发现问题46个，修复问题39个，取消问题单7个，版本整体质量较好，风险可控。 |  |  | <font color=green>█</font> | | | | |
+|  20 | [发布PilotGo及其插件特性新版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler%2024.03pilotgo2.0%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | pilotgo2.0版本在openEuler-24.03-LTS版本测试阶段完成了功能测试，包括概览、用户、角色、日志、批次、机器特性、插件七大模块执行138个测试用例，整体核心功能稳定正常；完成了可靠性测试，可以长时间稳定运行；完成了鲲鹏 920和intel/amd x86-64平台的兼容性测试；对测试发现的主要问题都得到了修正，回归测试结果正常。 |  |  | <font color=green>█</font> | | | | |
+|  21 | [UKUI支持](https://gitee.com/openeuler/QA/pulls/706) | UKUI3在openEuler 24.03测试镜像，共经过三轮测试，执行94个测试项，整体核心功能稳定正常。 |  |  | <font color=green>█</font> | | | | |
+|  22 | [支持 OpenStack Wallaby、Antelope 多版本](待刷新) | 共执行用例1161条，覆盖T版本提供组件的API和功能测试，并通过tempest测试套完成集成验证和长稳测试 |  |  | <font color=green>█</font> | | | | |
+|  23 | [社区签名体系建立](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler-24.03-LTS%20%E7%AD%BE%E5%90%8D%E4%BD%93%E7%B3%BB%E5%BB%BA%E7%AB%8B%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | 签名体系建立特性，共计执行14个用例，主要覆盖了功能测试、可靠性测试和资料测试，未发现问题，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
+|  24 | [智能问答在线服务](待刷新) | 共执行21个用例，主要覆盖web测试，功能测试，性能测试与资料测试，对测试发现的主要问题都得到了修复，整体测试结果正常，功能可用 |  |  | <font color=green>█</font> | | | | |
+|  25 | [Gazelle支持UDP协议栈](https://gitee.com/openeuler/QA/pulls/711) | 经过4轮测试，共有用例250＋个，包含急成用例205个，新增用例50+个，覆盖功能，性能，可靠性，安全以及易用性场景。 |  |  | <font color=green>█</font> | | | | |
+|  26 | [增加 AO.space 项目发布](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler_24.03-LTS-AO.space%E7%89%B9%E6%80%A7%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) | AO.space 特性，共计执行 20 个用例，主要覆盖了安装测试和功能测试，发现问题已解决，回归通过，无遗留风险，整体质量良好。  |  |  | <font color=green>█</font> | | | | |
+|  27 | [合入GreatSQL 8.0.32-25及更高版本](https://gitee.com/openeuler/QA/blob/master/Test_Result/openEuler_24.03_LTS/openEuler-24.03-LTS-GreatSQL%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md) |  Docker 容器中启动 openEuler 24.03 测试镜像，在此基础上进行 GreatSQL 8.0.32-25 测试，共执行 126 个测试项，主要涵盖了 GreatSQL 源码编译、RPM安装、二进制包安装、MGR增强、Rapid引擎、并行LOAD DATA、异步删除大表、Oracle兼容、安全提升等主要功能特性等方面，均通过，无风险，整体核心功能稳定正常。 |  |  | <font color=green>█</font>  | | | | |
+|  28 | [ZGCLab 发布内核安全增强补丁](https://gitee.com/openeuler/QA/pulls/691) | 基于 openEuler-24.03-LTS 版本的 HAOC 特性操作系统内核，针对其功能，特性和性能进行共计 5 项测试，整体质量良好。 |  |  | <font color=green>█</font> | | | | |
 
 
 <font color=red>●</font>： 表示特性不稳定，风险高
@@ -388,19 +372,51 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 南向兼容性继承已有的测试能力，按照release-manager团队的规划，版本发布后会进行持续的兼容性测试。通过兼容性测试套件完成(待刷新)张板卡的测试(该数目仅为测试数量，实际兼容性认证通过数量见社区[兼容性清单](https://www.openeuler.org/zh/compatibility/))
 
-此版本的板卡兼容性适配测试，适配的板卡类型有（待刷新）种，在aarch64/x86_64架构上进行适配，主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的板卡兼容性清单。
+此版本的板卡兼容性适配测试，适配的板卡类型有33种，在aarch64/x86_64架构上进行适配，主要使用社区硬件兼容性测试工具oec-hardware集成compass-ci进行自动化测试，适配完成后将在社区发布此版本的板卡兼容性清单。
 
 下表列出版本集成验证中涉及的硬件板卡信息：
 
-| **板卡类型** | **覆盖范围**    | **测试主体**      | **chipVendor** | **boardModel**     | **chipModel**      | **测试结果** |
-| ------------ | --------------- | ----------------- | -------------- | ------------------ | ------------------ | ------------ |
-| RAID | 适配7张  | sig-Compatibility | 待刷新 | | | |
-| NIC  | 适配13张 | sig-Compatibility | 待刷新 | | | |
-| FC   | 适配4张  | sig-Compatibility | 待刷新 | | | |
-| GPU  | 适配3张  | sig-Compatibility | 待刷新 | | | |
-| SSD  | 适配2张  | sig-Compatibility | 待刷新 | | | |
-| IB   | 适配2张  | sig-Compatibility | 待刷新 | | | |
-
+| **板卡类型** | **覆盖范围**    | **测试主体**      | **chipVendor** | **boardModel**     | **chipModel**      | **aarch64架构测试结果** | **x86_64架构测试结果** |
+| ------------ | --------------- | ----------------- | -------------- | ------------------ | ------------------ | ------------ | ------------ |
+| RAID         | 适配8张         | sig-Compatibility |                |                    |                    |              ||
+|              |                 |                   | Broadcom          | SP460C-M           | SAS3516            | PASS         | PASS         |
+|              |                 |                   | Avago          | SR430C-M               | SAS-3 3108         | -         | PASS         |
+|              |                 |                   | Avago          | SR130              | SAS3008            | PASS         | PASS         |
+|              |                 |                   | sssraid          |      Aries            | 3S580/3S585            | PASS         | PASS         |
+|              |                 |                   | sssraid         |    Aries              | 3S520/3S530/3S540             | -         | PASS         |
+|              |                 |                   | sssraid          |     Aries          | 3S590            | -         | PASS         |
+|              |                 |                   | sssraid          |     Aries            | 3S5A5/3S5A0            | -         | PASS         |
+|              |                 |                   | PMC          | PMC3152           | PM8204            | PASS         | PASS         |
+| FC           | 适配2张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Marvell         | QLE2560            | ISP2532            | PASS         | PASS         |
+|              |                 |                   | Emulex         | LPe31002-M6        | LPe31000/LPe32000  | PASS         |
+| GPU          | 适配3张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | NVIDIA         | Tesla T4           | TU104GL            |-         | PASS         |
+|              |                 |                   | NVIDIA         | Tesla V100         | GV100GL            | -         | PASS         |
+|              |                 |                   | NVIDIA         | Tesla A100         | GA100              | -         | PASS         |
+| SSD          | 适配1张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Huawei         | ES3600C V5-3200GB          | Hi 1812E V100       | PASS         | PASS         |
+| IB           | 适配1张         | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Mellanox       | SP350              | ConnectX-5         | PASS         | PASS         |
+| NIC          | 适配NIC板卡18张 | sig-Compatibility |                |                    |                    |              |
+|              |                 |                   | Intel          | E810-XXV-2        |E810-XXV           | PASS         | PASS         |
+|              |                 |                   | Huawei         | SP580              | Hi1822             | PASS         | PASS         |
+|              |                 |                   | Huawei         | SP680                 | Hi1822 (Hi 1823)            | PASS         | PASS         |
+|              |                 |                   | broadcom         | BCM57414                 | BCM57414            | PASS         | PASS         |
+|              |                 |                   | Mellanox       | SP380              | ConnectX-4 Lx      | PASS         | PASS         |
+|              |                 |                   | Mellanox       | SP382              | ConnectX-5      | PASS         | PASS         |
+|              |                 |                   | Intel          | I350-F2            | I350               | PASS         | PASS         |
+|              |                 |                   | Intel          | SP310            | 82599ES               | PASS         | PASS         |
+|              |                 |                   | Intel          | XL710-Q1            | XL710               | PASS         | -         |
+|              |                 |                   | Ramaxel          | 3S910            | Gemini               | -         | PASS         |
+|              |                 |                   | Ramaxel          | 3S930            | Gemini               | -         | PASS         |
+|              |                 |                   | Ramaxel          | 3S920            | Gemini               | -         | PASS         |
+|              |                 |                   | Netswift       | RP1000P2SFP          | RP1000      | PASS         | PASS         |
+|              |                 |                   | Netswift       | RP2000P2SFP          | RP2000      | PASS         | PASS         |
+|              |                 |                   | Netswift          | SF200HT         | WX1860A2              | PASS         | PASS         |
+|              |                 |                   | Netswift       | SF200T                  | WX1860AL2 | PASS         | PASS         |
+|              |                 |                   | Netswift        | SF400HT            | SF WX1860A4               | PASS         | PASS         |
+|              |                 |                   | Netswift          | SF 400T         | WX1860AL4               | PASS         | PASS         |
 
 
 此版本的整机兼容性适配测试主要使用社区开源硬件兼容性测试工具oec-hardware，从整机的系统兼容性、CPU调频特性、kabi规范性、稳定性、硬件配置兼容性等方面进行适配，适配完成后将在社区发布此版本的整机兼容性清单。
@@ -409,8 +425,13 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
-| 华为 | 泰山200 | 鲲鹏920 | sig-Compatibility | PASS |
-| 超聚变 | 2288H V5 | Intel cascade | sig-Compatibility |待刷新 |
+| 华为   | 泰山200  | 鲲鹏920        | sig-Compatibility |PASS |
+| 超聚变 | 2288H V5 | Intel cascade | sig-Compatibility |PASS |
+| 新华三 | R4900G5  | icelake       | sig-Compatibility |PASS |
+| 新华三 | R4900G6  | Intel-EMR CPU | sig-Compatibility |PASS |
+| 新华三 | R4900G6  | SPR           | sig-Compatibility |PASS |
+| 新华三 | R4950G5  | AMD EPYC 3    | sig-Compatibility |PASS |
+| 新华三 | R4950G6  | AMD EPYC 4    | sig-Compatibility |PASS |
 
 
 整机兼容性清单以sig-Compatibility-Infra提供为主，社区各sig测试过程中使用的机器因未进行oec-hardware测试(进入社区兼容性清单质量要求)，故无法直接进行兼容性清单不在此描述。
@@ -457,7 +478,7 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 | **指标大项** | **指标小项**                                                 | **指标值**                        | **测试结论**     |
 | ------------ | ------------------------------------------------------------ | --------------------------------- | ---------------- |
-| OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考22.03 LTS SP3版本相应指标基线 | 比较前一版本持平 |
+| OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考22.03 LTS SP3版本相应指标基线 | 比较前一版本回退2.x% |
 
 
 
@@ -467,13 +488,13 @@ openEuler 24.03 LTS 版本共发现问题 642 个，有效问题 601 个，其�
 
 | 测试阶段               | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 | 备注        |
 | --------------------------- | -------- | ------------ | ------------ | ------------ | -------------------------- |
-| openEuler 24.03 LTS dailybuild | 19    | 18      | 1   | 0     | 每日构建   |
-| openEuler 24.03 LTS alpha      | 290   | 281     | 9   |       | Alpha轮次   |
-| openEuler 24.03 LTS RC1        | 147   | 134     | 13  |       | Beta轮次  |
+| openEuler 24.03 LTS dailybuild | 19    | 18      | 1   | 0      | 每日构建   |
+| openEuler 24.03 LTS alpha      | 290   | 281     | 9   | 0      | Alpha轮次   |
+| openEuler 24.03 LTS RC1        | 147   | 133     | 13  | 0      | Beta轮次  |
 | openEuler 24.03 LTS RC2        | 32    | 29      | 3   | 0      | 全量集成 |
-| openEuler 24.03 LTS RC3        | 136   | 128     | 8   | 0      | 全量集成  |
-| openEuler 24.03 LTS RC4        | 33    | 24      | 7   | 1      | 回归测试    |
-| openEuler 24.03 LTS RC5        |  4    |  0      | 0   | 0      | 版本发布验收测试(回归测试) |
+| openEuler 24.03 LTS RC3        | 136   | 129     | 7   | 1      | 全量集成  |
+| openEuler 24.03 LTS RC4        | 34    | 27      | 7   | 1      | 回归测试    |
+| openEuler 24.03 LTS RC5        | 11    |  11     | 0   | 0      | 版本发布验收测试(回归测试) |
 
 
 # 6 版本测试过程评估
@@ -607,7 +628,8 @@ openEuler 24.03 LTS 版本共发现问题 642 个，有效问题 601 个，其�
 
 | 序号 | 问题单号    | 问题简述    | 问题级别 | 影响分析   | 规避措施       | 历史发现场景     |
 | ---- | ------------------------------------------------------------ | ----------------------------------------------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | [I9NUDT](https://gitee.com/src-openeuler/gtk-doc/issues/I9NUDT?from=project-issue) | 【24.03-LTS-rc4】【x86/arm】gtk-doc源码包本地自编译失败，check阶段报错 | 次要     | 属于GNOME sig，编译过程测试用例执行失败，需解决，风险低，无人维护 | 规避check阶段可编译成功 | |
+| 1    | [I9NUDT](https://gitee.com/src-openeuler/gtk-doc/issues/I9NUDT?from=project-issue) | 【24.03-LTS-rc4】【x86/arm】gtk-doc源码包本地自编译失败，check阶段报错 | 次要     | 属于GNOME sig，编译过程测试用例执行失败，需解决，风险低，无人维护。失败用例：test-gobject-mkhtml。测试gobject类型的文档生成为HTML格式的功能。GTK-Doc是用于生成GTK+程序的API文档的工具，它可以通过注释在源代码中提取API文档，并生成各种格式的文档，包括HTML、PDF等。test-gobject-mkhtml用于测试gobject类型的API文档生成为HTML的过程，确保生成的文档格式正确，并且能够按照预期的方式显示和导航。这样开发人员和用户可以通过查阅API文档更好地理解和使用GTK+程序的接口。| 规避check阶段可编译成功，可使用gtk-doc生成除HTML的其他格式的文档|[[EulerMaker&OBS] gtk-doc build problem in openEuler:23.09](https://gitee.com/src-openeuler/gtk-doc/issues/I7S7OA?from=project-issue) |
+| 2    | [I9JSEA](https://gitee.com/src-openeuler/X-diagnosis/issues/I9JSEA?from=project-issue) | 【24.03】xdiag ntrace命令执行报错 | 次要     | 内核升级到6.6版本后，内核协议栈接口相比5.10有变更，xd_ntrace工具需要适配，工作量较大，预计6月30日完成适配，通过update方式进行发布；xd_ntrace工具不影响其他工具使用。|通过sig收集商业发行版和开源使用者意见，此功能可以延迟到630发布 | |
 
 
 
