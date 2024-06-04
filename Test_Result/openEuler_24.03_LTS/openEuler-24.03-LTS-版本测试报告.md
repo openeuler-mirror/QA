@@ -472,7 +472,7 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 | 测试类型     | 测试内容                                                     | 测试结论                                                    |
 | ------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； | RC3 7x24h(通过)<br />RC5 7*24h(进行中) |
+| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况； | RC3 7x24h(通过)<br />RC5 7*24h(通过) |
 
 ### 4.4.3 性能测试
 
@@ -484,7 +484,7 @@ openEuler 24.03 LTS 版本详细测试内容包括：
 
 # 5   问题单统计
 
-openEuler 24.03 LTS 版本共发现问题 642 个，有效问题 601 个，其中遗留问题 1 个。详细分布见下表:
+openEuler 24.03 LTS 版本共发现问题 669 个，有效问题 658 个，其中遗留问题 2 个。详细分布见下表:
 
 | 测试阶段               | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 | 备注        |
 | --------------------------- | -------- | ------------ | ------------ | ------------ | -------------------------- |
@@ -642,7 +642,7 @@ RM-sig的各位贡献者
 @solarhu @chenyaqiang @paul-huang
 <br>
 QA-sig的各位贡献者
-@zjl_long @ga_beng_cui @hanson-fang @erin_dan @丁娇 @wenjun @suhang @zhanglu626 @ssttkx @zhangpanting @wangxiaoya @hukun66 @MDS_ZHR @banzhuanxiaodoubi @mazenggang3 @clerk_duan @guojuanjuan @yanglijin @clay @oh_thats_great @wangting112 @lijiaming666 @liwencheng6769 @luluyuan @lutianxiong @chenshijuan3 @laputa0 @lcqtesting @xiuyuekuang @ganqx @woqidaideshi @yjt-dli @disnight @chenshijuan3 @wangpeng_uniontech @fu-shanqing @saarloos
+@zjl_long @ga_beng_cui @hanson-fang @erin_dan @丁娇 @wenjun @suhang @zhanglu626 @ssttkx @zhangpanting @wangxiaoya @MDS_ZHR @banzhuanxiaodoubi @guojuanjuan @yanglijin @clay @oh_thats_great @wangting112 @lijiaming666 @liwencheng6769 @luluyuan @lutianxiong @chenshijuan3 @laputa0 @lcqtesting @xiuyuekuang @ganqx @woqidaideshi @yjt-dli @disnight @chenshijuan3 @wangpeng_uniontech @fu-shanqing @saarloos
 <br>
 以及所有参与24.03 LTS但未统计到的所有开发者
 (如有遗漏可随时联系 @disnight email:fjc837005411@outlook.com 反馈)
