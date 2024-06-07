@@ -60,13 +60,20 @@ openEuler是一款开源操作系统。当前openEuler内核源于Linux，支持
 
 ## 版本背景
 
-openEuler 22.03 LTS SP4是基于5.10内核的22.03-LTS版本增强扩展版本（参见[版本生命周期](https://gitee.com/link?target=https%3A%2F%2Fwww.openeuler.org%2Fzh%2Fother%2Flifecycle%2F)），面向服务器、云、边缘计算和嵌入式场景，持续提供更多新特性和功能扩展，给开发者和用户带来全新的体验，服务更多的领域和更多的用户。 发布范围相较20.03LTS 、20.03 LTS SP1和20.03 LTS SP2版本主要变动： 
+openEuler 22.03 LTS SP4 是基于5.10内核22.03-LTS的增强扩展版本，面向服务器、云、边缘计算和嵌入式场景，持续提供更多新特性和功能扩展，给开发者和用户带来全新的体验，服务更多的领域和更多的用户。该版本基于openEuler 22.03 LTS-Next分支拉出，发布范围相较22.03 LTS版本主要变动：
 
-1.  XXX
+1.  机密计算远程证明服务：远程证明TEE插件框架
+2.  提交内核安全增强补丁 HAOC
+3.  DPU场景vDPA新增支持磁盘，并支持配置vDPA网卡和磁盘的虚机热迁移
+4.  virtCCA机密虚机特性合入
+5.  openSSL支持SM4-CE指令集，提升SM4运算速度
+6.  PowerAPI功耗管理统一API
+7.  eagle实现整机能耗管理
+8.  支持sysSentry故障管理框架
 
 ## 需求范围
 
-openEuler 22.03 LTS SP4版本交付[openEuler-22.03-LTS-SP4/release-plan.md · openEuler/release-management - 码云 - 开源中国 (gitee.com)](https://gitee.com/openeuler/release-management/blob/master/openEuler-22.03-LTS-SP4/release-plan.md) 如下：
+openEuler 22.03 LTS SP4版本交付[需求列表](hhttps://gitee.com/openeuler/release-management/blob/master/openEuler-22.03-LTS-SP4/release-plan.md)如下：
 
 | no                                                           | feature                                                      | status     | sig                        | owner                                             |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- | -------------------------- | ------------------------------------------------- |
@@ -89,67 +96,135 @@ openEuler 22.03 LTS SP4版本交付[openEuler-22.03-LTS-SP4/release-plan.md · o
 
 # 测试分层策略(*基于继承特性策略刷新*)
 
-本次LTS版本的具体测试分层策略如下：
+本次LTS SP4版本的具体测试分层策略如下：
 
-| 需求 | 开发主体 | 测试主体 | 测试分层策略 | Arm  | X86  | RISC-V | LoongArch | PowerPC |
-| ---- | -------- | -------- | ------------ | ---- | ---- | ------ | --------- | ------- |
-|      |          |          |              |      |      |        |           |         |
-|      |          |          |              |      |      |        |           |         |
-|      |          |          |              |      |      |        |           |         |
+| **需求**         | **开发主体** | **测试主体** | **测试分层策略**         |
+| --------------- | ----------- | ---------- | ----------------------- |
+| 支持UKUI桌面     | sig-UKUI  | sig-UKUI  | 验证UKUI桌面系统在openEuler版本上的可安装和基本功能 |
+| 支持DDE桌面      | sig-DDE   | sig-DDE   | 验证DDE桌面系统在openEuler版本上的可安装和基本功能及其他性能指标 |
+| 支持xfce桌面     | xfce  | xfce  | 验证xfce桌面系统在openEuler版本上的可安装和基本功能 |
+| 支持GNOME桌面    | GNOME | GNOME | 验证gnome桌面系统在openEuler版本上的可安装和基本功能|
+| 支持Kiran桌面    | sig-KIRAN-DESKTOP | sig-KIRAN-DESKTOP | 验证kiran桌面在openEuler版本上的可安装卸载和基本功能 |
+| 支持Cinnamon桌面 | sig-cinnamon | sig-cinnamon | 验证Cinnamon桌面系统在openEuler版本上的可安装和基本功能 |
+| 支持南向兼容性    | sig-Compatibility-Infra | sig-QA | 验证openEuler版本在不同处理器上的可安装和可使用性，覆盖整机兼容性测试和社区集成测试 |
+| 支持北向兼容性    | sig-Compatibility-Infra | sig-QA |  |
+| 支持树莓派发布件  | sig-RaspberryPi | sig-RaspberryPi | 对树莓派发布件进行安装、基本功能、兼容性及稳定性的测试 |
+| 支持RISC-V      | sig-RISC-V | sig-RISC-V | 验证openEuler版本在RISV-V处理器上的可安装和可使用性 |
+| 内核            | Kernel | Kernel | 关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
+| 容器(isula/docker/安全容器/系统容器/镜像) | sig-CloudNative | sig-CloudNative | 关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
+| 虚拟化           | Virt | Virt | 重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
+| 编译器(gcc/jdk)  | Compiler | sig-QA | 基于开源测试套对gcc和jdk相关功能进行验证 |
+| 支持HA软件       | sig-Ha | sig-Ha | 验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标 |
+| 支持KubeSphere  | sig-K8sDistro | sig-K8sDistro | 验证kubeSphere的安装部署和针对容器应用的基本自动化运维能力  |
+| 支持OpenStack Train 和 Wallaby | sig-OpenStack | sig-OpenStack | 重点验证openstack T和W版本发布主要组件的安装部署、基本功能 |
+| 支持A-Tune      | A-Tune | A-Tune | 重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
+| 支持secPave     | sig-security-facility | sig-QA | 验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性 |
+| 支持secGear     | sig-confidential-computing | sig-QA | 关注secGear特性的功能完整性 |
+| 发布eggo        | sig-CloudNative | sig-CloudNative | 验证eggo在openEuler上的安装部署以及对K8S集群的部署、销毁、节点加入及删除的能力 |
+| 支持kubeOS      | sig-CloudNative | sig-CloudNative | 验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级 |
+| 支持NestOS      | sig-CloudNative | sig-CloudNative | 验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
+| 支持OpenResty   | sig-OpenResty   | sig-OpenResty   | 验证openResty平台在openEuler版本上的可安装性和基本功能 |
+| 支持etmem内存分级扩展 | Storage | sig-QA | 验证新发布模块memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力 |
+| 支持定制裁剪工具(inageTailor和oemaker) | sig-OS-Builder | sig-QA | 验证可定制化的能力，包括裁剪工具的基本命令功能，并对异常参数进行覆盖；另外对裁剪出来的镜像进行安装部署及基本验证，保障裁剪工具的E2E能力完整性 |
+| 支持openGauss   | DB | DB | 验证openGauss数据库基础功能中接入层、SQL层、存储层、管理和安全等，另外从可靠性、性能、工具和兼容性四个维度覆盖生态测试 |
+| 支持虚拟化热补丁libcareplus | Virt | Virt | 关注libcareplus提供Qemu热补丁能力 |
+| 支持用户态协议栈gazelle     | sig-high-performance-network | sig-high-performance-network |关注gazelle高性能用户态协议栈功能  |
+| 支持容器场景在离线混合部署rubik | sig-CloudNative | sig-CloudNative | 结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
+| 支持智能运维A-ops | sig-ops | sig-QA | 关注智能定位（异常检测、故障诊断）功能、可靠性 |
+| 支持libstorage针对NVME的IO栈hsak | Storage | Storage | 验证libstorage针对NVMe SSD存储介质提供高带宽低时延的IO软件栈，提升IO的读写性能；同时提供nvme磁盘状态管理以及查询功能，监测nvme磁盘的健康状态 |
+| 支持国密算法      | sig-security-facility | sig-security-facility | 验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
+| 支持k3s          | sig-K8sDistro | sig-K8sDistro | 验证k3s软件的部署测试过程 |
+| 支持IO智能多流astream | Kernel | sig-QA | 验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 |
+| 支持pkgship      | sig-EasyLife | sig-QA | 验证软件包依赖查询、生命周期管理、补丁查询等功能 |
+| 支持鲲鹏安全库     | sig-security-facility | sig-QA | 验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 |
+| 支持mindspore     | ai | ai |  |
+| 支持pod带宽管理oncn-bwm | sig-high-performance-network | sig-high-performance-network | 验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试  |
+| 支持基于分布式软总线扩展生态互联互通 | sig-embedded | sig-embedded | 验证openEuler和openHarmony设备进行设备认证，互通互联特性 |
+| 支持混合关键部署技术扩展 | sig-embedded | sig-embedded | 验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS |
+| 支持硬实时系统    | sig-embedded | sig-embedded | 验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 |
+| 支持kubernetes  | sig-CloudNative | sig-CloudNative | 验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
+| 安装部署         | sig-OS-Builder | sig-OS-Builder | 验证覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
+| Kunpeng加速引擎 | sig-AccLib | sig-AccLib | 验证对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加速器KAE的基本功能和性能测试 |
+| 支持Lustre server软件包 | sig-SDS | sig-SDS | |
+| eNFS特性合入 | sig-kernel | sig-kernel ||
+| FangTian视窗引擎特性合入 | sig-FangTian | sig-FangTian| |
+| masstree特性合入 | sig-DB | sig-DB ||
+| sysMaster支持虚机场景 | dev-utils | dev-utils ||
+| 增加 migration-tools 项目发布|sig-migration-tools|sig-migration-tools||
+| 增加 utshell 项目发布|sig-memsafety|sig-memsafety||
+| 增加 utsudo 项目发布|sig-memsafety|sig-memsafety||
+| 增加i3相关软件包发布 |sig-infrastructure|sig-infrastructure||
+| 支持入侵检测框架secDetector |sig-security-facility|sig-security-facility||
 
 
+# 测试分析设计策略
+
+## 新增feature测试设计策略
+
+| *序号* | *Feature*             | *测试设计策略* | *测试重点* |
+| ----- | ---------------------- | --------------- | ------ |
+| [I9IHTX](https://gitee.com/openeuler/release-management/issues/I9IHTX) | 提交内核安全增强补丁 HAOC |  |
+| [I9PTJ9](https://gitee.com/openeuler/release-management/issues/I9PTJ9) | 	机密计算远程证明服务：远程证明TEE插件框架 | |
+| [I9PUSQ](https://gitee.com/openeuler/release-management/issues/I9PUSQ) | DPU场景vDPA新增支持磁盘，并支持配置vDPA网卡和磁盘的虚机热迁移 | |
+| [I96OAX](https://gitee.com/openeuler/release-management/issues/I96OAX) | virtCCA机密虚机特性合入 | |
+| [I9PSTH](https://gitee.com/openeuler/release-management/issues/I9PSTH) | openSSL支持SM4-CE指令集，提升SM4运算速度 | |
+| [I9TI38](https://gitee.com/openeuler/release-management/issues/I9TI38) | PowerAPI功耗管理统一API ||
+| [I9THX9](https://gitee.com/openeuler/release-management/issues/I9THX9) | eagle实现整机能耗管理    | |
+| [I9SSLS](https://gitee.com/openeuler/release-management/issues/I9SSLS) | gala-ragdoll支持实时监控文件变更信息||
+| [I9TNWE](https://gitee.com/openeuler/release-management/issues/I9TNWE) | 支持sysSentry故障管理框架||
 
 
 ## 继承feature/组件测试设计策略
 
 从老版本继承的功能特性的测试策略如下：
 
-| Feature/组件 |  策略                           | Arm | X86 | RISC-V | LoongArch | PowerPC |
-| ----------- | ------------------------------- | ----------- | ----------- | ----------- | ----------- | ----------- |
-| 容器(isula/docker/安全容器/系统容器/镜像) | 继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 | √ | √ | √ |  |  |
-| 虚拟化           | 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 | √ | √ | × |  |  |
-| 编译器(gcc/jdk)  | 继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   | √ | √ | √ |  |  |
-| 支持DDE桌面      | 继承已有测试能力，关注DDE桌面系统的安装和基本功能           | √ | √ | √ |  |  |
-| 支持UKUI桌面     | 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           | √ | √ | √ |  |  |
-| 支持xfce桌面     | 继承已有测试能力，重点关注xfce桌面的可安装性和提供组件的能力 | √ | √ | √ |  |  |
-| 支持gnome桌面    | 继承已有测试能力，关注gnome桌面系统的安装和基本功能           | √ | √ | √ |  |  |
-| 支持Kiran桌面    | 增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 | √ | √ | √ |  |  |
-| 支持Cinnamon桌面 | 继承已有测试能力，关注Cinnamon桌面系统的安装和基本功能       | √ | √ | √ |  |  |
-| 支持南向兼容性    | 继承已有测试能力，关注板卡和整机适配的兼容性测试 | √ | √ | √ |  |  |
-| 支持北向兼容性    | 继承已有测试能力 | √ | √ | × |  |  |
-| 支持树莓派       | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     | √ | √ | × |  |  |
-| 支持RISC-V      | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性 | √ | √ | √ |  |  |
-| 支持HA软件      | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 | √ | √ | × |  |  |
-| 支持KubeSphere  | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力   | √ | √ | × |  |  |
-| 支持openstack Train 和 Wallaby  | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 | √ | √ | × |  |  |
-| 支持A-Tune      | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 | √ | √ | × |  |  |
-| 支持secPave     | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    | √ | √ | × |  |  |
-| 支持secGear     | 继承已有测试能力，关注secGear特性的功能完整性          | √ | √ | √ |  |  |
-| 支持eggo        | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 | √ | √ | × |  |  |
-| 支持kubeOS      | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 | √ | √ | × |  |  |
-| 支持NestOS      | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 | √ | √ | × |  |  |
-| 支持OpenResty   | 继承已有测试能力，关注openResty平台在openEuler版本上的可安装性和基本功能   | √ | √ | √ |  |  |
-| 支持etmem内存分级扩展 | 继承已有测试能力，重点验证特性的基本功能和稳定性   | √ | √ | √ |  |  |
-| 支持定制裁剪工具套件(oemaker/imageTailor) | 继承已有测试能力，验证可定制化的能力   | √ | √ | √ |  |  |
-| 支持openGauss   | 继承已有测试能力，关注openGauss数据库的功能、性能和可靠性   | √ | √ | × |  |  |
-| 支持虚拟化热补丁libcareplus | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力  | √ | √ | × |  |  |
-| 支持用户态协议栈gazelle     | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能  | √ | √ | √ |  |  |
-| 支持容器场景在离线混合部署rubik | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 | √ | √ | × |  |  |
-| 支持智能运维A-ops | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 | √ | √ | × |  |  |
-| 支持libstorage针对NVME的IO栈hsak | 继承已有测试能力，验证libstorage针对NVMe SSD存储介质提供高带宽低时延的IO软件栈，提升IO的读写性能；同时提供nvme磁盘状态管理以及查询功能，监测nvme磁盘的健康状态 | √ | √ | × |  |  |
-| 支持国密算法      | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 | √ | √ | × |  |  |
-| 支持k3s          | 继承已有测试能力，验证k3s软件的部署测试过程 | √ | √ | × |  |  |
-| 支持IO智能多流astream | 继承已有测试能力，验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | √ | √ | × |  |  |
-| 支持pkgship      | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 | √ | √ | × |  |  |
-| 支持鲲鹏加速库     | 继承已有测试能力，验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | √ | √ | × |  |  |
-| 支持mindspore     | 继承已有测试能力 | √ | √ | × |  |  |
-| 支持pod带宽管理oncn-bwm | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 | √ | √ | × |  |  |
-| 支持基于分布式软总线扩展生态互联互通 | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 | √ | √ | × |  |  |
-| 支持混合关键部署技术扩展  | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS | √ | √ | × |  |  |
-| 支持硬实时系统    | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | √ | √ | √ |  |  |
-| 支持kubernetes  | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 | √ | √ | × |  |  |
-| 安装部署         | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 | √ | √ | × |  |  |
-| Kunpeng加速引擎 | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 | √ | √ | × |  |  |
+| Feature/组件 |  策略                           |
+| ----------- | ------------------------------- |
+| 内核         | 直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
+| 容器(isula/docker/安全容器/系统容器/镜像) | 继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
+| 虚拟化           | 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
+| 编译器(gcc/jdk)  | 继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
+| 支持DDE桌面      | 继承已有测试能力，关注DDE桌面系统的安装和基本功能           |
+| 支持UKUI桌面     | 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
+| 支持xfce桌面     | 继承已有测试能力，重点关注xfce桌面的可安装性和提供组件的能力 |
+| 支持gnome桌面    | 继承已有测试能力，关注gnome桌面系统的安装和基本功能           |
+| 支持Kiran桌面    | 增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
+| 支持Cinnamon桌面 | 继承已有测试能力，关注Cinnamon桌面系统的安装和基本功能       |
+| 支持南向兼容性    | 继承已有测试能力，关注板卡和整机适配的兼容性测试 |
+| 支持北向兼容性    | 继承已有测试能力 |
+| 支持树莓派       | 继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
+| 支持RISC-V      | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性 |
+| 支持HA软件      | 继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
+| 支持KubeSphere  | 继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力   |
+| 支持openstack Train 和 Wallaby  | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能 |
+| 支持A-Tune      | 继承已有测试能力，重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注 |
+| 支持secPave     | 继承已有测试能力，关注secPave特性的基本功能和服务的稳定性    |
+| 支持secGear     | 继承已有测试能力，关注secGear特性的功能完整性          |
+| 支持eggo        | 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
+| 支持kubeOS      | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
+| 支持NestOS      | 继承已有测试能力，关注NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证 |
+| 支持OpenResty   | 继承已有测试能力，关注openResty平台在openEuler版本上的可安装性和基本功能   |
+| 支持etmem内存分级扩展 | 继承已有测试能力，重点验证特性的基本功能和稳定性   |
+| 支持定制裁剪工具套件(oemaker/imageTailor) | 继承已有测试能力，验证可定制化的能力   |
+| 支持openGauss   | 继承已有测试能力，关注openGauss数据库的功能、性能和可靠性   |
+| 支持虚拟化热补丁libcareplus | 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力  |
+| 支持用户态协议栈gazelle     | 继承已有测试能力，重点关注gazelle高性能用户态协议栈功能  |
+| 支持容器场景在离线混合部署rubik | 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
+| 支持智能运维A-ops | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性 |
+| 支持libstorage针对NVME的IO栈hsak | 继承已有测试能力，验证libstorage针对NVMe SSD存储介质提供高带宽低时延的IO软件栈，提升IO的读写性能；同时提供nvme磁盘状态管理以及查询功能，监测nvme磁盘的健康状态 | 
+| 支持国密算法      | 继承已有测试能力，验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 | 
+| 支持k3s          | 继承已有测试能力，验证k3s软件的部署测试过程 | 
+| 支持IO智能多流astream | 继承已有测试能力，验证通过IO智能多流提升NVMe SSD存储性能，延长磁盘寿命 | 
+| 支持pkgship      | 继承已有测试能力，关注软件包依赖查询、生命周期管理、补丁查询等功能 | 
+| 支持鲲鹏加速库     | 继承已有测试能力，验证对鲲鹏安全库下的支持平台远程证明及TEE远程证明特性进行接口、功能测试 | 
+| 支持mindspore     | 继承已有测试能力 | 
+| 支持pod带宽管理oncn-bwm | 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 | 
+| 支持基于分布式软总线扩展生态互联互通 | 继承已有测试能力，验证openEuler和openHarmony设备进行设备认证，互通互联特性 | 
+| 支持混合关键部署技术扩展  | 继承已有测试能力，验证基于openAMP框架实现软实时（openEuler Embedded）与硬实时OS（zephyr）共同部署，一个核运行硬实时OS，其他核运行软实时OS | 
+| 支持硬实时系统    | 继承已有测试能力，验证硬实时级别的OS能力，支持硬中断管理、轻量级任务等能力 | 
+| 支持kubernetes  | 继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
+| 安装部署         | 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
+| Kunpeng加速引擎 | 继承已有测试能力，重点对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加加速器KAE的基本功能和性能测试 |
 
 
 
@@ -188,8 +263,6 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 |--------------|--------------------------------------------------------------------------------------------|-------------------------|-----------------------------------|
 | OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考版本相应指标基线 | 与基线数据差异小于5%以内可接受 |
 
-RISC-V以此版本测试结果作为指标基线
-
 ### 兼容性测试
 
 #### 南向兼容性
@@ -202,44 +275,44 @@ RISC-V以此版本测试结果作为指标基线
 | **板卡类型** | **覆盖范围** | **测试主体** | **chipVendor** |**boardModel** | **chipModel** | **测试计划** |
 |--|--|--|--|--|--|--|
 | RAID | 适配7张 | sig-Compatibility | | | | |
-| | | | Avago |	9560-8i | SAS3908 | 2024.4. |
-| | | | Avago |	SP460C-M | SAS3516 | 2024.4. |
-| | | | Avago |	SR150-M	 | SAS3408 | 2024.4. |
-| | | | Avago |	SP150IT-M |	SAS3408 | 2024.4. |
-| | | | Avago |	SR430C-M |	SAS-3 3108 | 2024.4. |
-| | | | Avago |	SR130 |	SAS3008 | 2024.4. |
-| | | | Avago |	SR130-M | SAS3008 | 2024.4. |
+| | | | Avago |	9560-8i | SAS3908 | 2023.11. |
+| | | | Avago |	SP460C-M | SAS3516 | 2023.11. |
+| | | | Avago |	SR150-M	 | SAS3408 | 2023.11. |
+| | | | Avago |	SP150IT-M |	SAS3408 | 2023.11. |
+| | | | Avago |	SR430C-M |	SAS-3 3108 | 2023.11. |
+| | | | Avago |	SR130 |	SAS3008 | 2023.11. |
+| | | | Avago |	SR130-M | SAS3008 | 2023.11. |
 | FC | 适配4张 | sig-Compatibility | | | | |
-| | | | Marvell/Qlogic | QLE2560 | ISP2532 | 2024.4. |
-| | | | Emulex | LPe31002-M6 | LPe31000/LPe32000 | 2024.4. |
-| | | | Emulex | LPe32002-M2 | LPe31000/LPe32000 | 2024.4. |
-| | | | Emulex | LPE16002B-M6 | LPe15000/LPe16000 | 2024.4. |
+| | | | Marvell/Qlogic | QLE2560 | ISP2532 | 2023.11. |
+| | | | Emulex | LPe31002-M6 | LPe31000/LPe32000 | 2023.11. |
+| | | | Emulex | LPe32002-M2 | LPe31000/LPe32000 | 2023.11. |
+| | | | Emulex | LPE16002B-M6 | LPe15000/LPe16000 | 2023.11. |
 | GPU | 适配4张 | sig-Compatibility | | | | |
-| | | | NVIDIA | Tesla T4 |	TU104GL | 2024.4. |
-| | | | NVIDIA | Tesla V100 | GV100GL | 2024.4. |
-| | | | NVIDIA | Tesla A100 | GA100 | 2024.4. |
-| | | | AMD | Radeon Pro WX 5100 | Ellesmere| 2024.4. |
+| | | | NVIDIA | Tesla T4 |	TU104GL | 2023.11. |
+| | | | NVIDIA | Tesla V100 | GV100GL | 2023.11. |
+| | | | NVIDIA | Tesla A100 | GA100 | 2023.11. |
+| | | | AMD | Radeon Pro WX 5100 | Ellesmere| 2023.11. |
 | SSD | 适配1张 | sig-Compatibility | | | | |
-| | | | Huawei | ES3600C V5-3200GB | Hi1812E V100 | 2024.4. |
+| | | | Huawei | ES3600C V5-3200GB | Hi1812E V100 | 2023.11. |
 | IB | 适配3张 | sig-Compatibility | | | | |
-| | | | Mellanox | SP351 | ConnectX-5 | 2024.4. |
-| | | | Mellanox | SP350 | ConnectX-5 | 2024.4. |
-| | | | Mellanox | MCX653105A-EFAT | ConnectX-6 | 2024.4. |
+| | | | Mellanox | SP451 | ConnectX-5 | 2023.11. |
+| | | | Mellanox | SP450 | ConnectX-5 | 2023.11. |
+| | | | Mellanox | MCX653105A-EFAT | ConnectX-6 | 2023.11. |
 | NIC | 适配NIC板卡14张 | sig-Compatibility | | | | |
-| | | | Mellanox | SP382 | ConnectX-5 | 2024.4. |
-| | | | Mellanox | SP380 | ConnectX-4 Lx | 2024.4. |
-| | | | Mellanox | MCX4121A-XCAT |	ConnectX-4 Lx | 2024.4. |
-| | | | Mellanox | MCX4121A-ACUT |	ConnectX-4 Lx | 2024.4. |
-| | | | Intel |	SP310 |	82599ES | 2024.4. |
-| | | | Intel |	SP210 |	I350 | 2024.4. |
-| | | | Intel |	Intel I350 | I350 | 2024.4. |
-| | | | Intel |	I350-F2 | I350 | 2024.4. |
-| | | | Intel |	XL710-Q2 | XL710 | 2024.4. |
-| | | | Huawei | SP580 | Hi1822 | 2024.4. |
-| | | | Huawei | SP582 | Hi1822 | 2024.4. |
-| | | | Huawei | SP570 | Hi1822 | 2024.4. |
-| | | | Huawei | SP670 | Hi1823 | 2024.4. |
-| | | | Huawei | SP680 | Hi1823 | 2024.4. |
+| | | | Mellanox | SP482 | ConnectX-5 | 2023.11. |
+| | | | Mellanox | SP480 | ConnectX-4 Lx | 2023.11. |
+| | | | Mellanox | MCX4121A-XCAT |	ConnectX-4 Lx | 2023.11. |
+| | | | Mellanox | MCX4121A-ACUT |	ConnectX-4 Lx | 2023.11. |
+| | | | Intel |	SP410 |	82599ES | 2023.11. |
+| | | | Intel |	SP210 |	I350 | 2023.11. |
+| | | | Intel |	Intel I350 | I350 | 2023.11. |
+| | | | Intel |	I350-F2 | I350 | 2023.11. |
+| | | | Intel |	XL710-Q2 | XL710 | 2023.11. |
+| | | | Huawei | SP580 | Hi1822 | 2023.11. |
+| | | | Huawei | SP582 | Hi1822 | 2023.11. |
+| | | | Huawei | SP570 | Hi1822 | 2023.11. |
+| | | | Huawei | SP670 | Hi1823 | 2023.11. |
+| | | | Huawei | SP680 | Hi1823 | 2023.11. |
 
 此版本的整机兼容性适配测试主要使用社区开源硬件兼容性测试工具oec-hardware，从整机的系统兼容性、CPU调频特性、kabi规范性、稳定性、硬件配置兼容性等方面进行适配，适配完成后将在社区发布此版本的整机兼容性清单。
 
@@ -247,26 +320,16 @@ RISC-V以此版本测试结果作为指标基线
 
 | **整机厂商** | **整机型号** | **CPU型号** | **测试主体** | **测试计划** |
 |--|--|--|--|--|
-| 华为 | 泰山200 | 鲲鹏920 | sig-Compatibility | 2024.4. |
-| | 青松服务器 | FT S2500 | sig-Compatibility | 2024.4. |
-| 超聚变 | 2288H V5 | Intel cascade | sig-Compatibility | 2024.4. |
-| | 2288H V6 | Intel SPR | sig-Compatibility | 2024.4. |
-| 中科可控 | R6230HA | Hygon 2号 | sig-Compatibility | 2024.4. |
-|  | X7840H0 | Hygon 3号 | sig-Compatibility | 2024.4. |
-| AMD | Supermicro AS-4124GS-TNR | AMD Milan | sig-Compatibility | 2024.4. |
-| 飞腾 | 公版 | FT2000+ | sig-Compatibility |2024.4. |
-| | 公版 | FT S2500 | sig-Compatibility | 2024.4. |
-| 兆芯 | ThinkSystem SR658Z | KH-30000 | sig-Compatibility | 2024.4. |
-
-RISC-V架构本次南向兼容性测试只做整机适配的测试
-
-整机适配兼容性测试交付清单如下：
-
-| **整机厂商** | **整机型号**       | **CPU型号** | **测试主体** | **测试计划** |
-| ------------ | ------------------ | ----------- | ------------ | ------------ |
-| 算能         | MILK-V Pioneer Box | 算丰SG2042  | sig-RISC-V   | 2024.04      |
-
-
+| 华为 | 泰山200 | 鲲鹏920 | sig-Compatibility | 2023.11. |
+| | 青松服务器 | FT S2500 | sig-Compatibility | 2023.11. |
+| 超聚变 | 2288H V5 | Intel cascade | sig-Compatibility | 2023.11. |
+| | 2288H V6 | Intel SPR | sig-Compatibility | 2023.11. |
+| 中科可控 | R6230HA | Hygon 2号 | sig-Compatibility | 2023.11. |
+|  | X7840H0 | Hygon 3号 | sig-Compatibility | 2023.11. |
+| AMD | Supermicro AS-4124GS-TNR | AMD Milan | sig-Compatibility | 2023.11. |
+| 飞腾 | 公版 | FT2000+ | sig-Compatibility |2023.11. |
+| | 公版 | FT S2500 | sig-Compatibility | 2023.11. |
+| 兆芯 | ThinkSystem SR658Z | KH-30000 | sig-Compatibility | 2023.11. |
 
 #### 北向兼容性
 
@@ -277,35 +340,32 @@ RISC-V架构本次南向兼容性测试只做整机适配的测试
 * 常用linux发行版对openEuler虚机镜像的支持
 * openEuler对常见linux发行版虚机镜像的支持
 
-由于此次RISC-V架构发布的是第一版 iso 镜像文件，暂不涉及北向兼容性测试
-
 ### 软件包管理专项测试
 
-软件包(openEuler中特指RPM包)测试，基于历史22.03至今发现的质量问题总结。
+软件包(openEuler中特指RPM包)测试，基于历史20.03至今发现的质量问题总结。
 * 软件版本变更检查：检查前序版本的代码变动是否在当前版本继承，保证代码不漏合。
 * 多动态库检查：检查软件是否存在多个版本动态库（存在编译自依赖软件包升级方式不规范）
-* 软件包变更检查：对升级到22.03 LTS SP4版本存在新增、删除、变更的软件包通过x2工具扫描出来，对存在变更的软件包修改测试策略（变更测试用例）
 
 ### 资料测试
 
 资料测试主要是对版本交付的资料进行测试，重点是保证各个资料描述说明的清晰性和功能的正确性，另外openEuler作为一个开源社区，除提供中文的资料还有英文文档也需要重点测试。资料交付清单如下：
 
-| **手册名称**       | **覆盖策略**                                | **中英文测试策略** | Arm | X86 | RISC-V | LoongArch | PowerPC |
-|------------------|--------------------------------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| DDE安装指南       | 安装步骤的准确性及DDE桌面系统是否能成功安装启动    | 英文描述的准确性   | √ | √ | √ |  |  |
-| UKUI安装指南      | 安装步骤的准确性及UKUI桌面系统是否能成功安装启动   | 英文描述的准确性   | √ | √ | √ |  |  |
-| KIRAN安装指南     | 安装步骤的准确性及Kiran桌面系统是否能成功安装启动  | 英文描述的准确性   | √ | √ | √ |  |  |
-| XFCE安装指南      | 安装步骤的准确性及XFCE桌面系统是否能成功安装启动   | 英文描述的准确性   | √ | √ | √ |  |  |
-| GNOME安装指南     | 安装步骤的准确性及GNOME桌面系统是否能成功安装启动  | 英文描述的准确性   | √ | √ | √ |  |  |
-| 树莓派安装指导     | 树莓派镜像的安装方式及安装指导的准确性及树莓派镜像是否可以成功安装启动 | 英文描述的准确性   | √ | √ | × |  |  |
-| 安装指南          | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | √ |  |  |
-| 管理员指南         | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | √ |  |  |
-| 安全加固指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | × |  |  |
-| 虚拟化用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | × |  |  |
-| StratoVirt用户指南 | 文档描述与版本的行为是否一致                   | 英文描述的准确性   | √ | √ | × |  |  |
-| 容器用户指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | × |  |  |
-| 应用开发指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | √ |  |  |
-| 工具集用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   | √ | √ | × |  |  |
+| **手册名称**       | **覆盖策略**                                | **中英文测试策略** |
+|------------------|--------------------------------------------|------------------|
+| DDE安装指南       | 安装步骤的准确性及DDE桌面系统是否能成功安装启动    | 英文描述的准确性   |
+| UKUI安装指南      | 安装步骤的准确性及UKUI桌面系统是否能成功安装启动   | 英文描述的准确性   |
+| KIRAN安装指南     | 安装步骤的准确性及Kiran桌面系统是否能成功安装启动  | 英文描述的准确性   |
+| XFCE安装指南      | 安装步骤的准确性及XFCE桌面系统是否能成功安装启动   | 英文描述的准确性   |
+| GNOME安装指南     | 安装步骤的准确性及GNOME桌面系统是否能成功安装启动  | 英文描述的准确性   |
+| 树莓派安装指导     | 树莓派镜像的安装方式及安装指导的准确性及树莓派镜像是否可以成功安装启动 | 英文描述的准确性   |
+| 安装指南          | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| 管理员指南         | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| 安全加固指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| 虚拟化用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| StratoVirt用户指南 | 文档描述与版本的行为是否一致                   | 英文描述的准确性   |
+| 容器用户指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| 应用开发指南       | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
+| 工具集用户指南     | 文档描述与版本的行为是否一致                    | 英文描述的准确性   |
 
 # 测试执行策略
 
@@ -337,6 +397,8 @@ openEuler 22.03 LTS SP4 版本按照社区开发模式进行运作，结合社�
 | Release              | 2024/6/28  | 2024/6/29 | 2    | 社区Release评审通过正式发布                                  |
 
 
+
+
 ### 测试重点
 
 测试阶段1：
@@ -347,7 +409,7 @@ openEuler 22.03 LTS SP4 版本按照社区开发模式进行运作，结合社�
 
 3.  系统集成方面保证多组件多模块集成的正确性和整体系统的完整性
 
-4.  通过软件包管理测试，对LTS版本发布软件的可安装、卸载、升级、回退进行整体保证
+4.  通过软件包管理测试，对LTS SP4版本发布软件的可安装、卸载、升级、回退进行整体保证
 
 5.  专项情况如下：
 
