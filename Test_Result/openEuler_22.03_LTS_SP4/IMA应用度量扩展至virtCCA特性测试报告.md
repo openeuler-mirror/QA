@@ -62,6 +62,7 @@ IMA应用度量扩展至virtCCA特性，新增执行5个用例，覆盖以下测
 | 数目 |      1     | 1    |      0      | 0 |
 | 百分比 |    100%  | 100% |    0%       | 0% |
 
+问题列表如下：
 https://gitee.com/openeuler/kernel/issues/IA71XS
 
 # 4     测试执行
