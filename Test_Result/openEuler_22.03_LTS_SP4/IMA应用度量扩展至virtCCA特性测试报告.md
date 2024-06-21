@@ -74,7 +74,7 @@ https://gitee.com/openeuler/kernel/issues/IA71XS
 | 版本名称                    | 测试用例数 | 用例执行结果       | 发现问题单数 |
 | --------------------------- | ---------- | ------------------ | ------------ |
 | openEuler-22.03-LTS-SP4 RC4 |   5        | 均执行通过 | 0            |
-| openEuler-22.03-LTS-SP4 RC4 |   5        | 失败1个    | 1            |
+| openEuler-22.03-LTS-SP4 RC5 |   5        | 失败1个    | 1            |
 
 *数据项说明：*
 
