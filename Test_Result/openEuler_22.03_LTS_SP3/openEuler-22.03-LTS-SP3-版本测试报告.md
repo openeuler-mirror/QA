@@ -388,7 +388,7 @@ openEuler 22.03-LTS-SP3 作为 openEuler 22.03-LTS SP2版本的增强扩展版�
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
 | 华为          | 泰山200                  | 鲲鹏920       | sig-Compatibility | PASS         |
-|              | S920X20                  | 鲲鹏920B     | sig-Compatibility | PASS         |
+|              |                   | 鲲鹏920高性能版本     | sig-Compatibility | PASS         |
 | 中科可控      | Suma R6240HA             | Hygon3     | sig-Compatibility | PASS         |
 | AMD          | AS-4124GS-TNR            | AMD EPYC 7513     | sig-Compatibility | PASS     |
 | 超聚变        | 2288H V5                 | Intel cascade | sig-Compatibility | PASS         |
