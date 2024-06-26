@@ -353,7 +353,7 @@ openEuler 22.03-LTS-SP4 作为 openEuler 22.03-LTS SP3版本的增强扩展版�
 | **整机厂商** | **整机型号**             | **CPU型号**   | **测试主体**      | **测试结果** |
 | ------------ | ------------------------ | ------------- | ----------------- | ------------ |
 | 华为          | 泰山200                  | 鲲鹏920       | sig-Compatibility | 待刷新         |
-| 超聚变        | 2288H V5                 | Intel cascade | sig-Compatibility | P待刷新         |
+| 超聚变        | 2288H V5                 | Intel cascade | sig-Compatibility | 待刷新         |
 
 
 整机兼容性清单以sig-Compatibility-Infra提供为主，社区各sig测试过程中使用的机器因未进行oec-hardware测试(进入社区兼容性清单质量要求)，故无法直接进行兼容性清单不在此描述。
