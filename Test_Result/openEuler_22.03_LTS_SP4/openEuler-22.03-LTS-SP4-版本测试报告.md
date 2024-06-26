@@ -273,7 +273,6 @@ openEuler 22.03 LTS SP4 版本详细测试内容包括：
 |  6  |[PowerAPI功耗管理统一API](待刷新)| 共执行用例50个，主要覆盖功能测试，发现问题14个 |  |  | <font color=green>█</font> | |
 |  7  |[eagle实现整机能耗管理](待刷新)| 共执行用例39个，主要覆盖功能测试，发现问题14个 |   |  | <font color=green>█</font> | |
 |  8  |[gala-ragdoll支持实时监控文件变更信息](待刷新)| 在测试环境进行了2轮迭代测试，对于需求功能，接口方面进行了完整完善的测试流程验证，符合结项标准要求 |   |  | <font color=green>█</font>  | |
-|  9  |[支持sysSentry故障管理框架](待刷新)| |  |  |  | |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
