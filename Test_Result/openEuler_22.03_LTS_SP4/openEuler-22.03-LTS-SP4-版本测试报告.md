@@ -421,9 +421,7 @@ openEuler 22.03 LTS SP4 版本共发现问题 286 个，有效问题 278 个，�
 
 - 关键问题类型：软件版本/release号相较openEuler-22.03-LTS-SP3最新update较低
 
-  此类问题约有153项，存在51项版本号降级，存在102项release号降级的软件，大多数因社区开发者在master分支进行升级后，直接将patch同步到22.03-LTS-SP3分支，而非先同步到openEuler-22.03-LTS-Next上再同步SP3导致，为流程规范问题。除pytorch外，其他问题单均于RC4完成，待RC5验证。<br>
-issue链接：<br>
-https://gitee.com/src-openeuler/pytorch/issues/I9SK0K?from=project-issue<br>
+  此类问题约有153项，存在51项版本号降级，存在102项release号降级的软件，大多数因社区开发者在master分支进行升级后，直接将patch同步到22.03-LTS-SP3分支，而非先同步到openEuler-22.03-LTS-Next上再同步SP3导致，为流程规范问题。
 
 #### 6.2 OS集成测试迭代版本基线
 
