@@ -204,8 +204,7 @@ openEuler 22.03 LTS SP4 版本详细测试内容包括：
 | 1    | 内核                                      | <font color=green>█</font> | 执行用例5093条，继承内核已有测试能力，通过使用开源测试套LTP、mmtest、syzkaller开源测试套进行测试；通过构建系统压力，反复长时间随机执行LTP基本系统调用，对内核开展7*24小时的稳定性测试，整体用例执行通过；内核整体质量良好 |
 | 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | 执行用例742个，覆盖容器领域引擎的基本能力，进行功能/可靠性/稳定性测试，用例执行全部通过，整体质量良好证 |
 | 3    | 虚拟化(qemu/stratovirt)                   | <font color=green>█</font> | 共计执行用例8000+条，继承已有测试能力，覆盖虚拟化组件(qemu&stratovirt)的基本功能、可靠性、稳定性及场景测试，使用开源的测试套tp-libvirt和tp-qemu开展各类测试，测试通过，整体质量良好 |
-| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> | 共计执行测试用例80291条，对gcc/jdk组件完成开源功能测试套supertest和开源fuzz测试套csmith\jfuzz的全量覆盖，另外使用SEPCjbb2015对jdk开展性能max-jOPS和critical-jOPS项的测试，以及通过jterg框架对jdk进行功能测试，编译器组件整体质量良好
-  |
+| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> | 共计执行测试用例80291条，对gcc/jdk组件完成开源功能测试套supertest和开源fuzz测试套csmith\jfuzz的全量覆盖，另外使用SEPCjbb2015对jdk开展性能max-jOPS和critical-jOPS项的测试，以及通过jterg框架对jdk进行功能测试，编译器组件整体质量良好|
 | 5    | 支持DDE桌面                               | <font color=green>█</font> | 共执行用例240条，执行两轮测试，主要覆盖了基础组件跟预装应用核心功能以及基本UI测试，无遗留问题。整体核心功能质量可控。           |
 | 6    | 支持UKUI桌面                              | <font color=green>█</font> | 共执行用例62条，执行两轮测试，覆盖UKUI桌面的核心功能、重要组件及系统插件的测试，整体质量良好         |
 | 7    | 支持xfce桌面                             | <font color=red>●</font> |无人维护，共有用例103条 |
