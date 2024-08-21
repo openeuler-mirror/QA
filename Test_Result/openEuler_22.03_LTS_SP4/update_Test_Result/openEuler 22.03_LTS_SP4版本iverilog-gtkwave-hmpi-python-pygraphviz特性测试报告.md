@@ -1,0 +1,174 @@
+![avatar](../../../images/openEuler.png)
+
+
+版权所有 © 2024  openEuler社区
+ 您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
+
+修订记录
+
+| 日期 | 修订   版本 | 修改描述 | 作者 |
+| ---- | ----------- | -------- | ---- |
+|  2024-08-20    |     V1.0        |   openEuler 22.03_LTS_SP4版本iverilog-gtkwave-hmpi-python-pygraphviz特性测试报告       |   liushuai   |
+
+关键词： iverilog gtkwave hmpi python-pygraphviz
+
+摘要：
+
+iverilog是一款开源的Verilog仿真工具，它旨在提供一个免费、开放源代码的仿真解决方案
+
+gtkwave是一个开源的波形查看器,用于可视化数字电路仿真结果。它可以显示由Verilog模拟器(如iverilog)生成的波形文件,并提供了丰富的功能来查看和分析波形数据
+
+hmpi是Hyper MPI的简称，是基于Open MPI，结合Open UCX P2P点对点通讯框架，新增了UCX COLL集合通讯优化框架，并在该框架实现了优化算法加速库，构建MPI的集合通信操作性能竞争力
+
+python-pygraphviz是Graphviz图形可视化工具的Python接口,可以帮助开发者创建、操作和可视化各种类型的图形
+
+
+缩略语清单：
+
+| 缩略语 | 英文全名 | 中文解释 |
+| ------ | -------- | -------- |
+|  hmpi   | Hyper MPI | 基于Open MPI的扩展 |
+
+# 1     特性概述
+
+开发者大会后，鲲鹏开发板项目新增要支持湖南大学教学课程和华为课程，后续落入openEuler 22.03-LTS-SP4版本,需要引入iverilog gtkwave hmpi ros-humble-desktop。python-pygraphviz是ros-humble-desktop的安装依赖包ros-humble-qt-dotgraph的编译依赖，也需要引入
+
+
+# 2     特性测试信息
+
+本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
+
+| 版本名称 | 测试起始时间 | 测试结束时间 |
+| -------- | ------------ | ------------ |
+|    openEuler_22.03_LTS_SP4     |      2024-08-08        |    2024-08-20          |
+
+描述特性测试的硬件环境信息
+
+| 硬件型号 | 硬件配置信息 | 备注 |
+| -------- | ------------ | ---- |
+| taishan200-2280 | cpu 2600MHz 96核，内存256G |  物理机   |
+| RH2288H V3 | cpu 2400MHz 24核，内存768G |  物理机    |
+
+# 3     测试结论概述
+
+## 3.1   测试整体结论
+
+iverilog gtkwave hmpi python-pygraphviz版本特性，共计执行8个用例，主要覆盖了安装卸载测试和功能测试，通过测试，发现软件包功能正常，无遗留风险，整体质量良好。
+
+## 3.2   约束说明
+
+
+## 3.3   遗留问题分析
+
+### 3.3.1 遗留问题影响以及规避措施
+
+暂无
+
+### 3.3.2 问题统计
+
+暂无
+
+# 4 详细测试结论
+
+## 4.1 功能测试
+*开源软件：主要关注开源软件升级后的变动点，继承特性由开源软件自带用例保证（需额外关注软件包提供可执行命令、库、服务功能）*
+*社区孵化软件：主要参考以下列表*
+
+### 4.1.1 继承特性测试结论
+
+| 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
+| --- | ----------- | :--------: | --- |
+| | | <font color=green>■</font> |   |
+| | | <font color=green>■</font> |   |
+
+<font color=red>●</font>： 表示特性不稳定，风险高
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
+<font color=green>■</font>： 表示特性质量良好
+
+### 4.1.2 新增特性测试结论
+
+| 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
+| --- | ----------- | :--------: | --- |
+|1 |iverilog gtkwave hmpi python-pygraphviz | <font color=green>■</font>|无   |
+
+<font color=red>●</font>： 表示特性不稳定，风险高
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
+<font color=green>■</font>： 表示特性质量良好
+
+## 4.2 兼容性测试结论
+
+*针对应用软件，主要考虑OS版本兼容性(在不同LTS SPx上的兼容性)、升降级兼容性、上层以来软件兼容性（如升级mysql后，对版本内已发布的使用mysql的软件的兼容性）*
+
+iverilog gtkwave hmpi python-pygraphviz组件在arm和x86平台上分别测试通过.
+
+## 4.3 DFX专项测试结论
+
+### 4.3.1 性能测试结论
+
+| 指标大项 | 指标小项 | 指标值 | 测试结论 |
+| ------- | ------- | ------ | ------- |
+|         |         |        |         |
+
+### 4.3.2 可靠性/韧性测试结论
+
+| 测试类型 | 测试内容 | 测试结论 |
+| ------- | ------- | -------- |
+|         |         |          |
+
+### 4.3.3 安全测试结论
+
+| 测试类型 | 测试内容 | 测试结论 |
+| ------- | ------- | -------- |
+|         |         |          |
+
+## 4.4 资料测试结论
+*建议附加资料PR链接*
+| 测试类型 | 测试内容 | 测试结论 |
+| ------- | ------- | -------- |
+|         |         |          |
+
+## 4.5 其他测试结论
+
+| 测试类型 | 测试内容 | 测试结论 |
+| ------- | ------- | -------- |
+|组件安装 | dnf install -y gtkwave hyper-mpi iverilog python3-pygraphviz      | x86和arm测试通过 |
+|组件卸载 | dnf remove -y gtkwave hyper-mpi iverilog python3-pygraphviz      | x86和arm测试通过 |
+|功能测试 | iverilog -o wave led_demo_tb.v led_demo.v    | x86和arm测试通过 |
+|功能测试 | vvp -n wave -lxt2   | x86和arm测试通过 |
+|功能测试 | gtkwave wave.vcd     | x86和arm测试通过 |
+|功能测试 | which mpirun     | x86和arm测试通过 |
+|功能测试 | ompi_info \| grep "MCA coll: ucx"     | x86和arm测试通过 |
+|功能测试 | rpmbuild -ba qt-dotgraph.spec --define 'ros_distro humble' --define 'dist .oe2203sp4'     | x86和arm测试通过 |
+
+# 5     测试执行
+
+## 5.1   测试执行统计数据
+
+*本节内容根据测试用例及实际执行情况进行特性整体测试的统计，可根据第二章的测试轮次分开进行统计说明。*
+
+| 版本名称                             | 测试用例数 | 用例执行结果 | 发现问题单数 |
+| ------------------------------------ | ---------- | ------------ | ------------ |
+| openEuler 22.03 LTS SP4 | 8          | 通过         | 0            |
+
+
+*数据项说明：*
+
+*测试用例数－－到本测试活动结束时，所有可用测试用例数；* 8
+
+*发现问题单数－－本测试活动总共发现的问题单数。* 0
+
+## 5.2   后续测试建议
+
+后续测试需要关注点(可选)
+
+# 6     附件
+
+*此处可粘贴各类专项测试数据或报告*
+
+
+https://gitee.com/ls39938477/devboard/blob/master/iverilog-gtkwave-hmpi-python-pygraphviz-oe2203sp4-aarch64/iverilog-gtkwave-hmpi-python-pygraphviz-oe-aarch64-oe2203sp4.md
+
+https://gitee.com/ls39938477/devboard/blob/master/iverilog-gtkwave-hmpi-python-pygraphviz-oe2203sp4-x86_64/iverilog-gtkwave-hmpi-python-pygraphviz-oe-x86_64-oe2203sp4.md
+ 
+
+ 
