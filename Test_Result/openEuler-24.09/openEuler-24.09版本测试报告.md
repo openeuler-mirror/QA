@@ -8,6 +8,7 @@
 | 日期       | 修订版本 | 修改章节          | 修改描述    |
 | ---------- | -------- | ----------------- | ----------- |
 | 2024/09/24 | 1.0.0    | 初稿，基于RC6 | linqian0322 |
+| 2024/09/26 | 1.0.1 | 增加 RISC-V 测试结果 | jean9823 |
 
 
 
@@ -240,13 +241,13 @@ openEuler 24.09 版本详细测试内容包括：
 
 | 序号 | 组件/特性名称                     | **aarch64/x86_64质量评估**  |**risc-v质量评估**  |   **loongarch质量评估**    |  **powerpc质量评估**    | 备注                                                         |
 | ---- | ----------------------- | :-------: | :--------: | :--------: | :-------: | ------------------------------------------------------------ |
-| 1    | 内核                                      | <font color=green>█</font> | <font color=green></font> |||直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
-| 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green></font> |||继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
+| 1    | 内核                                      | <font color=green>█</font> | <font color=green>█</font> |||直接继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内 |
+| 2    | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green>█</font> |||继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证 |
 | 3    | 虚拟化(qemu/stratovirt)                   | <font color=green>█</font> | ||| 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能 |
-| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> | <font color=green></font> |||继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
-| 5    | 支持DDE桌面                               | <font color=green>█</font> | <font color=green></font> ||| 继承已有测试能力，关注DDE桌面系统的安装和基本功能            |
-| 6    | 支持UKUI桌面                              | <font color=green>█</font> | <font color=green></font> ||| 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
-| 7    | 支持Kiran桌面                             | <font color=green>█</font> | <font color=green></font> |||增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
+| 4    | 编译器(gcc/jdk)                           | <font color=green>█</font> | <font color=green>█</font> |||继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证   |
+| 5    | 支持DDE桌面                               | <font color=green>█</font> | <font color=green>█</font> ||| 继承已有测试能力，关注DDE桌面系统的安装和基本功能            |
+| 6    | 支持UKUI桌面                              | <font color=green>█</font> | <font color=green>█</font> ||| 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           |
+| 7    | 支持Kiran桌面                             | <font color=green>█</font> | <font color=green>█</font> |||增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 |
 | 8   | 支持树莓派                                | <font color=green>█</font> |  |||继承已有测试能力，关注树莓派系统的安装、基本功能及兼容性     |
 | 9   | 支持HA软件                                | <font color=green>█</font> |  |||继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性 |
 | 10   | 支持KubeSphere                            | <font color=green>█</font> |  |||继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力 |
@@ -256,7 +257,7 @@ openEuler 24.09 版本详细测试内容包括：
 | 14   | 支持eggo                                  | <font color=green>█</font> | ||| 继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性 |
 | 15   | 支持kubeOS                                | <font color=green>█</font> |  |||继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力 |
 | 16   | 支持etmem内存分级扩展                     | <font color=green>█</font> | ||| 继承已有测试能力，重点验证特性的基本功能和稳定性             |
-| 17   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> |  |||继承已有测试能力，验证可定制化的能力                         |
+| 17   | 支持定制裁剪工具套件(oemaker/imageTailor) | <font color=green>█</font> | <font color=green>█</font> |||继承已有测试能力，验证可定制化的能力                         |
 | 18   | 支持虚拟化热补丁libcareplus               | <font color=green>█</font> | ||| 继承已有测试能力，重点关注libcareplus提供Qemu热补丁能力      |
 | 19   | 支持用户态协议栈gazelle                   | <font color=green>█</font> |  |||继承已有测试能力，重点关注gazelle高性能用户态协议栈功能      |
 | 20   | 支持容器场景在离线混合部署rubik           | <font color=green>█</font> | ||| 继承已有测试能力，结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试 |
@@ -268,25 +269,25 @@ openEuler 24.09 版本详细测试内容包括：
 | 26   | 支持mindspore                             | <font color=green>█</font> |  |||继承已有测试能力，针对openCV、opencl-clhpp、onednn、Sentencepiece4个模块，复用开源测试能力覆盖安装、接口测试、功能测试，重点关注对mindspore提供能力的稳定性 |
 | 27   | 支持pod带宽管理oncn-bwm                   | <font color=green>█</font> | ||| 继承已有测试能力，验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
 | 28   | 支持kubernetes                            | <font color=green>█</font> | |||继承已有测试能力，重点验证K8S在openEuler上的安装部署以及提供的对容器的管理能力 |
-| 29   | 安装部署                                  | <font color=green>█</font> |<font color=blue></font>||| 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
-| 30   | 备份还原功能支持                          | <font color=green>█</font> | ||| 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |           |
-| 31   | openEuler docker容器支持sysMaster管理sshd服务| <font color=green>█</font>  | |||继承已有测试能力，验证sysmaster管理sshd服务，在docker容器中的基本功能|
+| 29   | 安装部署                                  | <font color=green>█</font> |<font color=green>█</font>||| 继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |
+| 30   | 备份还原功能支持                          | <font color=green>█</font> | ||| 验证dde基础组件、预装应用核心功能、新增特性基础功能以及基本UI功能正常 |
+| 31   | openEuler docker容器支持sysMaster管理sshd服务| <font color=green>█</font>  | <font color=green>█</font> |||继承已有测试能力，验证sysmaster管理sshd服务，在docker容器中的基本功能|
 | 32   | iSulad支持K8S 1.24 /1.25版本 |<font color=green>█</font>|   ||| 继承已有测试能力，验证k8s的基础部署功能以及可靠性   |
 | 33   | Rubik混部支持精细化资源QoS感知和控制 | <font color=green>█</font> |   |||继承已有测试能力，验证rubik支持精细化资源感知和控制的基础功能                 |
 | 34   | 支持 sysmonitor 特性 |<font color=green>█</font> |   ||| 继承已有测试能力，验证sysmonitro继承需求的可靠性和基础功能                |
 | 35   | 安全配置规范框架设计及核心内容构建|<font color=green>█</font>|  |||  继承已有测试能力，验证安全配置规范框架设计及核心内容构建        |
 | 36   | gala-gopher新增性能火焰图、线程级性能Profiling特性 |<font color=green>█</font> |  |||继承已有测试能力，验证gala-gopher新增性能火焰图、线程级性能Profiling特性          |
 | 37   | 支持DPU直连聚合特性|<font color=green>█</font>| |||继承已有测试能力，验证DPU直连聚合特性基本功能，安全以及可靠性|
-| 38   | 支持系统热修复组件syscare|<font color=green>█</font>| <font color=green></font> |||继承已有测试能力，验证系统热修复组件syscare的功能，并发，长稳，以及安全|
+| 38   | 支持系统热修复组件syscare|<font color=green>█</font>|  |||继承已有测试能力，验证系统热修复组件syscare的功能，并发，长稳，以及安全|
 | 39   | 支持入侵检测框架secDetector|<font color=green>█</font>| |||继承已有测试能力，验证入侵检测框架secDetector基本功能，安全，可靠性等方面|
 | 40   | vCPU热插                             | <font color=green>█</font> |  |||对虚拟机支持vCPU热插能力进行功能/可靠性/稳定性和场景测试，共执行用例93条，覆盖基本功能、并发压力场景下的反复热插、长时间的生命周期操作；用例全部执行通过，特性质量良好 |
 | 41   | nvwa 内核热升级             | <font color=green>█</font>       |  |||继承已有测试能力，重点验证基本功能，以及特性启动/重启后的功能及状态 |
-| 42   | iSula容器镜像构建工具isula-build | <font color=green>█</font> | |||继承版本已有测试能力，关注基本功能完整性 |
+| 42   | iSula容器镜像构建工具isula-build | <font color=green>█</font> | <font color=green>█</font> |||继承版本已有测试能力，关注基本功能完整性 |
 | 43   | 支持进程完整性防护特性 | <font color=green>█</font> | |||验证配置DIM度量策略，度量用户态进程，度量任一模块，度量内核等功能； |
 | 44   | 支持devmaster组件 | <font color=green>█</font> | |||依据测试要求，对devmaster特性进行接口测试、功能测试、组合场景测试 |
 | 45   | 支持TPCM特性  | <font color=green>█</font> |  |||TPCM需求，共1轮测试，设计场景3个，共有用例11个。覆盖基本功能|
-| 46   | 支持sysMaster组件 | <font color=green>█</font> | <font color=green></font> |||继承已有测试能力，验证入ysmaster的安装部署、基本功能、配置项进行测试 |
-| 47   | isulad支持oci runtime并且切换默认runtime为runc | <font color=green>█</font> | <font color=green></font> ||| 继承已有测试能力，覆盖功能，可靠性。|
+| 46   | 支持sysMaster组件 | <font color=green>█</font> | <font color=green>█</font> |||继承已有测试能力，验证入ysmaster的安装部署、基本功能、配置项进行测试 |
+| 47   | isulad支持oci runtime并且切换默认runtime为runc | <font color=green>█</font> | <font color=green>█</font> ||| 继承已有测试能力，覆盖功能，可靠性。|
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -301,29 +302,29 @@ openEuler 24.09 版本详细测试内容包括：
 
 | **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v质量评估**    |   **loongarch质量评估**    |  **powerpc质量评估**    | **备注** |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- | -------------------------- | -------- |
-|  1 | [virtCCA机密虚机特性合入](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 针对机密虚机场景整体进行了功能、性能、可靠性、兼容性、资料和长稳测试，共执行用例214个，包括机密虚拟的基本功能测试以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试；完成了功能、兼容性、可靠性、长稳测试、以及资料测试，用例通过7*24的长稳测试。该版本共发现问题0个，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  1 | [virtCCA机密虚机特性合入](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 针对机密虚机场景整体进行了功能、性能、可靠性、兼容性、资料和长稳测试，共执行用例214个，包括机密虚拟的基本功能测试以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试；完成了功能、兼容性、可靠性、长稳测试、以及资料测试，用例通过7*24的长稳测试。该版本共发现问题0个，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  2 | [支持树莓派](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | openEuler 24.09 树莓派镜像版本测试完成了功能测试，测试范围包括镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；完成了硬件兼容性测试，包括树莓派 4B 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。未发现问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  3 | [继承特性：发布Nestos-kubernetes-deployer](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | NKD 在 openEuler-2409 版本测试阶段完成了功能测试，包括基础设施 & Kubernetes 1.29 版本集群的部署、扩展与销毁。整体核心功能稳定正常；完成了 aarch64 架构 （Kunpeng 920）和 x86_64 架构（Intel）的兼容性测试；完成了可靠性测试，可长时间稳定运行。未发现问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  4 | [新增基于《openEuler 安全配置基线》检测工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | SecureGuardian在openEuler24.09 版本上的测试表现正常，共计201个测试用例。涵盖了功能、安全、性能、系统兼容性等，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  5 | [增加 utshell 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utshell，共计执行5轮测试，功能正常，可正常执行shell基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
-|  6 | [增加 utsudo 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utsudo，共计执行5轮测试，功能正常，可正常执行sudo基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  4 | [新增基于《openEuler 安全配置基线》检测工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | SecureGuardian在openEuler24.09 版本上的测试表现正常，共计201个测试用例。涵盖了功能、安全、性能、系统兼容性等，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
+|  5 | [增加 utshell 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utshell，共计执行5轮测试，功能正常，可正常执行shell基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
+|  6 | [增加 utsudo 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utsudo，共计执行5轮测试，功能正常，可正常执行sudo基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 |  7 | [epkg新型软件包的OS镜像构建](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=blue>▲</font> | | | | |
-|  8 | [DevStation 开发者工作站支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=blue>▲</font> | <font color=green></font> | | | |
+|  8 | [DevStation 开发者工作站支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=blue>▲</font> |  | | | |
 |  9 | [微服务性能问题分钟级定界/定位（TCP，IO，调度等）](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行5个用例，经过2轮测试，主要覆盖在k8s集群环境上故障注入和定位定界的功能测试，可靠性测试。共发现2个功能问题，已解决并回归通过，无遗留问题 |  |  | <font color=green>█</font> | | | | |
-|  10 | [Aops支持智能运维助手](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行16个用例，验证通过集成到Aops里的 问答系统使用问答方式进行cve扫描和配置溯源，发现问题9个，预计rc7全部解决并回归通过。 |  |  | <font color=blue>▲</font> | <font color=green></font> | | | |
-|  11 | [容器干扰检测，分钟级完成业务干扰源（CPU/IO）识别与干扰源发现](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行6个用例，经过2轮测试，主要覆盖在容器场景下的干扰检测功能测试和可靠性测试，测试通过未发现新增问题 |  |  | <font color=green>█</font> | <font color=green></font> ||||
+|  10 | [Aops支持智能运维助手](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行16个用例，验证通过集成到Aops里的 问答系统使用问答方式进行cve扫描和配置溯源，发现问题9个，预计rc7全部解决并回归通过。 |  |  | <font color=blue>▲</font> |  | | | |
+|  11 | [容器干扰检测，分钟级完成业务干扰源（CPU/IO）识别与干扰源发现](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行6个用例，经过2轮测试，主要覆盖在容器场景下的干扰检测功能测试和可靠性测试，测试通过未发现新增问题 |  |  | <font color=green>█</font> |  ||||
 |  12 | [构建远程证明统一框架，支持部署远程证明服务](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行了7个用例，经过2轮测试，主要覆盖在鲲鹏和virtCCA机器上分别验证“获取/校验远程证明报告和身份令牌”的功能，共发现1个功能问题，已解决并回归通过，无遗留问题 |  |  | <font color=green>█</font> | | | | NKD 24.03 LTS 版本需等待 NestOS 24.03 LTS 版本发布后再进行测试|
 |  13 | [IMA摘要列表支持三方PKI证书导入](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行5个用例，主要覆盖了功能测试、可靠性测试和资料测试，发现1个问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  14 | [KubeOS支持串、并行多种升级策略、状态更新等声明式API](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行40个用例（33个继承用例+7个新增用例），主要覆盖了继承用例测试、新增功能和参数测试，发现2个问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  15 | [etmem内存扩展，实现虚机内存超分](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行用例2个，主要覆盖了功能测试，用例全部执行通过，未发现问题，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  16 | [iSula支持NRI插件式扩展](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行用例8个，主要覆盖了功能测试和可靠性测试，通过7*24的长稳测试，失败用例0个，新增8个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | ||||
 |  17 | [支持GCC 14多版本使能多样算力新特性](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行100w+用例，经过4轮测试，主要覆盖基础功能测试，共发现3个问题，1个问题经评估已挂起 |  |  | <font color=green>█</font> | | | | |
-|  18 | [secGear功能优化](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 新增用例10个，继承用例31个，共执行用例41个，覆盖功能测试、可靠性测试，发现2个问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  18 | [secGear功能优化](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 新增用例10个，继承用例31个，共执行用例41个，覆盖功能测试、可靠性测试，发现2个问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  19 | [syscare特性增强：用户态热补丁支持容器化制作、支持栈检测](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行了30个用例，经过2轮测试，主要覆盖syscare软件制作和管理热补丁的功能，共发现4个问题，其中3个功能问题，1个资料问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  21 | [支持embedded版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 见embedded测试报告 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  21 | [支持embedded版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 见embedded测试报告 |  |  | <font color=green>█</font> |  | | | |
 |  22 | [增加pandoc 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 评估 openEuler 24.09 测试镜像中的 ghc-pandoc 和 pandoc-cli 软件包，共计执行 17 个用例，主要覆盖了安装测试和功能测试，发现问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  23 | [增加国创OS开发工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=green></font> | <font color=green></font> | | | |
-|  24 | [为 RISC-V 架构引入 Penglai TEE 支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 对蓬莱提供的7个 demo 示例进行了编译运行测试，全部可以按照预期方式运行，测试通过，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
+|  23 | [增加国创OS开发工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=green></font> |  | | | |
+|  24 | [为 RISC-V 架构引入 Penglai TEE 支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 对蓬莱提供的7个 demo 示例进行了编译运行测试，全部可以按照预期方式运行，测试通过，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 
 
 
