@@ -9,6 +9,8 @@
 | ---------- | -------- | ----------------- | ----------- |
 | 2024/09/24 | 1.0.0    | 初稿，基于RC6 | linqian0322 |
 | 2024/09/26 | 1.0.1 | 增加 RISC-V 测试结果 | jean9823 |
+| 2024/09/29 | 1.0.2    | 基于RC7测试完成更新 | linqian0322 |
+
 
 
 
@@ -207,7 +209,7 @@ openEuler 24.09 版本交付需求列表如下，详情见[openEuler-24.09 relea
 
    openEuler 24.09 版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 1轮重点特性测试 + 2轮全量测试 + 2轮回归测试 + 1轮版本发布验收测试；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项。测试也提前介入，覆盖冒烟测试、安装部署等基础测试项；第2轮重点特性测试聚焦在新特性全量功能和继承特性自动化验证; 第3、4轮全量测试开展版本交付的所有特性和各类专项测试；第5、6轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试，验证问题的修复和影响程度；第7轮版本发布验收测试是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-   openEuler 24.09 版本共发现问题 269 个，有效问题 261 个，无效问题 8 个，遗留问题 4 个(详见遗留问题章节)，风险可控，版本整体质量良好。
+   openEuler 24.09 版本共发现问题 276 个，有效问题 266 个，无效问题 10 个，遗留问题 3 个(详见遗留问题章节)，风险可控，版本整体质量良好。
 
 
 
@@ -308,22 +310,23 @@ openEuler 24.09 版本详细测试内容包括：
 |  4 | [新增基于《openEuler 安全配置基线》检测工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | SecureGuardian在openEuler24.09 版本上的测试表现正常，共计201个测试用例。涵盖了功能、安全、性能、系统兼容性等，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 |  5 | [增加 utshell 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utshell，共计执行5轮测试，功能正常，可正常执行shell基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 |  6 | [增加 utsudo 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | utsudo，共计执行5轮测试，功能正常，可正常执行sudo基础命令，未发现问题，功能质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
-|  7 | [epkg新型软件包的OS镜像构建](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=blue>▲</font> | | | | |
-|  8 | [DevStation 开发者工作站支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=blue>▲</font> |  | | | |
+|  7 | [epkg新型软件包的OS镜像构建](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行93个用例，主要验证通过切换环境使用不同的版本的软件包，解决兼容性难题，测试用例均通过无遗留问题 |  |  | <font color=green>█</font> | | | | |
+|  8 | [DevStation 开发者工作站支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行60个用例，经过3轮测试，覆盖功能、性能、可靠性测试，共发现20+问题，基本功能已解决并回归通过，该特性经评审与版本解耦发布 |  |  | <font color=blue>▲</font> |  | | | |
 |  9 | [微服务性能问题分钟级定界/定位（TCP，IO，调度等）](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行5个用例，经过2轮测试，主要覆盖在k8s集群环境上故障注入和定位定界的功能测试，可靠性测试。共发现2个功能问题，已解决并回归通过，无遗留问题 |  |  | <font color=green>█</font> | | | | |
-|  10 | [Aops支持智能运维助手](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行16个用例，验证通过集成到Aops里的 问答系统使用问答方式进行cve扫描和配置溯源，发现问题9个，预计rc7全部解决并回归通过。 |  |  | <font color=blue>▲</font> |  | | | |
+|  10 | [Aops支持智能运维助手](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行16个用例，验证通过集成到Aops里的 问答系统使用问答方式进行cve扫描和配置溯源，发现问题9个，全部解决并回归通过。 |  |  | <font color=green>█</font> |  | | | |
 |  11 | [容器干扰检测，分钟级完成业务干扰源（CPU/IO）识别与干扰源发现](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行6个用例，经过2轮测试，主要覆盖在容器场景下的干扰检测功能测试和可靠性测试，测试通过未发现新增问题 |  |  | <font color=green>█</font> |  ||||
 |  12 | [构建远程证明统一框架，支持部署远程证明服务](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行了7个用例，经过2轮测试，主要覆盖在鲲鹏和virtCCA机器上分别验证“获取/校验远程证明报告和身份令牌”的功能，共发现1个功能问题，已解决并回归通过，无遗留问题 |  |  | <font color=green>█</font> | | | | NKD 24.03 LTS 版本需等待 NestOS 24.03 LTS 版本发布后再进行测试|
 |  13 | [IMA摘要列表支持三方PKI证书导入](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行5个用例，主要覆盖了功能测试、可靠性测试和资料测试，发现1个问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  14 | [KubeOS支持串、并行多种升级策略、状态更新等声明式API](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行40个用例（33个继承用例+7个新增用例），主要覆盖了继承用例测试、新增功能和参数测试，发现2个问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  15 | [etmem内存扩展，实现虚机内存超分](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行用例2个，主要覆盖了功能测试，用例全部执行通过，未发现问题，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  16 | [iSula支持NRI插件式扩展](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行用例8个，主要覆盖了功能测试和可靠性测试，通过7*24的长稳测试，失败用例0个，新增8个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | ||||
-|  17 | [支持GCC 14多版本使能多样算力新特性](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行100w+用例，经过4轮测试，主要覆盖基础功能测试，共发现3个问题，1个问题经评估已挂起 |  |  | <font color=green>█</font> | | | | |
-|  18 | [secGear功能优化](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 新增用例10个，继承用例31个，共执行用例41个，覆盖功能测试、可靠性测试，发现2个问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
-|  19 | [syscare特性增强：用户态热补丁支持容器化制作、支持栈检测](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行了30个用例，经过2轮测试，主要覆盖syscare软件制作和管理热补丁的功能，共发现4个问题，其中3个功能问题，1个资料问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
+|  16 | [oeAware 支持本地网络加速](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行7个用例，经过3轮测试。主要覆盖功能测试和性能测试，功能正常，性能指标达成，发现问题两个，无遗留问题 |  |  | <font color=green>█</font> | | | | |
+|  17 | [iSula支持NRI插件式扩展](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共计执行用例8个，主要覆盖了功能测试和可靠性测试，通过7*24的长稳测试，失败用例0个，新增8个用例全部通过，发现问题已解决，回归通过，无遗留风险，整体质量良好。 |  |  | <font color=green>█</font> | ||||
+|  18 | [支持GCC 14多版本使能多样算力新特性](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行100w+用例，经过4轮测试，主要覆盖基础功能测试，共发现3个问题，1个问题经评估已挂起 |  |  | <font color=green>█</font> | | | | |
+|  19 | [secGear功能优化](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 新增用例10个，继承用例31个，共执行用例41个，覆盖功能测试、可靠性测试，发现2个问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
+|  20 | [syscare特性增强：用户态热补丁支持容器化制作、支持栈检测](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 共执行了30个用例，经过2轮测试，主要覆盖syscare软件制作和管理热补丁的功能，共发现4个问题，其中3个功能问题，1个资料问题，均已解决并回归通过，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  21 | [支持embedded版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 见embedded测试报告 |  |  | <font color=green>█</font> |  | | | |
 |  22 | [增加pandoc 项目发布](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 评估 openEuler 24.09 测试镜像中的 ghc-pandoc 和 pandoc-cli 软件包，共计执行 17 个用例，主要覆盖了安装测试和功能测试，发现问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  23 | [增加国创OS开发工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 待刷新 |  |  | <font color=green></font> |  | | | |
+|  23 | [增加国创OS开发工具](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 基于国创OS，验证混合部署、软实时、硬实时3种插件功能，三个插件执行用例数、发现问题、遗留问题分别为12334,0；289,71,2；200,61,0，整体基础功能已验证，但是存在部分场景未覆盖，后续需规划测试策略保障特性质量完备 |  |  | <font color=blue>▲</font> |  | | | |
 |  24 | [为 RISC-V 架构引入 Penglai TEE 支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.09/release-plan.md) | 对蓬莱提供的7个 demo 示例进行了编译运行测试，全部可以按照预期方式运行，测试通过，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 
 
@@ -334,11 +337,28 @@ openEuler 24.09 版本详细测试内容包括：
 
 <font color=green>█</font>： 表示特性质量良好
 
+## 4.3   兼容性测试结论
+
+### 4.3.1 北向兼容性
+创新版本不涉及
+
+### 4.3.2 南向兼容性
+创新版本不涉及
+
+### 4.3.3 虚机兼容性
+
+| HostOS     | GuestOS (虚拟机)        | 架构    | 测试结果 | 备注                                   |
+| ---------- | ----------------------- | ------- | -------- | -------------------------------------- |
+| openEuler 24.09   | Centos 6 | x86_64 | PASS |         |
+| openEuler 24.09   | Centos 7 | aarch64 | PASS |         |
+| openEuler 24.09  | Centos 7 | x86_64  | PASS |         |
+| openEuler 24.09  | Centos 8 | aarch64 | PASS |         |
+| openEuler 24.09  | Centos 8 | x86_64  | PASS |         |
 
 
-## 4.3   专项测试结论
+## 4.4   专项测试结论
 
-### 4.3.1 安全测试
+### 4.4.1 安全测试
 
 整体安全测试覆盖：
 
@@ -356,7 +376,7 @@ openEuler 24.09 版本详细测试内容包括：
 
 整体OS安全测试较充分，主要问题均已解决，回归测试正常，整体质量良好，风险可控，详细测试内容见安全专项测试报告。
 
-### 4.3.2 可靠性测试
+### 4.4.2 可靠性测试
 
 | 测试类型     | 测试内容                                                     | 测试结论                                                    |
 | ------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -371,25 +391,25 @@ openEuler 24.09 版本详细测试内容包括：
 
 # 5   问题单统计
 
-openEuler 24.09 版本共发现问题 269 个，有效问题 261 个，其中遗留问题 4 个。详细分布见下表:
+openEuler 24.09 版本共发现问题 276 个，有效问题 266 个，其中遗留问题 3 个。详细分布见下表:
 
 | 测试阶段               | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 | 备注        |
 | --------------------------- | -------- | ------------ | ------------ | ------------ | -------------------------- |
-| openEuler 24.09 ailybuild | 19    | 16      | 3   | 0      | 每日构建   |
-| openEuler 24.09 alpha      | 114   | 114     | 0   | 0      | Alpha轮次   |
-| openEuler 24.09 RC1        | 44   | 42     | 2  | 0      | Beta轮次  |
-| openEuler 24.09 RC2        | 26    | 25      | 1   | 0      | 全量集成 |
+| openEuler 24.09 dailybuild | 16    | 16      | 0   | 0      | 每日构建   |
+| openEuler 24.09 alpha      | 122   | 119     | 3   | 0      | Alpha轮次   |
+| openEuler 24.09 RC1        | 45   | 43     | 2  | 0      | Beta轮次  |
+| openEuler 24.09 RC2        | 27    | 26      | 1   | 0      | 全量集成 |
 | openEuler 24.09 RC3        | 26   | 26     | 0   |  0     | 全量集成  |
-| openEuler 24.09 RC4        | 19    | 18      | 1   | 3      | 回归测试    |
-| openEuler 24.09 RC5        | 18    |  17     | 1   | 1      | 回归测试 |
-| openEuler 24.09 RC6        | 3    |  3     | 0   | 0      | 回归测试 |
+| openEuler 24.09 RC4        | 19    | 16      | 3   | 2      | 回归测试    |
+| openEuler 24.09 RC5        | 17    |  16     | 1   | 1      | 回归测试 |
+| openEuler 24.09 RC6        | 4    |  4     | 0   | 0      | 回归测试 |
 | openEuler 24.09 RC7        | 0    |  0     | 0   | 0      | 回归测试(版本验收测试) |
 
 # 6 版本测试过程评估
 
 #### 6.1 问题单分析
 
-本次版本测试各迭代从Alpha到RC7，每一轮迭代转测前问题解决率符合QA-sig制定的转测质量checklist要求。Alpha属于开发自验证轮次，测试提前介入，软件包构建失败问题59个，软件包降级问题43个;RC1特性转测轮次开始，迭代轮次共发现Aops、编译器等特性问题60+，均定位解决并通过测试验收，有效防护特性质量; 当前社区版本有效issue共计261，新增issue总体趋势下降，符合质量预期；其中待解决issue 6个（随RC7版本全量回归）。问题修复率97.7%，版本整体质量良好，没有问题溢出的风险。
+本次版本测试各迭代从Alpha到RC7，每一轮迭代转测前问题解决率符合QA-sig制定的转测质量checklist要求。Alpha属于开发自验证轮次，测试提前介入，软件包构建失败问题59个，软件包降级问题43个;RC1特性转测轮次开始，迭代轮次共发现Aops、编译器等特性问题60+，均定位解决并通过测试验收，有效防护特性质量; 当前社区版本有效issue共计261，新增issue总体趋势下降，符合质量预期；版本整体质量良好，没有问题溢出的风险。
 
 - 典型问题：
 1. 软件包构建失败问题突出，整个版本发现构建失败问题107个，集中在alpha-RC2轮次, RC3才开始收敛，因为master构建工程的问题没有及时修复导致引入到24.09版本
@@ -516,10 +536,9 @@ openEuler 24.09 版本共发现问题 269 个，有效问题 261 个，其中遗
 
 | 序号 | 问题单号    | 问题简述    | 问题级别 | 影响分析   | 规避措施       | 历史发现场景     |
 | ---- | ------------------------------------------------------------ | ----------------------------------------------------------- | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 1    | [IAQEYH](https://e.gitee.com/open_euler/issues/table?issue=IAQEYH) | [24.09 RC4][deja]执行deja测试套modules.exp相关用例报错 | 主要     | 分析是调用gcc-14动态库libstdc++.so时，实际是调用系统库/usr/lib64/libstdc++.so.6 和libstdc++_nonshared.a这个多版本静态库，根据测试2的静态链接库调用构建成功说明是libstdc++_nonshared.a库中相关符号与开源不一致导致。分析全量deja测试结果，仅新增此问题，且此场景是在使用C++20以上特性-fmodule-header才会触发，应用范围较小，建议使用-static规避此问题 | 添加编译选项：runtest --tool g++ modules.exp=iostream-1* --tool_opts=-static可执行通过| |
-| 2    | [IAS2H7](https://e.gitee.com/open_euler/issues/table?issue=IAS2H7) | 【24.09 RC5】【arm/x86】gsettings-desktop-schemas安装的org.gnome.system.locale带有废弃路径 | 次要 | 该问题经评审为非问题，但是需要在资料体现后更改问题单状态| | https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/issues/27 |
-| 3    | [IARW9Q](https://e.gitee.com/open_euler/issues/table?issue=IARW9Q) | 打印设置应用无法打开 | 次要 |打印设置应用存在问题，对系统总体应用的使用无影响，system-conf-printer得升级版本适配高版本python以及python3-cups；考虑2409已处于待发布阶段，升包比较困难。后续内部出版本时升级 | 有两种临时规避手段:1.给定环境变量后，能加载到cupshelper后再跑应用2.做软链接 |  |
-| 4    | [IAQKNB](https://e.gitee.com/open_euler/issues/table?issue=IAQKNB) | 【openEuler 24.09 rc4】DDE指定操作无法删除新增管理员| 不重要     | 该问题只在特定情况下触发，单个用例不通过，影响性较小 |  |  |
+| 1    | [IAS2H7](https://e.gitee.com/open_euler/issues/table?issue=IAS2H7) | 【24.09 RC5】【arm/x86】gsettings-desktop-schemas安装的org.gnome.system.locale带有废弃路径 | 次要 | 该问题经评审为非问题，但是需要在资料体现后更改问题单状态| | https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/issues/27 |
+| 2    | [IARW9Q](https://e.gitee.com/open_euler/issues/table?issue=IARW9Q) | 打印设置应用无法打开 | 次要 |打印设置应用存在问题，对系统总体应用的使用无影响，system-conf-printer得升级版本适配高版本python以及python3-cups；考虑2409已处于待发布阶段，升包比较困难。后续内部出版本时升级 | 有两种临时规避手段:1.给定环境变量后，能加载到cupshelper后再跑应用2.做软链接 |  |
+| 3    | [IAQKNB](https://e.gitee.com/open_euler/issues/table?issue=IAQKNB) | 【openEuler 24.09 rc4】DDE指定操作无法删除新增管理员| 不重要     | 该问题只在特定情况下触发，单个用例不通过，影响性较小 |  |  |
 
 
 
