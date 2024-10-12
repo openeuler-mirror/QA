@@ -74,7 +74,7 @@
 
 ### 3.3.1 遗留问题影响以及规避措施
 
-不涉及
+暂不确定
 
 ### 3.3.2 问题统计
 
@@ -144,8 +144,8 @@
 | -------- | ---------- | ------------ | ------------ |
 |openEuler 20.03_LTS_SP4（转测一） ARM+X86 |  ***  |    ***PASS + ***FAIL    |        ***   |
 |openEuler 20.03_LTS_SP4（转测二） ARM+X86  |  ***    |  ***PASS + ***FAIL  | ***            |
-|openEuler 20.03_LTS_SP4（转测三） ARM+X86 | *** | ***PASS + ***FAIL | 0 |
-|openEuler 20.09_LTS_SP4（转测四） ARM+X86 | *** | ***PASS + ***FAIL | 0 |
+|openEuler 20.03_LTS_SP4（转测三） ARM+X86 | *** | ***PASS + ***FAIL | *** |
+|openEuler 20.09_LTS_SP4（转测四） ARM+X86 | *** | ***PASS + ***FAIL | *** |
 
 *数据项说明：*
 
