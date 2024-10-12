@@ -33,8 +33,8 @@
 | -------- | ------------ | ------------ |
 | openEuler 20.03_LTS_SP4  |  2024-09-14  | 2023-09-22 |
 | openEuler 20.03_LTS_SP4  |  2023-09-23  | 2023-09-30 |
-| openEuler 20.03_LTS_SP4  |  2023-10-08  | 2023-10-12 |
-
+| openEuler 20.03_LTS_SP4  |  2023-10-08  | 2023-10-09 |
+| openEuler 20.03_LTS_SP4  |  2023-10-09  | 2023-10-12 |
 
 硬件环境信息
 
@@ -43,12 +43,11 @@
 |  物理机        |     8G 8U       |  ARM版本和X86版本  |
 
 # 3     测试结论概述
-
 ## 3.1   测试整体结论
 
-慢IO特性总共进行两轮转测，合计执行用例***条，主要对新增的接口、命令行、配置文件、阈值算法、日志文件进行了测试。
+慢IO特性总共进行四轮转测，合计执行用例***条，主要对新增的接口、命令行、配置文件、阈值算法、日志文件进行了测试。
 
-第一轮发现问题13个，回归通过13个，遗留问题0个。
+第一轮发现问题11个，回归通过11个，遗留问题0个。
 
 第二轮发现问题12个，回归通过0个，遗留问题10个。
 
@@ -85,22 +84,21 @@
 | https://gitee.com/src-openeuler/sysSentry/issues/IASWJN   | 发现多处拼写错误 | 主要     | 影响业务功能          | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IASWNB   |  当配置了未存在的设备时，sentryCollector服务启动没有任何报错提示| 次要     | 影响业务功能           | 已完成  |
 | https://gitee.com/src-openeuler/sysSentry/issues/IASWQ3   |avg_block_io.ini配置文件中common.disk和common.stage选项参数解析异常| 次要     | 影响业务功能           | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IASWUI   | avg_block_io.ini配置中，1. common段的disk，stage，iotype，period_time校验行为不一致，2. algorithm段的win_size和win_threshold选项建议提供默认值| 次要     | 影响业务功能          | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWUI   | avg_block_io.ini配置中，1. common段的disk，stage，iotype，period_time校验行为不一致，2. algorithm段的win_size和win_threshold选项建议提供默认值| 主要     | 影响业务功能          | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IASX2A   | 配置文件中增加日志级别选项  | 次要     | 影响日志功能    | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IASXAX   | avg_block_io.ini配置文件中，不同section缺失的检验行为不一致| 主要     | 影响业务功能      | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASXAX   | avg_block_io.ini配置文件中，不同section缺失的检验行为不一致| 次要     | 影响业务功能      | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IASXFL   | collector.conf 对于io.disk配置值大小写敏感| 次要     | 影响业务功能          | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAT5WV   | 启停sentryCollector服务，会出现栈信息的打印 | 主要     | 影响业务功能           | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IATCVS   | 配置文件ai_threshold_slow_io_detection.ini中多处配置未校验| 主要     | 影响业务功能           | 已完成   |
-|https://gitee.com/src-openeuler/sysSentry/issues/IATGUD    | 配置文件ai_threshold_slow_io_detection中三个字段的默认值没有与设计文档保持一致| 主要     | 影响业务功能           | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATCVS   | 配置文件ai_threshold_slow_io_detection.ini中多处配置未校验| 严重   | 影响业务功能           | 已完成   |
+|https://gitee.com/src-openeuler/sysSentry/issues/IATGUD    | 配置文件ai_threshold_slow_io_detection中三个字段的默认值没有与设计文档保持一致| 严重     | 影响业务功能           | 已验收   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATHUJ  | 算法插件名称ai_threshold_slow_io_detection需改成ai_block_io| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATHWL  | ai检查算法缺少disk参数| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATI0P  | 平均阈值算法日志和和ai算法日志格式对齐| 主要     | 影响业务功能           | 已验收   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATJ8C  | ai算法ini文件参数有误时，调用采集接口打印错误日志的条数，1s打印几百条且无限打印| 主要     | 影响业务功能           | 已验收   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IATOT7  | get_metric_value_from_io_data_dict_by_metric_name函数的返回值没有判空，导致程序崩溃| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATOT7  | get_metric_value_from_io_data_dict_by_metric_name函数的返回值没有判空，导致程序崩溃| 严重     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATV7F | ai_threshold_slow_io_detection.ini配置文件中，section缺失异常未捕获| 主要     | 影响业务功能           | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IATYAL | ai算法日志级别配置不生效| 主要     | 影响业务功能           | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IATZAL | 启停ai_threshold_slow_io_detection插件，日志有异常报错信息
-| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATYAL | ai算法日志级别配置不生效| 严重     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATZAL | 启停ai_threshold_slow_io_detection插件，日志有异常报错信息| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IATZI5 | ai_threshold_slow_io_detection.ini配置中出现参数 或者 section重复时，未进行异常捕获| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAUR83?from=project-issue | 修改avg_block_io日志信息| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAVABT | 【ebpf】sentryCollector服务启停，日志不合理| 主要     | 影响业务功能           | 已完成   |
@@ -111,16 +109,28 @@
 | https://gitee.com/src-openeuler/sysSentry/issues/IAVR7L | ai_block_io.ini配置项，level单独成段，增加stage，iotype配置| 主要     | 影响业务功能           | 已完成   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAVTHT?from=project-issue | ebpf采集ai阈值算法,当采集服务关闭后，日志无限打印error级别日志| 主要     | 影响业务功能           | 已验收   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAW1K5 | 平均阈值和ai阈值配置ini文件参数问题整改集合| 主要     | 影响业务功能           | 已完成   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IATXS7 | ai算法在bio时延很稳定的情况下，会误报告警| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATXS7 | ai算法在bio时延很稳定的情况下，会误报告警| 严重     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAU2QZ | ai阈值部分功能缺失| 主要     | 影响业务功能           | 待办的   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IAVD14 | 1.nvme盘延时是微秒级的，当前配置文件单位是毫秒级的；2.所有配置项都提供默认值| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVD14 | 1.nvme盘延时是微秒级的，当前配置文件单位是毫秒级的；2.所有配置项都提供默认值| 严重     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAVFM6 | 【可维护性】AI阈值算法需要补充日志| 主要     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAVRCX | AI阈值算法的配置需要支持不同类型磁盘分别设置，提高检测准确率| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVZHJ | 只安装sysSentry包，sysSentry服务启动失败，需增加libxalarm、pyxalarm依赖；avg_block_io安装依赖pysentry_notify| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW0I7 | xalarm支持最大字符长度1024限制过短，增加长度限制| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW91W | 【xalarm】1.针对C语言发送告警，当描述信息超过一定长度，会进行截断；2.存在拼写错误，scoket->socket，close current connection| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAWABB | 【xalarm】xalarm_upgrade和xalarm_unregister接口返回值为None，不符合预期；xalarm_unregister不需要入参，建议删除| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAWBQ5 | 【xalarm】未进行xalarm_unregister解注册的时候，需要在xalarm_report发送消息时主动去清理socket | 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAWD0Q | 【xalarm】xalarm_unregister解注册后，增加超时机制，超过一定时间后，主动清理socket| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAWDHK | 【xalarm】C的xalarm_Upgrade接口和py的xalarm_upgrade接口，参数顺序不一致| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW2G1 |  get_alarm能查询到超出老化时间的告警，不符合预期| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW2TX |  get_alarm命令行参数time_range未做校验| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW4BA |  get_alarm查询1秒内告警，实际查询到2秒告警| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW4KK |  alarm_id和alarm_clear_time设置异常值，重启sysSentry，没有告警提示| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAWHSN |  【ebpf】正常压力下存在iodump异常上报| 主要     | 影响业务功能           | 待办的   |
 
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   |     10     | 1 |   3   |  5  |      1  |
+| 数目   |     35     | 1 |   3   |  5  |      1  |
 | 百分比 | 100% | 10% | 3% | 50% | 10% |
 
 # 4     测试执行
