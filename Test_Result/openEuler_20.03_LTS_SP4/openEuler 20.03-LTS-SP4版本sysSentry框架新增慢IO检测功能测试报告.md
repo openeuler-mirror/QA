@@ -124,14 +124,14 @@
 | https://gitee.com/src-openeuler/sysSentry/issues/IAW2G1 |  get_alarm能查询到超出老化时间的告警，不符合预期| 主要     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAW2TX |  get_alarm命令行参数time_range未做校验| 主要     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAW4BA |  get_alarm查询1秒内告警，实际查询到2秒告警| 主要     | 影响业务功能           | 待办的   |
-| https://gitee.com/src-openeuler/sysSentry/issues/IAW4KK |  alarm_id和alarm_clear_time设置异常值，重启sysSentry，没有告警提示| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW4KK |  alarm_id和alarm_clear_time设置异常值，重启sysSentry，没有告警提示| 严重     | 影响业务功能           | 待办的   |
 | https://gitee.com/src-openeuler/sysSentry/issues/IAWHSN |  【ebpf】正常压力下存在iodump异常上报| 主要     | 影响业务功能           | 待办的   |
 
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
-| 数目   |     35     | 1 |   3   |  5  |      1  |
-| 百分比 | 100% | 10% | 3% | 50% | 10% |
+| 数目   |     48     | 8 |   34   |  6  |      0  |
+| 百分比 | 100% | 17% | 70% | 13% | 10% |
 
 # 4     测试执行
 
