@@ -7,7 +7,7 @@
 
 | 日期 | 修订   版本 | 修改描述 | 作者 |
 | ---- | ----------- | -------- | ---- |
-|  2024/10/12  |  v1.0           |测试报告初版          |谢守航      |
+|  2024/10/12  |  v1.0           |测试报告初版          |谢守航 杨丽锦      |
 
 
 关键词： sysSentry 慢IO检测功能
@@ -60,10 +60,10 @@
 
 | 序号 | 特性名称        | 特性质量评估                           | 备注 |
 | ---- | --------------- | -------------------------------------- | ---- |
-| 1    | sysSentry框架新增采集模块并支持内核无锁采集         | 功能正常，可正常执行shell基础命令      | 正常 |
-| 2    | sysSentry框架支持基于ebpf采集能力          | 功能正常，可正常执行sudo基础命令       | 正常 |
-| 3    | sysSentry框架支持平均阈值慢IO检测能力 | 正常 |
-| 4    | sysSentry框架支持AI阈值慢IO检测能力 | 正常 |
+| 1    | sysSentry框架新增采集模块并支持内核无锁采集         | 功能正常，可正常通过内核采集磁盘IO信息      | 正常 |
+| 2    | sysSentry框架支持基于ebpf采集能力          | 功能正常，可正常采集磁盘IO信息       | 正常 |
+| 3    | sysSentry框架支持平均阈值慢IO检测能力 | 功能正常，可正常告警 |    正常 |
+| 4    | sysSentry框架支持AI阈值慢IO检测能力 | 功能正常，可正常告警 |    正常 |
 
 ## 3.2   约束说明
 
@@ -79,17 +79,44 @@
 
 | 问题单号 | 问题描述                                                     | 问题级别 | 问题影响                    | 当前状态 |
 | -------- | ------------------------------------------------------------ | -------- | --------------------------- | -------- |
-|       https://gitee.com/src-openeuler/sysSentry/issues/IAS283?from=project-issue   | 【openEuler 23.09 rc3】日志收集工具显示异常                  | 微小     | 影响日志收集工具个别功能    | 已完成   |
-| I7YFPE   | 【openEuler 23.09 round2】转测源中无DDE组件                  | 严重     | DDE组件安装失败，阻塞测试   | 已验收   |
-| I7Z0NC   | 【openEuler 23.09 rc3】系统内中文显示异常                    | 主要     | 影响中文环境下DDE桌面易用性 | 已验收   |
-| I7Z0YK   | 【openEuler 23.09 rc3】系统桌面启动器显示异常                | 主要     | 影响启动器主要功能          | 已验收   |
-| I7Z1PU   | 【openEuler 23.09 rc3】系统内提示信息显示异常                | 次要     | 影响DDE桌面易用性           | 已验收   |
-| I7ZFA5   | 【openEuler 23.09 rc3】看图、画板、欢迎未预装                | 次要     | 影响DDE桌面易用性           | 已验收   |
-| I7ZS9N   | 【openEuler 23.09 rc3】输入法切换异常                        | 次要     | 影响DDE桌面易用性           | 已验收   |
-| I7ZG9K   | 【openEuler 23.09 rc3】日志收集工具显示异常                  | 微小     | 影响日志收集工具个别功能    | 已完成   |
-| I7ZAEA   | 【openEuler 23.09 rc2】utsudo在arm架构上无法正常使用命令     | 主要     | utsudo主要指令无法使用      | 已完成   |
-| I7Z3RE   | 【openEuler 23.09 rc2】centos7迁移到openEuler之后，网络无法正常连接 | 次要     | 迁移完成后网络异常          | 已完成   |
-| I7Z3K0   | 【openEuler 23.09 rc2】arm架构centos7.4-cui无法正常迁移到openEuler | 主要     | 迁移失败                    | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAS283   | 调用巡检任务停止接口后，回显状态有误 | 严重 | 影响业务功能   | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAS6C5   | 当环境本身就超过10个disk，配置成default会导致配置有问题| 严重     | 影响业务功能   | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWB3   | 配置文件存在多处需要去重  | 主要     | 影响业务功能 | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWJN   | 发现多处拼写错误 | 主要     | 影响业务功能          | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWNB   |  当配置了未存在的设备时，sentryCollector服务启动没有任何报错提示| 次要     | 影响业务功能           | 已完成  |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWQ3   |avg_block_io.ini配置文件中common.disk和common.stage选项参数解析异常| 次要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASWUI   | avg_block_io.ini配置中，1. common段的disk，stage，iotype，period_time校验行为不一致，2. algorithm段的win_size和win_threshold选项建议提供默认值| 次要     | 影响业务功能          | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASX2A   | 配置文件中增加日志级别选项  | 次要     | 影响日志功能    | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASXAX   | avg_block_io.ini配置文件中，不同section缺失的检验行为不一致| 主要     | 影响业务功能      | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IASXFL   | collector.conf 对于io.disk配置值大小写敏感| 次要     | 影响业务功能          | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAT5WV   | 启停sentryCollector服务，会出现栈信息的打印 | 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATCVS   | 配置文件ai_threshold_slow_io_detection.ini中多处配置未校验| 主要     | 影响业务功能           | 已完成   |
+|https://gitee.com/src-openeuler/sysSentry/issues/IATGUD    | 配置文件ai_threshold_slow_io_detection中三个字段的默认值没有与设计文档保持一致| 主要     | 影响业务功能           | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATHUJ  | 算法插件名称ai_threshold_slow_io_detection需改成ai_block_io| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATHWL  | ai检查算法缺少disk参数| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATI0P  | 平均阈值算法日志和和ai算法日志格式对齐| 主要     | 影响业务功能           | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATJ8C  | ai算法ini文件参数有误时，调用采集接口打印错误日志的条数，1s打印几百条且无限打印| 主要     | 影响业务功能           | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATOT7  | get_metric_value_from_io_data_dict_by_metric_name函数的返回值没有判空，导致程序崩溃| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATV7F | ai_threshold_slow_io_detection.ini配置文件中，section缺失异常未捕获| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATYAL | ai算法日志级别配置不生效| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATZAL | 启停ai_threshold_slow_io_detection插件，日志有异常报错信息
+| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATZI5 | ai_threshold_slow_io_detection.ini配置中出现参数 或者 section重复时，未进行异常捕获| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAUR83?from=project-issue | 修改avg_block_io日志信息| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVABT | 【ebpf】sentryCollector服务启停，日志不合理| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVB69 | 【ebpf】collector.conf配置disk后，重启sentryCollector服务有报错| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVFKC | 采集模块新增提供一个磁盘类型的采集接口，供诊断插件查询磁盘的类型| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVFLA | 平均阈值算法的配置需要支持不同类型磁盘分别设置，提高检测准确率。| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVFLY | 【可维护性】平均阈值补充可维护性日志| 主要   | 影响业务功能  |    已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVR7L | ai_block_io.ini配置项，level单独成段，增加stage，iotype配置| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVTHT?from=project-issue | ebpf采集ai阈值算法,当采集服务关闭后，日志无限打印error级别日志| 主要     | 影响业务功能           | 已验收   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAW1K5 | 平均阈值和ai阈值配置ini文件参数问题整改集合| 主要     | 影响业务功能           | 已完成   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IATXS7 | ai算法在bio时延很稳定的情况下，会误报告警| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAU2QZ | ai阈值部分功能缺失| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVD14 | 1.nvme盘延时是微秒级的，当前配置文件单位是毫秒级的；2.所有配置项都提供默认值| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVFM6 | 【可维护性】AI阈值算法需要补充日志| 主要     | 影响业务功能           | 待办的   |
+| https://gitee.com/src-openeuler/sysSentry/issues/IAVRCX | AI阈值算法的配置需要支持不同类型磁盘分别设置，提高检测准确率| 主要     | 影响业务功能           | 待办的   |
+
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
