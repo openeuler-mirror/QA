@@ -9,7 +9,7 @@ release-plan可参考 [22.03 LTS SP2 release-plan](https://gitee.com/openeuler/r
 
 1. 需求提交与接纳(RM-sig)：
     * 需求提交：由需求归属-sig，在openEuler的[RM-sig](https://gitee.com/openeuler/release-management/blob/master/openEuler-22.03-LTS-SP2/release-plan.md)通过issue的方式提交需求(可参考[该需求](https://gitee.com/openeuler/release-management/issues/I7TZ9C?from=project-issue))
-    * 需求接纳：由RM-sig进行评审，releae-plan的需求状态为最终状态（接纳/拒绝）
+    * 需求接纳：由RM-sig进行评审，release-plan的需求状态为最终状态（接纳/拒绝）
 2. 需求开发(需求归属-sig):
     * 仓库与分支创建：由需求归属-sig在[community仓库](https://gitee.com/openeuler/community)提交pr进行仓库与分支创建(可参考[PR](https://gitee.com/openeuler/community/pulls/5037))
     * 开发交付：由需求归属-sig在src-openEuler对应开发(master或LTS-Next分支)及版本分支(LTS-SPx)进行开发
