@@ -117,7 +117,7 @@
 |      |              | iSulad                |                              |                                                              | 通过率    |
 | 13   | 云原生       | openStack             |                              |                                                              | 通过率    |
 |      |              | stratovirt            |                              |                                                              | 通过率    |
-|      |              | Kubenetes             |                              |                                                              | 通过率    |
+|      |              | Kubernetes            |                              |                                                              | 通过率    |
 |      |              | eggo                  |                              |                                                              | 通过率    |
 | 14   | 编译器       | 基础功能              | 构建安装                     |                                                              | 通过率    |
 |      |              |                       | deja测试                     |                                                              | 通过率    |
