@@ -116,7 +116,7 @@
 | --- | --- |
 | sysSentry用户指南.md | 通过 |
 | 安装和使用.md | 通过 |
-| sysSentry用户指南.md 通过 |
+| sysSentry用户指南.md | 通过 |
 | AI阈值慢盘检测插件.md | 通过 |
 | 二次开发指南.md | 通过 |
 
