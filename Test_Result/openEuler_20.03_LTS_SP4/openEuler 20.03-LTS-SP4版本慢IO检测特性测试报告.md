@@ -123,8 +123,8 @@
 # 5     测试执行
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 | 备注 |
 | --- | --- | --- | --- | --- |
-| openEuler 20.03_LTS_SP4 RC1 | `8`个 |  successed  | `23` 个 | 
-| openEuler 20.03_LTS_SP4 RC2 | `7`个 | successed | `3` 个 |
-| openEuler 20.03_LTS_SP4 RC3 | `6`个 | successed | `3` 个 |
-| openEuler 20.03_LTS_SP4 RC4 | `29`个 | successed | `15`个 | 开展全量用例测试
-| openEuler 20.03_LTS_SP4 RC5 | `17`个 successed | `5`个 |
+| openEuler 20.03_LTS_SP4 RC1 | `8`个 |  successed  | `23` 个 |  |
+| openEuler 20.03_LTS_SP4 RC2 | `7`个 | successed | `3` 个 | |
+| openEuler 20.03_LTS_SP4 RC3 | `6`个 | successed | `3` 个 | |
+| openEuler 20.03_LTS_SP4 RC4 | `29`个 | successed | `15`个 | 开展全量用例测试 |
+| openEuler 20.03_LTS_SP4 RC5 | `17`个 | successed | `5`个 | |
