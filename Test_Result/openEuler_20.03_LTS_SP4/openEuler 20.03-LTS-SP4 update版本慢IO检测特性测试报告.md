@@ -38,11 +38,11 @@
 
 | 版本名称 | 测试起始时间 | 测试结束时间 | 备注 |
 | -------- | ------------ | ------------ | ------------ |
-| openEuler 20.03_LTS_SP4 RC1 |  2024-09-14  | 2023-09-23 | sysSentry框架支持平均阈值慢IO检测能力</br> sysSentry框架新增采集模块并支持内核无锁采集 |
-| openEuler 20.03_LTS_SP4 RC2 |  2023-09-24  | 2023-09-30 | sysSentry框架支持AI阈值慢IO检测能力 |
-| openEuler 20.03_LTS_SP4 RC3 |  2023-09-30  | 2023-10-14 | sysSentry框架支持ebpf采集 |
-| openEuler 20.03_LTS_SP4 RC4 |  2023-10-09  | 2023-10-18 | sysSentry框架支持命令行/python库的告警能力 + 历史问题闭环 |
-| openEuler 20.03_LTS_SP4 RC5 |  2023-10-20  | 2023-10-26 | 问题闭环 |
+| openEuler 20.03_LTS_SP4 update RC1 |  2024-09-14  | 2024-09-23 | sysSentry框架支持平均阈值慢IO检测能力</br> sysSentry框架新增采集模块并支持内核无锁采集 |
+| openEuler 20.03_LTS_SP4 update RC2 |  2024-09-24  | 2024-09-30 | sysSentry框架支持AI阈值慢IO检测能力 |
+| openEuler 20.03_LTS_SP4 update RC3 |  2024-09-30  | 2024-10-14 | sysSentry框架支持ebpf采集 |
+| openEuler 20.03_LTS_SP4 update RC4 |  2024-10-09  | 2024-10-18 | sysSentry框架支持命令行/python库的告警能力 + 历史问题闭环 |
+| openEuler 20.03_LTS_SP4 update RC5 |  2024-10-20  | 2024-10-26 | 问题闭环 |
 
 硬件环境信息
 
@@ -123,8 +123,8 @@
 # 5     测试执行
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 | 备注 |
 | --- | --- | --- | --- | --- |
-| openEuler 20.03_LTS_SP4 RC1 | `8`个 |  successed  | `23` 个 |  |
-| openEuler 20.03_LTS_SP4 RC2 | `7`个 | successed | `3` 个 | |
-| openEuler 20.03_LTS_SP4 RC3 | `6`个 | successed | `3` 个 | |
-| openEuler 20.03_LTS_SP4 RC4 | `29`个 | successed | `15`个 | 开展全量用例测试 |
-| openEuler 20.03_LTS_SP4 RC5 | `17`个 | successed | `5`个 | |
+| openEuler 20.03_LTS_SP4 update RC1 | `8`个 |  successed  | `23` 个 |  |
+| openEuler 20.03_LTS_SP4 update RC2 | `7`个 | successed | `3` 个 | |
+| openEuler 20.03_LTS_SP4 update RC3 | `6`个 | successed | `3` 个 | |
+| openEuler 20.03_LTS_SP4 update RC4 | `29`个 | successed | `15`个 | 开展全量用例测试 |
+| openEuler 20.03_LTS_SP4 update RC5 | `17`个 | successed | `5`个 | |
