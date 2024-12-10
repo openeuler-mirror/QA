@@ -225,7 +225,7 @@ openEuler 24.03 LTS SP1版本交付[需求列表](https://gitee.com/openeuler/re
 |[IB3ZVI](https://gitee.com/openeuler/release-management/issues/IB3ZVI?from=project-issue)| 提供GCC-14的多版本编译工具链 |   √    | √    |      |           |         |
 |[IB3ZRQ](https://gitee.com/openeuler/release-management/issues/IB3ZRQ?from=project-issue)| AI4C编译选项调优和AI编译优化提升典型应用性能 |    √    | √    |       |           |         |
 |[IB3ZL2](https://gitee.com/openeuler/release-management/issues/IB3ZL2?from=project-issue)| GCC结合sysboost实现无感知使能反馈优化 |    √    | √    |       |           |         |
-|[IB3ZG8](https://gitee.com/openeuler/release-management/issues/IB3ZG8?from=project-issue)| RPM国密签名支持 |    √    | √    | √ |           |         |
+|[IB3ZG8](https://gitee.com/openeuler/release-management/issues/IB3ZG8?from=project-issue)| RPM国密签名支持 |    √    | √    |  |           |         |
 |[IB3ZDN](https://gitee.com/openeuler/release-management/issues/IB3ZDN?from=project-issue)| IMA度量通过异构可信根框架使能TPM/virtCCA信任根 |    √    | √    |       |           |         |
 |[IB3ZB1](https://gitee.com/openeuler/release-management/issues/IB3ZB1?from=project-issue)| IMA完整性保护增强，支持对解释器运行的脚本类应用程序使能完整性保护机制 | √|    √    | √ |     |           |
 |[IB3X9W](https://gitee.com/openeuler/release-management/issues/IB3X9W?from=project-issue)| 鲲鹏KAE加速器驱动安装包合入 |   √    |     |       |           |         |
@@ -422,10 +422,14 @@ RISC-V 架构本次南向兼容性测试只做整机适配的测试，整机信�
 
 #### 虚拟化兼容性
 
-虚拟化兼容性(即openEuler本版本的虚拟机能否在其余OS host)
-* 常用桌面虚拟化软件对openEuler的支持
-* 常用linux发行版对openEuler虚机镜像的支持
-* openEuler对常见linux发行版虚机镜像的支持
+
+| HostOS     | GuestOS (虚拟机)        | x86_64    |  aarch64 | 
+| ---------- | ----------------------- | ------- | -------- | 
+| openEuler 24.03 LTS SP1  | Centos 6 | √ |  |         
+| openEuler 24.03 LTS SP1  | Centos 7 | √| √ |               
+| openEuler 24.03 LTS SP1  | Centos 8 | √ | √ |                 
+| openEuler 24.03 LTS SP1  | Windows Server 2016 | √  |  |         
+| openEuler 24.03 LTS SP1  | Windows Server 2019 | √  |  |         
 
 ### 软件包管理专项测试
 
