@@ -32,7 +32,7 @@ xxx
 
 | 硬件型号                  | 硬件配置信息                              | 备注                   |
 | ------------------------ | ----------------------------------------- | ---------------------- |
-|  | NA |    物理机     |
+| NA | NA |    物理机     |
 
 # 3     测试结论概述
 
@@ -66,6 +66,15 @@ NA
 | 百分比 |    100%  | 100% |    0%       | 0% |
 
 问题列表如下：
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
 | https://gitee.com/openeuler/secpaver/issues/IB7KB5?from=project-issue |
 |--|
 
