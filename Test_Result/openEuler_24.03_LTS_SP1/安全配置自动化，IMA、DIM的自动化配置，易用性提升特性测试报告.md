@@ -73,10 +73,12 @@ NA
 | https://gitee.com/openeuler/secpaver/issues/IB7NRV?from=project-issue |
 | https://gitee.com/openeuler/secpaver/issues/IB7RMQ?from=project-issue |
 | https://gitee.com/openeuler/secpaver/issues/IB7VUC?from=project-issue |
-|  |
-|  |
-|  |
-|  |
+| https://gitee.com/openeuler/secpaver/issues/IB810U?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB81L8?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB8YID?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB90VA?from=project-issue |
+| https://gitee.com/openeuler/secpaver/issues/IB9XFN?from=project-issue |
+
 
 
 
