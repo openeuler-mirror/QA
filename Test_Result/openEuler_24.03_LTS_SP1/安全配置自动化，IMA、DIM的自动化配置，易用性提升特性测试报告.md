@@ -81,15 +81,15 @@ NA
 | https://gitee.com/openeuler/secpaver/issues/IB90VA?from=project-issue |
 | https://gitee.com/openeuler/secpaver/issues/IB9XFN?from=project-issue |
 | https://gitee.com/openeuler/secpaver/issues/IB8U5R?from=project-issue |
-||
-||
-||
-||
-||
-||
-||
-||
-||
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB5SQT?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB6Q5P?from=project-issue|
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB6XT5?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB8KDT?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB8RF9?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB8U1L?from=project-issue|
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB8UQO?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IB96L3?from=project-issue |
+| https://gitee.com/src-openeuler/scap-security-guide/issues/IBAFG5?from=project-issue |
 
 
 
@@ -102,7 +102,7 @@ NA
 
 | 版本名称                    | 测试用例数 | 用例执行结果       | 发现问题单数 |
 | --------------------------- | ---------- | ------------------ | ------------ |
-| openEuler-24.03-LTS-SP1 RC1 |   5        | 失败1个 | 1            |
-| openEuler-24.03-LTS-SP1 RC2 |   5        | 均成功    | 0            |
-| openEuler-24.03-LTS-SP1 RC3 |   5        | 均成功    | 0            |
+| openEuler-24.03-LTS-SP1 RC1 |   35        | 失败20个 | 12            |
+| openEuler-24.03-LTS-SP1 RC2 |   35        | 失败5个    | 6            |
+| openEuler-24.03-LTS-SP1 RC3 |   35        | 均成功    | 2            |
 
