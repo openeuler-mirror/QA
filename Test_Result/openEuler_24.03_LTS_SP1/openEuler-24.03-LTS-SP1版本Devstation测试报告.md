@@ -79,8 +79,8 @@
 | 4 | https://gitee.com/src-openeuler/calamares/issues/IB0D96?from=project-issue | 不询问密码自动登录选项好像没生效 | 用户体验问题 | 后续解决 |
 | 5 | https://gitee.com/src-openeuler/calamares/issues/IB0D9T?from=project-issue | 切换root用户之后为什么开头不显示root名字  | 用户体验问题 | 后续解决 |
 | 6 | https://gitee.com/src-openeuler/calamares/issues/IB0MME?from=project-issue | 默认加入中文输入法  | 用户体验问题 | 后续解决 |
-| 7 | https://gitee.com/src-openeuler/calamares/issues/IB0N7P?from=project-issue | eulercopilot设置API Key增加显示明文选项 | 用户体验问题 | 后续解决 |
-| 8 | https://gitee.com/src-openeuler/calamares/issues/IB0N9J?from=project-issue | eulercopilot-cli配置错误API KEY之后，没有明确去哪里修改API KEY | 用户体验问题 | 后续解决 |
+| 7 | https://gitee.com/src-openeuler/calamares/issues/IB0N7P?from=project-issue | eulercopilot设置API Key增加显示明文选项 | 用户体验问题 | 已解决 |
+| 8 | https://gitee.com/src-openeuler/calamares/issues/IB0N9J?from=project-issue | eulercopilot-cli配置错误API KEY之后，没有明确去哪里修改API KEY | 用户体验问题 | 已解决 |
 | 9 | https://gitee.com/src-openeuler/calamares/issues/IB8370?from=project-issue | 安装环境为arm物理机，选择自动分区，无法安装正式devstation | 严重问题 | 后续解决 |
 | 10 | https://gitee.com/src-openeuler/calamares/issues/IB89O1?from=project-issue | DevStation安装失败，场景为物理机上已有LVM2分区 | 主要问题 | 后续解决 |
 | 11 | https://gitee.com/src-openeuler/calamares/issues/IB839Z?from=project-issue | 校验模块时间过长，需要分析 | 用户体验问题 | 后续解决 |
