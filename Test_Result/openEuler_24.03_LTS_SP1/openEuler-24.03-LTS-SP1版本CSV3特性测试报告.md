@@ -15,6 +15,7 @@ tags: []
 | 日期 | 修订   版本 | 修改描述 | 作者 |
 | ---- | ----------- | -------- | ---- |
 |2024/12/10|    v1.0         |    创建      |    潘平生  |
+|2024/12/17      | v1.1            |增加CSV3内存保护功能演示          | 韩里洋     |
 |      |             |          |      |
 
 关键词： CSV3虚拟机
@@ -184,7 +185,239 @@ NA
 | C86-4G CSV3 虚拟机 负载测试 | 并行启动普通、CSV、CSV2、CSV3虚拟机，在虚拟机中对cpu、内存、io、网络进行压力测试，测试通过 | Pass |
 
 
+## CSV3内存保护演示
+
+#### CSV3内存保护原理
+
+CSV3提供了内存隔离机制。
+- CSV3虚拟机外部实体无法读取CSV3虚拟机加密内存：当外部实体读取CSV3虚拟机加密内存时，CPU拒绝返回物理内存数据，直接返回全0xFF作为读取结果。
+- CSV3虚拟机外部实体无法篡改CSV3虚拟机加密内存：当外部实体试图写入数据到CSV3虚拟机加密内存时，CPU会丢弃写入请求，CSV3虚拟机加密内存保持不变。
+
+#### 测试原理
+
+> CSV3虚拟机的内存是在内核中直接分配的，KVM memslot中不记录**VA <-> PA** 的地址映射关系，Qemu无法通过地址转换获取得到CSV3虚拟机所在的物理内存地址，因此无法通过Qemu的QMP命令实现CSV3虚拟机内存读写的演示。
+
+为了能够演示CSV3虚拟机内存保护功能，我们开发了演示工具，演示工具由3部分组成：`csv3_test`，`csv3_dev.ko`，`guest-test.ko`。
+其中`csv3_test`和`csv3_dev.ko`是主机侧的测试工具。`csv3_test`向`csv3_dev.ko`请求读写CSV3虚拟机所属的指定物理内存地址块，`csv3_dev.ko`接收请求后，对指定物理内存块进行读写操作。
+- 对于`csv3_test`的读请求，`csv3_dev.ko`会读取指定物理内存区域，并复制到用户态空间
+- 对于`csv3_test`的写请求，`csv3_dev.ko`会向指定物理内存区域写入数据
+![](assets/CSV3内存机密性和完整性保护功能演示.png)
+
+而`guest-test.ko`是CSV3虚拟机侧的内核模块，用于验证**主机侧无法写入数据到CSV3虚拟机加密内存**。其原理为：先启动一个CSV3虚拟机，在虚拟机内部通过`guest-test.ko`将一大块预留内存（例如`[0x10000000, 0x2FFFFFFF]`）全部初始化为已知的数据，例如全`0x5A`；然后等待主机侧的`csv3_test`工具把整个CSV3虚拟机内存写入一个已知的数据，例如全`0xCC`；等待主机侧写入完成后，再在虚拟机里通过`guest-test.ko`读取预留内存中的数据，检查数据是否仍然为初始化时的数据。
+![](assets/验证CSV3虚拟机内存写保护.png)
 
 
+- 以下是验证**外部实体无法读取CSV3虚拟机加密内存的实验步骤：**
+1. 安装bpftrace工具
+```shell
+sudo yum install -y bpftrace
+```
+2. 打开终端1，使用bpftrace工具探测CSV3虚拟机的内存物理地址
+```shell
+sudo bpftrace -e 'kretprobe:csv_alloc_from_contiguous { printf("address 0x%llx \n", retval); }'
+```
+3. 打开终端2，启动CSV3虚拟机
+```shell
+sudo qemu-system-x86_64 -name csv3-vm_1 \
+     --enable-kvm \
+     -cpu Dhyana -m 4096 \
+     -hda ./VM_1.qcow2 \
+     -drive if=pflash,format=raw,unit=0,file=openEuler-24.03-LTS-SP1/OVMF_CODE.fd,readonly=on \
+     -vnc 0.0.0.0:0,to=90 \
+     -object sev-guest,id=sev0,policy=0x45,cbitpos=47,reduced-phys-bits=5 \
+     -machine memory-encryption=sev0 &
+```
+4. 此时，终端1上会打印出给CSV3虚拟机分配的物理内存地址块
+```
+sudo bpftrace -e 'kretprobe:csv_alloc_from_contiguous { printf("address 0x%llx \n", retval); }'
+Attaching 1 probe...
+address 0x3450000000
+address 0x3450800000
+address 0x3451000000
+address 0x3451800000
+address 0x3452000000
+address 0x3452800000
+address 0x3453000000
+```
+5. 加载csv3_dev.ko
+```shell
+sudo insmod csv3_dev.ko
+```
+6. 在终端2上，执行csv3_test小程序
+```shell
+sudo ./csv3_test --read_mem 0x3452000000 --size 256
+```
+当CSV3虚拟机以外的实体访问其内存时，CPU直接返回全0xFF。
+```
+read address = 0x3452000000
+size = 0x100
+read_mem, addr=0x3452000000, size=0x100
+0000003452000000  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000010  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000020  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000030  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000040  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000050  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000060  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000070  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000080  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000090  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000A0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000B0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000C0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000D0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000E0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000F0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+```
+7. 尝试在6中同一物理地址块中写入数据
+```shell
+sudo ./csv3_test --write_mem 0x3452000000 --size 256 --value 0xCC
+```
+8. 再次执行6中的命令行
+```shell
+sudo ./csv3_test --read_mem 0x3452000000 --size 256
+```
+可以看到，读到的仍然是全0xFF数据，步骤7中的写操作没有生效。**原因是：** CSV3虚拟机以外的实体对其内存进行写入时，写入的请求会被丢弃，也无法改变物理内存的隔离数据，数据不会被更新到内存中。
+```
+read address = 0x3452000000
+size = 0x100
+read_mem, addr=0x3452000000, size=0x100
+0000003452000000  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000010  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000020  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000030  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000040  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000050  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000060  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000070  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000080  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+0000003452000090  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000A0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000B0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000C0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000D0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000E0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+00000034520000F0  FF FF FF FF FF FF FF FF  FF FF FF FF FF FF FF FF  |................|
+```
+- 以下是验证**外部实体向CSV3虚拟机加密内存写入数据无法生效的实验步骤：**
 
+1. 打开终端1，使用bpftrace工具探测CSV3虚拟机的内存物理地址
+```shell
+sudo bpftrace -e 'kretprobe:csv_alloc_from_contiguous { printf("address 0x%llx \n", retval); }' | tee address_list.txt
+```
+2. 打开终端2，启动CSV3虚拟机
+```shell
+sudo qemu-system-x86_64 -name csv3-vm_1 \
+     --enable-kvm \
+     -cpu Dhyana -m 1G \
+     -hda ./VM_1.qcow2 \
+     -drive if=pflash,format=raw,unit=0,file=openEuler-24.03-LTS-SP1/OVMF_CODE.fd,readonly=on \
+     -vnc 0.0.0.0:0,to=90 \
+     -object sev-guest,id=sev0,policy=0x45,cbitpos=47,reduced-phys-bits=5 \
+     -machine memory-encryption=sev0 &
+```
+3. 登录CSV3虚拟机，使用`guest-test.ko`初始化虚拟机内存区域`[0x10000000, 0x2FFFFFFF]`
+```shell
+sudo insmod guest-test.ko init=1
+```
+4. 在CSV3虚拟机中查看内核打印的初始化后数据
+```shell
+dmesg
+```
+5. 虚拟机内核日志显示虚拟机内存区域`[0x10000000, 0x2FFFFFFF]`数据为全`0x5A`
+```
+[   56.361176] guest_test: loading out-of-tree module taints kernel.
+[   56.361263] guest_test: module verification failed: signature and/or required key missing - tainting kernel
+[   56.361665] Trying to map physical memory...
+[   56.361736] Physical memory mapped at virtual address 00000000fa906e71:
+[   56.483549]
+               0000000010000000:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483565]
+               0000000010000010:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483574]
+               0000000010000020:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483582]
+               0000000010000030:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483589]
+               0000000010000040:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483597]
+               0000000010000050:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483606]
+               0000000010000060:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483614]
+               0000000010000070:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483621]
+               0000000010000080:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483629]
+               0000000010000090:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483637]
+               00000000100000a0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483645]
+               00000000100000b0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483652]
+               00000000100000c0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483660]
+               00000000100000d0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483669]
+               00000000100000e0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[   56.483677]
+               00000000100000f0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+......
+```
+6. 在主机侧对CSV3虚拟机的所有物理内存写入`0xCC`字节数据
+```shell
+while read line; do
+    if [ $(echo $line | grep -c "^address") -ne 0 ]; then
+        address=$(echo $line | awk '{print $2}')
 
+        # 一般为CSV3虚拟机分配的连续块为8M，从address_list.txt可看出
+        sudo ./csv3_test --write_mem $address --size 0x800000 --value 0xCC
+    fi
+done < address_list.txt
+```
+7. 在虚拟机中使用`guest-test.ko`读取虚拟机内存区域`[0x10000000, 0x2FFFFFFF]`的内容
+```shell
+sudo insmod guest-test.ko
+```
+8. 在CSV3虚拟机中查看内核打印的虚拟机内存区域`[0x10000000, 0x2FFFFFFF]`中的内存数据
+```shell
+dmesg
+```
+9. 虚拟机内核日志显示虚拟机内存区域`[0x10000000, 0x2FFFFFFF]`数据仍然为全`0x5A`
+```
+[ 1257.234656] Trying to map physical memory...
+[ 1257.234718] Physical memory mapped at virtual address 00000000fa906e71:
+[ 1257.234720]
+               0000000010000000:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234738]
+               0000000010000010:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234752]
+               0000000010000020:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234766]
+               0000000010000030:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234780]
+               0000000010000040:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234794]
+               0000000010000050:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234807]
+               0000000010000060:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234821]
+               0000000010000070:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234834]
+               0000000010000080:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234849]
+               0000000010000090:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234862]
+               00000000100000a0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234876]
+               00000000100000b0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234889]
+               00000000100000c0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234902]
+               00000000100000d0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234916]
+               00000000100000e0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+[ 1257.234929]
+               00000000100000f0:  5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a 5a
+......
+```
