@@ -101,11 +101,3 @@ https://gitee.com/openeuler/security-committee/pulls/99
 | openEuler-24.03-LTS-SP1 RC2 |   35        | 失败20个 | 12            |
 | openEuler-24.03-LTS-SP1 RC3 |   35        | 失败5个    | 8            |
 | openEuler-24.03-LTS-SP1 RC4 |   35        | 均成功    | 0            |
-
-## 5.2   后续测试建议
-
-NA
-
-# 6     附件
-
-NA
