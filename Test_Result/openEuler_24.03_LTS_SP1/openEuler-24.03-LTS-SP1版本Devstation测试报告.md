@@ -84,6 +84,7 @@
 | 9 | https://gitee.com/src-openeuler/calamares/issues/IB8370?from=project-issue | 安装环境为arm物理机，选择自动分区，无法安装正式devstation | 严重问题 | 后续解决 |
 | 10 | https://gitee.com/src-openeuler/calamares/issues/IB89O1?from=project-issue | DevStation安装失败，场景为物理机上已有LVM2分区 | 主要问题 | 后续解决 |
 | 11 | https://gitee.com/src-openeuler/calamares/issues/IB839Z?from=project-issue | 校验模块时间过长，需要分析 | 用户体验问题 | 后续解决 |
+| 12 |  | U盘启动失败 | 严重问题 | 后续解决 |
 
 ### 3.3.2 问题统计
 
