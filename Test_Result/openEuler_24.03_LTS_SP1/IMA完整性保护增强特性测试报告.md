@@ -80,7 +80,7 @@ NA
 ## 4.2 资料测试结论
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
-|  资料测试       |   资料PR链接：https://gitee.com/openeuler/docs/pulls/14276/files 检视意见均已闭环，新增参数与使用等描述完整准确，无遗留问题。      |      ■      |
+|  资料测试 |  PR：https://gitee.com/openeuler/docs/pulls/14276/files 检视意见均已闭环，新增参数与使用等描述完整准确。      |      ■      |
 
 
 
