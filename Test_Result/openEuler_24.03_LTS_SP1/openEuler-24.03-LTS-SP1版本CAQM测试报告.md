@@ -10,7 +10,7 @@
 | ---------- | ----------- | -------- | ---- |
 | 2024-12-24 | 1.0         | 新增     | 贾成君 |
 
-关键词： 密码算法、密码协议
+关键词： 拥塞控制算法、网络性能
 
 摘要：本报告主要描述基于openEuler 24.03-LTS-SP1版本对CAQM的测试过程，报告对测试情况进行说明，对特性的测试充分度进行评估和总结。
 
@@ -19,8 +19,9 @@
 
 | 缩略语 | 英文全名 | 中文解释 |
 | ------ | -------- | -------- |
-|CAQM|Confined Active Queue Management|零队列拥塞控制|
-|RSS | Receive-side scaling | 多队列接收 |
+| CAQM | Confined Active Queue Management | 零队列拥塞控制 |
+| RSS | Receive-side scaling | 多队列接收 |
+| TSO | TCP Segmentation Offload | 利用网卡对大数据包分段，降低CPU负载 |
 
 
 # 1     特性概述
@@ -41,7 +42,8 @@ CAQM是一种新的拥塞控制算法。它通过在数据包中增加拥塞窗�
 
 | 硬件型号 | 硬件配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| NA       | NA           |      |
+| 服务器 RH2288H V3  | 双路Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz <br> Intel Corporation 82599ES 10-Gigabit SFI/SFP+ Network Connection  | 网卡固件为出厂默认固件  |
+| 交换机 CE6885M    |  盒式交换机的标准配置 | 具体支持CAQM的款型请和厂家确认 |
 
 # 3     测试结论概述
 
@@ -58,10 +60,10 @@ CAQM是一种新的拥塞控制算法。它通过在数据包中增加拥塞窗�
 
 ## 3.2   约束说明
 
-当前需要网络中间设备（交换机）**必须**支持CAQM特性；
-端侧网卡如果支持CAQM，能取得更高的吞吐(使得RSS、TSO加速得到兼容)。
+当前需要网络中间设备（交换机）**必须**支持CAQM特性；当前支持的厂家有：华为。其他交换机厂商的支持在推动中。
 
-当前支持的厂家有： 华为、云脉。
+端侧网卡如果支持CAQM，能取得更高的吞吐(使得RSS、TSO加速得到兼容)。当前支持的网卡厂家有： 华为、云脉。
+
 需要开启内核编译宏。
 
 ## 3.3   遗留问题分析
@@ -203,7 +205,7 @@ ecn的在tc中通过配置loss率做了模拟【模拟丢包带来的ecn打标�
 
 端侧流量表现，2条流都是4.5Gbps左右：
 
-从交换机上，看到出口基本打满（入口因为是25GbE网卡，利用率应为40%）
+从交换机上，看到出口基本打满（入口因为是25GbE网卡，利用率为40%）
 
 注意： caqm在这种场景下配置的Q\_t为0x8f（143KB）；如果配置为零，会带来无法打满（大约7Gbps）；这是因为25G-->10G、以及TCP自身的burst发送，使得流量调速存在一定的偏差。
 
@@ -223,23 +225,9 @@ ecn的在tc中通过配置loss率做了模拟【模拟丢包带来的ecn打标�
 
 使用perf采集CPU 0核上的情况（该核作为srv端），发现：调用至tcp\_gro\_receive，证明相关网包走到GRO后续处理流程。
 
-```
-[root@localhost home]# perf record -g -C 0 -- sleep 2
-[ perf record: Woken up 5 times to write data ]
-[ perf record: Captured and wrote 1.381 MB perf.data (4164 samples) ]
-[root@localhost home]# perf report
-```
-
 ### 4.3.3 GSO生效的证明
 
 使用perf采集CPU 11核上的运行情况（该核作为cli端），发现调用至tcp\_gso\_segment，证明网包正确走到GSO的处理。
-
-```
-[root@localhost
-[ perf record: Woken up 6 times to write data ]
-[ perf record: Captured and wrote 1.533 MB perf.data (4497 samples) ]
-[root@localhost home]# perf report
-```
 
 ## 4.4 CAQM端侧与非CAQM端侧的互通性
 
@@ -255,10 +243,6 @@ ecn的在tc中通过配置loss率做了模拟【模拟丢包带来的ecn打标�
 
 能够互通，交换机上抓到CAQM格式的payload包和ACK包
 
-Payload包抓取
-
-ACK包抓取
-
 # 5     测试执行
 
 共进行2轮测试，执行了4种测试套，包括以下测试（功能测试/性能测试/可靠性测试）：
@@ -273,11 +257,3 @@ ACK包抓取
 # 6     附件
 
 [PR链接](https://gitee.com/openeuler/kernel/pulls/12343)
-
- 
-
-
-
- 
-
- 
