@@ -9,6 +9,7 @@
 | ---------- | -------- | ----------------- | ----------- |
 | 2024/12/24 | 1.0.0    | 初稿 | linqian0322 |
 | 2024/12/24 | 1.0.1 | add RISC-V | jean9823 |
+| 2024/12/25 | 1.0.2   | 刷新测试报告 | linqian0322 |
 
 
 
@@ -194,8 +195,8 @@ openEuler 24.03 LTS SP1版本交付需求列表如下，详情见[openEuler-24.0
 |60| 支持RISC-V                                            | sig-RISC-V | sig-RISC-V  | 验证openEuler版本在RISV-V处理器上的可安装和可使用性          |
 |61|为 RISC-V 架构引入 Penglai TEE 支持                   | sig-RISC-V | sig-RISC-V | 验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等 |
 |62| LLVM平行宇宙计划 RISC-V Preview 版本 | sig-RISC-V | sig-RISC-V |验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动 |
-
-
+|63| 支持embedded版本 | sig-embedded | sig-embedded | 继承已有测试能力，验证openEuler embedded的构建镜像和完成嵌入式应用开发能力  |
+  
 本次版本新增测试活动分工参见 **2.3 需求清单** 章节，由需求对应sig负责开发与测试
 
 
@@ -203,7 +204,7 @@ openEuler 24.03 LTS SP1版本交付需求列表如下，详情见[openEuler-24.0
 
    openEuler 24.03 LTS SP1版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 2轮继承特性和新增特性合入测试 + 2轮全量测试 + 2轮回归测试（版本发布验收测试）；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项。测试也提前介入，覆盖冒烟测试、安装部署等基础测试项，部分测试内容较多的专项测试也相应提前；第2、3轮重点聚焦在已合入的新需求测试和继承特性验证; 第3、4轮全量测试开展版本交付的所有特性和各类专项测试；第5、6轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试以及验证问题的修复；最后一轮还包括版本发布验收测试，是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-   openEuler 24.03 LTS SP1版本共发现问题 503 个，有效问题 493 个，无效问题 10 个，遗留问题 0个，风险可控，版本整体质量良好。
+   openEuler 24.03 LTS SP1版本共发现问题 506 个，有效问题 496 个，无效问题 10 个，遗留问题 3 个，风险可控，版本整体质量良好。
 
 
 # 4 版本详细测试结论
@@ -284,15 +285,14 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 | 53 | 发布PilotGo及其插件特性新版本 | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证PilotGo支持 topo 图的展示和智能调优能力   |
 | 54 | 社区签名体系建立  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证安装 openEuler 镜像后，开启安全启动、内核模块校验、IMA、RPM 校验等按机制，在系统启动和运行阶段使能相应的签名验证功能，保障系统组件的真实性和完整性   |
 | 55 | 智能问答在线服务 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力   |
-| 56 | 增加AO.space 项目发布 | <font color=blue>█(测试报告未提交)</font> | <font color=green></font> |     |     |  继承已有测试能力，通过软件包和容器镜像验证aospace系统管理程序和服务组件为个人数据提供基础网络访问、安全防护等   |
+| 56 | 增加AO.space 项目发布 | <font color=red>●（测试报告未提交，1227反馈测试不通过，不满足发布要求）</font> | <font color=green></font> |     |     |  继承已有测试能力，通过软件包和容器镜像验证aospace系统管理程序和服务组件为个人数据提供基础网络访问、安全防护等   |
 | 57 | 支持GreatSQL | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证GreatSQL源码编译、RPM安装、二进制包安装、主要功能及性能、稳定性   |
 | 58 | ZGCLab发布内核安全增强补丁| <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试   |
 | 59 | oeAware 支持本地网络加速  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证使能oeAware支持本地网络加速能力(SMC-D)，提升redis/nginx本地回环网络性能   |
 | 60 | 支持RISC-V | <font color=green> </font> | <font color=green>█</font> |     |     | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性     |
 | 61 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | <font color=green>预计下周完成测试</font> |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
 | 62 | 为RISC-V架构引入Penglai TEE 支持  | <font color=green>   </font> | <font color=green>█</font> |     |     |   继承已有测试能力，验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等  |
-
-
+| 63 | 支持embedded版本 | <font color=green> █  </font> | <font color=green></font> |     |     |   继承已有测试能力，验证openEuler embedded的构建镜像和完成嵌入式应用开发能力  |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -325,14 +325,14 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 |  16 | [iSula支持NRI插件式扩展（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) |验证继承用例8个，重点覆盖插件启动后正常运行，以及配置plugin相关参数后，插件运行|  |  | <font color=green>█</font> | | | | |
 |  17 | [epkg新型软件包及包管理器功能增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 针对epkg包构建、包管理两大特性，共执行三轮测试共计80个用例，主要覆盖了功能测试和兼容性测试，发现问题已解决，回归通过（部分问题待回归测试），无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  18 | [oeAware采集、调优插件等功能增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 对oeAware特性共进行两轮测试共计执行47个测试用例，主要覆盖了功能测试、性能与异常场景测试，发现问题均已修复并回归通过，无风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
-|  19 | [Gazelle特性增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行265个用例，覆盖新增和继承的功能测试、性能测试，稳定性测试，新增功能主要覆盖单机，一主一备，一主两备的客户端本地登录和非本机登录，覆盖主备场景的主备切换以及多次主备切换压测；性能测试主要覆盖一主一备（相对内核提升13.7%）和一主一备uwal网络场景（相对内核提升7.7%）的tpcc测试,符合性能提升目标5%的要求；共发现8个issue，当前均已解决，待版本构建后验证 |  |  | <font color=green>█</font> |  | | | |
+|  19 | [Gazelle特性增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行265个用例，覆盖新增和继承的功能测试、性能测试，稳定性测试，新增功能主要覆盖单机，一主一备，一主两备的客户端本地登录和非本机登录，覆盖主备场景的主备切换以及多次主备切换压测；性能测试主要覆盖一主一备（相对内核提升13.7%）和一主一备uwal网络场景（相对内核提升7.7%）的tpcc测试,符合性能提升目标5%的要求；共发现8个issue，当前均已解决 |  |  | <font color=green>█</font> |  | | | |
 |  20 | [syscare热补丁特性增强（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | qtfs特性无更新，继承用例共2个执行通过；syscare特性测试，共计执行33个用例，覆盖62个测试点，主要包括syscare build以及syscare管理功能，包括此次新增的补丁顺序保存和恢复功能，检查补丁制作和管理功能正常，包括接口正向，负向的功能测试、以及可靠性测试，并发测试，长稳测试，资料测试，安全测试。测试过程未发现问题，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  21 | [secGear功能优化（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例50+，覆盖了包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等secGear特性。无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  22 | [微服务性能问题分钟级定界/定位（TCP，IO，调度等）继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例4个，因无可测试环境，本版本仅测试gala-anteater服务可正常拉起，环境配置正常 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  23 | [容器干扰检测，分钟级完成业务干扰源（CPU/IO）识别与干扰源发现（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例9个，重点验证容器间CPU/IO干扰场景，top3干扰源检测准确率，探针与容器启动，以及cpu,io，mem指标可正常收集，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
-|  24 | [DevStation 开发者工作站支持(继承) ](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 验证开发者工作站的基本功能及兼容性，包括自研安装部署组件、支持图形化编程环境，支持安装x2openEuler工具、支持虚拟化等测试内容，共执行用例119个，发现问题18个， |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  24 | [DevStation 开发者工作站支持(继承) ](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 验证开发者工作站的基本功能及兼容性，包括自研安装部署组件、支持图形化编程环境，支持安装x2openEuler工具、支持虚拟化等测试内容，共执行用例119个，发现问题18个，经ccb评审遗留1个问题落下个版本需求，风险可控 |  |  | <font color=blue>▲</font> | <font color=green></font> | | | |
 |  25 | [AI集群慢节点快速发现 Add Fail-slow Detection](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共计执行6个用例，主要覆盖了功能测试和可靠性测试，通过经过7*24的长稳测试，发现问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
-|  26 | [KubeOS支持集群参数统一配置、镜像定制化和静态完整性保护](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行43个用例，覆盖功能测试、集群参数配置测试、镜像制作测试；功能测试重点验证普通虚拟机镜像、pxe物理机/虚拟机镜像、开启dm_verity+安全启动的虚拟机镜像的安装以及升级磁盘/容器镜像的升级/回退/配置，admin容器镜像的部署，执行通过；集群参数测试重点验证新增三个参数升级/回退/配置修改，执行通过；镜像制作测试重点验证制作各类镜像，镜像制作参数可对应生效，执行通过；共发现问题7个，当前已解决2个，遗留风险暂无（开发反馈已修改合入，待版本构建） |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  26 | [KubeOS支持集群参数统一配置、镜像定制化和静态完整性保护](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行43个用例，覆盖功能测试、集群参数配置测试、镜像制作测试；功能测试重点验证普通虚拟机镜像、pxe物理机/虚拟机镜像、开启dm_verity+安全启动的虚拟机镜像的安装以及升级磁盘/容器镜像的升级/回退/配置，admin容器镜像的部署，执行通过；集群参数测试重点验证新增三个参数升级/回退/配置修改，执行通过；镜像制作测试重点验证制作各类镜像，镜像制作参数可对应生效，执行通过；共发现问题7个，当前已解决2个，无遗留风险 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  27 | [rubik在离线混部调度协同增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共计执行6个用例，主要覆盖了参数测试、功能测试和可靠性测试，发现问题已解决，回归通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  28 | [提供GCC-14的多版本编译工具链](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 验证GCC-14多版本编译工具链，共计执行100w+用例，主要覆盖基本功能测试和版本切换测试，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  39 | [AI4C编译选项调优和AI编译优化提升典型应用性能](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 针对AI辅助编译优化需求和AI4Compiler框架搭建需求，主要覆盖了功能测试和性能测试，功能用例执行通过，性能达成指标提升应用Doris TPC-H性能5% |  |  | <font color=green>█</font> | <font color=green></font> | | | |
@@ -340,8 +340,8 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 |  31 | [IMA度量通过异构可信根框架使能TPM/virtCCA信任根](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行7个用例，覆盖功能测试和可靠性测试，覆盖对ima_rot启动参数的正常值、异常值、重复配置测试；覆盖机器支持tpm可信根时，指定ima_rot分别tpm、virtcca、aaa时，ima度量日志扩展测试；覆盖机器支持virtcca可信根时，指定ima_rot分别tpm、virtcca、aaa时，ima度量日志扩展测试；覆盖机器无可信根时，添加ima_rot启动参数，系统可启动成功，IMA度量功能测试；覆盖不同可信根场景下，IMA扩展日志出现违规摘要时，系统无异常测试。共发现问题1个，当前已解决，无遗留风险 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  32 | [IMA完整性保护增强，支持对解释器运行的脚本类应用程序使能完整性保护机制](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行6个用例，覆盖execveat系统调用接口新增的参数AT_CHECK使用测试；覆盖新增启动参数exec_check.bash=0/1/异常值，exec_check.java=0/1/异常值等测试；覆盖bash解释器支持shell脚本的可执行权限检查测试；覆盖java解释器支持class和jar文件的可执行权限检查测试；覆盖IMA摘要列表度量和评估针对bash脚本、java文件的完整性保护测试。未发现问题，无遗留风险 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  33 | [鲲鹏KAE加速器驱动安装包合入](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 验证KAE特性的加解密和压缩解压缩，执行用例71个，主要覆盖功能测试和性能测试，功能测试正常，性能测试指标达成，未发现问题，整体特性质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
-|  34 | [Add OpenVINO packages native support](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 测试报告评审后刷新 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
-|  35 | [Add oneAPI low level native support](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 测试报告评审后刷新 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
+|  34 | [Add OpenVINO packages native support](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 主要针对完整集成OpenVINO框架和运行环境进行测试，共执行10个用例，覆盖了软件包功能测试和性能测试，测试结果符合预期，未发现问题，整体特性质量良好 |  |  | <font color=green>█(x86)</font> | <font color=green></font> | | | |
+|  35 | [Add oneAPI low level native support](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 验证了Intel oneAPI底层依赖包和运行态软件包测试完成了oneAPI对于sample code的编译运行，大模型基于oneAPI加速框架的正确支持，共执行14个用例，覆盖了软件包的功能测试和性能测试，测试结果符合预期，未发现问题，整体质量良好 |  |  | <font color=green>█(x86)</font> | <font color=green></font> | | | |
 |  36 | [版本引入ACPO包](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 主要测试内容包括使能ACPO并构建编译器、使用提供的ACPO源代码进行模型训练以及使用训练好的模型进行推理并使用perf统计执行时间，包括了功能测试、性能测试和可靠性测试，未发现问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  37 | [内核TCP/IP协议栈支持CAQM拥塞](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共进行两轮测试执行4个测试套测试用例1k+, 主要覆盖功能测试、性能测试、可靠性测试，未发现问题，整体特性质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  38 | [支持virtCCA_KAE特性](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共进行4轮测试，执行了192个用例，主要覆盖功能、性能以及可靠性测试，发现4个问题，无遗留问题，整体特性质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
@@ -364,7 +364,7 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 | Taishan200   | kunpeng 920 |  pass   |
 | 2288H V5   | cascade | pass  |
 | R5350 G6   | EPYC 9454（genoa） | pass  |
-| R4900 G6   | Intel Xeon 8592+ 64-core（emer 五代至强） | pass  |
+| R4900 G6   | Intel Xeon 8592+ 64-core（emr 五代至强） | pass  |
 | 算能     | 算丰SG2042 | pass  |
 
 板卡
@@ -408,8 +408,8 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 |   |  | ConnectX-6 DX     | MCX623106AN-CDAT  | pass|fail|
 |   |  | ConnectX-5        | SP382             |    pass     |     pass     |
 |   |  | ConnectX-4 LX     | SP380             |    pass     |     pass     |
-|   |  | RP1000            | RP1000P2SFP       |    验证中   |   验证中           |
-|   |  | RP2000            | RP2000P2SFP       |    验证中         |    验证中      |
+|   |  | RP1000            | RP1000P2SFP       |    pass   |   pass           |
+|   |  | RP2000            | RP2000P2SFP       |    pass         |    pass      |
 |   |  | WX1860A2          | SF200T            |    pass         |    pass       |
 |   |  | WX1860AL2         | SF200HT           |   pass         |    pass       |
 |   |  | WX1860A4          | SF400T            |    pass        |   pass       |
@@ -447,15 +447,19 @@ RISC-V 虚机兼容性测试预计本周完成
 
 1、病毒扫描：对于产品提供的镜像中的aarch64架构与x86_64架构rpm软件包，使用majun平台病毒扫描工具进行在线扫描分析，扫描结果中未出现病毒报警，无风险。
 
-2、安全编译选项扫描：对于产品提供的标准镜像中的aarch64架构与x86_64架构中的rpm软件包，使用majun平台二进制扫描工具扫描安全编译选项，对于baseos软件包范围内的扫描结果未实行必选安全编译选项的项进行确认(包括rpath、pie、strip)，所有问题均已修复或评估，无风险。
+2、开源漏洞评估：对于产品提供的标准镜像中的aarch64架构与x86_64架构中的baseos范围内rpm软件包，使用majun平台的漏洞视图进行漏洞评估，对于识别出的CVE进行分析，总共感知漏洞6165个，待办中的漏洞901个，经过分析评估，无风险857个，为本次版本分支24.03-LTS-SP1不受影响或此分支已修复漏洞，低风险44个，为7分以下的CVE漏洞，风险可控，后续持续跟踪解决。
 
-3、开源片段引用扫描：目前对于openeler社区孵化的baseos范围内的57个软件包仓库，使用majun平台的开源片段扫描工具扫描，对于扫描结果中识别出的片段引用进行分析，所有问题均已修复或评估，无风险。
+3、安全编译选项扫描：对于产品提供的标准镜像中的aarch64架构与x86_64架构中的rpm软件包，使用majun平台二进制扫描工具扫描安全编译选项，对于baseos软件包范围内的扫描结果未实行必选安全编译选项的项进行确认(包括rpath、pie、strip)，所有问题均已修复或评估，无风险。
 
-4、开源合规license检查：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，验证了46193个rpm软件包，共有483个rpm软件包的license不在openEuler合规license准入列表中，其中，已经审阅并评审修复通过475个rpm软件包的license，合规sig评审通过。
+4、安全测试基线用例测试：对于产品提供的标准镜像，通过openscap用例测试，对于镜像中的初始部署、安全访问、运行与服务、日志审计等方面进行测试，对于测试结果进行分析，其中所有问题均已评估，无风险。
 
-5、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对48558个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。对于产品提供的镜像中的riscv64架构中的所有rpm软件包，使用shell命令对20767个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。
+5、开源片段引用扫描：目前对于openeler社区孵化的baseos范围内的57个软件包仓库，使用majun平台的开源片段扫描工具扫描，对于扫描结果中识别出的片段引用进行分析，所有问题均已修复或评估，无风险。
 
-6、SBOM校验：对于产品提供的aarch64架构、x86_64架构，2种架构的iso镜像均具有SBOM文件及SBOM文件签名。
+6、开源合规license检查：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，验证了46193个rpm软件包，共有483个rpm软件包的license不在openEuler合规license准入列表中，其中，已经审阅并评审修复通过483个rpm软件包的license。
+
+7、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对48558个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。对于产品提供的镜像中的riscv64架构中的所有rpm软件包，使用shell命令对20767个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。
+
+8、SBOM校验：对于产品提供的aarch64架构、x86_64架构，2种架构的iso镜像均具有SBOM文件及SBOM文件签名。
 
 整体OS安全测试较充分，主要问题均已解决，回归测试正常，整体质量良好，风险可控，详细测试内容见安全专项测试报告。
 
@@ -472,9 +476,39 @@ RISC-V 虚机兼容性测试预计本周完成
 |--------------|--------------------------------------------------------------------------------------------|-------------------------|-----------------------------------|
 | OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考版本相应指标基线 | 与基线版本（24.03-LTS）对比不劣化5%以内目标已达成 |
 
+### 4.3.4 资料测试
+
+| **手册名称** | **覆盖策略** | **中英文测试策略** | Arm/X86测试结果  | RISC-V测试结果 | LoongArch测试结果 | PowerPC测试结果 |
+| ------ | ------------------ | ---- | ---- | ------ | --------- | ------- |
+| DDE安装指南 | 安装步骤的准确性及DDE桌面系统是否能成功安装启动  | 英文描述的准确性   | pass   |    |       |           |       
+| UKUI安装指南 | 安装步骤的准确性及UKUI桌面系统是否能成功安装启动| 英文描述的准确性   | pass   |     |       |           |         
+| KIRAN安装指南 | 安装步骤的准确性及Kiran桌面系统是否能成功安装启动 | 英文描述的准确性   | pass   |     |       |           |                
+| 树莓派安装指导 | 树莓派镜像的安装方式及安装指导的准确性及树莓派镜像是否可以成功安装启动 | 英文描述的准确性   | pass    |   |      |           |         
+| 安装指南  | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    |    |    |           |         
+| 管理员指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass    |     |     |           |         
+| 安全加固指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    |    |      |           |         
+| 虚拟化用户指南   | 文档描述与版本的行为是否一致  | 英文描述的准确性   | pass    |    |      |           |         
+| StratoVirt用户指南  | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass  |   |     |           |         
+| 容器用户指南   | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |    |      |           |         
+| A-Tune用户指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass   |    |     |           |         
+| oeAware用户指南   | 文档描述与版本的行为是否一致  | 英文描述的准确性   | pass   |     |      |           |         
+| 应用开发指南  | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |    |     |           |         
+| 工具集用户指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |    |      |           |         
+| HA的安装部署 | 文档描述与版本的行为是否一致                                 | 英文描述的准确性   | pass    |    |    |           |         
+| HA的使用实例  | 文档描述与版本的行为是否一致                                 | 英文描述的准确性   | pass    |     |       |           |         
+| K8S安装指导| 文档描述与版本的行为是否一致| 英文描述的准确性   | pass    |     |       |           |         
+| OpenStack安装指导| 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    |     |    |           |         
+| A-ops用户指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass   |    |     |           |         
+| Gazelle用户指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass   |    |      |           |         
+| openEuler Embedded用户指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass    |    |     |           |         
+| UniProton用户指南| 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass   |   |   |           |         
+| GCC for openEuler用户指南| 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |     |     |           |         
+| NestOS用户指南| 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    |    |   |           |         
+| EulerCopilot 智能问答用户指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |    |    |           |         
+
 # 5   问题单统计
 
-openEuler 24.03-LTS-SP1版本共发现问题503个，有效问题493个，其中遗留问题 0 个，详细分布见下表:
+openEuler 24.03-LTS-SP1版本共发现问题506个，有效问题496个，其中遗留问题 3 个，详细分布见下表:
 
 | 测试阶段               | 问题总数 | 有效问题单数 | 无效问题单数 | 挂起问题单数 | 备注        |
 | --------------------------- | -------- | ------------ | ------------ | ------------ | -------------------------- |
@@ -483,9 +517,9 @@ openEuler 24.03-LTS-SP1版本共发现问题503个，有效问题493个，其中
 | openEuler 24.03 LTS SP1  RC1        | 137   |  136   | 1  |  0     | Beta轮次  |
 | openEuler 24.03 LTS SP1  RC2        | 55    |    50   | 6   |   0    | 特性合入 |
 | openEuler 24.03 LTS SP1  RC3        | 41   |  39  |  2  |  0   | 全量集成  |
-| openEuler 24.03 LTS SP1  RC4        | 45   |  45    |  0  |   0    | 全量集成    |
+| openEuler 24.03 LTS SP1  RC4        | 48   |  48    |  0  |   0    | 全量集成    |
 | openEuler 24.03 LTS SP1  RC5        | 12   |   11    | 1  |  0   | 回归测试 |
-| openEuler 24.03 LTS SP1  RC6        |    |      |   |      | 回归测试(版本验收测试) |
+| openEuler 24.03 LTS SP1  RC6        |  0  |  0    |  0 |   0   | 回归测试(版本验收测试) |
 
 # 6 版本测试过程评估
 
@@ -498,7 +532,7 @@ openEuler 24.03-LTS-SP1版本共发现问题503个，有效问题493个，其中
 3. rc1构建失败问题54个，保障epol范围内软件包正常发布；降级问题69个，update版本更新未同步在研
 4. rc2-rc3大量特性转测，主要是特性验收发现的问题，继承特性如oeaware(接口变更影响部分黑盒功能和显示)、aops等,；新增需求如安全配置、可信根；以及包管理、单包等通用测试发现问题
 5. rc4仍有部分新增特性转测，少量问题发现，如kubeOS; 部分安全问题，如license合规问题
-6. rc5 11个问题，3个构建失败问题，门禁/依赖软件包有变更; 2个软件包升级发现新问题 XXXXX
+6. rc5 11个问题，3个构建失败问题，门禁/依赖软件包有变更; 3个软件包升级发现新问题，其余为测试执行安排和定位原因rc5才提交的问题
 
 
 - 典型问题：
@@ -508,7 +542,7 @@ openEuler 24.03-LTS-SP1版本共发现问题503个，有效问题493个，其中
 
 - 改进点：
 1. 以上两个问题都涉及流程规范改进，软件包更新的分支合入需要规范，后续组织专题讨论，是否基础设施有相应功能可以实现（规范改进）
-2. 自研特性oeaware、aops问题还是有不少，自研特性目前的自动化率80%左右，oeaware自动化率100%，因接口变更导致的黑盒问题基本可以通过自动化用例防护；aops自动化率较低，还有提升空间（测试改进）
+2. 特性oeaware、aops问题还是有不少，oeaware自动化率100%，因接口变更导致的黑盒问题基本可以通过自动化用例防护；aops自动化率较低，还有提升空间（测试改进）
 3. 开发自验阶段需要规范，gazelle调优、慢IO检测两个需求由于自验证不够充分导致流出到测试的问题较多（开发改进） 
 
 
@@ -655,4 +689,11 @@ openEuler 24.03-LTS-SP1版本共发现问题503个，有效问题493个，其中
 # 7   附件
 
 ## 遗留问题列表
+
+|序号|问题单号|问题简述|问题级别|影响分析|规避措施|
+| ---- | ---- | ------------- | ----| ------ | ----| 
+| 1 |IBA13Y | raspberrypi4-64镜像测试用例oe_test_nfs-utils_test_001失败 |  不重要 | 影响x86镜像上mica特性的使用，不影响其他特性，且x86的mica使用的范围小，影响范围可控 | NA | 
+| 2 |IBACHW | qemu-aarch64-mcs-ros镜像名称错误，并且micad启动失败 |  不重要 | 影响qemu镜像上mica特性的使用，不影响其他特性，且qemu镜像只是参考镜像，使用的范围小，影响可控 | NA | 
+| 3 |IBANAZ | x86-64-hmi-mcs-ros-rt镜像mica启动失败 |  不重要 | 影响x86镜像上mica特性的使用，不影响其他特性，且x86的mica使用的范围小，影响范围可控 | NA | 
+
 
