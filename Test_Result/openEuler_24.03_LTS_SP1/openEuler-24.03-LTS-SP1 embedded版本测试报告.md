@@ -283,9 +283,9 @@ openEuler 24.03 lts sp1 embedded 版本共发现问题单14个，取消问题单
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
 | ---- | ------- | -------- | -------- | ------- | -------- | --------- | 
-| 1 | [IBANAZ]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBANAZ?from=project-issue | x86-64-hmi-mcs-ros-rt镜像mica启动失败 | 低 | 小 | 后续社区投入修复 | 无 | 
-| 2 | [IBACHW]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBACHW?from=project-issue | qemu-aarch64-mcs-ros镜像名称错误，并且micad启动失败 | 低 | 小 | 后续社区投入修复 | 无 | 
-| 3 | [IBA13Y]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBA13Y?from=project-issue | raspberrypi4-64镜像测试用例oe_test_nfs-utils_test_001失败 | 低 | 小 | 后续社区投入修复 | 无 | 
+| 1 | [IBANAZ]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBANAZ?from=project-issue | x86-64-hmi-mcs-ros-rt镜像mica启动失败 | 低 | 影响x86镜像上mica特性的使用，不影响其他特性，且x86的mica使用的范围小，影响范围可控 | 后续社区投入修复 | 无 | 
+| 2 | [IBACHW]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBACHW?from=project-issue | qemu-aarch64-mcs-ros镜像名称错误，并且micad启动失败 | 低 | 影响qemu镜像上mica特性的使用，不影响其他特性，且qemu镜像只是参考镜像，使用的范围小，影响可控 | 后续社区投入修复 | 无 | 
+| 3 | [IBA13Y]https://gitee.com/openeuler/yocto-meta-openeuler/issues/IBA13Y?from=project-issue | raspberrypi4-64镜像测试用例oe_test_nfs-utils_test_001失败 | 低 | 该用例失败的原因是缺少/dev/log目录，补全该目录后用例运行成功。影响范围小。 | 后续社区投入修复 | 无 | 
 
 # 致谢
 非常感谢以下开发者在openEuler 24.03 lts sp1 版本测试中做出的贡献,以下排名不分先后
