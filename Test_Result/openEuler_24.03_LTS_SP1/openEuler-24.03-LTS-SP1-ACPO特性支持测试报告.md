@@ -210,6 +210,15 @@ numactl --localalloc --physcpubind=1 perf stat -r5 bash ./__run 1
 | ------------------ | ----- | ------- | ------ |
 | openEuler 24.03-LTS-SP1 | 10    | 100% 通过 | 0      |
 
+性能测试结果总结:
+
+| 测试子项                   | 测试结论                          | 备注                      |
+| ---------------------- |:-----------------------------:| ----------------------- |
+| 自训练模型推理                | <font color=green>PASS</font> | 推理结果正确, 使能ACPO后性能提升8%   |
+| 预训练模型(AOT模式)推理         | <font color=green>PASS</font> | 推理结果正确, 使能ACPO前后性能基本持平  |
+| YUM安装方式使能ACPO(自训练模型推理) | <font color=green>PASS</font> | 推理结果正确, 使能ACPO后性能提升7.8% |
+| YUM安装方式使能ACPO(AOT模式推理) | <font color=green>PASS</font> | 推理结果正确, 使能ACPO后性能提升1%   |
+
 综上，特性质量评估如下：
 
 | 特性名称          | 特性质量评估                     | 备注  |
