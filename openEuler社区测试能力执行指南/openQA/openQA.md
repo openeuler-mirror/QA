@@ -433,7 +433,7 @@ http://114.116.250.98/view/openEuler-test/job/new_openEuler_product_lts3_SP1_rep
 ![group1](./images/group1.png)<br />
 挨个点开，查看，确认生效，如：<br />
 ![group2](./images/group2.png)<br />
-### 2.4.2.5 用例放到到pxe上<br />
+### 2.4.2.5 用例放到pxe上<br />
 放在 /var/www/html/目录下<br />
 ### 2.4.2.6  拉取用例测试<br />
 ```
