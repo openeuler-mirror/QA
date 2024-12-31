@@ -10,6 +10,7 @@
 | 2024/12/24 | 1.0.0    | 初稿 | linqian0322 |
 | 2024/12/24 | 1.0.1 | add RISC-V | jean9823 |
 | 2024/12/25 | 1.0.2   | 刷新测试报告 | linqian0322 |
+| 2024/12/31 | 1.0.3 | 刷新RISC-V部分测试报告 | jean9823 |
 
 
 
@@ -196,7 +197,7 @@ openEuler 24.03 LTS SP1版本交付需求列表如下，详情见[openEuler-24.0
 |61|为 RISC-V 架构引入 Penglai TEE 支持                   | sig-RISC-V | sig-RISC-V | 验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等 |
 |62| LLVM平行宇宙计划 RISC-V Preview 版本 | sig-RISC-V | sig-RISC-V |验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动 |
 |63| 支持embedded版本 | sig-embedded | sig-embedded | 继承已有测试能力，验证openEuler embedded的构建镜像和完成嵌入式应用开发能力  |
-  
+
 本次版本新增测试活动分工参见 **2.3 需求清单** 章节，由需求对应sig负责开发与测试
 
 
@@ -290,7 +291,7 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 | 58 | ZGCLab发布内核安全增强补丁| <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试   |
 | 59 | oeAware 支持本地网络加速  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证使能oeAware支持本地网络加速能力(SMC-D)，提升redis/nginx本地回环网络性能   |
 | 60 | 支持RISC-V | <font color=green> </font> | <font color=green>█</font> |     |     | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性     |
-| 61 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | <font color=green>预计下周完成测试</font> |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
+| 61 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | <font color=green><font color=green>█</font></font> |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
 | 62 | 为RISC-V架构引入Penglai TEE 支持  | <font color=green>   </font> | <font color=green>█</font> |     |     |   继承已有测试能力，验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等  |
 | 63 | 支持embedded版本 | <font color=green> █  </font> | <font color=green></font> |     |     |   继承已有测试能力，验证openEuler embedded的构建镜像和完成嵌入式应用开发能力  |
 
@@ -326,7 +327,7 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 |  17 | [epkg新型软件包及包管理器功能增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 针对epkg包构建、包管理两大特性，共执行三轮测试共计80个用例，主要覆盖了功能测试和兼容性测试，发现问题已解决，回归通过（部分问题待回归测试），无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  18 | [oeAware采集、调优插件等功能增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 对oeAware特性共进行两轮测试共计执行47个测试用例，主要覆盖了功能测试、性能与异常场景测试，发现问题均已修复并回归通过，无风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
 |  19 | [Gazelle特性增强](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 共执行265个用例，覆盖新增和继承的功能测试、性能测试，稳定性测试，新增功能主要覆盖单机，一主一备，一主两备的客户端本地登录和非本机登录，覆盖主备场景的主备切换以及多次主备切换压测；性能测试主要覆盖一主一备（相对内核提升13.7%）和一主一备uwal网络场景（相对内核提升7.7%）的tpcc测试,符合性能提升目标5%的要求；共发现8个issue，当前均已解决 |  |  | <font color=green>█</font> |  | | | |
-|  20 | [syscare热补丁特性增强（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | qtfs特性无更新，继承用例共2个执行通过；syscare特性测试，共计执行33个用例，覆盖62个测试点，主要包括syscare build以及syscare管理功能，包括此次新增的补丁顺序保存和恢复功能，检查补丁制作和管理功能正常，包括接口正向，负向的功能测试、以及可靠性测试，并发测试，长稳测试，资料测试，安全测试。测试过程未发现问题，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | | | | |
+|  20 | [syscare热补丁特性增强（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | qtfs特性无更新，继承用例共2个执行通过；syscare特性测试，共计执行33个用例，覆盖62个测试点，主要包括syscare build以及syscare管理功能，包括此次新增的补丁顺序保存和恢复功能，检查补丁制作和管理功能正常，包括接口正向，负向的功能测试、以及可靠性测试，并发测试，长稳测试，资料测试，安全测试。测试过程未发现问题，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> | <font color=green>█</font> | | | |
 |  21 | [secGear功能优化（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例50+，覆盖了包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等secGear特性。无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  22 | [微服务性能问题分钟级定界/定位（TCP，IO，调度等）继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例4个，因无可测试环境，本版本仅测试gala-anteater服务可正常拉起，环境配置正常 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
 |  23 | [容器干扰检测，分钟级完成业务干扰源（CPU/IO）识别与干扰源发现（继承）](https://gitee.com/openeuler/release-management/edit/master/openEuler-24.03-LTS-SP1/release-plan.md) | 继承已有用例9个，重点验证容器间CPU/IO干扰场景，top3干扰源检测准确率，探针与容器启动，以及cpu,io，mem指标可正常收集，无遗留问题，整体质量良好 |  |  | <font color=green>█</font> | <font color=green></font> | | | |
@@ -427,17 +428,16 @@ openEuler 24.03 LTS SP1版本详细测试内容包括：
 
 ### 4.2.2 虚机兼容性
 
-| HostOS     | GuestOS (虚拟机)        | 架构    | 测试结果 |                                   
-| ---------- | ----------------------- | ------- | -------- | 
-| openEuler 24.03 LTS SP1 | Centos 6 | x86_64 | PASS |         
-| openEuler 24.03 LTS SP1 | Centos 7 | aarch64 | PASS |         
-| openEuler 24.03 LTS SP1 | Centos 7 | x86_64  | PASS |         
-| openEuler 24.03 LTS SP1 | Centos 8 | aarch64 | PASS |         
-| openEuler 24.03 LTS SP1 | Centos 8 | x86_64  | PASS | 
-| openEuler 24.03 LTS SP1  | Windows Server 2016 | x86_64  | PASS |  
-| openEuler 24.03 LTS SP1  | Windows Server 2019 | x86_64  | PASS |         
-
-RISC-V 虚机兼容性测试预计本周完成
+| HostOS     | GuestOS (虚拟机)        | 架构    | 测试结果 |
+| ---------- | ----------------------- | ------- | -------- |
+| openEuler 24.03 LTS SP1 | Centos 6 | x86_64 | PASS |
+| openEuler 24.03 LTS SP1 | Centos 7 | aarch64 | PASS |
+| openEuler 24.03 LTS SP1 | Centos 7 | x86_64  | PASS |
+| openEuler 24.03 LTS SP1 | Centos 8 | aarch64 | PASS |
+| openEuler 24.03 LTS SP1 | Centos 8 | x86_64  | PASS |
+| openEuler 24.03 LTS SP1  | Windows Server 2016 | x86_64  | PASS |
+| openEuler 24.03 LTS SP1  | Windows Server 2019 | x86_64  | PASS |
+| openEuler RISC-V 24.03 LTS SP1 | Ubuntu 24.04 | riscv64 | PASS |
 
 ## 4.3   专项测试结论
 
