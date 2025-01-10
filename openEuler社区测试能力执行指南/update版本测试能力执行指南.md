@@ -170,8 +170,8 @@ docker run -itd --name ${docker_name} --privileged  -u root ${img_name} /bin/bas
 ### 3.在本地机器配置docker环境中的update repo源<br />
 先确定本地环境update源已配置，参考本文第七章节<br />
 ```
-docker cp /etc/yum.repos.d/*.repo ${docker_name}:/etc/yum.repos.d
 docker exec -it -u root ${docker_name} /bin/bash -c "mv /etc/yum.repos.d/openEuler.repo /root"
+docker cp /etc/yum.repos.d/*.repo ${docker_name}:/etc/yum.repos.d
 
 docker exec -it -u root ${docker_name} /bin/bash -c "dnf install -y sudo passwd systemd openssh git iproute bind-utils traceroute mtr wget setools-console selinux-policy selinux-policy-targeted openvswitch"
 docker exec -it -u root ${docker_name} /bin/bash -c "sed -i  's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config"
