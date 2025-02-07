@@ -19,7 +19,7 @@
 * (3) 构建健康度指标：R1版本发布前有连续三天构建出全量镜像并通过AT可用。
 * (4) rpm build中的```%check```阶段需打开并100%通过。如存在问题需解决或进行明确解释，并在合区以issue的形式呈现归档。
 * (5) openqa对应版本用例通过率即AT通过率。
-* (6) 结合compass-ci和radiaTest平台构建周防护网，进行全量集成用例自动化测试(截至2022/4/24仍在开发中)
+* (6) 结合compass-ci和radiaTest平台构建主动防护网，进行全量集成用例自动化测试(截至2022/4/24仍在开发中)
 * 表格首行R1~R5，指代社区版本转测过程中的转测轮次（转测轮次根据测试情况不同会进行增加）。
 * RM指代社区[sig-release-management](https://gitee.com/openeuler/release-management)
 
