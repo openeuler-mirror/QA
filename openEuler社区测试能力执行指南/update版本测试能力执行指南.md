@@ -212,13 +212,13 @@ docker exec -it -u root ${docker_name} /bin/bash -c "cd /home/mugen;bash mugen.s
 ```
 dnf list --available | grep "update_${update_date}" | grep "arch\|x86_64" | awk '{print $1}' | awk -F. 'OFS="."{$NF="";print}' | awk '{print substr($0, 1, length($0)-1)}' >update_list
 ```
-### 3.下载updateinfo文件,解压后，获取当天(以2025-02-27为例)生成的updateinfo信息<br />
+### 3.下载updateinfo文件,解压后，获取当天(以2025-02-07为例)生成的updateinfo信息<br />
 ```
 wget http://121.36.84.172/repo.openeuler.org/openEuler-24.03-LTS/update_20250206/aarch64/repodata/64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml.gz
 gunzip 64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml.gz
 awk "/2025-02-07/{flag=1} flag" 64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml >updateinfo_file_testdate
 ```
-### 4.查看第二步生成的软件包列表中的所有包的epoch，以firefox为例<br />
+### 4.查看第二步生成的软件包列表中(本次update转测的cve相关)软件包的epoch，以firefox为例<br />
 ```
 dnf repoquery firefox --repo="update_20250206" | awk -F: '{print $1}' | awk -F- '{print $NF}'
 ```
@@ -230,10 +230,11 @@ grep -w "\"firefox\"" updateinfo_file_testdate | grep -E "aarch64|noarch" | grep
 ```
 ### 注意
 1.部分软件包的epoch为0时，在updateinfo文件中查询不到epoch值，属于非问题；epoch为除0以外的其他值时，必须在updateinfo文件中能查询到对应的epoch信息。<br />
-2.第五步查询出的信息唯一，类似
+2.第五步查询出的信息唯一，且epoch值和第四步查出来的一致，类似
 ```
 <package epoch="0" arch="aarch64" name="firefox" release="1.oe2403" version="128.7.0">
 ```
+3.updateinfo测试对象是本次update转测的cve相关的软件包<br />
 ## repo源
 以22.03－LTS-update20240110版本aarch64架构为例<br />
 ```
