@@ -206,6 +206,34 @@ docker exec -it -u root ${docker_name} /bin/bash -c "getenforce;sysctl -w net.ip
 docker exec -it -u root ${docker_name} /bin/bash -c "cd /home/mugen;bash mugen.sh -f AT -x"
 ```
 ### 7.执行完成后，可以在docker环境中查看result目录，会保存失败用例的名称;详细日志保存在logs目录中;<br />
+## updateinfo文件测试<br />
+### 1.配置update repo源，（repo源参考本文最后一章）,以下步骤以openEuler-24.03-LTS-update_20250206版本aarch64架构为例<br />
+### 2.获取当前环境中update_20250206　repo源中的所有软件包列表<br />
+```
+dnf list --available | grep "update_${update_date}" | grep "arch\|x86_64" | awk '{print $1}' | awk -F. 'OFS="."{$NF="";print}' | awk '{print substr($0, 1, length($0)-1)}' >update_list
+```
+### 3.下载updateinfo文件,解压后，获取当天(以2025-02-27为例)生成的updateinfo信息<br />
+```
+wget http://121.36.84.172/repo.openeuler.org/openEuler-24.03-LTS/update_20250206/aarch64/repodata/64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml.gz
+gunzip 64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml.gz
+awk "/2025-02-07/{flag=1} flag" 64ca59007e3fa179b84a5bdeeba5c732634659fd158067c883fed8ac10c94750-updateinfo.xml >updateinfo_file_testdate
+```
+### 4.查看第二步生成的软件包列表中的所有包的epoch，以firefox为例<br />
+```
+dnf repoquery firefox --repo="update_20250206" | awk -F: '{print $1}' | awk -F- '{print $NF}'
+```
+### 5.检查updateinfo文件中的firefox软件包的epoch值是否正确<br />
+```
+pkg_version=$(dnf repoquery firefox --repo="update_20250206" | awk -F: '{print $2}' | awk -F- '{print$1}')
+pkg_release=$(dnf repoquery firefox --repo="update_20250206" | awk -F: '{print $2}' | awk -F- '{print$2}' | awk -F '.aarch64' '{print $1}')
+grep -w "\"firefox\"" updateinfo_file_testdate | grep -E "aarch64|noarch" | grep ${pkg_version} | grep ${pkg_release} | grep epoch
+```
+### 注意
+1.部分软件包的epoch为0时，在updateinfo文件中查询不到epoch值，属于非问题；epoch为除0以外的其他值时，必须在updateinfo文件中能查询到对应的epoch信息。<br />
+2.第五步查询出的信息唯一，类似
+```
+<package epoch="0" arch="aarch64" name="firefox" release="1.oe2403" version="128.7.0">
+```
 ## repo源
 以22.03－LTS-update20240110版本aarch64架构为例<br />
 ```
