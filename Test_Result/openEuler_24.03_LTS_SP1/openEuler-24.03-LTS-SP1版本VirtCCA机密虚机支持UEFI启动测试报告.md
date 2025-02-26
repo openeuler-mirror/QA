@@ -4,11 +4,11 @@
 VirtCCA
 
 摘要：
-在openEuler24.03 LTS-SP1版本中提供libvirt、QEMU版本的RPM安装包，方便用户快速部署VirtCCA。
+在openEuler24.03 LTS-SP1版本中提供libvirt、QEMU、edk2版本的RPM安装包，方便用户快速部署VirtCCA。
 
 # 1 特性概述
 
-VirtCCA是一种在可信的硬件基础上，通过隔离、加密、证明等机制，保护使用中数据安全的计算模式机密虚机特性，机密虚机支持uefi启动合入openEuler24.03 LTS SP1，该版本中提供libvirt、QEMU 版本的RPM安装包，方便用户快速部署VirtCCA。
+VirtCCA是一种在可信的硬件基础上，通过隔离、加密、证明等机制，保护使用中数据安全的计算模式机密虚机特性，机密虚机支持uefi启动合入openEuler24.03 LTS SP1，该版本中提供libvirt、QEMU、edk2 版本的RPM安装包，方便用户快速部署VirtCCA。
 
 # 2 特性测试信息
 
@@ -33,12 +33,13 @@ VirtCCA机密虚机支持UEFI启动特性合入openEuler24.03 LTS-SP1，针对UE
 | -------- | -------- |
 |iBMC|5.5.12.5|
 |BIOS|20.47|
-|CPU↵|Kunpeng 920 7280Z|
-|硬盘↵|系统盘：1*T NVME|
+|CPU|Kunpeng 920 7280Z|
+|硬盘|系统盘：1*T NVME|
 |OS|openEuler 24.03 LTS SP1|
 |libvirt|9.10.0|
 |qemu|8.2.0|
 |kernel|6.6|
+|edk2|openEuler_24.03_LTS_SP1|
  
 
 # 3.3  遗留问题分析
