@@ -37,7 +37,7 @@
 | 单包命令 |     72     |    72     |    0     |    0    |    <font color=green>■</font>     |
 | 软件包管理|    2      |    2     |    0     |    0     |    <font color=green>■</font>     |
 | 内核 |    2319      |    2319     |    0     |    0     |    <font color=green>■</font>     |
-| updateinfo |    20     |    20     |     0    |    0     |    <font color=green>■</font>     |
+| updateinfo |    1     |    1     |     0    |    0     |    <font color=green>■</font>     |
 | docker容器 |    274     |    274     |     0    |    0     |    <font color=green>■</font>     |
 
 <font color=red>●</font>： 表示测试项不稳定，风险高
