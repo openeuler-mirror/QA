@@ -53,7 +53,7 @@
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
 | --- | ------- | ------ | ------- | ------- | ------- | ---------- | 
-|  1   |  IBUCIJ |  【需求 rc4】在漏洞问题评论区中连续两次评论/create_pr OLK-6.6应过滤已通过/create_pr命令创建的已创建未合入的pr |     次要   |     功能无影响，会多次提交相同pr   |    无   |       NA  | 
+|  1   |  [IBUCIJ](https://gitee.com/xiaocy1997/vulnerability_tracker/issues/IBUCIJ) |  【需求 rc4】在漏洞问题评论区中连续两次评论/create_pr OLK-6.6应过滤已通过/create_pr命令创建的已创建未合入的pr |     次要   |     功能无影响，会多次提交相同pr   |    无   |       NA  | 
 ### 3.3.2 问题统计
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
@@ -94,8 +94,7 @@
 |  可靠性测试       | 验证多次输入/create_pr命令结果正确性验证        |      通过    |
 |  易用性测试       | 验证命令执行后返回结果是否易读、符合模板要求| 通过|
 ### 4.2.3 资料测试结论
-[openEuler智能化漏洞修补用户指南] （https://gitee.com/openeuler/docs/pulls/14707)，未发现问题。
-
+[openEuler智能化漏洞修补用户指南](https://gitee.com/openeuler/docs/pulls/14707)，未发现问题。
 
 # 5     测试执行
 
