@@ -8,6 +8,7 @@
 | 日期       | 修订版本 | 修改章节          | 修改描述    |
 | ---------- | -------- | ----------------- | ----------- |
 | 2025/3/24 | 1.0.0    | 初稿 | linqian0322 |
+| 2025/3/25 | 1.0.1 | add RISC-V | jean9823 |
 
 
 
@@ -224,13 +225,13 @@ openEuler 25.03 版本详细测试内容包括：
 
 | 序号 | 组件/特性名称                     | **aarch64/x86_64质量评估**  |**risc-v质量评估**  |   **loongarch质量评估**    |  **powerpc质量评估**    | 备注                                                         |
 | ---- | ----------------------- | :-------: | :--------: | :--------: | :-------: | ------------------------------------------------------------ |
-| 1 | 支持DDE桌面  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注DDE桌面系统的安装和基本功能    |
-| 2 | 支持UKUI桌面  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注UKUI桌面系统的安装和基本功能    |
-| 3 | 支持Kiran桌面  | <font color=green>█</font> | <font color=green><font color=green></font></font> |     |     | 继承已有测试能力，关注kiran桌面系统的安装和基本功能    |
-| 4 | 安装部署  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署   |
-| 5 | 内核  | <font color=green>█</font>  | <font color=green></font> |     |     |  继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内   |
-| 6 | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证   |
-| 7 | 虚拟化 | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能   |
+| 1 | 支持DDE桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注DDE桌面系统的安装和基本功能    |
+| 2 | 支持UKUI桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注UKUI桌面系统的安装和基本功能    |
+| 3 | 支持Kiran桌面  | <font color=green>█</font> |  |     |     | 继承已有测试能力，关注kiran桌面系统的安装和基本功能    |
+| 4 | 安装部署  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署   |
+| 5 | 内核  | <font color=green>█</font>  | <font color=green>█</font> |     |     |  继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内   |
+| 6 | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证   |
+| 7 | 虚拟化 | <font color=green>█</font> | <font color=green>█</font> |     |     |   继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能   |
 | 8 | 支持A-Tune  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，本次无新增合入，重点关注继承功能验证，如服务/配置检查等   |
 | 9 | 支持secPaver  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注secPave特性的基本功能和服务的稳定性   |
 | 10 | 支持secGear  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行   |
@@ -238,21 +239,21 @@ openEuler 25.03 版本详细测试内容包括：
 | 12 | 支持kubeOS | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力  |
 | 13 | 支持etmem内存分级扩展  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证特性的基本功能和稳定性    |
 | 14 | 支持用户态协议栈gazelle | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能 |
-| 15 | 支持国密算法  | <font color=green>█</font> | <font color=blue><font color=green></font></font> |     |     |  继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法。   |
+| 15 | 支持国密算法  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法。   |
 | 16 | 支持pod带宽管理oncn-bwm  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证使能/网卡Qos功能，设置cgroup优先级、在线水线、离线带宽等功能，使能网卡QOS功能后，在线业务可实时抢占离线业务带宽，以及功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等。  |
-| 17 | 支持isuald  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景  |
+| 17 | 支持isuald  | <font color=green>█</font> | <font color=green>█</font> |     |     | 继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景  |
 | 18 | 支持A-OPS | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，重点关注本次新增合入容器干扰检测，微服务性能问题分钟级定位定界场景  |
 | 19 | 支持系统运维套件x-diagnosis  | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能   |
 | 20 | 支持自动化热升级组件nvwa | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等   |
 | 21 | 支持DPU直连聚合特性dpu-utilities  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源   |
 | 22 | 支持系统热修复组件syscare | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力，重点关注新增合入栈检测，容器化能力   |
-| 23 | iSula容器镜像构建工具isula-build  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证通过Dockerfile文件快速构建容器镜像，并支持镜像的查询、删除、登录、退出等功能   |
-| 24 | 支持进程完整性防护特性DIM | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量   |
+| 23 | iSula容器镜像构建工具isula-build  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证通过Dockerfile文件快速构建容器镜像，并支持镜像的查询、删除、登录、退出等功能   |
+| 24 | 支持进程完整性防护特性DIM | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量   |
 | 25 | 支持入侵检测框架secDetector  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等   |
 | 26 | isocut镜像裁剪易用性提升 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证基于openEuler发布的标准ISO镜像进行最小系统定制裁剪，定制安装过程中支持按需裁剪RPM包   |
 | 27 | 支持devmaster组件 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景   |
 | 28 | 支持TPCM特性  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试用例，验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等   |
-| 29 | 支持sysMaster                          | <font color=green>█</font> | <font color=blue></font> |     |     |  继承已有测试能力，验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景   |
+| 29 | 支持sysMaster                          | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景   |
 | 30 | 支持sysmonitor特性  | <font color=green>█</font> | <font color=blue></font> |     |     |  继承已有测试能力，验证sysmonitor监控OS系统运行过程中的异常，并将监控到的异常记录到系统日志的能力，覆盖文件监控、磁盘分区监控、网卡监控、cpu监控等场景   |
 | 31 | 混合部署rubik  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，覆盖rubik容器调度在业务混合部署的场景下，根据QoS分级，对资源进行合理调度，保障在线业务QoS基本无变化   |
 | 32 | 支持IMA自定义证书 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证rpm构建时，使用第三方证书对rpm摘要列表进行签名，内核导入第三方证书后，IMA摘要列表功能正常，以及xfs文件系统下，正常开启IMA摘要列表评估模式  |
@@ -260,11 +261,11 @@ openEuler 25.03 版本详细测试内容包括：
 | 34 | 安全启动  | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，验证bios导入证书后，正常开启安全启动，以及防回滚功能开启后，无法进行版本降级操作等  |
 | 35 | Kmesh | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等   |
 | 36 | openEuler安全配置规范框架设计及核心内容构建   | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性    |
-| 37 | oemaker | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，在构建工程中保证oemaker功能正常   |
-| 38 | openssl | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上    |
+| 37 | oemaker | <font color=green>█</font> | <font color=green>█ </font> |     |     |  继承已有测试能力，在构建工程中保证oemaker功能正常   |
+| 38 | openssl | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上    |
 | 39 | 社区签名体系建立  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证安装 openEuler 镜像后，开启安全启动、内核模块校验、IMA、RPM 校验等按机制，在系统启动和运行阶段使能相应的签名验证功能，保障系统组件的真实性和完整性   |
 | 40 | AI集群慢节点快速发现 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，重点测试组内多节点/多卡空间维度对比，输出慢节点/慢卡的检测精度，主要覆盖功能测试、可靠性测试和长稳测试 |
-| 41 | 编译器(gcc/jdk) | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证  |
+| 41 | 编译器(gcc/jdk) | <font color=green>█</font> | <font color=green>█</font> |     |     |   继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证  |
 | 42 | 支持HA软件 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性    |
 | 43 | 支持KubeSphere | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力  |
 | 44 | 支持智能运维助手  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性     |
@@ -274,15 +275,15 @@ openEuler 25.03 版本详细测试内容包括：
 | 48 | 发布PilotGo及其插件特性新版本 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证PilotGo支持 topo 图的展示和智能调优能力   |
 | 49 | 智能问答在线服务 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力   |
 | 50 | ZGCLab发布内核安全增强补丁| <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试   |
-| 51 | 支持RISC-V | <font color=green> </font> | <font color=green></font> |     |     | 验证openEuler版本在RISV-V处理器上的可安装和可使用性     |
-| 52 | 为RISC-V架构引入Penglai TEE 支持  | <font color=green>   </font> | <font color=green></font> |     |     |   继承已有测试能力，验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等  |
-| 53 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | <font color=green></font> |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
+| 51 | 支持RISC-V | <font color=green> </font> | <font color=green>█ </font> |     |     | 验证openEuler版本在RISV-V处理器上的可安装和可使用性     |
+| 52 | 为RISC-V架构引入Penglai TEE 支持  | <font color=green>   </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等  |
+| 53 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | <font color=green>预计4月中完成测试</font> |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
 | 54 | Add compatibility patches for Zhaoxin processors  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要覆盖功能测试，针对Zhaoxin处理器进行Zhaoxin OLK-6.6补丁测试 |
 | 55 | virtCCA机密虚机特性合入 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，机密虚机场景主要覆盖了功能、性能、可靠性、兼容性、资料和长稳测试  |
 | 56 | 增加YouQu自动化测试平台支持 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要覆盖功能测试，包括软件包安装、卸载和正常部署并测试DDE环境  |
-| 57 | 增加 utsudo 支持 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utsudo基础命令验证 |
-| 58 | 增加 utshell支持 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utshell基础命令验证  |
-| 59 | LLVM多版本实现 | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证LLVM多版本包引入对于全量版本构建没有影响、LLVM多版本包能够正常工作和使用，覆盖功能测试和可靠性测试 |
+| 57 | 增加 utsudo 支持 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utsudo基础命令验证 |
+| 58 | 增加 utshell支持 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utshell基础命令验证  |
+| 59 | LLVM多版本实现 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要验证LLVM多版本包引入对于全量版本构建没有影响、LLVM多版本包能够正常工作和使用，覆盖功能测试和可靠性测试 |
 | 60 | 新增密码套件openHiTLS  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，对openHiTLS功能特性进行测试, 包括密码算法、密码协议、证书功能等  |
 | 61 | 鲲鹏KAE加速器驱动安装包合入  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力， 验证KAE特性的加解密和压缩解压缩，主要覆盖功能测试和性能测试 |
 | 62 | 版本引入ACPO包  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证使能ACPO并构建编译器、使用提供的ACPO源代码进行模型训练以及使用训练好的模型进行推理并使用perf统计执行时间，覆盖功能测试、性能测试和可靠性测试  |
@@ -337,17 +338,19 @@ openEuler 25.03 版本详细测试内容包括：
 
 ### 4.2.1 虚机兼容性
 
-| HostOS     | GuestOS (虚拟机)        | 架构    | 测试结果 |                                   
-| ---------- | ----------------------- | ------- | -------- | 
-| openEuler 25.03  | Centos 6 | x86_64 | PASS |         
-| openEuler 25.03  | Centos 7 | aarch64 | PASS |         
-| openEuler 25.03 | Centos 7 | x86_64  | PASS |         
-| openEuler 25.03 | Centos 8 | aarch64 | PASS |         
-| openEuler 25.03 | Centos 8 | x86_64  | PASS | 
-| openEuler 25.03  | Windows Server 2016 | x86_64  | PASS |  
-| openEuler 25.03  | Windows Server 2019 | x86_64  | PASS |         
+| HostOS     | GuestOS (虚拟机)        | 架构    | 测试结果 |
+| ---------- | ----------------------- | ------- | -------- |
+| openEuler 25.03  | Centos 6 | x86_64 | PASS |
+| openEuler 25.03  | Centos 7 | aarch64 | PASS |
+| openEuler 25.03 | Centos 7 | x86_64  | PASS |
+| openEuler 25.03 | Centos 8 | aarch64 | PASS |
+| openEuler 25.03 | Centos 8 | x86_64  | PASS |
+| openEuler 25.03  | Windows Server 2016 | x86_64  | PASS |
+| openEuler 25.03  | Windows Server 2019 | x86_64  | PASS |
+| openEuler RISC-V 25.03 | Ubuntu 24.10 | riscv64 | PASS |
+| openEuler RISC-V 25.03 | Fedora 41 | riscv64 | PASS |
 
- 
+
 ## 4.3   专项测试结论
 
 ### 4.3.1 安全测试
@@ -362,7 +365,7 @@ openEuler 25.03 版本详细测试内容包括：
 
 4、开源合规license检查：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，验证了46193个rpm软件包，共有483个rpm软件包的license不在openEuler合规license准入列表中，其中，已经审阅并评审修复通过475个rpm软件包的license，合规sig评审通过。
 
-5、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对48558个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。对于产品提供的镜像中的riscv64架构中的所有rpm软件包，使用shell命令对20767个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。
+5、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对48558个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。对于产品提供的镜像中的riscv64架构中的所有rpm软件包，使用shell命令对21485个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。
 
 6、SBOM校验：对于产品提供的aarch64架构、x86_64架构，2种架构的iso镜像均具有SBOM文件及SBOM文件签名。
 
