@@ -30,8 +30,8 @@
 
 | 版本名称 | 测试起始时间 | 测试结束时间 |
 | -------- | ------------ | ------------ |
-|     AI-embedding-rc1     |       2025/02/24       |       2025/03/02       |
-|     AI-embedding-rc2     |       2025/03/03       |       2025/03/09       |
+|     AI-embedding-25.03 RC1     |       2025/02/24       |       2025/03/02       |
+|     AI-embedding-25.03 RC2     |       2025/03/03       |       2025/03/09       |
 
 描述特性测试的硬件环境信息
 
@@ -61,6 +61,16 @@ AI应用开发框架特性，提供数据治理工具，支持企业知识数据
 | ------ | -------- | ---- | ---- | ---- | ------ |
 | 数目   |    7      |   0   |   0   |   5   |     2   |
 | 百分比 |     100%     |   0%   |  0%   |   71%   |    29%    |
+
+| 序号 | 问题单号 | 问题简述 | 问题级别 | 
+| --- | ------- | ------ | ------- |
+| 1 | [IBOB7B](https://gitee.com/openeuler/euler-copilot-witchaind-web/issues/IBOB7B?from=project-issue) | 在web界面删除资产库时，删除的提示信息不会自动消失，需要人工点击关闭 | 次要 |
+| 2 | [IBOBH3](https://gitee.com/openeuler/euler-copilot-witchaind-web/issues/IBOBH3?from=project-issue) | 文档解析的模型选择的选项与解释显示不一致 | 次要 |
+| 3 | [IBP9Z4](https://gitee.com/openeuler/euler-copilot-witchaind-web/issues/IBP9Z4?from=project-issue) | 在文档上传时，选中本地文档后，web页面默认不勾选文档，需要手动再次勾选 | 次要 |
+| 4 | [IBP9UT](https://gitee.com/openeuler/euler-copilot-rag/issues/IBP9UT?from=project-issue) | 导入文档数量超过限制时，可以选择文件，但不能进行解析，需要手动挨个删除超出限制的文件 | 次要 |
+| 5 | [IBP9WX](https://gitee.com/openeuler/euler-copilot-rag/issues/IBP9WX?from=project-issue) | 文档解析时，不能批量更改解析配置，且在配置信息处更改配置时，只有之后新上传的文档解析生效 | 次要 |
+| 6 | [IBRKM2](https://gitee.com/openeuler/euler-copilot-rag/issues/IBRKM2?from=project-issue) | 微调推荐建议，学习率改进建议不够明确 | 不重要 |
+| 7 | [IBRKOC](https://gitee.com/openeuler/euler-copilot-rag/issues/IBRKOC?from=project-issue) | 微调推荐命令结果不能直接使用，易用性差 | 不重要 |
 
 # 4 详细测试结论
 
@@ -121,8 +131,8 @@ AI应用开发框架特性，提供数据治理工具，支持企业知识数据
 
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------- | ---------- | ------------ | ------------ |
-|     AI-embedding-rc1    |      31      |       succeed       |       5       |
-|     AI-embedding-rc2    |      16      |       succeed       |       2       |
+|     AI-embedding-25.03 RC1    |      31      |       succeed       |       5       |
+|     AI-embedding-25.03 RC2    |      16      |       succeed       |       2       |
 
 
 # 6     附件
