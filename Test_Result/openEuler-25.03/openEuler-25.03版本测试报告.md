@@ -152,45 +152,30 @@ openEuler 25.03版本交付需求列表如下，详情见[openEuler-25.03 releas
 |36| openEuler安全配置规范框架设计及核心内容构建 |  sig-security-facility  |  sig-QA  | 验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性 |
 |37| oemaker |  sig-OS-Builder  |  sig-QA  | 重点验证oemaker在构建工程中功能正常  |
 |38| openssl |  sig-security-facility  |  sig-QA  | 验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上 |
-|39| sysSentry |  sig-Base-service  |  sig-QA  | 重点关注sysCentry服务和基本命令正常，巡检项和巡检结果正常 |
-|40| 编译器(gcc/jdk)                                       | Compiler  | sig-QA  | 基于开源测试套对gcc和jdk相关功能进行验证                     |
-|41| 支持HA软件                                            | sig-Ha | sig-Ha  | 验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标 |
-|42| 支持KubeSphere                                        | sig-K8sDistro | sig-K8sDistro | 验证kubeSphere的安装部署和针对容器应用的基本自动化运维能力   |
-|43| 支持智能运维助手                                     | sig-ops| sig-QA   | 关注智能定位（异常检测、故障诊断）功能、可靠性               |
-|44| 支持k3s                                               | sig-K8sDistro| sig-K8sDistro | 验证k3s软件的部署测试过程                                    |
-|45| Kunpeng加速引擎                                       | sig-AccLib  | sig-AccLib | 验证对称加密算法SM4/AES、非对称算法RSA及秘钥协商算法DH进行加速器KAE的基本功能和性能测试 |
+|39| 社区签名体系建立                                      | sig-security-facility  | sig-security-facility        | 验证安装 openEuler 镜像后，开启安全启动、内核模块校验、IMA、RPM 校验等按机制，在系统启动和运行阶段使能相应的签名验证功能，保障系统组件的真实性和完整性 |
+|40| AI集群慢节点快速发现 Add Fail-slow Detection      | sig-desktop   |  sig-desktop |  继承已有测试能力，重点验证组内多节点/多卡空间维度对比，输出慢节点/慢卡的检测精度   |
+|41| 编译器(gcc/jdk)                                       | Compiler  | sig-QA  | 基于开源测试套对gcc和jdk相关功能进行验证                     |
+|42| 支持HA软件                                            | sig-Ha | sig-Ha  | 验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标 |
+|43| 支持KubeSphere                                        | sig-K8sDistro | sig-K8sDistro | 验证kubeSphere的安装部署和针对容器应用的基本自动化运维能力   |
+|44| 支持智能运维助手                                     | sig-ops| sig-QA   | 关注智能定位（异常检测、故障诊断）功能、可靠性               |
+|45| 支持k3s                                               | sig-K8sDistro| sig-K8sDistro | 验证k3s软件的部署测试过程                                    |
 |46| migration-tools增加图形化迁移openeuler功能            | sig-Migration| sig-Migration  | 验证migration-tools图形化迁移工具支持其他操作系统快速、平滑、稳定且安全地迁移至 openEuler 系操作系统 |
 |47| 发布Nestos-kubernetes-deployer                        | sig-K8sDistro  | sig-K8sDistro  | 验证在NestOS上部署，升级和维护kubernetes集群功能正常         |    
 |48| 发布PilotGo及其插件特性新版本                         | sig-ops  | sig-QA  | 验证PilotGo支持 topo 图的展示和智能调优能力                  |
-|49| 社区签名体系建立                                      | sig-security-facility  | sig-security-facility        | 验证安装 openEuler 镜像后，开启安全启动、内核模块校验、IMA、RPM 校验等按机制，在系统启动和运行阶段使能相应的签名验证功能，保障系统组件的真实性和完整性 |
-|50| 智能问答在线服务                                      | sig-A-Tune  | sig-QA   | 验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力 |
-|51| 增加 AO.space 项目发布                                | sig-RaspberryPi  | sig-RaspberryPi  | 通过软件包和容器镜像验证aospace系统管理程序和服务组件为个人数据提供基础网络访问、安全防护等 |
-|52| ZGCLab 发布内核安全增强补丁                           | sig-kernel   | sig-kernel   | 针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试 |
-|53| 支持RISC-V                                            | sig-RISC-V | sig-RISC-V  | 验证openEuler版本在RISV-V处理器上的可安装和可使用性          |
-|54|为 RISC-V 架构引入 Penglai TEE 支持                   | sig-RISC-V | sig-RISC-V | 验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等 |
-|55| LLVM平行宇宙计划 RISC-V Preview 版本 | sig-RISC-V | sig-RISC-V |验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动 |
-|56| 支持embedded                                          | sig-embedded  | sig-embedded  | 验证openEuler embedded的构建镜像和完成嵌入式应用开发能力     |
-|57| 支持wine9.17                                        | sig-compat-winapp  | sig-compat-winapp  |  覆盖继承功能，重点验证wine支持將 Windows API 调用翻译成为动态的 POSIX 调用，能够在操作系统上以更少的资源占用运行windows应用的能力   |
-|58| Add compatibility patches for Zhaoxin processors    |  sig-kernel |  sig-kernel |  验证集成了Zhaoxin OLK-6.6补丁的内核镜像系统正常运行以及对应补丁的功能测试   |
-|59| virtCCA机密虚机特性合入       | sig-kernel/sig-virt  | sig-kernel/sig-virt  |   继承已有测试能力，重点验证机密虚机的基本功能、安全、兼容性以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试  |
-|60| Add Intel QAT packages support    | sig-Intel-Arch  | sig-Intel-Arch  |  继承已有测试能力，重点验证intel qat相关软件包的功能和性能    |
-|61| 增加YouQu自动化测试平台支持    | sig-QA  | sig-QA  |  验证YouQu自动化测试平台部署正常，并在DDE环境上执行自动化测试    |   
-|62| 增加 utsudo 支持              | sig-memsafety  | sig-memsafety  |  继承已有测试能力，验证utsudo基础命令使用正常   |   
-|63| 增加 utshell支持              | sig-memsafety  | sig-memsafety  |  继承已有测试能力，验证utshell基础命令使用正常   |
-|64| 海光CSV3支持（支持主机创建CSV3虚拟机，支持虚拟机中运行内核）    |  sig-kernel | sig-kernel  |  重点验证CSV3虚拟机的不同启动方式，覆盖功能、稳定性、兼容性测试  |
-|65| LLVM多版本实现                      | sig-Compiler  |  sig-Compiler |  继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用。   |
-|66| 新增密码套件openHiTLS               |  sig-security-facility |  sig-security-facility |  继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试    |
-|67| AI流水线oeDeloy       | sig-cicd  | sig-QA  |  继承已有测试能力，重点验证通过oeDeploy进行kubeflow部署及k8s基础功能测试   |
-|68| 支持epkg新型软件包及包管理器             |  sig-cicd | sig-QA  |  继承已有测试能力，重点验证epkg包构建，输出epkg软件包以及包管理器实现环境创建，多版本运行等功能   |
-|69| 支持oeaware                |  sig-A-Tune | sig-QA  |  继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容  |
-|70| DevStation 开发者工作站支持                      | sig-desktop  | sig-QA  |   继承已有测试能力，重点验证安装部署启动、支持图形化编程环境，以及融合的epkg、Eulercopilot、x2openEuler的基本功能 |
-|71| AI集群慢节点快速发现 Add Fail-slow Detection      | sig-desktop   |  sig-desktop |  继承已有测试能力，重点验证组内多节点/多卡空间维度对比，输出慢节点/慢卡的检测精度   |
-|72| RPM国密签名支持                             | sig-security-facility  | sig-security-facility  |  重点验证异常参数解析&异常配置文件接口功能，验证gpg支持生成国密公私钥、生成国密证书，、国密签名和验签，rpm支持国密算法签名和验签等测试内容   |
-|73| 鲲鹏KAE加速器驱动安装包合入                  | sig-kernel  | sig-kernel  |  继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩   |
-|74| Add OpenVINO packages native support  |  sig-Intel-Arch/sig-intelligence |  sig-Intel-Arch/sig-intelligence |  继承已有测试能力，验证OpenVINO框架上sample code编译运行成功和OpenVINO的推理功能   |
-|75| Add oneAPI low level native support   | sig-Intel-Arch/sig-intelligenc  |  sig-Intel-Arch/sig-intelligenc |  继承已有测试能力，重点验证oneAPI对于sample code的编译运行，大模型基于oneAPI加速框架的正确支持以及相应软件包的功能测试   |
-|76| 版本引入ACPO包    | sig-Compiler  |  sig-Compiler |  继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容   |
-|77| 内核TCP/IP协议栈支持CAQM拥塞     |  sig-kernel |  sig-kernel |  继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能   |
+|49| 智能问答在线服务                                      | sig-A-Tune  | sig-QA   | 验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力 |
+|50| ZGCLab 发布内核安全增强补丁                           | sig-kernel   | sig-kernel   | 针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试 |
+|51| 支持RISC-V                                            | sig-RISC-V | sig-RISC-V  | 验证openEuler版本在RISV-V处理器上的可安装和可使用性          |
+|52|为 RISC-V 架构引入 Penglai TEE 支持                   | sig-RISC-V | sig-RISC-V | 验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等 |
+|53| LLVM平行宇宙计划 RISC-V Preview 版本 | sig-RISC-V | sig-RISC-V |验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动 |
+|54| Add compatibility patches for Zhaoxin processors    |  sig-kernel |  sig-kernel |  验证集成了Zhaoxin OLK-6.6补丁的内核镜像系统正常运行以及对应补丁的功能测试   |
+|55| virtCCA机密虚机特性合入       | sig-kernel/sig-virt  | sig-kernel/sig-virt  |   继承已有测试能力，重点验证机密虚机的基本功能、安全、兼容性以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试  |
+|56| 增加YouQu自动化测试平台支持    | sig-QA  | sig-QA  |  验证YouQu自动化测试平台部署正常，并在DDE环境上执行自动化测试    |   
+|57| 增加 utsudo 支持              | sig-memsafety  | sig-memsafety  |  继承已有测试能力，验证utsudo基础命令使用正常   |   
+|58| 增加 utshell支持              | sig-memsafety  | sig-memsafety  |  继承已有测试能力，验证utshell基础命令使用正常   |
+|59| LLVM多版本实现                      | sig-Compiler  |  sig-Compiler |  继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用。   |
+|60| 鲲鹏KAE加速器驱动安装包合入                  | sig-kernel  | sig-kernel  |  继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩   |
+|61| 版本引入ACPO包    | sig-Compiler  |  sig-Compiler |  继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容   |
+|62| 内核TCP/IP协议栈支持CAQM拥塞     |  sig-kernel |  sig-kernel |  继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能   |
 
 本次版本新增测试活动分工参见 **2.3 需求清单** 章节，由需求对应sig负责开发与测试
 
@@ -199,7 +184,7 @@ openEuler 25.03版本交付需求列表如下，详情见[openEuler-25.03 releas
 
    openEuler 25.03版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 2轮继承特性和新增特性合入测试 + 2轮全量测试 + 2轮回归测试（版本发布验收测试）；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项。测试也提前介入，覆盖冒烟测试、安装部署等基础测试项，部分测试内容较多的专项测试也相应提前；第2、3轮重点聚焦在已合入的新需求测试和继承特性验证; 第3、4轮全量测试开展版本交付的所有特性和各类专项测试；第5、6轮回归测通过自动化测试重点覆盖问题单较多模块的覆盖和扩展测试以及验证问题的修复；最后一轮还包括版本发布验收测试，是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
-   openEuler 25.03 版本共发现问题 559 个，有效问题 538 个，遗留问题 0个，新增问题整体呈下降趋势，风险可控，版本整体质量良好。
+   openEuler 25.03 版本共发现问题 562 个，有效问题 541 个，遗留问题 0个，新增问题整体呈下降趋势，风险可控，版本整体质量良好。
 
 
 # 4 版本详细测试结论
@@ -284,10 +269,9 @@ openEuler 25.03 版本详细测试内容包括：
 | 57 | 增加 utsudo 支持 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utsudo基础命令验证 |
 | 58 | 增加 utshell支持 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要覆盖utsudo功能测试，包括软件包安装、卸载和utshell基础命令验证  |
 | 59 | LLVM多版本实现 | <font color=green> █ </font> | <font color=green>█ </font> |     |     |   继承已有测试能力，主要验证LLVM多版本包引入对于全量版本构建没有影响、LLVM多版本包能够正常工作和使用，覆盖功能测试和可靠性测试 |
-| 60 | 新增密码套件openHiTLS  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，对openHiTLS功能特性进行测试, 包括密码算法、密码协议、证书功能等  |
-| 61 | 鲲鹏KAE加速器驱动安装包合入  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力， 验证KAE特性的加解密和压缩解压缩，主要覆盖功能测试和性能测试 |
-| 62 | 版本引入ACPO包  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证使能ACPO并构建编译器、使用提供的ACPO源代码进行模型训练以及使用训练好的模型进行推理并使用perf统计执行时间，覆盖功能测试、性能测试和可靠性测试  |
-| 63 | 内核TCP/IP协议栈支持CAQM拥塞  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证CAQM自身功能用例、标准性能测试和Postgres SQL场景下带流性能提升，覆盖功能测试、性能测试、可靠性测试 |
+| 60 | 鲲鹏KAE加速器驱动安装包合入  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力， 验证KAE特性的加解密和压缩解压缩，主要覆盖功能测试和性能测试 |
+| 61 | 版本引入ACPO包  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证使能ACPO并构建编译器、使用提供的ACPO源代码进行模型训练以及使用训练好的模型进行推理并使用perf统计执行时间，覆盖功能测试、性能测试和可靠性测试  |
+| 62 | 内核TCP/IP协议栈支持CAQM拥塞  | <font color=green> █ </font> | <font color=green></font> |     |     |   继承已有测试能力，主要验证CAQM自身功能用例、标准性能测试和Postgres SQL场景下带流性能提升，覆盖功能测试、性能测试、可靠性测试 |
 
 
 <font color=red>●</font>： 表示特性不稳定，风险高
@@ -359,17 +343,17 @@ openEuler 25.03 版本详细测试内容包括：
 
 1、病毒扫描：对于产品提供的镜像中的aarch64架构与x86_64架构rpm软件包，使用majun平台病毒扫描工具进行在线扫描分析，扫描结果中未出现病毒报警，无风险。
 
-2、安全编译选项扫描：对于产品提供的标准镜像中的aarch64架构与x86_64架构中的rpm软件包，使用majun平台二进制扫描工具扫描安全编译选项，对于baseos软件包范围内的扫描结果未实行必选安全编译选项的项进行确认(包括rpath、pie、strip)，所有问题均已修复或评估，无风险。
+2、安全编译选项扫描：对于产品提供的标准镜像中的aarch64架构与x86_64架构中的rpm软件包，使用majun平台二进制扫描工具扫描安全编译选项，对于baseos软件包范围内的扫描结果未实行必选安全编译选项的项进行确认(包括rpath、pie、strip)，发现问题12个，所有问题均已修复或评估，无风险
 
-3、开源片段引用扫描：目前对于openeler社区孵化的baseos范围内的57个软件包仓库，使用majun平台的开源片段扫描工具扫描，对于扫描结果中识别出的片段引用进行分析，所有问题均已修复或评估，无风险。
+3、开源片段引用扫描：目前对于openeler社区孵化的baseos范围内的69个软件包仓库，使用majun平台的开源片段扫描工具扫描，对于扫描结果中累计识别出的片段引用进行分析，所有问题均已修复或评估，无风险。
 
-4、开源合规license检查：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，验证了46193个rpm软件包，共有483个rpm软件包的license不在openEuler合规license准入列表中，其中，已经审阅并评审修复通过475个rpm软件包的license，合规sig评审通过。
+4、开源合规license检查：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，验证了49847个rpm软件包，共有140个rpm软件包的license不在openEuler合规license准入列表中，其中，已经审阅并评审修复通过140个rpm软件包的license，无风险。
 
-5、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对48558个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。对于产品提供的镜像中的riscv64架构中的所有rpm软件包，使用shell命令对21485个rpm软件包进行了签名和完整性校验，所有rpm包均有签名。
+5、签名和完整性校验：对于产品提供的镜像中的aarch64架构与x86_64架构中的所有rpm软件包，使用shell命令对49847个rpm软件包进行了签名完整性校验，所有rpm包均有签名且具有一致性。
 
-6、SBOM校验：对于产品提供的aarch64架构、x86_64架构，2种架构的iso镜像均具有SBOM文件及SBOM文件签名。
+6、SBOM校验：对于产品提供的aarch64架构、x86_64架构、，2种架构的iso镜像均具有SBOM文件及SBOM文件签名。
 
-整体OS安全测试较充分，主要问题均已解决，回归测试正常，整体质量良好，风险可控，详细测试内容见安全专项测试报告：
+整体OS安全测试较充分，主要问题均已解决，回归测试正常，风险可控，详细测试内容见安全专项测试报告：
 https://gitee.com/openeuler/QA/blob/bcc912af09e492a1f4e0ffc7559833628d9b0e7c/Test_Result/openEuler-25.03/openEuler-25.03%E7%89%88%E6%9C%AC%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A.md
 
 ### 4.3.2 可靠性测试
@@ -409,7 +393,7 @@ openEuler 25.03版本共发现问题562个，有效问题541个，其中遗留�
 1. DailyBuild为保障baseOS范围内软件包正常发布，60个都是构建失败问题
 2. Alpha属于开发自验证轮次，测试提前介入，通用场景问题发现87个，同时alpha要求覆盖everything软件包正常发布，构建问题93个
 3. RC1新需求未转测，除OS常规测试项安装部署、单包测试发现少量问题外保障epol仓库软件包构建成功，新增构建问题62
-4. RC2-RC3新需求开始转测，其中aops、devstation、sysboost、secGear、runtime、基础设施、编译器等特性验收发现问题90+
+4. RC2-RC3新需求开始转测，其中aops、devstation、sysboost、secGear、基础设施、编译器等特性验收发现问题90+
 5. RC4仍处特性阶段，devstation、oeaware、等特性持续测试发现问题
 6. 软件包构建和降级问题依然显著，占版本问题60%
 
@@ -417,7 +401,6 @@ openEuler 25.03版本共发现问题562个，有效问题541个，其中遗留�
 
 1. 由于软件包分支合入规范导致的软件包构建失败和降级问题已组织专题讨论并上RM汇报，落地方案正在规划中
 2. 缺少缺陷密度评估数据，开发代码量统计规则和数据在下一个版本补齐
-3. 各特性应发现阶段为需求分析/设计/开发自验占比较高，特性开发自验证不够充分，流出到测试问题较多，下个版本开发自验证需要进一步规范和保障测试充分
 
 
 #### 6.2 OS集成测试迭代版本基线
