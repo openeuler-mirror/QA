@@ -20,7 +20,7 @@
 
 # 1     特性概述
 
-devstation是openEuler首个面向开发者的开发者工作站，预安装vscodium，大幅提升开发者效率；预安装oeDeploy、epkg、eulercopilot等功能，并且将打通部署、编码、并且将打通部署、编码、编译、构建发布全流程，开发者可以方便的使用oeDeploy完成AI软件栈、云原生软件栈部署，使用oeDevPlugin插件进行一键拉取代码仓，创建社区PR、查看所提issue等操作，进一步提高社区生态的开发能力。本次新增epkg、eulercopilot、oeDeploy默认集成，支持DevKit，支持开发过程常用软件，社区集成开发环境，vscode集成开发环境，南向支持裸机部署等六大特性。
+devstation是openEuler首个面向开发者的开发者工作站，预安装vscodium，大幅提升开发者效率；预安装oeDeploy、epkg、eulercopilot等功能，并且将打通部署、编码、编译、构建发布全流程，开发者可以方便的使用oeDeploy完成AI软件栈、云原生软件栈部署，使用oeDevPlugin插件进行一键拉取代码仓，创建社区PR、查看所提issue等操作，进一步提高社区生态的开发能力。本次新增epkg、eulercopilot、oeDeploy默认集成，支持DevKit，支持开发过程常用软件，社区集成开发环境，vscode集成开发环境，南向支持裸机部署等六大特性。
 
 ## 1.1 新增特性功能
 
