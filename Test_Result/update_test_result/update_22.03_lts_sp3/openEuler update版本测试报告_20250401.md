@@ -36,7 +36,6 @@
 | 单包服务 |     4    |   4    |    0     |    0     |   <font color=green>■</font>     |
 | 单包命令 |     18    |    18     |    0     |    0    |    <font color=green>■</font>     |
 | 软件包管理|    2      |    2     |    0     |    0     |    <font color=green>■</font>     |
-| 内核 |    2319      |    2319     |    0     |    0     |    <font color=green>■</font>     |
 | updateinfo |    1     |    1     |     0    |    0     |    <font color=green>■</font>     |
 
 <font color=red>●</font>： 表示测试项不稳定，风险高
