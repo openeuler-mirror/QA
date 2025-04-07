@@ -32,6 +32,17 @@ epkg实现了epkg包构建、epkg包管理器两大特性；epkg包构建通过�
 ### x2epkg实现软件包二进制转化
 - x2epkg实现软件包二进制转化
 
+支持的二进制转换OS列表如下：
+| 支持转化的OS    | 
+| :-------:  | 
+|  openEuler  |
+|  centOS     |
+|  fedora     |
+|  opensuse   |
+|  archlinux  |
+|  debian     |
+|  ubuntu     |
+
 ### 包管理器功能扩展，提升用户易用性
 - epkg包管理器，扩展包操作
 - epkg包管理器，扩展环境管理能力
