@@ -77,6 +77,11 @@ Kuasar当前采用的是基于virtCCA架构的VM-based的方案，整体与kata 
 | 数目   |     4     |  3    |  0    |  1    |   0     |
 | 百分比 |     100%     |  75%    |  0    |  25%    |  0      |
 
+https://gitee.com/src-openeuler/kuasar/issues/IBPDC0?from=project-issue                   无法创建虚机
+https://gitee.com/src-openeuler/isula-rust-extensions/issues/IBT2L9?from=project-issue    并发关键命令报错                            
+https://gitee.com/openeuler/qemu/issues/IBTXRG?from=project-issue                         升级qemu-system-aarch64-8.2.0-29后启动机密虚机会coredump     
+https://gitee.com/src-openeuler/iSulad/issues/IBU4J5?from=project-issue                   重启服务后命名空间残留                   
+
 # 4 详细测试结论
 
 ## 4.1 功能测试
