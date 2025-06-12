@@ -72,7 +72,9 @@ NA
 | 百分比 |     100%     |   50%   |  50%    | 0     |  0      |
 
 共发现2个issue:
+
 https://gitee.com/src-openeuler/sysTrace/issues/IC9V4I?from=project-issue ： 模型数据采集错误，无法分析
+
 https://gitee.com/src-openeuler/sysTrace/issues/ICCCWX?from=project-issue ： 模型数据概率性丢失数据
 
 # 4 详细测试结论
