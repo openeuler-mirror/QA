@@ -31,9 +31,9 @@
 
 | 版本名称 | 测试起始时间 | 测试结束时间 |
 | -------- | ------------ | ------------ |
-| openEuler 24.03 LTS SP2 RC5    |    2025-05-23          |     2025-05-29         |
-| openEuler 24.03 LTS SP2 RC6    |    2025-05-30          |     2025-06-06         |
-| openEuler 24.03 LTS SP2 RC7    |    2025-06-07          |     2025-06-13         |
+| openEuler 22.03 LTS SP4 RC5    |    2025-05-23          |     2025-05-29         |
+| openEuler 22.03 LTS SP4 RC6    |    2025-05-30          |     2025-06-06         |
+| openEuler 22.03 LTS SP4 RC7    |    2025-06-07          |     2025-06-13         |
 
 描述特性测试的硬件环境信息
 
@@ -135,15 +135,16 @@ NA
 
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------- | ---------- | ------------ | ------------ |
-| openEuler 24.03 LTS SP2 RC5         |  3          |   2 success + 1 fail           |  https://gitee.com/src-openeuler/sysTrace/issues/IC9V4I            |
-| openEuler 24.03 LTS SP2 RC6        |   4         |  3 success + 1 fail               |  https://gitee.com/src-openeuler/sysTrace/issues/ICCCWX?from=project-issue            |
-| openEuler 24.03 LTS SP2 RC7    |  6         |    6 success       | |
+| openEuler 22.03 LTS SP4 RC5         |  3          |   2 success + 1 fail           |  https://gitee.com/src-openeuler/sysTrace/issues/IC9V4I            |
+| openEuler 22.03 LTS SP4 RC6        |   4         |  3 success + 1 fail               |  https://gitee.com/src-openeuler/sysTrace/issues/ICCCWX?from=project-issue            |
+| openEuler 22.03 LTS SP4 RC7    |  6         |    6 success       | |
 
 
 # 6     测试说明
 
 本次仅验证arm架构软件包
 
+内核版本基于：kernel-5.10.0-227.0.0.129.oe2203sp4.aarch64 版本验证
  
 
 
