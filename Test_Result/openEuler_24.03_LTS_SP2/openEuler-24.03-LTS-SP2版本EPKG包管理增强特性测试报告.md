@@ -169,12 +169,13 @@ epkg共执行用例72条，主要覆盖epkg包管理器支持基于require等字
 | openEuler24.03-LTS-SP2-RC3          |     11       |     succeed         |     1         |
 | openEuler24.03-LTS-SP2-RC4          |     10       |     succeed         |     3         |
 | openEuler24.03-LTS-SP2-RC5          |     51       |     succeed         |     10         |
+| openEuler24.03-LTS-SP2-RC6          |     NA(回归问题单)       |     succeed         |  0  |
 
 *数据项说明：*
 
 *测试用例数－－到本测试活动结束时，所有可用测试用例数；*
 
-*发现问题单数－－本测试活动总共发现的问题单数。*
+*发现问题单数－－本测试活动总共发现的问题单数。RC5因为软件包数据较大，安装失败的原因较多，所以问题单数量比前两轮多*
 
 ## 5.2   后续测试建议
 
