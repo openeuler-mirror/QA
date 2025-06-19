@@ -10,6 +10,7 @@
 | 日期      | 修订版本 | 修改  章节 | 修改描述 | 作者        |
 | --------- | -------- | ---------- | -------- | ----------- |
 | 2025-04-20 | 1.0.0    |            | 初稿     | linqian0322 |
+| 2025-06-17 | 1.0.1    |            | 更新     | ga_beng_cui |
 
 
 目 录
@@ -75,10 +76,26 @@ openEuler 24.03 LTS SP2版本交付[需求列表](https://gitee.com/openeuler/re
 | [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | vTKM 性能优化 | Developing| sig-kernel | [@xisme](https://gitee.com/xisme) |
 | [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入bcache的bug fix | Developing| sig-kernel | [@geshifei-linux](https://gitee.com/geshifei-linux) |
 | [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 对hygon 8h DF PMU的适配 | Developing| sig-kernel | [@liuqi_77777](https://gitee.com/liuqi_77777) |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 代码段复制patch的适配 | Developing| sig-kernel | [@qiuzhiteng](https://gitee.com/qiuzhiteng) |
 | [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入海光分支patch和memset的nt patch | Developing| sig-kernel | [@jiamei01](https://gitee.com/jiamei01) |
 | [IC3KIG](https://gitee.com/openeuler/release-management/issues/IC3KIG) | 支持 OpenStack Antelope/Wallaby 版本 | Developing | sig-openstack | [@tzing_t](https://gitee.com/tzing_t) |
-
+| [IC61GG](https://gitee.com/openeuler/release-management/issues/IC61GG?from=project-issue) | 基于通信算子的低开销高精度慢节点检测 | Developing | sig-ops | [@webankto](https://gitee.com/webankto) |
+| [IC62PY](https://gitee.com/openeuler/release-management/issues/IC62PY?from=project-issue) | 昇腾软件栈适配、组件化集成持续增强 | Developing | sig-compilitable | [@jimmy_hero](https://gitee.com/jimmy_hero) |
+| [IC61QU](https://gitee.com/openeuler/release-management/issues/IC61QU?from=project-issue) | DevStation开发流程智能化增强 | Developing | sig-intelligence | [@duan_pj](https://gitee.com/duan_pj) |
+| [IC62XT](https://gitee.com/openeuler/release-management/issues/IC62XT?from=project-issue) | 支持超大虚机规格 | Developing | virt-sig | [@JiaboFeng](https://gitee.com/JiaboFeng) |
+| [IC63XR](https://gitee.com/openeuler/release-management/issues/IC63XR?from=project-issue) | AI编译器提升搜推场景性能 | Developing | sig-compiler | [@wangding16](https://gitee.com/wangding16) |
+| [IC632C](https://gitee.com/openeuler/release-management/issues/IC632C?from=project-issue) | openEuler Copilot 支持多维度（时间）过滤分析和分权分域，推理高准确率开箱即用 | Developing | sig-intelligence | [@fromhsc](https://gitee.com/fromhsc) |
+| [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI?from=project-issue) | 嵌入式北向软件包补齐 | Developing | sig-embedded | [@hzc04](https://gitee.com/hzc04) |
+| [IC64CW](https://gitee.com/openeuler/release-management/issues/IC64CW?from=project-issue) | 毕昇JDK8支持堆内存上限扩容能力 | Developing | sig-Compiler | [@kuenking111](https://gitee.com/kuenking111) |
+| [IC63Z4](https://gitee.com/openeuler/release-management/issues/IC63Z4?from=project-issue) | UDF自动native框架提升大数据场景性能 | Developing | sig-compiler | [@wangding16](https://gitee.com/wangding16) |
+| [IC61UI](https://gitee.com/openeuler/release-management/issues/IC61UI?from=project-issue) | epkg新型软件包及包管理器功能增强 | Developing | sig-epkg | [@duan_pj](https://gitee.com/duan_pj) |
+| [IC67I8](https://gitee.com/openeuler/release-management/issues/IC67I8?from=project-issue) | FUSE passthrough支持 | Developing | sig-kernel | [@yang-erkun](https://gitee.com/yang-erkun) |
+| [IC60AT](https://gitee.com/openeuler/release-management/issues/IC60AT?from=project-issue) | oeDeploy工具易用性提升，部署能力增强 | Developing | sig-ops | [@dingjiahuichina](https://gitee.com/dingjiahuichina) |
+| [IC611D](https://gitee.com/openeuler/release-management/issues/IC611D?from=project-issue) | 基于eBPF等技术实现AI作业进程Stack Mergeing，支持典型内存故障定位 | Developing | sig-aops | [@webankto](https://gitee.com/webankto) |
+| [IC67QT](https://gitee.com/openeuler/release-management/issues/IC67QT?from=project-issue) | 虚拟化场景支持vKAE直通设备热迁移 | Developing | virt-sig | [@JiaboFeng](https://gitee.com/JiaboFeng) |
+| [IC64F9](https://gitee.com/openeuler/release-management/issues/IC64F9?from=project-issue) | secGear支持机密虚机基于UEFI启动方式的报告生成及验证 | Developing | sig-confidential-computing | [@houmingyong](https://gitee.com/houmingyong) |
+| [IC621U](https://gitee.com/openeuler/release-management/issues/IC621U?from=project-issue) | 支持可信计算远程证明服务组件 | Developing | sig-security-facility | [@yang8621](https://gitee.com/yang8621) |
+| [IC64EX](https://gitee.com/openeuler/release-management/issues/IC64EX?from=project-issue) | 支持Kuasar机密容器镜像加解密 | Developing | sig-confidential-computing/sig-Cloudnative | [@xuxuepeng](https://gitee.com/xuxuepeng) |
+| [IC8X6H](https://gitee.com/openeuler/release-management/issues/IC8X6H?from=project-issue) | 支持众核高密容器级资源隔离技术 | Developing | sig-kernel | [@yukaii](https://gitee.com/yukaii) |
 
 # 测试分层策略(*基于继承特性策略刷新*)
 
@@ -172,29 +189,46 @@ openEuler 24.03 LTS SP2版本交付[需求列表](https://gitee.com/openeuler/re
 
 ## 新增feature测试设计策略
 
-| *序号*  | *Feature*   | Arm  | X86  | RISC-V | LoongArch | PowerPC |
-| ------------| --------------------------------| ---- | ---- | ------ | --------- | ------- |
-|[IBXVC7](https://gitee.com/openeuler/release-management/issues/IBXVC7)|virtCCA机密虚机相关特性合入版本| √ | | | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | OVMF_CODE.fd支持CSV1/2/3开箱即用 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | OVMF.fd支持CSV1/2/3开箱即用 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 支持CSV1/2/3直通DCU功能开箱即用 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 新的psp/ccp device id支持 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 可信功能内核驱动剥离sev依赖 | | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 海光4号美密支持，sm4-xts,sm4-gcm支持，avx/cis指令集接口支持 | | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | vTKM 性能优化 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入bcache的bug fix |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 对hygon 8h DF PMU的适配 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 代码段复制patch的适配 |  | √| | | |
-| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入海光分支patch和memset的nt patch | | √| | | |
-| [IC3KIG](https://gitee.com/openeuler/release-management/issues/IC3KIG) | 支持 OpenStack Antelope/Wallaby 版本 | √  | √ | | | |
+| *序号*  | *Feature*   | Arm  | X86  |
+| ------------| --------------------------------| ---- | ---- |
+|[IBXVC7](https://gitee.com/openeuler/release-management/issues/IBXVC7)|virtCCA机密虚机相关特性合入版本| √ | ×|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | OVMF_CODE.fd支持CSV1/2/3开箱即用 |×  | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | OVMF.fd支持CSV1/2/3开箱即用 | × | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 支持CSV1/2/3直通DCU功能开箱即用 | × | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 新的psp/ccp device id支持 | × | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 可信功能内核驱动剥离sev依赖 | ×| √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 海光4号美密支持，sm4-xts,sm4-gcm支持，avx/cis指令集接口支持 | ×| √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | vTKM 性能优化 | × | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入bcache的bug fix | × | √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 对hygon 8h DF PMU的适配 |×| √|
+| [IBSO3U](https://gitee.com/openeuler/release-management/issues/IBSO3U?from=project-issue) | 需要合入海光分支patch和memset的nt patch |× | √|
+| [IC3KIG](https://gitee.com/openeuler/release-management/issues/IC3KIG) | 支持 OpenStack Antelope/Wallaby 版本 | √  | √ |
+| [IC61GG](https://gitee.com/openeuler/release-management/issues/IC61GG?from=project-issue) | 基于通信算子的低开销高精度慢节点检测 | √  | √ |
+| [IC62PY](https://gitee.com/openeuler/release-management/issues/IC62PY?from=project-issue) | 昇腾软件栈适配、组件化集成持续增强 | √  | √ |
+| [IC61QU](https://gitee.com/openeuler/release-management/issues/IC61QU?from=project-issue) | DevStation开发流程智能化增强 | √  | √ |
+| [IC62XT](https://gitee.com/openeuler/release-management/issues/IC62XT?from=project-issue) | 支持超大虚机规格 | √  | × |
+| [IC63XR](https://gitee.com/openeuler/release-management/issues/IC63XR?from=project-issue) | AI编译器提升搜推场景性能 | √  | × |
+| [IC632C](https://gitee.com/openeuler/release-management/issues/IC632C?from=project-issue) | openEuler Copilot 支持多维度（时间）过滤分析和分权分域，推理高准确率开箱即用 | √  | √ |
+| [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI?from=project-issue) | 嵌入式北向软件包补齐 | √  | √ |
+| [IC64CW](https://gitee.com/openeuler/release-management/issues/IC64CW?from=project-issue) | 毕昇JDK8支持堆内存上限扩容能力 | √  | × |
+| [IC63Z4](https://gitee.com/openeuler/release-management/issues/IC63Z4?from=project-issue) | UDF自动native框架提升大数据场景性能 | √  | × |
+| [IC61UI](https://gitee.com/openeuler/release-management/issues/IC61UI?from=project-issue) | epkg新型软件包及包管理器功能增强 | √  | √ |
+| [IC67I8](https://gitee.com/openeuler/release-management/issues/IC67I8?from=project-issue) | FUSE passthrough支持 | √  | √ |
+| [IC60AT](https://gitee.com/openeuler/release-management/issues/IC60AT?from=project-issue) | oeDeploy工具易用性提升，部署能力增强 | √  | √ |
+| [IC611D](https://gitee.com/openeuler/release-management/issues/IC611D?from=project-issue) | 基于eBPF等技术实现AI作业进程Stack Mergeing，支持典型内存故障定位 | √  | × |
+| [IC67QT](https://gitee.com/openeuler/release-management/issues/IC67QT?from=project-issue) | 虚拟化场景支持vKAE直通设备热迁移 | √  | × |
+| [IC64F9](https://gitee.com/openeuler/release-management/issues/IC64F9?from=project-issue) | secGear支持机密虚机基于UEFI启动方式的报告生成及验证 | √  |× |
+| [IC621U](https://gitee.com/openeuler/release-management/issues/IC621U?from=project-issue) | 支持可信计算远程证明服务组件 | √  | √ | 
+| [IC64EX](https://gitee.com/openeuler/release-management/issues/IC64EX?from=project-issue) | 支持Kuasar机密容器镜像加解密 | √  | × |
+| [IC8X6H](https://gitee.com/openeuler/release-management/issues/IC8X6H?from=project-issue) | 支持众核高密容器级资源隔离技术 | √  | √ |
 
 
 ## 继承feature/组件测试设计策略
 
 从老版本继承的功能特性的测试策略如下：
 
-| Feature/组件                                          | 策略                                                         | Arm  | X86  | RISC-V | LoongArch | PowerPC |
-| ----------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------ | --------- | ------- |
+| Feature/组件                                          | 策略                                                         | Arm  | X86  | RISC-V | 
+| ----------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------ |
 | 支持DDE桌面                                           | 继承已有测试能力，关注DDE桌面系统的安装和基本功能            | √    | √    | √      |           |         |
 | 支持UKUI桌面                                          | 继承已有测试能力，关注UKUI桌面系统的安装和基本功能           | √    | √    | √      |           |         |
 | 支持Kiran桌面                                         | 增强特性新增测试，其余继承已有测试能力，关注kiran桌面系统的安装和基本功能 | √    | √    | √      |           |         |
@@ -271,7 +305,7 @@ openEuler 24.03 LTS SP2版本交付[需求列表](https://gitee.com/openeuler/re
 | 版本引入ACPO包   |  继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容   | √    | √    |   ×   |           |         |
 | 内核TCP/IP协议栈支持CAQM拥塞     |    继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能  | √    | √    | √ |           |         |
 | openEuler安全配置基线检测工具      |    继承已有测试能力，使用Linux系统安全检查工具secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险  | √    | √    | √ |           |         |
-| 支持树莓派     |    继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试  | √    |    |  |           |         |
+| 支持树莓派     |    继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试  | √    | ×    | ×  |           |         |
 
 ## 专项测试策略
 
