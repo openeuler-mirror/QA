@@ -63,99 +63,98 @@ openEuler 24.03 LTS SP2 embedded版本交付[需求列表](https://gitee.com/ope
 | [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI) | 【软实时OS】嵌入式北向软件包补齐 | Developing | sig-embedded | [@hzc04](https://gitee.com/hzc04) | 源码 |  
 
 继承需求如下：
-| **需求**         | **开发主体** | **测试主体** | **测试分层策略**         |
-| --------------- | ----------- | ---------- | ----------------------- |
-| 基于Linux 5.10内核提供软实时能力| sig-embedded | sig-embedded | 继承已有测试能力，通过cyclictest进行测试软实时能力 |
-| 实现soc内实时和非实时多平面混合部署 | sig-embedded | sig-embedded | 继承已有测试能力，启动mica（bare-metal）  |
-| 开放基于Yocto构建包的小型化定制裁剪能力  | sig-embedded | sig-embedded | 继承已有测试能力，使用yocto构建出不同系统 |
-| 基于社区10.3版本gcc提供ARM版本交叉编译工具链  | sig-embedded | sig-embedded | 继承已有测试能力，使用交叉编译工具链进行测试用例编译 |
-| 支持树莓派4B作为嵌入式通用硬件 | sig-embedded | sig-embedded | 继承已有测试能力，使用树莓派进行测试 |
-| 实时非实时系统混合部署支持树莓派 | sig-embedded | sig-embedded | 继承已有测试能力，在树莓派上启动树莓派上启动mica（bare-metal） |
-| 硬实时uniProton支持南向开发板  | sig-embedded | sig-embedded | 继承已有测试能力，可编译对应支持的uniproton镜像 |
-| 硬实时uniProton支持混合部署  | sig-embedded | sig-embedded | 继承已有测试能力，可编译对应支持的uniproton镜像，并在树莓派启动对应混合部署 |
-| 硬实时uniProton支持POSIX接口 | sig-embedded | sig-embedded | 继承已有测试能力，测试通过适配开源posix测试套测试支持的posix接口 |
-| 【特性回合】支持外设分区管理|  sig-embedded | sig-embedded | 继承已有测试能力，测试分区管理功能，配置好后，启动linux检查分配给硬实时的硬件是否存在 |  
-| 【特性回合】【软实时OS】支持1款X86工控芯片|  sig-embedded | sig-embedded | 继承已有测试能力，编译x86镜像，安装到对应硬件，在硬件上进行基础测试 | 
-| 【特性回合】【软实时OS】引入Meta-ROS|  sig-embedded | sig-embedded | 继承已有测试能力，测试ROS基础demo | 
-| 【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）|  sig-embedded | sig-embedded | 继承已有测试能力，通过posix suite相关接口测试 |
-| 【特性回合】【软实时OS】支持isula镜像  |  sig-embedded | sig-embedded | 继承已有测试能力，测试isula镜像启动，拉起后容器可正常使用 |
-| 【特性回合】【软实时OS】支持RK3588  | sig-embedded | sig-embedded |  继承已有测试能力，构建出RK3588镜像 | 
-| 【特性回合】【软实时OS】支持全志A40i  |  sig-embedded | sig-embedded | 继承已有测试能力，构建出全志A40i镜像 | 
-| 边缘控制图形和轻量桌面能力支持  |  sig-embedded | sig-embedded | 继承已有测试能力，测试图形化能力正常启动 |
-| MICA框架-混合部署可靠性增强  |  sig-embedded | sig-embedded | 继承已有测试能力，重新拉起MICA后可以恢复通信链路 |
-| MICA框架-支持多实例部署  |  sig-embedded | sig-embedded | 继承已有测试能力， 测试通过MICA部署多个RTOS并正常启动和通信 |
-| MICA框架-易用性完善  | sig-embedded | sig-embedded | 继承已有测试能力，通过MICA命令行进行测试，包括创建、启动、停止RTOS等命令 |
-| 支持嵌入式极简镜像（iSulad） | sig-embedded | sig-embedded | 继承已有测试能力，拉起容器并执行yum等嵌入式没有提供的功能 |
-| Linux双版本内核支持  | sig-embedded | sig-embedded | 继承已有测试能力，构建不同内核的镜像、测试基础用例 |
-| 混合部署下GDB-stub功能增强  | sig-embedded | sig-embedded | 继承已有测试能力，通过GDB使用r、watch、bt、ctrl+c这些功能对UniProton进行调试 |
-| PLC组态运行时环境forte支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试混合部署场景下forte正常初始化，并加载fboot文件 |
-| Modbus工业通信协议支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试modbus与从站建立连接和数据读写 |
-| EtherCAT工业控制协议支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试EtherCAT能否正常启动以及命令行运行 |
-| IP协议栈支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试在混合部署下以及在硬直通场景下，可以正常通信 |
-|【硬实时OS】【UniProton】混合部署系统PCIe中断支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 |
-|【硬实时OS】【UniProton】混合部署系统PCIe驱动接口支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 |
-|【硬实时OS】【UniProton】混合部署系统PCIe架构DMA接口支持  | sig-embedded | sig-embedded | 继承已有测试能力，测试PCIe通过DMA对设备进行读写 |
-|【硬实时OS】【UniProton】实现PCIe驱动框架  | sig-embedded | sig-embedded | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 |
-| 支持基于混合部署场景的shell  | sig-embedded | sig-embedded | 继承已有测试能力，测试混合部署下shell运行结果正常，包括help、cpup等命令 |
-| 支持arm64的SMP  | sig-embedded | sig-embedded | 继承已有测试能力，测试混合部署场景下正常启动多核与单核模式，多核与多核模式下的UniProton |
-| 支持多实例部署  | sig-embedded | sig-embedded | 继承已有测试能力，测试通过MICA部署多个RTOS并正常启动和通信 |
-|【硬实时OS】【UniProton】支持实时性能数据测试  | sig-embedded | sig-embedded | 继承已有测试能力，xrhealstone测试用例在86和aarch64可以通过 |
-|【软实时OS】边缘控制图形和轻量桌面能力支持补充 | sig-embedded | sig-embedded | 继承已有测试能力，测试图形化镜像构建并正常启动网页浏览器 |
-|【软实时OS】KP920镜像支持 | sig-embedded | sig-embedded | 继承已有测试能力，构建KP920镜像、测试基础用例 |
-|【硬实时OS】【UniProton】UniProton支持KP920的SPI功能 | sig-embedded | sig-embedded | 继承已有测试能力，测试UniProton中KP920平台SPI功能正常运行 |
-|【硬实时OS】【UniProton】UniProton支持标准接口和组件 |  sig-embedded | sig-embedded| 继承已有测试能力，UniProton相关接口测试用例正常运行 |
+| **需求**         | **开发主体** | **测试主体** |
+| --------------- | ----------- | ---------- |
+|【软实时OS】基于Linux 5.10内核提供软实时能力| sig-embedded | sig-embedded |
+|【软实时OS】开放基于Yocto构建包的小型化定制裁剪能力  | sig-embedded | sig-embedded |
+|【软实时OS】基于社区10.3版本gcc提供ARM版本交叉编译工具链  | sig-embedded | sig-embedded |
+|【软实时OS】支持树莓派4B作为嵌入式通用硬件 | sig-embedded | sig-embedded |
+|【软实时OS】实时非实时系统混合部署支持树莓派 | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持南向开发板  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持混合部署  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持POSIX接口 | sig-embedded | sig-embedded |
+|【软实时OS】支持外设分区管理|  sig-embedded | sig-embedded |
+|【软实时OS】支持1款X86工控芯片|  sig-embedded | sig-embedded |
+|【软实时OS】支持树莓派蓝牙 | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）|  sig-embedded | sig-embedded |
+|【软实时OS】支持isula镜像 |  sig-embedded | sig-embedded |
+|【软实时OS】支持RK3588  | sig-embedded | sig-embedded |
+|【软实时OS】支持全志A40i |  sig-embedded | sig-embedded |
+|【软实时OS】边缘控制图形和轻量桌面能力支持  |  sig-embedded | sig-embedded |
+|【软实时OS】MICA框架-混合部署可靠性增强  |  sig-embedded | sig-embedded |
+|【软实时OS】MICA框架-支持多实例部署  |  sig-embedded | sig-embedded |
+|【软实时OS】MICA框架-易用性完善  | sig-embedded | sig-embedded |
+|【软实时OS】支持嵌入式极简镜像（iSulad） | sig-embedded | sig-embedded |
+|【软实时OS】Linux双版本内核支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】混合部署下GDB-stub功能增强  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】PLC组态运行时环境forte支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】Modbus工业通信协议支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】EtherCAT工业控制协议支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】IP协议栈支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】混合部署系统PCIe中断支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】混合部署系统PCIe驱动接口支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】混合部署系统PCIe架构DMA接口支持  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】实现PCIe驱动框架  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持基于混合部署场景的shell  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持arm64的SMP  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持多实例部署  | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持实时性能数据测试  | sig-embedded | sig-embedded |
+|【软实时OS】LLVM镜像构建支持  | sig-embedded | sig-embedded |
+|【软实时OS】边缘控制图形和轻量桌面能力支持补充 | sig-embedded | sig-embedded |
+|【软实时OS】KP920镜像支持 | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持KP920的SPI功能 | sig-embedded | sig-embedded |
+|【硬实时OS】【UniProton】支持标准接口和组件 |  sig-embedded | sig-embedded|
 
 
 本次版本测试活动分工如下：
 
-| **需求**                        | **开发主体**          | **测试主体**      | **测试分层策略**                                             |   测试镜像  |
-| ------------------------------- | --------------------- | ----------------- | ------------------------------------------------------------ | -------------|
-| [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI) 【软实时OS】嵌入式北向软件包补齐 | sig-embedded | sig-embedded | 相关北向中间件正常启动 |  kp920  |
-
+| Feature/组件 |  策略                           |  测试镜像  |
+| ----------- | ------------------------------- | ------ |
+| [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI) 【软实时OS】嵌入式北向软件包补齐 | 相关北向中间件正常启动 |  kp920镜像 |
 
 
 继承需求测试策略如下:
 | Feature/组件 |  策略                           |  测试镜像  |
 | ----------- | ------------------------------- | ------ |
-| 基于Linux 5.10内核提供软实时能力 | 继承已有测试能力，通过cyclictest进行测试软实时能力 | 所有5.10内核镜像 |
-| 实现soc内实时和非实时多平面混合部署 | 继承已有测试能力，在qemu上启动mica（bare-metal）  | mcs相关镜像 |
-| 开放基于Yocto构建包的小型化定制裁剪能力  | 继承已有测试能力，使用yocto构建出不同系统 | CI构建 |
-| 基于社区10.3版本gcc提供ARM版本交叉编译工具链  | 继承已有测试能力，使用交叉编译工具链进行测试用例编译 | CI构建SDK |
-| 支持树莓派4B作为嵌入式通用硬件 | 继承已有测试能力，使用树莓派进行测试 | CI构建SDK |
-| 实时非实时系统混合部署支持树莓派 | 继承已有测试能力，在树莓派上启动树莓派上启动mica（bare-metal） | mcs相关镜像 |
-| 硬实时uniProton支持南向开发板  | 继承已有测试能力，可编译对应支持的uniproton镜像 | 硬实时 |
-| 硬实时uniProton支持混合部署  | 继承已有测试能力，可编译对应支持的uniproton镜像，并在树莓派启动对应混合部署 | mcs相关镜像 |
-| 硬实时uniProton支持POSIX接口 | 继承已有测试能力，测试通过适配开源posix测试套测试支持的posix接口 | 硬实时 |
-|【特性回合】支持外设分区管理|  继承已有测试能力，测试分区管理功能，配置好后，启动linux检查分配给硬实时的硬件是否存在 | mcs相关镜像 | 
-|【特性回合】【软实时OS】支持1款X86工控芯片|  继承已有测试能力，编译x86镜像，安装到对应硬件，在硬件上进行基础测试 | x86镜像 |
-|【特性回合】【软实时OS】引入Meta-ROS|  继承已有测试能力，测试ROS基础demo | ros相关镜像 |
-|【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）|  继承已有测试能力，通过posix suite相关接口测试 | 硬实时 |
-|【特性回合】【软实时OS】支持isula镜像  |  继承已有测试能力，测试isula镜像启动，拉起后容器可正常使用 | isula相关镜像 |
-|【特性回合】【软实时OS】支持RK3588  |  继承已有测试能力，构建出RK3588镜像 | CI构建 |
-|【特性回合】【软实时OS】支持全志A40i  |  继承已有测试能力，构建出全志A40i镜像 | CI构建 |
-| 边缘控制图形和轻量桌面能力支持  |  继承已有测试能力，测试图形化能力正常启动 | hmi相关镜像 |
-| MICA框架-混合部署可靠性增强  |  继承已有测试能力，重新拉起MICA后可以恢复通信链路 | mcs相关镜像 |
-| MICA框架-支持多实例部署  |  继承已有测试能力， 测试通过MICA部署多个RTOS并正常启动和通信 | mcs相关镜像 |
-| MICA框架-易用性完善  | 继承已有测试能力，通过MICA命令行进行测试，包括创建、启动、停止RTOS等命令 | mcs相关镜像 |
-| 支持嵌入式极简镜像（iSulad） | 继承已有测试能力，拉起容器并执行yum等嵌入式没有提供的功能 | isula相关镜像 |
-| Linux双版本内核支持  | 继承已有测试能力，构建不同内核的镜像、测试基础用例 | CI构建 |
-| 混合部署下GDB-stub功能增强  | 继承已有测试能力，通过GDB使用r、watch、bt、ctrl+c这些功能对UniProton进行调试 | 硬实时 |
-| PLC组态运行时环境forte支持  | 继承已有测试能力，测试混合部署场景下forte正常初始化，并加载fboot文件 | 硬实时 |
-| Modbus工业通信协议支持  | 继承已有测试能力，测试modbus与从站建立连接和数据读写 | 硬实时 |
-| EtherCAT工业控制协议支持  | 继承已有测试能力，测试EtherCAT能否正常启动以及命令行运行 | 硬实时 |
-| IP协议栈支持  | 继承已有测试能力，测试在混合部署下以及在硬直通场景下，可以正常通信 | 硬实时 |
-| 混合部署系统PCIe中断支持  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
-| 混合部署系统PCIe驱动接口支持  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
-| 混合部署系统PCIe架构DMA接口支持  | 继承已有测试能力，测试PCIe通过DMA对设备进行读写 | 硬实时 |
-| 实现PCIe驱动框架  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
-| 支持基于混合部署场景的shell  | 继承已有测试能力，测试混合部署下shell运行结果正常，包括help、cpup等命令 | 硬实时 |
-| 支持arm64的SMP  | 继承已有测试能力，测试混合部署场景下正常启动多核与单核模式，多核与多核模式下的UniProton | 硬实时 |
-| 支持多实例部署  | 继承已有测试能力，测试通过MICA部署多个RTOS并正常启动和通信 | 硬实时 |
-| 支持实时性能数据测试  | 继承已有测试能力，xrhealstone测试用例在86和aarch64可以通过 | rt相关镜像 |
-|【软实时OS】边缘控制图形和轻量桌面能力支持补充 | 继承已有测试能力，测试图形化镜像构建并正常启动网页浏览器 | hmi相关镜像 |
-|【软实时OS】KP920镜像支持 | 继承已有测试能力，构建KP920镜像、测试基础用例 | kp920相关镜像 |
-|【硬实时OS】【UniProton】UniProton支持KP920的SPI功能 | 继承已有测试能力，测试UniProton中KP920平台SPI功能正常运行 | 硬实时 |
-|【硬实时OS】【UniProton】UniProton支持标准接口和组件 | 继承已有测试能力，UniProton相关接口测试用例正常运行 | 硬实时 |
+|【软实时OS】基于Linux 5.10内核提供软实时能力 | 继承已有测试能力，通过cyclictest进行测试软实时能力 | 所有5.10内核镜像 |
+|【软实时OS】开放基于Yocto构建包的小型化定制裁剪能力  | 继承已有测试能力，使用yocto构建出不同系统 | yocto构建的镜像 |
+|【软实时OS】基于社区10.3版本gcc提供ARM版本交叉编译工具链  | 继承已有测试能力，使用交叉编译工具链进行测试用例编译 | 构建出的SDK |
+|【软实时OS】支持树莓派4B作为嵌入式通用硬件 | 继承已有测试能力，构建树莓派镜像并通过UEFI等方式启动 | 树莓派 |
+|【软实时OS】实时非实时系统混合部署支持树莓派 | 继承已有测试能力，在树莓派上启动树莓派上启动mica（bare-metal） | 树莓派 |
+|【硬实时OS】【UniProton】支持南向开发板  | 继承已有测试能力，可编译对应支持的uniproton镜像 | 硬实时 |
+|【硬实时OS】【UniProton】支持混合部署  | 继承已有测试能力，可编译对应支持的uniproton镜像，并在启动对应混合部署 | kp920镜像 |
+|【硬实时OS】【UniProton】支持POSIX接口 | 继承已有测试能力，测试通过适配开源posix测试套测试支持的posix接口 | 硬实时 |
+|【软实时OS】支持外设分区管理 | 继承已有测试能力，测试分区管理功能，配置好后，启动linux检查分配给硬实时的硬件是否存在 | 树莓派 | 
+|【软实时OS】【软实时OS】支持1款X86工控芯片|  继承已有测试能力，编译x86镜像，安装到对应硬件，在硬件上进行基础测试 | x86镜像 |
+|【软实时OS】支持树莓派蓝牙| 继承已有测试能力，启动系统后可查看到蓝牙设备，并被其他蓝牙设备发现| 树莓派 |
+|【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）| 继承已有测试能力，通过posix suite相关接口测试 | 硬实时 |
+|【软实时OS】支持isula镜像  |  继承已有测试能力，测试isula镜像启动，拉起后容器可正常使用 | kp920镜像 |
+|【软实时OS】支持RK3588  |  继承已有测试能力，构建出RK3588镜像 | RK3588镜像 |
+|【软实时OS】支持全志A40i  |  继承已有测试能力，构建出全志A40i镜像 | 全志A40i镜像 |
+|【软实时OS】边缘控制图形和轻量桌面能力支持  |  继承已有测试能力，测试图形化能力正常启动 | 树莓派 |
+|【软实时OS】MICA框架-混合部署可靠性增强  |  继承已有测试能力，重新拉起MICA后可以恢复通信链路 | kp920镜像 |
+|【软实时OS】MICA框架-支持多实例部署  |  继承已有测试能力， 测试通过MICA部署多个RTOS并正常启动和通信 | kp920镜像 |
+|【软实时OS】MICA框架-易用性完善  | 继承已有测试能力，通过MICA命令行进行测试，包括创建、启动、停止RTOS等命令 | kp920镜像 |
+|【软实时OS】支持嵌入式极简镜像（iSulad） | 继承已有测试能力，拉起容器并执行yum等嵌入式没有提供的功能 | kp920镜像 |
+|【软实时OS】Linux双版本内核支持  | 继承已有测试能力，构建不同内核的镜像、测试基础用例 | kp920镜像 |
+|【硬实时OS】【UniProton】混合部署下GDB-stub功能增强  | 继承已有测试能力，通过GDB使用r、watch、bt、ctrl+c这些功能对UniProton进行调试 | 硬实时 |
+|【硬实时OS】【UniProton】PLC组态运行时环境forte支持  | 继承已有测试能力，测试混合部署场景下forte正常初始化，并加载fboot文件 | 硬实时 |
+|【硬实时OS】【UniProton】Modbus工业通信协议支持  | 继承已有测试能力，测试modbus与从站建立连接和数据读写 | 硬实时 |
+|【硬实时OS】【UniProton】EtherCAT工业控制协议支持  | 继承已有测试能力，测试EtherCAT能否正常启动以及命令行运行 | 硬实时 |
+|【硬实时OS】【UniProton】IP协议栈支持  | 继承已有测试能力，测试在混合部署下以及在硬直通场景下，可以正常通信 | 硬实时 |
+|【硬实时OS】【UniProton】混合部署系统PCIe中断支持  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
+|【硬实时OS】【UniProton】混合部署系统PCIe驱动接口支持  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
+|【硬实时OS】【UniProton】混合部署系统PCIe架构DMA接口支持  | 继承已有测试能力，测试PCIe通过DMA对设备进行读写 | 硬实时 |
+|【硬实时OS】【UniProton】实现PCIe驱动框架  | 继承已有测试能力，测试驱动程序对设备的读写配置，中断的触发和响应 | 硬实时 |
+|【硬实时OS】【UniProton】支持基于混合部署场景的shell  | 继承已有测试能力，测试混合部署下shell运行结果正常，包括help、cpup等命令 | 硬实时 |
+|【硬实时OS】【UniProton】支持arm64的SMP  | 继承已有测试能力，测试混合部署场景下正常启动多核与单核模式，多核与多核模式下的UniProton | 硬实时 |
+|【硬实时OS】【UniProton】支持多实例部署  | 继承已有测试能力，测试通过MICA部署多个RTOS并正常启动和通信 | 硬实时 |
+|【硬实时OS】【UniProton】支持实时性能数据测试  | 继承已有测试能力，xrhealstone测试用例在86和aarch64可以通过 | 硬实时 |
+|【软实时OS】LLVM镜像构建支持 | 继承已有测试能力，构建出LLVM镜像 | llvm相关镜像 |
+|【软实时OS】边缘控制图形和轻量桌面能力支持补充 | 继承已有测试能力，测试图形化镜像构建并正常启动网页浏览器 | 树莓派 |
+|【软实时OS】KP920镜像支持 | 继承已有测试能力，构建KP920镜像、测试基础用例 | kp920镜像 |
+|【硬实时OS】【UniProton】支持KP920的SPI功能 | 继承已有测试能力，测试UniProton中KP920平台SPI功能正常运行 | 硬实时 |
+|【硬实时OS】【UniProton】支持标准接口和组件 | 继承已有测试能力，UniProton相关接口测试用例正常运行 | 硬实时 |
 
 # 3 版本概要测试结论
 
@@ -182,47 +181,47 @@ openEuler 24.03 LTS SP2 embedded版本详细测试内容包括：
 
 <!-- 对产品所有继承特性进行评价，用表格形式评价，包括特性列表（与特性清单保持一致），验证质量评估 -->
 
-| 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
-| ---- | ----------------------------------------- | :-------------------------: | ---------------------------------------------------------------------------------------------------------------------- |
-| 1 | 基于Linux 5.10内核提供软实时能力 | <font color=green>█</font> | |
-| 2 | 实现soc内实时和非实时多平面混合部署 | <font color=green>█</font> |  |
-| 3 | 开放基于Yocto构建包的小型化定制裁剪能力  | <font color=green>█</font> | |
-| 4 | 基于社区10.3版本gcc提供ARM版本交叉编译工具链  | <font color=green>█</font> | |
-| 5 | 支持树莓派4B作为嵌入式通用硬件 | <font color=green>█</font> | |
-| 6 | 实时非实时系统混合部署支持树莓派 | <font color=green>█</font> | |
-| 7 | 硬实时uniProton支持南向开发板  | <font color=green>█</font> | |
-| 8 | 硬实时uniProton支持混合部署  | <font color=green>█</font> | |
-| 9 | 硬实时uniProton支持POSIX接口 | <font color=green>█</font> | |
-| 10 |【特性回合】支持外设分区管理|  <font color=green>█</font> | |  
-| 11 |【特性回合】【软实时OS】支持1款X86工控芯片 | <font color=green>█</font> | | 
-| 12 |【特性回合】【软实时OS】引入Meta-ROS | <font color=green>█</font> | | 
-| 13 |【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）| <font color=green>█</font> | |
-| 14 |【特性回合】【软实时OS】支持isula镜像  | <font color=green>█</font> | |
-| 15 |【特性回合】【软实时OS】支持RK3588  | <font color=green>█</font> | | 
-| 16 |【特性回合】【软实时OS】支持全志A40i  | <font color=green>█</font> | | 
-| 17 | 边缘控制图形和轻量桌面能力支持  | <font color=green>█</font> | |
-| 18 | MICA框架-混合部署可靠性增强  | <font color=green>█</font> | |
-| 19 | MICA框架-支持多实例部署  | <font color=green>█</font> | |
-| 20 | MICA框架-易用性完善  | <font color=green>█</font> | |
-| 21 | 支持嵌入式极简镜像（iSulad） |  <font color=green>█</font> | |
-| 22 | Linux双版本内核支持  |  <font color=green>█</font> | |
-| 23 | 混合部署下GDB-stub功能增强  | <font color=green>█</font> | |
-| 24 | PLC组态运行时环境forte支持  | <font color=green>█</font> | |
-| 25 | Modbus工业通信协议支持  | <font color=green>█</font> | |
-| 26 | EtherCAT工业控制协议支持  | <font color=green>█</font> | |
-| 27 | IP协议栈支持  | <font color=green>█</font> | |
-| 28 | 混合部署系统PCIe中断支持  | <font color=green>█</font> | |
-| 29 | 混合部署系统PCIe驱动接口支持  | <font color=green>█</font> | |
-| 30 | 混合部署系统PCIe架构DMA接口支持  | <font color=green>█</font> | |
-| 31 | 实现PCIe驱动框架  | <font color=green>█</font> | |
-| 32 | 支持基于混合部署场景的shell  | <font color=green>█</font> | |
-| 33 | 支持arm64的SMP  | <font color=green>█</font> | |
-| 34 | 支持多实例部署  | <font color=green>█</font> | |
-| 35 | 支持实时性能数据测试  | <font color=green>█</font> | |
-| 36 |【软实时OS】边缘控制图形和轻量桌面能力支持补充 | <font color=green>█</font> | |
-| 37 |【软实时OS】KP920镜像支持 | <font color=green>█</font> | |
-| 38 |【硬实时OS】【UniProton】UniProton支持KP920的SPI功能 | <font color=green>█</font> | |
-| 39 |【硬实时OS】【UniProton】UniProton支持标准接口和组件 | <font color=green>█</font> | |
+| 序号 | 组件/特性名称 | 特性质量评估 | 测试用例数 | 测试进度 |
+| ---- | ----------------------------------------- | :-------------------------: | ---------- | ---------- |
+| 1 |【软实时OS】基于Linux 5.10内核提供软实时能力 | <font color=green>█</font> | 1 | 100% |
+| 2 |【软实时OS】开放基于Yocto构建包的小型化定制裁剪能力  | <font color=green>█</font> | 19 | 100% |
+| 3 |【软实时OS】基于社区10.3版本gcc提供ARM版本交叉编译工具链  | <font color=green>█</font> | 3 | 100% |
+| 4 |【软实时OS】支持树莓派4B作为嵌入式通用硬件 | <font color=green>█</font> | 4 | 100% |
+| 5 |【软实时OS】实时非实时系统混合部署支持树莓派 | <font color=green>█</font> | 5 | 100% |
+| 6 |【软实时OS】硬实时uniProton支持南向开发板  | <font color=green>█</font> | 9 | 100% |
+| 7 |【软实时OS】硬实时uniProton支持混合部署  | <font color=green>█</font> | 5 | 100% |
+| 8 |【软实时OS】硬实时uniProton支持POSIX接口 | <font color=green>█</font> | 349 | 100% |
+| 9 |【软实时OS】支持外设分区管理|  <font color=green>█</font> | 2 | 100% |
+| 10 |【软实时OS】支持1款X86工控芯片 | <font color=green>█</font> | 1 | 100%  |
+| 11 |【软实时OS】支持树莓派蓝牙| <font color=green>█</font> | 2 | 100% |
+| 12 |【硬实时OS】【UniProton】【基础中间件移植】移植完成MUSL（包括文件系统与网络框架）| <font color=green>█</font> | 349 | 100% |
+| 13 |【软实时OS】支持isula镜像  | <font color=green>█</font> | 3 | 100% |
+| 14 |【软实时OS】支持RK3588  | <font color=green>█</font> | 1 | 100% |
+| 15 |【软实时OS】支持全志A40i  | <font color=green>█</font> | 1 | 100% |
+| 16 |【软实时OS】边缘控制图形和轻量桌面能力支持  | <font color=green>█</font> | 1 | 100% |
+| 17 |【软实时OS】MICA框架-混合部署可靠性增强  | <font color=green>█</font> | 5 | 100% |
+| 18 |【软实时OS】MICA框架-支持多实例部署  | <font color=green>█</font> | 5 | 100% |
+| 19 |【软实时OS】MICA框架-易用性完善  | <font color=green>█</font> | 5 | 100% |
+| 20 |【软实时OS】支持嵌入式极简镜像（iSulad） |  <font color=green>█</font> | 2 | 100% |
+| 21 |【软实时OS】Linux双版本内核支持  |  <font color=green>█</font> | 206 | 100% |
+| 22 |【硬实时OS】【UniProton】混合部署下GDB-stub功能增强  | <font color=green>█</font> | 5 | 100% |
+| 23 |【硬实时OS】【UniProton】PLC组态运行时环境forte支持  | <font color=green>█</font> | 1 | 100% |
+| 24 |【硬实时OS】【UniProton】Modbus工业通信协议支持  | <font color=green>█</font> | 9 | 100% |
+| 25 |【硬实时OS】【UniProton】EtherCAT工业控制协议支持  | <font color=green>█</font> | 3 | 100% |
+| 26 |【硬实时OS】【UniProton】IP协议栈支持  | <font color=green>█</font> | 9 | 100% |
+| 27 |【硬实时OS】【UniProton】混合部署系统PCIe中断支持  | <font color=green>█</font> | 1 | 100% |
+| 28 |【硬实时OS】【UniProton】混合部署系统PCIe驱动接口支持  | <font color=green>█</font> | 1 | 100% |
+| 29 |【硬实时OS】【UniProton】混合部署系统PCIe架构DMA接口支持  | <font color=green>█</font> | 1 | 100% |
+| 30 |【硬实时OS】【UniProton】实现PCIe驱动框架  | <font color=green>█</font> | 1 | 100%|
+| 31 |【硬实时OS】【UniProton】支持基于混合部署场景的shell  | <font color=green>█</font> | 3 | 100% |
+| 32 |【硬实时OS】【UniProton】支持arm64的SMP  | <font color=green>█</font> | 1 | 100% |
+| 33 |【硬实时OS】【UniProton】支持多实例部署  | <font color=green>█</font> | 5 | 100% |
+| 34 |【硬实时OS】【UniProton】支持实时性能数据测试  | <font color=green>█</font> | 6 | 100% |
+| 35 |【软实时OS】LLVM镜像构建支持  | <font color=green>█</font> | 1 | 100% |
+| 36 |【软实时OS】边缘控制图形和轻量桌面能力支持补充 | <font color=green>█</font> | 4 | 100% |
+| 37 |【软实时OS】KP920镜像支持 | <font color=green>█</font> | 103 | 100% |
+| 38 |【硬实时OS】【UniProton】支持KP920的SPI功能 | <font color=green>█</font> | 1 | 100% |
+| 39 |【硬实时OS】【UniProton】支持标准接口和组件 | <font color=green>█</font> | 1 | 100% |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -234,9 +233,9 @@ openEuler 24.03 LTS SP2 embedded版本详细测试内容包括：
 
 建议以表格的形式汇总新特性测试执行情况及遗留问题单情况的评估,给出特性质量评估结论。
 
-| **序号** | **特性名称** | **测试覆盖情况** | **约束依赖说明** | **遗留问题单** | **质量评估** | **备注<img width=50/>** |
-| -------- | ---------------------------- | ------------------------------------------------------------ | ---------------- | -------------- | -------------------------- | ------------------------------------------------------------ |
-| 1 | [IC5ZTI](https://gitee.com/openeuler/release-management/issues/IC5ZTI) |【软实时OS】嵌入式北向软件包补齐  | 使用KP920镜像 |  |<font color=green>█</font> | |
+| 序号 | 组件/特性名称 | 特性质量评估 | 测试用例数 | 测试进度 |
+| ---- | ----------------------------------------- | :-------------------------: | ---------- | ---------- |
+| 1 |【软实时OS】嵌入式北向软件包补齐  | <font color=green>█</font> | 84 | 100% |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
