@@ -226,8 +226,8 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 
 对产品所有继承特性进行评价，用表格形式评价，包括特性列表（与特性清单保持一致），验证质量评估
 
-| 序号 | 组件/特性名称                     | **aarch64/x86_64质量评估**  |**risc-v质量评估**  |   **loongarch质量评估**    |  **powerpc质量评估**    | 备注                                                         |
-| ---- | ----------------------- | :-------: | :--------: | :--------: | :-------: | ------------------------------------------------------------ |
+| 序号 | 组件/特性名称                     | **aarch64/x86_64质量评估**  |**risc-v质量评估**  |   **loongarch质量评估**     | 备注                                                         |
+| ---- | ----------------------- | :-------: | :--------: | :--------:  | ------------------------------------------------------------ |
 | 1 | 支持DDE桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注DDE桌面系统的安装和基本功能    |
 | 2 | 支持UKUI桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注UKUI桌面系统的安装和基本功能    |
 | 3 | 支持Kiran桌面  | <font color=green>█</font> | <font color=green><font color=green>█</font></font> |     |     | 继承已有测试能力，关注kiran桌面系统的安装和基本功能    |
@@ -278,7 +278,7 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 | 48 | 社区签名体系建立  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证安装 openEuler 镜像后，开启安全启动、内核模块校验、IMA、RPM 校验等按机制，在系统启动和运行阶段使能相应的签名验证功能，保障系统组件的真实性和完整性   |
 | 49 | 智能问答在线服务 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力   |
 | 50 | 支持GreatSQL | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证GreatSQL源码编译、RPM安装、二进制包安装、主要功能及性能、稳定性   |
-| 51 | ZGCLab发布内核安全增强补丁| <font color=green> </font> | <font color=green></font> |     |     |  继承已有测试能力，针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试   |
+| 51 | ZGCLab发布内核安全增强补丁| <font color=green> 未提交测试报告</font> | <font color=green></font> |     |     |  继承已有测试能力，针对 OLK-6.6提交的内核安全增强补丁，重点关注HAOC特性相关的内核功能、性能测试   |
 | 52 | 支持RISC-V | <font color=green> </font> | <font color=green>█</font> |     |     | 继承已有测试能力，关注openEuler版本在RISV-V处理器上的可安装和可使用性     |
 | 53 | LLVM平行宇宙计划 RISC-V Preview 版本  | <font color=green>  </font> | 预计7月中完成测试 |     |     |   继承已有测试能力，验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动  |
 | 54 | 为RISC-V架构引入Penglai TEE 支持  | <font color=green>   </font> | <font color=green>█</font> |     |     |   继承已有测试能力，验证openEuler操作系统在RISC-V 架构上对可扩展 TEE的支持，使能高安全性要求的应用场景：如安全通信、密码鉴权等  |
@@ -288,14 +288,14 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 | 58 | 增加 utshell支持  | <font color=green> █  </font> | <font color=green>█</font> |     | | 继承已有测试能力，验证utshell基础命令使用正常   |
 | 59 |  集成openGauss 6.0.0 LTS企业版 | <font color=green> █  </font> | <font color=green>█</font> |     |     | 重点验证openGauss 6.0.0数据库系统工具、SQL功能、数据库升级、兼容B库模块等功能测试 |
 | 60 |  LLVM多版本实现   | <font color=green> █  </font> | <font color=green>█</font> |     |     | 继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用。|
-| 61 |  新增密码套件openHiTLS  | <font color=green>   </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试|
+| 61 |  新增密码套件openHiTLS  | <font color=green>  █  </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试|
 | 62 | AI流水线oeDeloy  | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证通过oeDeploy进行kubeflow部署及k8s基础功能测试  |
 | 63 | 支持epkg新型软件包及包管理器   | <font color=green> █  </font> | <font color=green></font> |     |     |  继承已有测试能力，重点验证epkg包构建，输出epkg软件包以及包管理器实现环境创建，多版本运行等功能|
 | 64 | 支持oeaware   | <font color=green> █  </font> | <font color=green></font> |     |   |继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容  |
 | 65 |  DevStation 开发者工作站支持        | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证安装部署启动、支持图形化编程环境，以及融合的epkg、Eulercopilot、x2openEuler的基本功能|
 | 66 |  AI集群慢节点快速发现 Add Fail-slow Detection  | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证组内多节点/多卡空间维度对比，输出慢节点/慢卡的检测精度  |
 | 67 | RPM国密签名支持  | <font color=green> █  </font> | <font color=green>█</font> |     |     | 重点验证异常参数解析&异常配置文件接口功能，验证gpg支持生成国密公私钥、生成国密证书，、国密签名和验签，rpm支持国密算法签名和验签等测试内容 |
-| 68 | 鲲鹏KAE加速器驱动安装包合入   | <font color=green>  </font> | <font color=green></font> |     |     | 继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩  |
+| 68 | 鲲鹏KAE加速器驱动安装包合入   | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩  |
 | 69 | Add Intel QAT packages support   | <font color=green> █  </font> | <font color=green></font> |     |     |  继承已有测试能力，重点验证intel qat相关软件包的功能和性能|
 | 70 | 版本引入ACPO包  | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容 |
 | 71 |  内核TCP/IP协议栈支持CAQM拥塞  | <font color=green> █  </font> | <font color=green></font> |     |     | 继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能 |
@@ -315,21 +315,21 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 
 对新需求进行评价，用表格形式评价，包括特性列表（与特性清单保持一致），验证质量评估
 
-| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v质量评估**    |   **loongarch质量评估**    |  **powerpc质量评估**    | **备注** |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- | -------------------------- | -------- |
+| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v质量评估**    |   **loongarch质量评估**       | **备注** |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- | -------------------------- | 
 |  1 | [virtCCA机密虚机相关特性合入版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 24.03-LTS-SP2版本未发布，计划7月份update版本合入 |  |  | <font color=green></font> |  | | | |
 |  2 | [OVMF_CODE.fd支持CSV1/2/3开箱即用](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | OVMF_CODE.fd支持海光CSV1/2/3机密虚拟机开箱即用特性，共计执行8个用例：主要包括4项功能测试，4项稳定性测试，3项分压力测试,测试通过未发现问题 |  |  | <font color=green>█</font> |  | | | |
 |  3 | [OVMF.fd支持CSV1/2/3开箱即用](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | OVMF.fd支持海光CSV1/2/3机密虚拟机开箱即用特性，共执行8个用例：主要包括6项功能测试；以及2项稳定性测试，测试通过未发现问题 |  |  | <font color=green>█</font> |  | | | |
-|  4 | [支持CSV1/2/3直通DCU功能开箱即用](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) |  待评审|  |  | <font color=green>█</font> |  | | | |
+|  4 | [支持CSV1/2/3直通DCU功能开箱即用](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) |  该特性未合入|  |  | <font color=green></font> |  | | | |
 |  5 | [新的psp/ccp device id支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 共计执行31个测试用例，主要覆盖了海光可信功能验证，回归测试通过，无遗留风险，整体质量良好  |  |  | <font color=green>█</font> |  | | | |
 |  6 | [可信功能内核驱动剥离sev依赖](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 共计执行31个测试用例，主要覆盖了海光可信功能验证，回归测试通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
 |  7 | [海光4号美密支持，sm4-xts,sm4-gcm支持，avx/cis指令集接口支持](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 该特性未合入 |  |  | <font color=green></font> |  | | | |
 |  8 | [vTKM 性能优化](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 共计执行4项测试，主要覆盖了普通虚拟机和CSV虚拟机下的TKM功能验证，性能测试验证主要覆盖了内部密钥的SM2签名、SM2解密、SM4。性能分别提升110%、53%、112%。回归测试通过，无遗留风险，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
-|  9 | [需要合入bcache的bug fix](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) |  待评审 |  |  | <font color=green></font> | | | | |
+|  9 | [需要合入bcache的bug fix](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | bcache修复bug特性主要覆盖功能测试，未发现问题，整体质量良好  |  |  | <font color=green>█</font> | | | | |
 |  10 | [对hygon 8h DF PMU的适配](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 未来芯片的基础补丁，无机器测试 |  |  | <font color=green></font> |  | | | |
-|  11 | [需要合入海光分支patch和memset的nt patch](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) |  待评审 |  |  | <font color=green></font> |  | | | |
+|  11 | [需要合入海光分支patch和memset的nt patch](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) |  共计执行12个用例，主要覆盖了功能测试和性能测试，功能正常，未发现问题，整体质量良好。 |  |  | <font color=green>█</font> |  | | | |
 |  12 | [支持树莓派](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 主要覆盖镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；完成了硬件兼容性测试，包括树莓派 4B/5 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。以上测试内容均未发现问题                |  |  | <font color=green>█</font> |  | | | |
-|  13 | [支持 OpenStack Antelope/Wallaby 版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 测试完成，待提交测试报告 |  |  | <font color=green></font> |  | | | |
+|  13 | [支持 OpenStack Antelope/Wallaby 版本](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | OpenStack Antelope/Wallaby共计执行用例分别 1483、1434个，主要覆盖了API测试和功能测试、长稳测试，未发现问题，整体质量良好|  |  | <font color=green>█</font> |  | | | |
 |  14 | [基于通信算子的低开销高精度慢节点检测](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 覆盖功能、长稳、资料测试，功能覆盖模型数据timeline图转化，数据采集开销验证，分组验证，慢节点分析验证，验证通过；长稳覆盖上百次注入故障后慢节点分析，慢节点检测准确率>90%，验证通过；资料覆盖通信算子慢节点检测说明，验证通过 |  |  | <font color=green>█</font> |  | | | |
 |  16 | [DevStation开发流程智能化增强](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 共104个用例，其中执行了84个用例，未执行20个用例，测试了mcp服务的下载、配置及应用，主要覆盖了功能测试、性能测试和可靠性测试，发现问题1个，其中已经回归通过1个 |  |  | <font color=green>█</font> |  | | | |
 |  17 | [支持超大虚机规格](https://gitee.com/openeuler/release-management/blob/master/openEuler-24.03-LTS-SP2/release-plan.md) | 主要验证SP2版本支持大规格虚拟机特性，共计执行1个用例，主要覆盖功能测试，未发现问题，整体质量良好 |  |  | <font color=green>█</font> |  | | | |
@@ -384,6 +384,11 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 |   |  | Aries  | 3S585/3S5A5/3S590     |    pass      |    pass     |
 |   |  | Aries  | 3S520/3S530/3S540     |    pass      |    pass     |
 |   |  | SAS3908  | 9560-8i    |    pass      |    pass     |
+|   |  |  PM8204 |  PMC3152   |    pass      |    pass     |
+|   |  | SAS3516  |  SP460C-M   |    pass      |    pass     |
+|   |  | SAS-3 3108  |  SR430C-M   |    pass      |    pass     |
+|   |  | SAS3508  |  SP460C-M   |    pass      |    pass     |
+|   |  |  leapioraid |  LeapRAID-8201-8i/16i   |    pass      |    pass     |
 | NIC        | sig-Compatibility |       |     |              |             |
 |   |  | Hi1822            | SP580             |    pass      |    pass     |
 |   |  | Hi1822（Hi1823）  | SP670             |     pass     |     pass    |    
@@ -394,12 +399,18 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 |   |  | ConnectX-5        | SP382             |    pass     |     pass     |
 |   |  | ConnectX-6     | MCX653105A-EFAT             |    pass     |     pass     |
 |   |  |    ConnectX-5         |   SP350/MCX555A-ECAT     |    pass   |   pass           |
-|   |  |    Gemini         |   3S910/3S920/3S930     |    pass         |    pass      |
+|   |  |    Gemini         |   3S910/3S920/3S930     |    pass  |    pass |
+|   |  |    BCM57508         |    P2100G/P1200G    |    pass  |    pass |
+|   |  |    BCM57504        |    N150G（OCP）    |    pass  |    pass |
+|   |  |     BCM57414        |   P225P/BCM57414A4142CC     |    pass  |    pass |
+|   |  |   N10          |  N10G-X4-QC      |    pass  |    pass |
+|   |  |   N10         |  N10G-X2-DC      |    pass  |    pass |
+|   |  |   N500         |   N500L-AM4C-QD     |    pass  |    pass |
+|   |  |   YSA-100         |   MS50     |    pass  |    pass |
+|   |  |   MS50         |   N1045XS     |    pass  |    pass |
+|   |  |   M18105          |  S1055AS 2*25G      |    pass  |    pass |
 
-
-​	
-
-
+​
 
 ### 4.2.2 虚机兼容性
 
