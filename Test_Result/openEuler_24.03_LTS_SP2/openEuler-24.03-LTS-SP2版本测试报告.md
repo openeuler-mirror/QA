@@ -9,6 +9,7 @@
 | ---------- | -------- | ----------------- | ----------- |
 | 2025/6/23 | 1.0.0    | 初稿 | linqian0322 |
 | 2025/6/25 | 1.0.1 | 新增RISC-V测试结果 | jean9823 |
+| 2025/7/2  | 1.0.2 | 新增Loongarch64测试结果 | liqianwen123 |
 
 
 
@@ -76,6 +77,18 @@ openEuler 24.03 LTS SP2版本按照社区release-manager团队的计划，共规
 | TaiShan 200 2280均衡型 | Kunpeng 920(支持1.70以上的bios版本)        | OS集成测试     |
 | RH2288H V3            | Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz | OS集成测试     |
 | 算能            | 算丰SG2042 | OS集成测试     |
+|TC512A0|3C5000+7A2000 16核 TC512A0_V1.1 单路|OS集成测试     |
+|LS2C5LC2|3C5000+7A2000 LS2C5LC2_V2.1 双路|OS集成测试     |
+|LS2C5LC6|3C5000+7A2000 LS2C5LC6_V1.0 双路|OS集成测试     |
+|TC542F0 |3C5000+7A2000 TC542F0 V1.0 四路双桥|OS集成测试     |
+|TD542F0|3D5000 TD542F0_V1.0 四路主板|OS集成测试     |
+|TC512A0|3C5000+7A2000 12核 TC512A0_V1.1 单路主板|OS集成测试     |
+|LS2C5LE|3C5000LL+7A1000 LS2C5LE 双路单桥(LL主频2.0)|OS集成测试     |
+|loongson-3C6000/s|3C6000+7A2000 单路|OS集成测试     |
+|Loongson-QC622D0V10|3C6000+7A2000 双路|OS集成测试     |
+|Loongson-3C6000/Dx2-7A2000x1-EVB|3D6000+7A2000 双路|OS集成测试     |
+|Loongson-LS3A5000-7A2000-1w-EVB-V1.21|3A5000-7A2000 集显|OS集成测试     |
+|Loongson-3A6000-7A2000-1w-V0.1-EVB|3A6000-7A2000 集显|OS集成测试     |
 
 ## 2.3 需求清单
 
@@ -231,26 +244,26 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 | 1 | 支持DDE桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注DDE桌面系统的安装和基本功能    |
 | 2 | 支持UKUI桌面  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，关注UKUI桌面系统的安装和基本功能    |
 | 3 | 支持Kiran桌面  | <font color=green>█</font> | <font color=green><font color=green>█</font></font> |     |     | 继承已有测试能力，关注kiran桌面系统的安装和基本功能    |
-| 4 | 安装部署  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署   |
-| 5 | 内核  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内   |
-| 6 | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证   |
-| 7 | 虚拟化 | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能   |
+| 4 | 安装部署  | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署   |
+| 5 | 内核  | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，重点关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内   |
+| 6 | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，重点关注本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证   |
+| 7 | 虚拟化 | <font color=green>█</font> | <font color=green></font> |   <font color=green>█</font>  |     |   继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能   |
 | 8 | 支持A-Tune  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，本次无新增合入，重点关注继承功能验证，如服务/配置检查等   |
-| 9 | 支持secPaver  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注secPave特性的基本功能和服务的稳定性   |
+| 9 | 支持secPaver  | <font color=green>█</font> | <font color=green></font> |  <font color=green></font>   |     |  继承已有测试能力，关注secPave特性的基本功能和服务的稳定性   |
 | 10 | 支持secGear  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行   |
 | 11 | 支持eggo  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，重点关注针对不同linux发行版和混合架构硬件场景下离线和在线两种部署方式，另外需关注节点加入集群以及集群的拆除功能完整性   |
 | 12 | 支持kubeOS | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力  |
-| 13 | 支持etmem内存分级扩展  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，重点验证特性的基本功能和稳定性    |
+| 13 | 支持etmem内存分级扩展  | <font color=green>█</font> | <font color=green></font> | <font color=green>█</font>    |     | 继承已有测试能力，重点验证特性的基本功能和稳定性    |
 | 14 | 支持用户态协议栈gazelle | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能 |
-| 15 | 支持国密算法  | <font color=green>█</font> | <font color=blue><font color=green>█</font></font> |     |     |  继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法。   |
+| 15 | 支持国密算法  | <font color=green>█</font> | <font color=blue><font color=green>█</font></font> |  <font color=green>█</font>   |     |  继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法。   |
 | 16 | 支持pod带宽管理oncn-bwm  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证使能/网卡Qos功能，设置cgroup优先级、在线水线、离线带宽等功能，使能网卡QOS功能后，在线业务可实时抢占离线业务带宽，以及功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等。  |
-| 17 | 支持isuald  | <font color=green>█</font> | <font color=green>█</font> |     |     | 继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景  |
+| 17 | 支持isuald  | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     | 继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景  |
 | 18 | 支持A-OPS | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，重点关注本次新增合入容器干扰检测，微服务性能问题分钟级定位定界场景  |
 | 19 | 支持系统运维套件x-diagnosis  | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能   |
 | 20 | 支持自动化热升级组件nvwa | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等   |
 | 21 | 支持DPU直连聚合特性dpu-utilities  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源   |
 | 22 | 支持系统热修复组件syscare | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力，重点关注新增合入栈检测，容器化能力   |
-| 23 | iSula容器镜像构建工具isula-build  | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证通过Dockerfile文件快速构建容器镜像，并支持镜像的查询、删除、登录、退出等功能   |
+| 23 | iSula容器镜像构建工具isula-build  | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，验证通过Dockerfile文件快速构建容器镜像，并支持镜像的查询、删除、登录、退出等功能   |
 | 24 | 支持进程完整性防护特性DIM | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量   |
 | 25 | 支持入侵检测框架secDetector  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等   |
 | 26 | isocut镜像裁剪易用性提升 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证基于openEuler发布的标准ISO镜像进行最小系统定制裁剪，定制安装过程中支持按需裁剪RPM包   |
@@ -263,13 +276,13 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 | 33 | 支持IMA virtCCA  | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等   |
 | 34 | 安全启动  | <font color=green>█</font> | <font color=green></font> |     |     |   继承已有测试能力，验证bios导入证书后，正常开启安全启动，以及防回滚功能开启后，无法进行版本降级操作等  |
 | 35 | Kmesh | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等   |
-| 36 | openEuler安全配置规范框架设计及核心内容构建   | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性    |
-| 37 | oemaker | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，在构建工程中保证oemaker功能正常   |
-| 38 | openssl | <font color=green>█</font> | <font color=green>█</font> |     |     |  继承已有测试能力，验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上    |
-| 39 | 编译器(gcc/jdk) | <font color=green>█</font> | <font color=green>█</font> |     |     |   继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证  |
+| 36 | openEuler安全配置规范框架设计及核心内容构建   | <font color=green>█</font> | <font color=green></font> | <font color=green></font>    |     | 继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性    |
+| 37 | oemaker | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，在构建工程中保证oemaker功能正常   |
+| 38 | openssl | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |  继承已有测试能力，验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上    |
+| 39 | 编译器(gcc/jdk) | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font>   |     |   继承已有测试能力，基于开源测试套对gcc和jdk相关功能进行验证  |
 | 40 | 支持HA软件 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，重点关注HA软件的安装部署、基本功能和可靠性    |
 | 41 | 支持KubeSphere | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，关注kubeSphere的安装部署和针对容器应用的基本自动化运维能力  |
-| 42 | 支持OpenStack Train和Wallaby  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能    |
+| 42 | 支持OpenStack Train和Wallaby  | <font color=green>█</font> | <font color=green></font> |  <font color=green></font>   |     | 继承已有测试能力，验证T和W版本的安装部署及各个组件提供的基本功能    |
 | 43 | 支持智能运维助手  | <font color=green>█</font> | <font color=green></font> |     |     | 继承已有测试能力，关注智能定位（异常检测、故障诊断）功能、可靠性     |
 | 44 | 支持k3s| <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证k3s软件的部署功能正常     |
 | 45 | migration-tools增加图形化迁移openeuler功能 | <font color=green>█</font> | <font color=green></font> |     |     |  继承已有测试能力，验证migration-tools图形化迁移工具支持其他操作系统快速、平滑、稳定且安全地迁移至 openEuler 系操作系统   |
@@ -363,7 +376,18 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 |--------------|---------------|-------|
 | Taishan200   | kunpeng 920 |  pass   |
 | 2288H V5   | cascade | pass  |
-
+|3C5000+7A2000 16核 TC512A0_V1.1 单路|3C5000|pass|
+|3C5000+7A2000 LS2C5LC2_V2.1 双路|3C5000|pass|
+|3C5000+7A2000 LS2C5LC6_V1.0 双路|3C5000|pass|
+|3C5000+7A2000 TC542F0 V1.0 四路双桥|3C5000|pass|
+|3D5000 TD542F0_V1.0 四路主板|3D5000|pass|
+|3C5000+7A2000 12核 TC512A0_V1.1 单路主板|3C5000|pass|
+|3C5000LL+7A1000 LS2C5LE 双路单桥(LL主频2.0)|3C5000LL|pass|
+|3C6000+7A2000 单路|3C6000|pass|
+|3C6000+7A2000 双路|3C6000|pass|
+|3D6000+7A2000 双路|3D6000|pass|
+|3A5000-7A2000 集显|3A5000|pass|
+|3A6000-7A2000 集显|3A6000|pass|
 
 板卡
 
@@ -424,6 +448,7 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 | openEuler 24.03 LTS SP2  | Windows Server 2016 | x86_64  | PASS |
 | openEuler 24.03 LTS SP2  | Windows Server 2019 | x86_64  | PASS |
 | openEuler RISC-V 24.03 LTS SP2 | Ubuntu 24.04 | riscv64 | PASS |
+| openEuler Loongarch64 24.03 LTS SP2 | openEuler Loongarch64 24.03 LTS SP1 | loongarch64 | PASS |
 
 ## 4.3   专项测试结论
 
@@ -451,34 +476,35 @@ openEuler 24.03 LTS SP2版本详细测试内容包括：
 
 ### 4.3.2 可靠性测试
 
-| 测试类型     | 测试内容                                                     | 测试结论                                                    |
-| ------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况；稳定性测试时长7\*24 |通过 |
+| 测试类型     | 测试内容                                                     | Arm/X86测试结果                                                   |  RISC-V测试结果 | LoongArch测试结果 | PowerPC测试结果 |
+| ------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |------ | --------- | ------- |
+| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况；稳定性测试时长7\*24 |通过 | | 通过 | |
+
 
 ### 4.3.3 性能测试
 
 
-| **指标大项** | **指标小项**                                                                               | **指标值**              | **测试结论**                          |
-|--------------|--------------------------------------------------------------------------------------------|-------------------------|-----------------------------------|
-| OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考版本相应指标基线 | 与基线版本（24.03-LTS）对比不劣化5%以内目标已达成 |
+| **指标大项** | **指标小项**                                                                               | **指标值**              | Arm/X86测试结果  | RISC-V测试结果 | LoongArch测试结果 | PowerPC测试结果 |
+|--------------|--------------------------------------------------------------------------------------------|-------------------------|-----------------------------------|------ | --------- | ------- |
+| OS基础性能   | 进程调度子系统，内存管理子系统、进程通信子系统、系统调用、锁性能、文件子系统、网络子系统。 | 参考版本相应指标基线 | 与基线版本（24.03-LTS）对比不劣化5%以内目标已达成 ||与基线版本（24.03-LTS）对比性能数据上下浮动在5%范围内||
 
 ### 4.3.4 资料测试
 
 | **手册名称** | **覆盖策略** | **中英文测试策略** | Arm/X86测试结果  | RISC-V测试结果 | LoongArch测试结果 | PowerPC测试结果 |
 | ------ | ------------------ | ---- | ---- | ------ | --------- | ------- |
-| DDE安装指南 | 安装步骤的准确性及DDE桌面系统是否能成功安装启动  | 英文描述的准确性   | pass   | pass |       |           |
-| UKUI安装指南 | 安装步骤的准确性及UKUI桌面系统是否能成功安装启动| 英文描述的准确性   | pass   | pass |       |           |
-| KIRAN安装指南 | 安装步骤的准确性及Kiran桌面系统是否能成功安装启动 | 英文描述的准确性   | pass   | pass |       |           |
+| DDE安装指南 | 安装步骤的准确性及DDE桌面系统是否能成功安装启动  | 英文描述的准确性   | pass   | pass |   fail    |           |
+| UKUI安装指南 | 安装步骤的准确性及UKUI桌面系统是否能成功安装启动| 英文描述的准确性   | pass   | pass |    fail   |           |
+| KIRAN安装指南 | 安装步骤的准确性及Kiran桌面系统是否能成功安装启动 | 英文描述的准确性   | pass   | pass |   fail    |           |
 | 树莓派安装指导 | 树莓派镜像的安装方式及安装指导的准确性及树莓派镜像是否可以成功安装启动 | 英文描述的准确性   | pass    |   |      |           |
-| 安装指南  | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    | pass |    |           |
-| 管理员指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass    | pass |  |           |
+| 安装指南  | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    | pass |  pass  |           |
+| 管理员指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass    | pass | pass |           |
 | 安全加固指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass    |    |      |           |
-| 虚拟化用户指南   | 文档描述与版本的行为是否一致  | 英文描述的准确性   | pass    |    |      |           |
+| 虚拟化用户指南   | 文档描述与版本的行为是否一致  | 英文描述的准确性   | pass    |    |   pass   |           |
 | StratoVirt用户指南  | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass  |   |     |           |
-| 容器用户指南   | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   | pass |      |           |
+| 容器用户指南   | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   | pass |   pass   |           |
 | A-Tune用户指南 | 文档描述与版本的行为是否一致 | 英文描述的准确性   | pass   |    |     |           |
 | oeAware用户指南   | 文档描述与版本的行为是否一致  | 英文描述的准确性   | pass   |     |      |           |
-| 应用开发指南  | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   | pass |     |           |
+| 应用开发指南  | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   | pass |  pass   |           |
 | 工具集用户指南 | 文档描述与版本的行为是否一致| 英文描述的准确性   | pass   |    |      |           |
 | HA的安装部署 | 文档描述与版本的行为是否一致                                 | 英文描述的准确性   | pass    |    |    |           |
 | HA的使用实例  | 文档描述与版本的行为是否一致                                 | 英文描述的准确性   | pass    |     |       |           |
@@ -509,6 +535,7 @@ openEuler 24.03-LTS-SP2版本共发现问题519个，有效问题498个，其中
 | openEuler 24.03 LTS SP2 RC7        |  72  |  68    |  4 |   0   | 
 | openEuler 24.03 LTS SP2 RC8        |  4  |  4    |  0 |   0   | 
 | openEuler 24.03 LTS SP2 RC9        |  1  |  1    |  0 |   1   | 
+| openEuler 24.03 LTS SP2 loongarch64|  16 | 15 | 1 | 0 |
 
 # 6 版本测试过程评估
 
@@ -670,4 +697,10 @@ openEuler 24.03-LTS-SP2版本共发现问题519个，有效问题498个，其中
 | 1 | IC4B9Y | 插入einj ko失败 | 主要| EINJ（Error INJection）功能是一种硬件错误注入机制，主要用于测试系统对硬件错误的容错能力和可靠性。其核心目的是通过模拟硬件错误，验证系统软件的错误检测、恢复和日志记录能力。6.6内核新增特性会在启动阶段预留GIC*寄存器区域，由于cpld未适配EINJ功能，当前EINJ模块初始化申请的地址与GICD预留区域冲突，导致einj.ko插入失败 | 升级CPLD版本，已通过调测版本验证功能正常，待出正式版本后关闭问题单
 | 2 | IC87FW | 【openEuler-24.03-LTS-SP2-rc4】【arm】创建虚拟机成功之后，/var/log/messages中存在报错：“jitterentropy: Initialization failed with host not compliant with requirements: 9” | 次要 | 当前环境fips未打开，即使jitterentropy初始化失败，不影响随机数算法使用  | 1、出厂默认FIPS不打开：内核模式加密算法联邦信息处理标准（FIPS）算法支持SHA-1、DES、3DES和一个随机数发生器，打开是对安全要求很高的场景，必须硬件产生随机数种子，GRBG随机数算法会调用jitterentropy。2、使用/dev/radom可以实现一样的功能,这个才是主流用法 |
 | 3 | IC4B9Y | 安装完成后窗口主题不对，需进个性化手动切换主题 | 次要 | 用户进入图形的默认窗口主题存在问题，显示异常  | 用户登录后，进个性化手动切换一下深浅色，后续都会正常 | 
-
+| 4 | ICKPIF | 在系统安装界面的网络模块，Yt6801的网卡状态显示不正常| 次要 | 正常插入网线的网口可正常使用，未正常插入网线的网口状态显示已连接，但无法正常分配到ip | 不影响用户的正常使用，使能已连接网线的网口即可|
+| 5 | ICKONB | 源中缺少Cinnamon桌面安装启动所需的相关软件包| 次要 | 源中缺少cinnamon相关软件包，无法安装启动Cinnamon桌面| 后续通过增加/升级源中软件包解决|
+| 6 | ICKOPH | xfce桌面安装相关软件包后，使用startxfce4命令启动桌面失败 | 次要 | 执行startxfce4 命令，界面提示未找到命令 | 后续通过增加/升级源中软件包解决|
+| 7 | ICKORH | kiran桌面环境需要的kiran-desktop软件包无法正常安装| 次要 | 源中缺少kiran-desktop软件包的依赖包，导致无法正常安装安装启动kiran桌面 |后续通过增加/升级源中软件包解决|
+| 8 | ICKOVE | DDE桌面环境需要的dde软件包无法正常安装 | 次要 | 源中缺少dde软件包的依赖包，导致无法正常安装启动dde桌面|后续通过增加/升级源中软件包解决|
+| 9 | ICKOTN | ukui桌面环境需要的ukui软件包无法正常安装| 次要 | 源中缺少ukui软件包的依赖包，导致无法正常安装启动ukui桌面|后续通过增加/升级源中软件包解决|
+| 10 | ICKPGB | 在系统安装的设置root密码界面中，界面未完全汉化 |次要| 语言设置为中文，界面显示有部分英文 | 用户在设置root密码界面需要根据英文提示设置，不影响正常功能的使用|
