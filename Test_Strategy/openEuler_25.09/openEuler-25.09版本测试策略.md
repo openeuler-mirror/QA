@@ -189,10 +189,10 @@ openEuler 25.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 
 | *序号*  | *Feature*   |*测试设计策略*  | *测试重点*  |Arm  | X86  | RISC-V | LoongArch |
 | ------------ | -------------------------------- | -------------------------------- |-------------------------------- | ---- | ---- | ------ | --------- |
-|[ICKOE7](https://gitee.com/openeuler/release-management/issues/ICKOE7?from=project-issue)|  GTA远程证明支持VirtCCA | | | √ | × | | |
-|[ICM8OF](https://gitee.com/openeuler/release-management/issues/ICM8OF)|以 valkey 取代 redis 作为首选的内存数据库| | | √ | √ | | |
-| [ICMV3X](https://gitee.com/openeuler/release-management/issues/ICMV3X) | 支持树莓派 | | | √ |  × | | |
-| [ICOAHM](https://gitee.com/openeuler/release-management/issues/ICOAHM) | kuasar机密容器低底噪，高性能 | | | √ | × | | |
+|[ICKOE7](https://gitee.com/openeuler/release-management/issues/ICKOE7?from=project-issue)|  GTA远程证明支持VirtCCA |[GTA远程证明支持VirtCCA测试策略](https://gitee.com/openeuler/QA/pulls/1089)| 测试Agent、Server端VirtCCA插件基本功能以及端到端的连通性| √ | × | | |
+|[ICM8OF](https://gitee.com/openeuler/release-management/issues/ICM8OF)|以 valkey 取代 redis 作为首选的内存数据库|[以 valkey 取代 redis 作为首选的内存数据库](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_25.09/%E4%BB%A5%20valkey%20%E5%8F%96%E4%BB%A3%20redis%20%E4%BD%9C%E4%B8%BA%E9%A6%96%E9%80%89%E7%9A%84%E5%86%85%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93.md)  |测试 valkey 服务的正常启动与停止 | √ | √ | | |
+| [ICMV3X](https://gitee.com/openeuler/release-management/issues/ICMV3X) | 支持树莓派 | [待提交]|检验内核版本、各项基本功能的回归测试、各支持机型的硬件兼容性测试 | √ |  × | | |
+| [ICOAHM](https://gitee.com/openeuler/release-management/issues/ICOAHM) | kuasar机密容器低底噪，高性能 |[kuasar机密容器低底噪，高性能测试策略](https://gitee.com/openeuler/QA/blob/master/Test_Strategy/openEuler_25.09/%E3%80%90%E4%BA%91%E5%8E%9F%E7%94%9F%E3%80%91kuasar%E6%9C%BA%E5%AF%86%E5%AE%B9%E5%99%A8%E4%BD%8E%E5%BA%95%E5%99%AA%EF%BC%8C%E9%AB%98%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AD%96%E7%95%A5.md) | 测试kuasar机密容器的管理面内存底噪开销，以及机密容器的启动时间。| √ | × | | |
 
 ## 继承feature/组件测试设计策略
 
@@ -225,7 +225,7 @@ openEuler 25.09版本交付[需求列表](https://gitee.com/openeuler/release-ma
 | iSula容器镜像构建工具isula-build                      | 继承已有测试能力，验证通过Dockerfile文件快速构建容器镜像，并支持镜像的查询、删除、登录、退出等功能 | √    | √    | √      |           |         |
 | 支持进程完整性防护特性                                | 继承已有测试能力，验证DIM动态完整性度量特性支持在内核模块代码段等关键内存数据的度量能力 | √    | √    | ×     |           |         |
 | 支持入侵检测框架secDetector                           | 继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等 | √    | √    | ×   |           |         |
-| isocut镜像裁剪                                        | 继承已有测试能力，验证基于openEuler发布的标准ISO镜像进行最小系统定制裁剪，定制安装过程中支持按需裁剪RPM包 | √    | √    | ×     | √         |         |
+| isocut镜像裁剪                                        | 继承已有测试能力，验证基于openEuler发布的标准ISO镜像进行最小系统定制裁剪，定制安装过程中支持按需裁剪RPM包 | √    | √    | ×     |         |         |
 | 支持devmaster组件                                     | 继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景 | √    | √    | ×     |           |         |
 | 支持TPCM特性                                          | 继承已有测试用例，验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等 | √    | × | ×     |           |         |
 | 支持sysMaster组件                                     | 继承已有测试能力，验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景 | √    | √    | √      |           |         |
@@ -421,37 +421,33 @@ openEuler 25.09版本按照社区开发模式进行运作，结合社区release-
 
 | 迭代版本                    | 测试项           | 测试子项                       |
 | --------------------------- | ---------------- | ------------------------------ |
-| openEuler 25.09 RC1         | 冒烟测试         |                                |
+| openEuler 25.09 Alpha         | 冒烟测试         |                                |
 |                             | 包管理专项       | 软件包安装卸载                     |
 |                             |                | 自编译                      |
 |                             | 安装部署         | 标准镜像aarch64虚拟机 |
 |                             |                 | 标准镜像aarch64物理机 |
-|                             |                 | 标准镜像U盘安装                |
-|                             |                 | everything镜像PXE安装                |
 |                             |                 | stratovirt镜像aarch64虚拟机                 |
 |                             | 单包             | 单包命令            |
-|                             |                 ｜ 单包服务            |
-|                             | 版本变化检查专项 |             |
-|                             |                 |软件包升降级变化分析            |
-|                             |                 |软件范围变化测试                |
-|                             | 内核专项         | 基本功能测试                   |
-|                             |                  | POSIX标准测试                  |
-|                             |                  | 性能测试                       |
-|                             |                  | 安全测试                       |
-| openEuler 25.09 RC2         | 冒烟测试         |                                |
+| openEuler 25.09 RC1         | 冒烟测试         |                                |
 |                             | 包管理专项       | 软件包安装卸载                     |
+|                             |                | 自编译                      |
 |                             | 安全专项         |                     |
 |                             | 安装部署         | 标准镜像x86物理机 |
 |                             |                 | 标准镜像x86虚拟机 |
 |                             |                 | 标准镜像PXE安装                |
+|                             |                 | everything镜像PXE安装                |
 |                             |                 | stratovirt镜像x86虚拟机                 |
 |                             |                 | 边缘镜像     | 
 |                             | 单包           | 单包命令             |
 |                             |               | 单包服务             |
+|                             | 内核专项         | 基本功能测试                   |
+|                             |                  | POSIX标准测试                  |
+|                             |                  | 性能测试                  |
+|                             |                  | 安全测试                  |
 |                             | 版本变化检查专项 |             |
 |                             |                 |软件包升降级变化分析            |
 |                             |                 |软件范围变化测试                |
-| openEuler 25.09 RC3         | 冒烟测试         |                                |
+| openEuler 25.09 RC2         | 冒烟测试         |                                |
 |                             | 包管理专项       |                     |
 |                             |                | 自编译                      |
 |                             | 虚拟机兼容性         |                      |
@@ -462,7 +458,7 @@ openEuler 25.09版本按照社区开发模式进行运作，结合社区release-
 |                             | 单包           | 单包命令             |
 |                             |               | 单包服务             |
 |                             | 多动态库检查专项         |  |
-| openEuler 25.09 RC4         | 冒烟测试         |                                |
+| openEuler 25.09 RC3         | 冒烟测试         |                                |
 |                             | 包管理专项       |  软件包安装卸载      |
 |                             |                  | source包自编译 |
 |                             | 重启专项专项     |  冷重启                         |
@@ -483,7 +479,7 @@ openEuler 25.09版本按照社区开发模式进行运作，结合社区release-
 |                             | 版本变化检查专项 |             |
 |                             |                 |软件包升降级变化分析            |
 |                             |                 |软件范围变化测试                |
-| openEuler 25.09 RC5         | 冒烟测试         |                                |
+| openEuler 25.09 RC4         | 冒烟测试         |                                |
 |                             | 包管理专项       | 软件包安装卸载      |
 |                             |                 | 软件包升降级      |
 |                             |                 ｜ 自编译           |
@@ -491,8 +487,6 @@ openEuler 25.09版本按照社区开发模式进行运作，结合社区release-
 |                             | 安装部署         |  |
 |                             |                 | 标准镜像aarch64物理机 |
 |                             |                 | 标准镜像x86物理机 |
-|                             |                 | 标准镜像PXE安装                |
-|                             |                 | everything镜像PXE安装                |
 |                             | 内核专项         | 基本功能测试                   |
 |                             |                  | POSIX标准测试                  |
 |                             |                  | 性能测试                  |
@@ -503,14 +497,21 @@ openEuler 25.09版本按照社区开发模式进行运作，结合社区release-
 |                             |                 |软件范围变化测试                |
 |                             | 单包            | 单包命令             |
 |                             |                 | 单包服务             |
-| openEuler 25.09 RC6         | 冒烟测试         |                                |
+| openEuler 25.09 RC5         | 冒烟测试         |                                |
 |                             | 包管理专项       | 增量      |
 |                             |                 | 软件包安装卸载      |
 |                             |                 | 自编译     |
+|                             | 安装部署         |  |
+|                             |                 | 标准镜像aarch64物理机 |
+|                             |                 | 标准镜像x86物理机 |
+|                             |                 | 标准镜像PXE安装                |
+|                             |                 | everything镜像PXE安装                |
+|                             | 单包            | 单包命令             |
+|                             |                 | 单包服务             |
 |                             | 内核专项         | 基本功能测试                   |
-| openEuler 25.09 RC7         | 冒烟测试   |                    |
+| openEuler 25.09 RC6         | 冒烟测试   |                    |
 |                             | 回归测试       | 问题单回归                        |
-| openEuler 25.09 RC8         | 冒烟测试   |                    |
+| openEuler 25.09 RC7         | 冒烟测试   |                    |
 |                             | 回归测试       | 问题单回归                        |
 |                             | release发布件测试      | release发布件测试                        |
 |                             | 发布件sha256值校验       | 发布件sha256值校验                        |
