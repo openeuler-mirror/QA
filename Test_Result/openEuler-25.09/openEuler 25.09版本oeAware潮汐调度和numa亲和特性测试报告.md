@@ -155,10 +155,10 @@
 
 | issue链接 | 标题 | 问题单级别 |　问题单状态　|
 | -------- | ---------- | ------------ | ------------ |
-|  https://gitee.com/src-openeuler/oeAware-manager/issues/ICUGF8?from=project-issue    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "-W test,top,redis"白名单配置多个进程，实际生效只配置了第一个 |   主要  |  已验收  |
-|  https://gitee.com/src-openeuler/oeAware-manager/issues/ICVA0O?from=project-issue    | 【openEuler-24.03-LTS-SP2】【arm】日志级别从4改为5，执行oeawarectl --reload-conf，之后日志中仍存在INFO级别日志 |   次要  |  已取消  |
-|  https://gitee.com/src-openeuler/oeAware-manager/issues/ICV9KW?from=project-issue    | 【【openEuler-24.03-LTS-SP2】【arm】创建docker，无负载，配置high_load: -0.01[0,1]，取值范围未做校验，使能load_based_scheduling_tune，没有报错并且所有docker有调优 |   次要  |  已完成  | 
-|  https://gitee.com/src-openeuler/oeAware-manager/issues/ICUPAM?from=project-issue    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "xx"报错问题 |   不重要  |  修复中  |
+|  [ICUGF8](https://gitee.com/src-openeuler/oeAware-manager/issues/ICUGF8?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "-W test,top,redis"白名单配置多个进程，实际生效只配置了第一个 |   主要  |  已验收  |
+|  [ICVA0O](https://gitee.com/src-openeuler/oeAware-manager/issues/ICVA0O?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】日志级别从4改为5，执行oeawarectl --reload-conf，之后日志中仍存在INFO级别日志 |   次要  |  已取消  |
+|  [ICV9KW](https://gitee.com/src-openeuler/oeAware-manager/issues/ICV9KW?from=project-issue)    | 【【openEuler-24.03-LTS-SP2】【arm】创建docker，无负载，配置high_load: -0.01[0,1]，取值范围未做校验，使能load_based_scheduling_tune，没有报错并且所有docker有调优 |   次要  |  已完成  | 
+|  [ICUPAM](https://gitee.com/src-openeuler/oeAware-manager/issues/ICUPAM?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "xx"报错问题 |   不重要  |  修复中  |
 
 
  

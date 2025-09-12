@@ -99,7 +99,7 @@
 
 |  业务 |  指标1      | 指标2 |  测试结论 |
 | ------ | -------- | ---- |
-| 　| 单步最大时延<50us   |  抖动<10us   | 性能达标　|
+| 模拟任务调度、依赖构建、内存分配等过程，测试不同配置下任务执行的性能表现　| 单步最大时延<50us   |  抖动<10us   | 性能达标　|
 
 
 ## 4.3 DFX专项测试结论
@@ -150,7 +150,7 @@
 
 | issue链接 | 标题 | 问题单级别 |　问题单状态　|
 | -------- | ---------- | ------------ | ------------ |
-|  https://gitee.com/src-openeuler/oeAware-manager/issues/ICWA6S?from=project-issue    | 【openEuler-25.09-rc4】【arm】安装kernel-rt，使能realtime_tune，日志中存在报错 |   次要  |  已验收  |
+|  [ICWA6S](https://gitee.com/src-openeuler/oeAware-manager/issues/ICWA6S?from=project-issue)   | 【openEuler-25.09-rc4】【arm】安装kernel-rt，使能realtime_tune，日志中存在报错 |   次要  |  已验收  |
 
  
 
