@@ -45,7 +45,7 @@
 
 ## 3.1   测试整体结论
 
-共计执行54个用例，其中继承用例44个，新特性用例10个，主要覆盖了功能测试，其中1个已完成，1个修复中;另外还有47个继承用例因kernel未支持暂时未能测试，待支持之后测试完成更新当前测试报告。
+共计执行85个用例，其中继承用例75个，新特性用例10个，主要覆盖了功能测试，发现问题4个，均已解决，回归通过，无遗留风险，整体质量良好;另外其中有16个继承用例因kernel未支持暂时未能测试，待支持之后测试完成更新当前测试报告。
 
 | 测试活动 | 测试子项 | 活动评价 |
 | ------- | -------- | ------- |
@@ -55,7 +55,7 @@
 | DFX专项测试 | 性能测试 | 不涉及     |
 | DFX专项测试 | 可靠性/韧性测试 |　不涉及 |
 | DFX专项测试 | 安全测试 | 不涉及     |
-| 资料测试 |         |  待修改       |
+| 资料测试 |         |  质量良好       |
 | 其他测试 |         |         |
 
 ## 3.2   约束说明
@@ -125,7 +125,7 @@
 *建议附加资料PR链接*
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
-| 资料测试        |   https://gitee.com/openeuler/oeAware-manager/pulls/254      |   待修改       |
+| 资料测试        |   https://gitee.com/openeuler/oeAware-manager/pulls/254      |   测试通过       |
 
 ## 4.5 其他测试结论
 
@@ -157,8 +157,8 @@
 | -------- | ---------- | ------------ | ------------ |
 |  [ICUGF8](https://gitee.com/src-openeuler/oeAware-manager/issues/ICUGF8?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "-W test,top,redis"白名单配置多个进程，实际生效只配置了第一个 |   主要  |  已验收  |
 |  [ICVA0O](https://gitee.com/src-openeuler/oeAware-manager/issues/ICVA0O?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】日志级别从4改为5，执行oeawarectl --reload-conf，之后日志中仍存在INFO级别日志 |   次要  |  已取消  |
-|  [ICV9KW](https://gitee.com/src-openeuler/oeAware-manager/issues/ICV9KW?from=project-issue)    | 【【openEuler-24.03-LTS-SP2】【arm】创建docker，无负载，配置high_load: -0.01[0,1]，取值范围未做校验，使能load_based_scheduling_tune，没有报错并且所有docker有调优 |   次要  |  已完成  | 
-|  [ICUPAM](https://gitee.com/src-openeuler/oeAware-manager/issues/ICUPAM?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "xx"报错问题 |   不重要  |  修复中  |
+|  [ICV9KW](https://gitee.com/src-openeuler/oeAware-manager/issues/ICV9KW?from=project-issue)    | 【【openEuler-24.03-LTS-SP2】【arm】创建docker，无负载，配置high_load: -0.01[0,1]，取值范围未做校验，使能load_based_scheduling_tune，没有报错并且所有docker有调优 |   次要  |  已验收  | 
+|  [ICUPAM](https://gitee.com/src-openeuler/oeAware-manager/issues/ICUPAM?from=project-issue)    | 【openEuler-24.03-LTS-SP2】【arm】执行oeawarectl -e tune_numa_mem_access -cmd "xx"报错问题 |   不重要  |  已验收  |
 
 
  
