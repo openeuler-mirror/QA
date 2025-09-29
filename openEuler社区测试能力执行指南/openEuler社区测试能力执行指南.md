@@ -383,8 +383,11 @@ bash
 
 ## 2、基础性能测试
 
-建议测试前将以下依赖包安装
-gcc bc make libtool automake gcc-c++ libtirpc-devel
+环境准备：
+1. 测试开始前需要安装以下依赖包
+```shell
+yum install -y gcc bc make libtool automake gcc-c++ libtirpc-devel
+```
 
 ### 2.1、unixbench
 
@@ -427,21 +430,23 @@ make all
 
 **测试执行**
 
-1.单进程测试
+1.单线程测试
 
 ```shell
-./Run -c 1
+./Run -c 1 -i 3
 ```
 
-2.多进程测试，进程数根据配置环境逻辑核数调整
+2.多线程测试，可以使用`nproc`指定系统的最大逻辑核数进行测试
 
 ```shell
-./Run -c 96
+./Run -c `nproc` -i 3
 ```
 
 **结果查看**
 
-测试完成后结果会在运行界面打印出来，或可进入results文件查看。
+测试完成后Unixbench会在终端输出各测试子项的分数，其中System Benchmarks Index Score的值为所有测试子项的总分。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
+
 
 ### 2.2、netperf
 
@@ -453,7 +458,7 @@ netperf是一种网络性能测试工具，主要基于TCP或UDP的传输。netp
 
 1.获取netperf软件包  
 下载地址：https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz  
-2.客户端主机和服务端主机通过板载光口直连通信  
+2.客户端主机和服务端主机通过板载光口直连通信
 3.服务端主机关闭防火墙
 
 **编译安装**
@@ -468,8 +473,9 @@ yum install automake texinfo -y
 
 ```shell
 wget https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz
-tar xvf netperf-2.7.0.tar.gz
+tar -xvf netperf-2.7.0.tar.gz
 cd netperf-netperf-2.7.0
+./autogen.sh
 ```
 根据架构生成对应Makefile：  
 arm:
@@ -495,7 +501,7 @@ systemctl stop firewalld
 cd src
 ./netserver
 ```
-2.客户端主机执行压测命令，压测脚本命令如下：
+2.客户端主机执行压测命令，压测脚本test-netperf.sh命令如下：
 
 ```shell
 #!/bin/bash
@@ -524,6 +530,8 @@ sh test-netperf.sh ${server_ip}
 **结果查看**
 
 测试完成后结果会在运行界面打印出来。
+分别记录TCP_STREAM和UDP_STREAM不同测试分组大小下的throughput吞吐量，并取几何平均值得到值A，同时记录TCP_RR、TCP_CRR和UDP_RR测试下的throughput吞吐量，与值A一起几何平均值，得到最终分数。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
 
 ### 2.3、iozone
 
@@ -541,7 +549,7 @@ sh test-netperf.sh ${server_ip}
 
 ```shell
 wget https://www.iozone.org/src/current/iozone3_430.tar
-tar xvf iozone3_430.tar
+tar -xvf iozone3_430.tar
 cd iozone3_430/src/current
 make clean && make CFLAGS=-fcommon linux
 ```
@@ -586,7 +594,8 @@ done
 ```
 **结果查看**
 
-测试完成后记录所有结果，即write、rewrite、read、reread、random_write、random_reed。
+测试完成后记录write、rewrite、read、reread、random_write、random_reed项的结果，并取几何平均值作为衡量标准的单一数值。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
 
 ### 2.4、fio
 
@@ -619,11 +628,11 @@ make -j
 
 **测试执行**
 
-1.生成fio-test.sh测试脚本，测试命令如下：
+1.生成fio-test.sh测试脚本，其中的$disk替换为实际的磁盘名。具体测试脚本命令如下：
 
 ```shell
 #!/bin/bash
-disk=nvme0n1
+disk=$disk
 numjobs=10
 iodepth=10
 mkdir -p /test
@@ -632,9 +641,13 @@ for rw in read write randread randwrite randrw;do
         mkfs.ext4 -F -E lazy_itable_init=0 /dev/$disk
         mount /dev/$disk /test
         if [ $rw == "randrw" ];then
-            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -rwmixread=70 -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reporting -name=job1
+            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw \
+              -rwmixread=70 -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} \
+              -runtime=30 -group_reporting -name=job1 > $rm$bs.log
         else
-            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 -group_reporting -name=job1
+            ./fio -filename=/test/fio -direct=1 -iodepth ${iodepth} -thread -rw=$rw \
+              -ioengine=libaio -bs=${bs}k -size=100G -numjobs=${numjobs} -runtime=30 \
+              -group_reporting -name=job1 > $rm$bs.log
         fi
         umount /test
         sleep 20
@@ -644,7 +657,8 @@ done
 
 **结果查看**
 
-测试完成后,记录每个测试项的IOPS和带宽值。
+测试完成后，每个测试项结果会保存在对应的\$rm\$bs.log文件中，需要取各子项4k~1024k的IOPS和带宽值分别取几何平均值。再将所有的几何平均值作为总分。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
 
 ### 2.5、stream
 
@@ -694,7 +708,8 @@ sync && sysctl -w vm.drop_caches=3
 
 **结果查看**
 
-测试完成后结果会在运行界面打印出来。
+测试完成后结果会在运行界面打印出来。记录单核和满核测试中copy、scale、add和triad四项数值，并取几何平均值作为测试结果。
+以上测试执行三次，取平局值作为最终结果。数值越大越好。
 
 ### 2.6、lmbench
 
@@ -716,7 +731,7 @@ yum install -y libtirpc libtirpc-devel
 
 2.安装lmbench软件包
 ```shell
-tar xvf lmbench-3.0-a4.tgz
+tar -xvf lmbench-3.0-a4.tgz
 cd lmbench-3.0-a4
 ```
 
@@ -759,11 +774,10 @@ Mail results [default yes]: no (设置为no)
 
 **结果查看**
 
-测试完成后结果会在运行界面打印出来。
+测试完成后执行make see查看执行结果，取Processor Processor、Context switching、Local latency、File & VM system和Memory latency分别取几何平均值，作为时延各项指标；计算Local Bandwidth的几何平均值作为宽带指标。
+以上测试执行三次，取平局值作为最终结果。时延数值越小越好，宽带数值越大越好。
 
 ## 3、DFX测试
-
-
 
 ## 4、安全测试
 
@@ -2339,3 +2353,402 @@ python3 cli.py [-h] [-n PARALLEL] [-w WORK_DIR] [-p PLAN_PATH] [-c CATEGORY_PATH
 注意测试提交时也会有这个文件，但是没有job_id的。
 
 另一个yaml文件就是提交的完整job yaml(无论测试还是真实提交都会有这个文件)。
+
+
+## 14、场景化性能测试
+
+组网和环境准备：
+1. 客户端主机和服务端主机通过板载光口直连通信
+2. 测试使用网卡速率25GE
+
+### 14.1、Mysql-TPCC测试
+**基本概念**
+
+MySQL-TPCC 测试是一种基于 TPC-C（Transaction Processing Performance Council - C） 基准的性能测试方法，用于评估数据库系统在联机事务处理（OLTP）场景下的性能表现。
+
+**预置条件**
+1. 安装依赖
+```shell
+#Server节点
+yum install -y expect cmake doxygen bison ncurses-devel m4 openssl-devel \
+numactl libtool tar rpcgen bison bc unzip git gcc-c++ libaio make libaio-devel \
+libtirpc-devel libudev-devel java
+#Client节点
+yum install -y java
+```
+2. 使用NVMe盘作为数据盘
+
+**下载源码**
+1. 服务端 Mysql 8.0.35
+  https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-8.0.35.tar.gz
+
+2. 压测端 benchmarksql5.0-for-mysql
+  https://mirrors.huaweicloud.com/kunpeng/archive/kunpeng_solution/database/patch/benchmarksql5.0-for-mysql.zip
+
+
+**编译安装**
+1. Server节点
+```shell
+  tar -xvf mysql-boost-8.0.35.tar.gz
+  cd mysql-8.0.35
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-8.0.35 -DWITH_BOOST=../boost -DDOWNLOAD_BOOST=1
+  make -j`nproc`
+```
+2. Client节点
+server_ip需要替换成服务端IP。
+```shell
+  unzip benchmarksql5.0-for-mysql.zip
+  cd benchmarksql5.0-for-mysql/run
+  chmod 777 *.sh
+  sed -i "s|jdbc:mysql://[^:]*[0-9]*|jdbc:mysql://$server_ip:3306|" "props.conf"
+```
+**配置安装环境**
+1. 创建用户分组和数据目录
+disk_name需要替换成对应的NVMe盘设备名
+```shell
+mkfs.xfs $disk_name -f
+mkdir /data
+mount $disk_name /data
+```
+
+2. 创建用户分组和数据目录
+```shell
+  groupadd mysql
+  useradd -g mysql mysql
+
+  mkdir -p /data/mysql
+  mkdir -p /data/mysql/{data,share,tmp,run,log}
+  chown -R mysql:mysql /data
+  chown -R mysql:mysql /data/mysql
+  touch /data/mysql/log/mysql.log
+  chown -R mysql:mysql /data/mysql/log/mysql.log
+```
+
+**启动Mysql服务**
+Server节点执行
+1. 配置my.cnf
+```shell
+  cat > /etc/my.cnf << EOF
+[mysqld_safe]
+log-error=/data/mysql/log/mysql.log
+pid-file=/data/mysql/run/mysqld.pid
+
+[client]
+socket=/data/mysql/run/mysql.sock
+default-character-set=utf8
+
+[mysqld]
+server-id=1
+socket=/data/mysql/run/mysql.sock
+tmpdir=/data/mysql/tmp
+datadir=/data/mysql/data
+default_authentication_plugin=mysql_native_password
+port=3306
+user=root
+EOF
+```
+2. 初始化Mysql
+```shell
+  #完成初始化后会随机生成一个密码，记录密码，稍后用其登录mysql
+  /usr/local/mysql-8.0.35/bin/mysqld --defaults-file=/etc/my.cnf --initialize
+```
+
+3. 启动服务
+```shell
+  /usr/local/mysql-8.0.35/support-files/mysql.server start
+```
+
+4. 登录、创建tpcc数据库
+```shell
+  #使用始化后完成后随机生成的密码登录数据库
+  /usr/local/mysql-8.0.35/bin/mysql -u root -p
+  #修改密码，更新root账户能够访问的域为%，从而支持远程访问
+  alter user 'root'@'localhost' identitied by '123456';
+  flush privileges;
+  use mysql;
+  update user set host='%' where user='root';
+  flush privileges;
+  create datebase tpcc;
+  quit;
+```
+
+**执行测试**
+Client节点执行
+```shell
+#1. 加载测试数据
+cd benchmarksql5.0-for-mysql/run
+./runDatabaseBuild.sh props.conf
+#2. 执行Mysql测试
+./runBenchmark.sh props.conf > result.log
+cat result.log|grep 
+#3. 复测，删除数据后重新加载数据
+./runDarabaseDestory.sh props.conf
+```
+ 
+**结果查询**
+
+测试结果会输出到终端，最终性能跑分即为Measured tpmC(NewOrders)的值。其中tpm(transactions per minute)代表每分钟处理事务个数。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
+
+### 14.1、Nginx测试
+**基本概念**
+
+Nginx 性能测试是指通过模拟真实或预期的用户请求负载，对 Nginx 服务器（或基于 Nginx 构建的 Web 服务）在高并发、高吞吐量等场景下的响应能力、稳定性、资源消耗等关键指标进行评估的过程。其核心目标是验证 Nginx 在特定硬件和配置条件下能否满足业务性能需求，并发现潜在的性能瓶颈。
+
+**参数解释**
+ 参数 | 说明 |
+|------|------|
+| `-c <concurrent>` | 并发连接数（例如：100） |
+| `-d <duration>` | 压测持续时间，支持 `s`（秒）、`m`（分钟）等单位（例如：`30s`） |
+| `-t <threads>` | 使用的线程数（建议设置为 CPU 核心数） |
+| `-H "Connection: <alive>"` | 自定义 HTTP `Connection` 请求头，`<alive>` 通常为 `keep-alive` 或 `close` |
+| `--timeout <timeout>` | 请求超时时间（单位：秒，例如：`2`） |
+| `<protocol>://<server_ip>:<PORT>/<path>` | 目标 URL，包含协议（`http`/`https`）、服务器 IP、端口和请求路径（例如：`http://192.168.1.10:80/index.html`） |
+
+**预置条件**
+1. 使能SMMU/IOMMU
+  **·** 在鲲鹏平台上，BIOS需配置SMMU开关：进入Advanced->MISC Config，打开Support Smmu以及Smmu Work Around配置项。
+  **·** 在Intel平台，需在OS内核启动项添加下面的参数即可，reboot后生效
+  ```shell
+    grubby --update-kernel=/boot/vmlinuz-`uname -r` --args="intel_iommu=on iommu-pt"
+  ```
+2. 验证是否使能了SMMU/IOMMU
+  ```shell
+    ls /sys/class/iommu
+  ```
+3. 安装依赖
+  ```shell
+    #Server节点
+    yum install -y tar gcc gcc-c++ make libtool zlib zlib-devel pcre pcre-devel perl \
+    openssl openssl-devel perl-ExtUtils-Embed net-tools git
+    #Client节点
+    yum install -y make gcc git tar
+  ```
+
+**下载源码**
+  1. 服务端 nginx 1.22.1  
+    https://repo.huaweicloud.com/nginx/nginx-1.22.1.tar.gz
+  2. 客户端 wrk4.2.0
+    https://github.com/wg/wrk/archive/refs/tags/wrk-4.2.0.zip
+
+**编译安装**
+  1. Server节点
+  ```shell
+    tar -xvf nginx-1.22.1.tar.gz
+    cd nginx-1.22.1
+    ./configure --prefix=/usr/local/nginx --with-http_ssl_module
+    make -j && make install
+    cp /usr/local/nginx/sbin/nginx /usr/local/bin/
+  ```
+  2. Client节点
+  ```shell
+    unzip wrk-4.2.0.zip
+    cd wrk-4.2.0
+    make -j
+    cp wrk /usr/local/bin
+  ```
+**修改配置文件**
+  1. 生成证书
+  ```shell
+    cd /usr/local/nginx/
+    openssl genrsa -des3 -out server_2048.key 2048
+    #提示输入密码和确认密码 需要输入两次123456，此时会生成server_2048.key
+    openssl rsa -in server_2048.key -out server_2048.key
+    #需要输入上一步设置的密码
+
+    #创建服务器证书的申请文件
+    openssl req -new -key server_2048.key -out server_2048.csr
+    #CountryName输入CN，其余直接回车
+
+    #重写密钥key
+    openssl rsa -in server_2048.key -out server_2048.key
+    
+    #生成证书
+    spawn openssl x509 -req -days 365 -in server_2048.csr -signkey  server_2048.key -out server_2048.crt
+  ```
+  2. 修改核心配置文件
+  nginx_path请替换为nginx-1.22.1的源码路径
+  ```shell
+    vi $nginx_path/conf/nginx.conf
+
+    #修改线程数为4以及自动绑和
+    worker_processes 4;
+    worker_cpu_affinity auto;
+    worker_rlimit_nofile 1024000;
+    events {
+        use epoll;
+        worker_connections 32768;
+        accept_mutex off;
+        multi_accept off;
+    }
+
+    #配置http
+    http{
+      include /usr/local/nginx/conf/mime.types;
+      default_type application/octet-stream;
+      access_log off;
+      sendfile on;
+      tcp_nopush on;
+      keepalive_timeout 65;
+
+      open_file_cache max=102400 inactive=40s;
+      open_file_cache_valid 50s;
+      open_file_cache_min_uses 1;
+      open_file_cache_errors on;
+      server {
+        listen 10000;
+        location / {
+            root /usr/local/nginx/html;
+            index index.html index.gtm;
+        }
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+            root htmls;
+        }
+      }
+    #配置HTTP server
+    server {
+      listen 20000 ssl;
+      server_name localhost;
+      ssl_certificate  /usr/local/nginx/server_2048.crt;
+      ssl_certificate_key /usr/local/nginx/server_2048.key;
+      ssl_session_cache shared:SSL:1m;
+      ssl_session_timeout 5m;
+      ssl_ciphers HIGH:!aNULL:!MD5;
+      ssl_prefer_server_ciphers on;
+      location / {
+          root /usr/local/nginx/html;
+          index index.html index.htm;
+      }
+    }
+  }
+```
+
+**执行测试**
+1. Server端启动服务
+  nginx_path请替换为nginx-1.22.1的源码路径
+  ```shell
+    nginx -c $nginx_path/conf/nginx.conf  
+  ```
+2. Client启动压测
+server_ip请替换为Serverd端的实际IP
+ ```shell
+  concurrent=2000
+  duration=60s
+  threads=20
+  timeout=5s
+  for protocol in "http" "https"; do
+    for alive in "close" "keep-alive"; do
+      if [ "$protocol" = "http" ]; then
+        PORT=10000
+      elif [ "$protocol" = "https" ]; then
+        PORT=20000
+      fi
+      echo 3 > /proc/sys/vm/drop_caches
+      sleep 5s
+      echo "./wrk -c ${concurrent} -d ${duration} -t ${threads} -H "Connection: ${alive}" \
+        --timeout ${timeout} ${protocol}://${server_ip}:${PORT}/index.html"
+      /usr/local/bin/wrk -c ${concurrent} -d ${duration} -t ${threads} -H "Connection: ${alive}" \
+        --timeout ${timeout} ${protocol}://${server_ip}:${PORT}/index.html >> ${protocol}_${alive}.log
+    done
+  done
+
+  ```
+**结果查询**
+使用下面的shell命令查看Requests/sec的结果
+ ```shell
+  echo http_short
+  cat http_close.log|grep Requests/sec | awk -F ' ' {'print'}
+  echo http_long
+  cat http_keep-alive.log|grep Requests/sec | awk -F ' ' {'print'}
+  echo https_short
+  cat https_close.log|grep Requests/sec | awk -F ' ' {'print'}
+  echo https_long
+  cat https_keep-alive.log|grep Requests/sec | awk -F ' ' {'print'}
+```
+取http_short、http_long、https_short和https_long的几何平均值作为最终分数。
+以上测试执行三次，取各次总分的平均值作为最终结果。数值越大越好。
+
+### 14.3、Redis测试
+**基本概念**
+
+Redis 的基础性能测试主要是通过官方提供的工具 redis-benchmark ，是指在标准条件下，对 Redis 执行典型的SET和GET操作，测量其每秒能处理多少请求（QPS）以及响应延迟，从而评估 Redis 实例的基本性能表现。
+
+**参数解释**
+| 参数 | 说明 |
+|------|------|
+| `-h <host>` | Redis 服务器地址（默认：`127.0.0.1`） |
+| `-p <port>` | Redis 服务端口（默认：`6379`） |
+| `-c <clients>` | 并发客户端连接数（默认：`50`） |
+| `-n <requests>` | 总请求数（默认：`100000`） |
+| `-q` | Quiet 模式，仅显示每条命令的 QPS（每秒请求数） |
+| `-t <commands>` | 指定要测试的命令，多个命令用逗号分隔，例如：`set,get` |
+| `-d <size>` | SET/GET 操作中 value 的数据大小（单位：字节，默认：`3`） |
+| `--csv` | 以 CSV 格式输出测试结果，便于后续分析 |
+
+**预置条件**
+1. 硬件环境
+两台物理机通过大流量(10GE以上)光口直连。
+2. 服务端关闭服务
+```shell
+  systemctl stop firewalld
+  systemctl disable firewalld
+  systemctl stop irqbalance
+  systemctl disable irqbalance
+```
+3. 安装依赖
+  ```shell
+    #Server节点
+    yum install -y tar gcc gcc-c++ make libatomic groff
+    #Client节点
+    yum install -y tar gcc gcc-c++ make libatomic
+  ```
+
+**下载源码**
+  1. 服务端 redis 5.0.14
+    http://download.redis.io/releases/redis-5.0.14.tar.gz
+  2. 客户端 redis 6.2.9  
+    http://download.redis.io/releases/redis-6.2.9.tar.gz
+
+**编译安装**
+1. Server节点
+  ```shell
+    tar -xvf redis-5.0.14.tar.gz
+    cd redis-5.0.14
+    make -j
+  ```
+2. Client节点
+  ```shell
+    tar -xvf redis-6.2.9.tar.gz
+    cd redis-6.2.9
+    make -j
+  ```
+
+**修改配置**
+Server节点执行，server_ip请替换为Server节点的实际IP
+  ```shell
+  cd redis-5.0.14
+  sed -i "/^bind 127.0.0.1/a bind $server_ip" redis.conf
+  sed -i "s/^protected-mode yes/protected-mode no/g" redis.conf
+  sed -i "s/^daemonize no/daemonize yes/g" redis.conf
+  echo 'save ""' >> redis.conf
+  ```
+
+**启动服务**
+Server节点执行，interface请替换成实际的网口名
+  ```shell
+#设置中断
+ethtool -L $interface combined 1
+taskset -c 1 redis-5.0.14/src/redis-server redis.conf
+  ```
+**执行测试**
+Client节点执行
+  ```shell
+   redis-6.2.9/src/redis-benchmark -h ${server_ip} -n 10000000 -c 1000 -r 10000000 -t set,get --threads 20
+  ```
+
+**结果查询**
+
+结果会输出到终端，分别记录SET和GET的requests pre second值，取二者的几何平均值作为结果总分。
+以上测试执行三次，取各次总分的平均值作为最终结果。重复执行时需要重启Server节点的redis服务。
+数值越大越好。
