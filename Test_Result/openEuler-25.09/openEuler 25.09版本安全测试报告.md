@@ -62,7 +62,7 @@
 
 # 3     测试结论概述
 
-openEuler 25.09 版本安全测试已完成 2.2 版本安全测试项目的所有安全测试。测试发现问题全部已完成修复及评估，无遗留问题无风险。
+openEuler 25.09 版本安全测试已完成 2.2-版本安全测试项目 的所有安全测试。测试发现问题全部已完成修复及评估，无遗留问题无风险。
 
 
 
@@ -270,16 +270,15 @@ NX、PIE、RELRO、SP、NO Rpath/Runpath、Strip）扫描。
 
 测试说明：版本发布后对应的ISO镜像存在sha256sum签名文件、SBOM文件、SBOM文件签名
 
- 测试结果：**待版本发布后更新**
+ 测试结果：aarch64、x86_64架构的iso镜像均有sha256sum签名文件，且对应架构Everything镜像存在SBOM文件及其签名。无问题。
 
-| 名称 | 架构 | sha256sum | SBOM | SBOM签名 |
-| ---- | ---- | --------- | ---- | -------- |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
+| 名称                                                         | 架构    | sha256sum | SBOM | SBOM签名 |
+| ------------------------------------------------------------ | ------- | --------- | ---- | -------- |
+| [openEuler-25.09-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/aarch64/openEuler-25.09-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-25.09-everything-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/aarch64/openEuler-25.09-everything-aarch64-dvd.iso) | aarch64 | 是        | 是   | 是       |
+| [openEuler-25.09-everything-debug-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/aarch64/openEuler-25.09-everything-debug-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-25.09-netinst-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/aarch64/openEuler-25.09-netinst-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-25.09-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/x86_64/openEuler-25.09-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
+| [openEuler-25.09-everything-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/x86_64/openEuler-25.09-everything-x86_64-dvd.iso) | x86_64  | 是        | 是   | 是       |
+| [openEuler-25.09-everything-debug-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/x86_64/openEuler-25.09-everything-debug-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
+| [openEuler-25.09-netinst-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-25.09/ISO/x86_64/openEuler-25.09-netinst-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
