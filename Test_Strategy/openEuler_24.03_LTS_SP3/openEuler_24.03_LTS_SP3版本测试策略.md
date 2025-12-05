@@ -94,6 +94,7 @@ openEuler 24.03 LTS SP3版本交付[需求列表](https://gitee.com/openeuler/re
 |25|[UB lib & tool：灵衢基础工具和库](https://gitee.com/openeuler/release-management/issues/ID4RQW)|Developing|sig-UnifiedBus|@yunshenglin|ISO|cdma,ummu,ubutils,ubctl|
 |26|[openssl：Backport 主线 RISC-V 架构的 MD5 汇编优化](https://gitee.com/openeuler/release-management/issues/ID5TUY?from=project-issue)|Testing|dev-utils|@HeliC829|ISO|openssl|
 |27|[支持树莓派](https://gitee.com/openeuler/release-management/issues/ID6218)|Developing|sig-SBC|@woqidaideshi|EPOL|raspberrypi-firmware,raspberrypi-bluetooth,raspi-config,pigpio,raspberrypi-userland,raspberrypi-eeprom,raspberrypi-utils|
+|28|[secScanner:操作系统安全加固组件](https://gitee.com/openeuler/release-management/issues/ID64P8?from=project-issue)|Testing|sig-security_facility|@wangweize_yewu|EPOL|secScanner|
 
 # 测试分层策略(*基于继承特性策略刷新*)
 
@@ -234,7 +235,7 @@ openEuler 24.03 LTS SP3版本交付[需求列表](https://gitee.com/openeuler/re
 |25|[UB lib & tool：灵衢基础工具和库](https://gitee.com/openeuler/release-management/issues/ID4RQW)|[UB lib & tool：灵衢基础工具和库](待提交)|| √ |　 × | × | × |　|
 |26|[openssl：Backport 主线 RISC-V 架构的 MD5 汇编优化](https://gitee.com/openeuler/release-management/issues/ID5TUY?from=project-issue)|[openEuler-24.03-LTS-SP3 openssl Backport 上游优化测试策略](https://gitee.com/openeuler/QA/pulls/1167)|主要验证MD5算法的核心应用场景，如非密码学安全校验，遗留系统兼容。| × |　 × | 　√ | √ ||
 |27|[支持树莓派](https://gitee.com/openeuler/release-management/issues/ID6218)|[支持树莓派](https://gitee.com/openeuler/QA/pulls/1200)|本次测试主要覆盖功能测试和硬件兼容性测试。功能测试包括：镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；硬件兼容性测试包括：树莓派 4B/5 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。| √ |　 × | × | × |　|
-
+|28|[secScanner:操作系统安全加固组件](https://gitee.com/openeuler/release-management/issues/ID64P8?from=project-issue)|[secScanner:操作系统安全加固组件](https://gitee.com/openeuler/QA/pulls/1221)|本次测试主要覆盖功能测试、安全测试,功能测试主要包括验证secScanner组件三个核心功能（安全加固、漏洞扫描、入侵检测）能够在openEuler系统下正常运行，安全测试主要检测组件使用权限限制、组件日志未泄露系统敏感信息。| √ |　√ | × | × |　|
 
 
 ## 继承feature/组件测试设计策略
