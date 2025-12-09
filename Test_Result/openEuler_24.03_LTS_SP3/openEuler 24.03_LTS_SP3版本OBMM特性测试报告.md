@@ -135,7 +135,7 @@ NA
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------- | ---------- | ------------ | ------------ |
 | openEuler-24.03-LTS-SP3-round6 | 10  | 9 * PASS + 1 * FAILED | 1   |
-| openEuler-24.03-LTS-SP3-round6 | 10  | 10 * PASS | 0 |
+| openEuler-24.03-LTS-SP3-round7 | 10  | 10 * PASS | 0 |
 
 ## 5.2   后续测试建议
 
