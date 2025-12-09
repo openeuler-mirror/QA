@@ -95,7 +95,7 @@ NA
 
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | --- | ----------- | :--------: | --- |
-| 1 | OBMM | <font color=green> ■ </font> |   |
+| 1 | OBMM | <font color=green> PASS </font> |   |
 
 
 ## 4.2 兼容性测试结论
