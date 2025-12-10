@@ -145,15 +145,9 @@ NA
 *建议附加资料PR链接*
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
-|特性介绍|doc/ch/urma/Overview.ch.md|测试通过|
-|特性介绍|doc/ch/urma Abnormal Event.ch.md|测试通过|
-|特性介绍|doc/ch/urma Buffer.ch.md|测试通过|
-|特性介绍|doc/ch/urma Flowcontrol.ch.md|测试通过|
-|特性介绍|doc/ch/urma IO.ch.md|测试通过|
-|特性介绍|doc/ch/urma Initialize.ch.md|测试通过|
-|特性介绍|doc/ch/urma Framework API.ch.md|测试通过|
-|特性介绍|doc/ch/urma Message.ch.md|测试通过|
-|UserGuide|doc/ch/urma User Guide.ch.md|测试通过|
+|特性介绍|doc/ch/urma/URMA API Guide.ch.md|测试通过|
+|特性介绍|doc/ch/urma/URMA QuickStart Guide.ch.md|测试通过|
+|特性介绍|doc/ch/urma/URMA User Guide.ch.md|测试通过|
 
 ## 4.5 其他测试结论
 
