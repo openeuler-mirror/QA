@@ -89,7 +89,9 @@ NA
 | --- | ----------- | :--------: | --- |
 | 1 | OBMM | <font color=green>■</font> |   |
 
-
+<font color=red>●</font>： 表示特性不稳定，风险高
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
+<font color=green>■</font>： 表示特性质量良好
 ## 4.2 兼容性测试结论
 NA
 
