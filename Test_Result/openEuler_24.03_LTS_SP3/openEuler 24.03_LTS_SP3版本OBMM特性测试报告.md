@@ -110,7 +110,7 @@ NA
 NA
 
 ## 4.4 资料测试结论
-*建议附加资料PR链接*
+
 obmm资料： https://gitee.com/openeuler/obmm/tree/master/doc
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
