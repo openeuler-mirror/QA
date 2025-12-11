@@ -95,6 +95,7 @@ openEuler 24.03 LTS SP3版本交付[需求列表](https://gitee.com/openeuler/re
 |26|[openssl：Backport 主线 RISC-V 架构的 MD5 汇编优化](https://gitee.com/openeuler/release-management/issues/ID5TUY?from=project-issue)|Testing|dev-utils|@HeliC829|ISO|openssl|
 |27|[支持树莓派](https://gitee.com/openeuler/release-management/issues/ID6218)|Developing|sig-SBC|@woqidaideshi|EPOL|raspberrypi-firmware,raspberrypi-bluetooth,raspi-config,pigpio,raspberrypi-userland,raspberrypi-eeprom,raspberrypi-utils|
 |28|[secScanner:操作系统安全加固组件](https://gitee.com/openeuler/release-management/issues/ID64P8?from=project-issue)|Testing|sig-security_facility|@wangweize_yewu|EPOL|secScanner|
+|29|[VMAnalyzer轻量级虚拟化性能检测工具](https://gitee.com/openeuler/release-management/issues/ID7RXR?from=project-issue)|Testing|sig-ops|@Xu Zheng|EPOL|VMAnalyzer|
 
 # 测试分层策略(*基于继承特性策略刷新*)
 
