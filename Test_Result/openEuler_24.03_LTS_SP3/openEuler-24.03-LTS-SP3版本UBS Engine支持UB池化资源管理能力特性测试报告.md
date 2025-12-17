@@ -101,10 +101,7 @@ https://gitee.com/openeuler/ubs-engine/issues/IDBXT6?from=project-issue
 
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | --- | ----------- | :--------: | --- |
-| 1 | 支持组网拓扑与通信EID查询 | <font color=green>■</font> |   |
-| 2 | 支持内存借用资源管理系统对接云管 | <font color=green>■</font> |   |
-| 3 | 支持内存借用资源管理系统故障处理 | <font color=green>■</font> |   |
-| 4 | 提供北向对接&HA能力 | <font color=green>■</font> |   |
+| 1 | UBS Engine支持UB池化资源管理能力特性 | <font color=green>■</font> |   |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
