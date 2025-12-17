@@ -98,10 +98,10 @@ N/A
 ## 测试计划
 | Stange name   | Begin time | End time   | Days | 测试执行策略                   | 备注   |
 | :------------ | :--------- | :--------- | ---- | ----------------------------- | ------ |
-| Test func | 2025/11/21 | 2025/11/27 | 7 | 功能测试 |
-| Test bench | 2025/11/28  | 2025/11/30 | 3  | 回归测试 |
-| Test SPECjvm | 2025/12/01  | 2025/12/02 | 2  | 性能测试 |
-| Test SPECjbb | 2025/12/03  | 2025/12/05 | 3  | 性能测试 |
+| Test round 5 | 2025/11/21 | 2025/11/27 | 7 | 功能测试 |
+| Test round 5 | 2025/11/28  | 2025/11/30 | 3  | 回归测试 |
+| Test round 5 | 2025/12/01  | 2025/12/02 | 2  | 性能测试 |
+| Test round 5 | 2025/12/03  | 2025/12/05 | 3  | 性能测试 |
 
 ## 入口标准
 
@@ -110,7 +110,7 @@ N/A
 ## 出口标准
 
 1. openjdk21 编译完成后，能够正常执行 make test 测试，且测试通过
-2. 配置环境变量 export JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions  -XX:-AvoidUnalignedAccesses  -XX:LockingMode=2 " 重新执行 make test 测试，能够完整执行并通过测试，不报错
+2. 配置环境变量 export JAVA_TOOL_OPTIONS="-XX:+UnlockExperimentalVMOptions -XX:+UnlockDiagnosticVMOptions -XX:+UseRVV -XX:-AvoidUnalignedAccesses  -XX:LockingMode=2 " 重新执行 make test 测试，能够完整执行并通过测试，不报错
 
 # 附件
 
