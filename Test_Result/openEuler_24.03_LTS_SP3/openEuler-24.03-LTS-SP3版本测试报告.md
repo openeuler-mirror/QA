@@ -10,6 +10,7 @@
 | 2025/12/8 | 1.0.0    | 初稿 | ga_beng_cui |
 | 2025/12/23 | 1.0.1 | Add RISC-V | jean9823 |
 | 2025/12/23 | 1.0.2 | Add Loongarch | tianyanhui |
+| 2025/12/24 | 1.0.3 | update | ga_beng_cui |
 
 
 
@@ -77,7 +78,8 @@ openEuler 24.03 LTS SP3版本按照社区release-manager团队的计划，共规
 | TaiShan 200 2280均衡型 | Kunpeng 920(支持1.70以上的bios版本)        | OS集成测试     |
 | RH2288H V3            | Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz | OS集成测试     |
 | LS2C5LC2 V2.1           | 龙芯3C5000/3C5000L +7A2000  | OS集成测试   |    
-| 3C/D6000            | 龙芯3C/D6000+7A2000 | OS集成测试   |    
+| 3C/D6000            | 龙芯3C/D6000+7A2000 | OS集成测试   |   
+| Milk-V Pioneer            | 算丰SG2042 | OS集成测试     |
 
 
 ## 2.3 需求清单
@@ -152,7 +154,7 @@ openEuler 24.03 LTS SP3版本交付需求列表如下，详情见[openEuler-24.0
 |13| 支持etmem                               | Storage   | sig-QA  | 验证新发布模块memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力 |
 |14| 支持用户态协议栈gazelle                               | sig-high-performance-network | sig-QA | 关注gazelle高性能用户态协议栈功能                            |
 |15| 支持国密算法                                          | sig-security-facility| sig-QA  | 验证openEuler操作系统对关键安全特性进行商密算法使能，并为上层应用提供商密算法库、证书、安全传输协议等密码服务。 |
-|16| 支持pod带宽管理oncn-bwm                               | sig-high-performance-network | sig-QAk | 验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
+|16| 支持pod带宽管理oncn-bwm                               | sig-high-performance-network | sig-QA | 验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |
 |17| iSulad                                 | sig-iSulad   | sig-QA  |  覆盖继承功能，重点验证isulad长稳场景                 |
 |18| 支持A-OPS                                 | sig-iSulad   | sig-QA  | 重点关注本次新增合入容器干扰检测，微服务性能问题分钟级定位定界场景                 |
 |19| 支持系统运维套件x-diagnosis                           | sig-ops | sig-QA | 覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能  |
@@ -235,7 +237,7 @@ openEuler 24.03 LTS SP3版本交付需求列表如下，详情见[openEuler-24.0
 
 # 3 版本概要测试结论
 
-   openEuler 24.03 LTS SP3版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 5轮继承特性和新增特性合入测试 + 2轮全量测试 + 2轮回归测试（版本发布验收测试）；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项， 前两轮主要覆盖冒烟测试、安装部署、单包等OS测试项; 第3轮新需求开始批量合入，重点聚焦在已合入的新需求测试和继承特性验证; 第6、7轮全量测试开展版本交付的所有特性和各类专项测试；第8、9轮重点覆盖问题单较多模块的覆盖和扩展测试以及验证问题的修复；最后一轮还包括版本发布验收测试，是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
+   openEuler 24.03 LTS SP3版本整体测试按照release-manager团队的计划，1轮开发者自验证 + 5轮继承特性和新增特性合入测试 + 2轮全量测试 + 2轮回归测试（版本发布验收测试）；第1轮主要依赖各sig开发者自验证，聚焦于代码静态检查、安装卸载自编译、软件接口变更等测试项， 前两轮主要覆盖冒烟测试、安装部署、单包等OS测试项; 第6、7轮全量测试开展版本交付的所有特性和各类专项测试；第8、9轮重点覆盖问题单较多模块的覆盖和扩展测试以及验证问题的修复；最后一轮还包括版本发布验收测试，是在版本正式发布至官网后开展的轻量化验证活动，旨在保证发布件和测试验证过程交付件的一致性。
 
 
    openEuler 24.03 LTS SP3版本共发现问题 322 个，有效问题 314 个，无效问题 8 个，遗留问题 0 个，风险可控，版本整体质量良好。
@@ -273,7 +275,7 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 | 4 | 安装部署  | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> |覆盖裸机/虚机场景下，通过光盘/USB/PXE三种安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署，共执行55个测试用例，无问题，整体质量良好   |
 | 5 | 内核  | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font>|本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持平，波动范围小于5%以内   |
 | 6 | 容器(isula/docker/安全容器/系统容器/镜像) | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font>|本次容器领域相关软件包升级后，容器引擎原有功能完整性和有效性，需覆盖isula、docker两个引擎；分别验证安全容器、系统容器和普通容器场景下基本功能验证；另外需要对发布的openEuler容器镜像进行基本的使用验证   |
-| 7 | 虚拟化 | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font> | 继承已有测试能力，重点关注回合新特性后，新版本上虚拟化相关组件的基本功能   |
+| 7 | 虚拟化 | <font color=green>█</font> | <font color=green>█</font> | <font color=green>█</font> |  <font color=green>█</font> | 共完成4个测试套验证，包括功能、性能和可靠性测试：packetDrill的TCP用例，通过399个用例；ltp的syscall用例，通过788个用例；netperf、lmbench网络性能用例，通过18个用例；CAQM性能用例5个全部通过，RPS、GRO、GSO功能生效无问题，流量正常；CAQM功能用例6个全部通过，互通、参数配置功能正常；验证未发现问题，无遗留问题   |
 | 8 | 支持A-Tune  | <font color=green>█</font> | NA | NA | NA   |针对A-Tune特性及功能进行测试，共计执行10个测试用例，主要包含单节点全量功能测试功能测试、应用配置测试和集群调优测试，无skip用例，无失败用例，整体质量良好。 |
 | 9 | 支持secPaver  | <font color=green>█</font> | NA | NA |   <font color=green>█</font>|secpaver特性，共计执行41个用例，其中继承用例36个，主要覆盖了功能测试、接口测试、异常配置测试、资料测试，遗留风险小，整体质量良好   |
 | 10 | 支持secGear  | <font color=green>█</font> | NA | NA |  NA  | secGear特性，共计执行150个用例，新增19个，主要覆盖了接口测试、功能测试、组合场景测试、可靠性测试、压力和稳定性测试。   |
@@ -333,7 +335,7 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 | 70 | 版本引入ACPO包  | <font color=green> █  </font> | NA | NA | <font color=green>█</font> |重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容 ,共计执行5个用例，主要覆盖了功能测试,兼容性测试和DFX专项测试，未发现新增问题，遗留问题数0, 整体质量良好。|
 | 71 |  内核TCP/IP协议栈支持CAQM拥塞  | <font color=green> █  </font> | NA | NA | NA |继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能 |
 |78| openEuler安全配置基线检测工具 |<font color=green> █  </font> | <font color=green>█</font> | <font color=green>█</font> |   <font color=green>█</font>   |使用Linux系统安全检查工具secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险 |
-|80| 海光CSV1/2/3支持 |<font color=green> █  </font> | NA | NA |NA  |本次24.03 SP3测试主要包括功能测试和兼容性测试，共计执行8项测试2186个用例，覆盖海光机密计算，可信计算，密码技术三类，其中密码技术类中兼容性测试存在问题，已提修复PR，无遗漏风险，整体质量良好。|
+|80| 海光CSV1/2/3支持 |<font color=green> █  </font> | NA | NA |NA  |本次24.03 SP3测试主要包括功能测试和兼容性测试，共计执行8项测试2186个用例，覆盖海光机密计算，可信计算，密码技术三类，其中密码技术类中兼容性测试存在问题，已修复，无遗漏风险，整体质量良好。|
 |87| 基于通信算子的低开销高精度慢节点检测 |<font color=green> █  </font> | NA | NA | NA |覆盖功能、长稳、资料测试，功能覆盖模型数据timeline图转化，数据采集开销验证，分组验证，慢节点分析验证|
 |88| DevStation开发流程智能化增强|<font color=green> █  </font> | NA | NA |NA |测试mcp服务的下载、配置及应用，主要覆盖功能测试、性能测试和可靠性测试 |
 |89| 支持超大虚机规格 |<font color=green> █  </font> | NA | NA | NA|继承已有测试能力，主要覆盖功能测试 |
@@ -369,7 +371,7 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 |4|[openssl库：RISC-V架构的系列优化-SM2优化](https://gitee.com/openeuler/QA/pulls/1237)|  基础功能测试涵盖了openssl RPM构建，组件正确性验证测试共计2890个单元用例，目前所有功能测试均已通过，核心功能稳定正常。性能测试是通过openssl speed 命令对优化前后的AES-128-CBC、RSA2048算法、sm2特性进行加解密测试，测试结果符合预期，优化效果明显 | | |<font>NA</font> | <font>NA</font> | <font color=green>█</font> |  NA ||
 |5|[virtcca: 支持virtCCA机密虚机热迁移](https://gitee.com/openeuler/QA/pulls/1277)| 覆盖功能测试，性能测试，可靠性测试，安全测试，资料测试，共执行用例30个，测试通过，无遗留风险，整体质量良好；  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |6|[golang: Backport RVA23 支持](https://gitee.com/openeuler/QA/pulls/1247)| 环境变量 `GORISCV64` 设置为 `rva20u64` `rva22u64` `rva23u64` 时，Golang 的编译测试和完整功能测试均可正常执行，且执行通过，共执行６个用例  | | |<font>NA</font> | <font>NA</font> | <font color=green>█</font> | NA | |
-|7|[TSB-agent: 支持可信计算虚拟化vTPCM]()| 不在24.03-LTS-SP3版本发布，在走移除流程   | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
+|7|[TSB-agent: 支持可信计算虚拟化vTPCM](https://atomgit.com/openeuler/QA/pull/1313)|测试活动主要覆盖了功能、资料、可靠性以及安全专项测试，所有测试活动均完成且充分开展。测试用例覆盖度：共涉及用例95个，用例执行率100%，用例通过率100%。问题发现情况：共发现11个问题，其中次要问题11个问题均已闭环，无遗留问题。在各阶段测试活动开展充分，质量良好，版本交付范围内无遗留问题。| | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |8|[openssl：Backport 主线 RISC-V 架构的 SHA-2 汇编优化](https://gitee.com/openeuler/QA/pulls/1250/files)| 环境变量 `OPENSSL_riscvcap` 设置为 `rv64gc_zbb`，强制启用 RISC-V 64 下的 Zbb 优化，执行 openssl 编译过程自带的 make test 测试，测试可以通过 | | |NA|<font color=green>█</font>  | <font color=green>█</font> | NA | |
 |9|[URMA：URMA支持UB基础通信能力](https://gitee.com/openeuler/QA/pulls/1260)|  URMA支持UB-C基础通信能力和URMA支持UB-C多路径，共执行208个用例，开展了功能、API接口、基本可靠性测试等。主要覆盖URMA ctx、jetty等资源管理、TP创建&销毁、数据面通信、多路径能力、DFX等。当前发现问题已解决，回归通过，无遗留风险，整体质量良好。 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
 |10|[UMS：UMS支持socket接口通信](https://gitee.com/openeuler/QA/pulls/1249)| UMS支持socket接口通信。测试覆盖86条用例，涉及基本功能测试（ums建链、逃生通道、建链信息查询、配置项修改等）、基础可靠性测试、文档资料测试。发现问题1个。当前问题均已修复，无遗留问题。整体质量良好。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
@@ -386,28 +388,28 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 |21|[qemu：支持基于urma通道的内存热迁移](https://gitee.com/openeuler/QA/pulls/1248)| URMA内存热迁移特性，共计执行7个用例，主要覆盖了基本功能测试，整体质量良好  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |22|[UBNative：灵衢虚拟化基础能力支持UBNative直通虚拟化](https://gitee.com/openeuler/QA/pulls/1248)| memlink特性，共计执行8个用例，主要覆盖了基本功能测试，整体质量良好  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |23|[memlink：灵衢虚拟化基础能力支持memlink大规格虚拟机、内存回收](https://gitee.com/openeuler/QA/pulls/1248)| memlink特性，共计执行8个用例，主要覆盖了基本功能测试，整体质量良好  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
-|24|[utpam：基于Rust开发的身份认证模块]()| QA已评审通过，待上传测试报告  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
-|25|[UB lib & tool：灵衢基础工具和库]()| 未评审  | | |  | <font>NA</font> | <font>NA</font> | NA ||
-|26|[openssl：Backport 主线 RISC-V 架构的 MD5 汇编优化]()|代码pr未合入| | | <font>NA</font> | <font>NA</font> | <font>NA</font> | NA ||
+|24|[utpam：基于Rust开发的身份认证模块](https://atomgit.com/openeuler/QA/pull/1301)| DDE 特性合计执行用例239条，主要覆盖了基础组件、预装应用核心功能、新增特性基础功能以及基本UI测试。功能正常，可正常配置pam文件设置认证策略 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
+|25|[UB lib & tool：灵衢基础工具和库]()| 已评审通过，待提交测试报告  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
+|26|[openssl：Backport 主线 RISC-V 架构的 MD5 汇编优化](https://atomgit.com/openeuler/QA/pull/1312)|环境变量 `OPENSSL_riscvcap` 设置为 `rv64gc_zbb`，强制启用 RISC-V 64 下的 Zbb 优化，执行 openssl 编译过程自带的 make test 测试，2890 个测试案例可以通过| | | <font>NA</font> | <font color=green>█</font> | <font color=green>█</font> | NA ||
 |27|[支持树莓派](https://gitee.com/openeuler/QA/pulls/1274)|openEuler 24.03 LTS SP3 树莓派镜像版本测试完成了功能测试，测试范围包括镜像安装，系统基本信息查看，用户功能，软件管理功能，服务管理功能，进程管理功能，网络管理功能，开发环境等；完成了硬件兼容性测试，包括树莓派 4B/5 开发板的 USB 接口、HDMI 接口、以太网接口、Wi-Fi 、蓝牙的兼容性验证。以上测试内容均未发现问题。| | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |28|[secScanner:操作系统安全加固组件](https://gitee.com/openeuler/QA/pulls/1276)|  secScanner特性，共计执行152个用例，主要覆盖了功能测试和安全测试，发现问题已解决，回归通过，无遗留风险，整体质量良好 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |29|[VMAnalyzer:轻量级虚拟化性能监控组件](https://gitee.com/openeuler/QA/pulls/1268)| VMAnalyzer功能测试，共计执行57个用例，主要覆盖了虚拟机运行状况和性能采集检测、宿主机信息/虚拟化环境信息/虚机基本信息采集检测测试，发现问题已解决，回归通过，无遗留风险，整体质量良好。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |30|[慢IO/慢盘检测能力增强](https://gitee.com/openeuler/QA/pulls/1230/files)| 共计执行用例16个，覆盖了功能测试、接口测试、异常测试以及资料测试，发现问题1个，整体开发代码量1.4k，发现问题1个，缺陷率为0.71/kloc，问题均已修复，无遗留问题，整体质量良好。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
-|31|[CompassCI支持功能和性能自动化测试以及性能变化补丁识别定位]()| 未评审  | | |  | <font>NA</font> | <font>NA</font> | NA ||
+|31|[CompassCI支持功能和性能自动化测试以及性能变化补丁识别定位](https://atomgit.com/openeuler/QA/pull/1298)| Compass-CI特性，共计执行46个用例，主要覆盖了功能测试和可靠性测试。整体开发代码量17.4 K，开发自测覆盖率较高，未发现问题，无遗留风险，整体质量良好；   | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |32|[oeDeploy支持AI Agent开发场景工具栈，支持CANN软件环境与昇腾驱动的快速部署](https://gitee.com/openeuler/QA/pulls/1240)| 共计执行114个用例，覆盖功能、可靠性、性能、安全、兼容性等测试。新增的三个oeDeploy未发现问题，关联特性共发现4个问题，均已修复，整体质量良好。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |33|[DevStation支持MCP开发工具链和增强AI助手Agent创建，提升开发者体验，使能CVE漏洞修复提效](https://gitee.com/openeuler/QA/pulls/1272)|  MCP转换与测试工具特性，共计执行23个用例，主要覆盖功能和可靠性测试。共发现问题4个，均已解决，回归通过，整体质量良好。 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
-|34|[引入IOInflight QoS控制器，降低混部场景在线业务干扰率]()| 未评审  | | |  | <font>NA</font> | <font>NA</font> | NA ||
+|34|[引入IOInflight QoS控制器，降低混部场景在线业务干扰率]()| 已评审通过，待提交测试报告  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |35|[SPDK支持vq均衡多reactor功能，降低虚拟化开销](https://gitee.com/openeuler/QA/pulls/1243)| openEuler SPDK支持vq均衡多reactor功能，虚拟化开销小于5%特性，共计执行1个用例，主要覆盖了功能测试和性能测试，整体质量良好  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |36|[openEuler Intelligence智能平台支持智能诊断、智能调优和数据治理流水线开放能力](https://gitee.com/openeuler/QA/pulls/1217,https://gitee.com/openeuler/QA/pulls/1233)| 智能诊断特性，共计执行7个用例，主要覆盖了功能测试和可靠性测试，通过100+故障注入的可靠性测试，无遗留风险，整体质量良好。智能调优特性，共计执行15个用例，主要覆盖了功能测试和性能测试，实现各应用智能调优5%以上目标，无遗留风险，整体质量良好。openEuler Intelligence知识库特性（数据流水线+ dify集成）共计执行121个测试用例，通过功能测试、性能测试、专项测试及兼容性验证，发现的11个问题均已修复并验收，无遗留风险，整体质量良好，满足商业集成及落地要求。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |37|[sysHAX 支持支持7B 中小稠密模型推理算力填充](https://gitee.com/openeuler/QA/pulls/1245)|  据新增功能点共设计了23个测试样例进行测试；共发现5个问题，代码量4.6k，缺陷密度 1.08个/KLOC，质量风险良好 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
-|38|[ModelFS提升推理服务启动速度]()| 未评审  | | | | <font>NA</font> | <font>NA</font> | NA ||
+|38|[ModelFS提升推理服务启动速度]()| 已评审通过，待提交测试报告  | | | <font color=green>█</font>| <font>NA</font> | <font>NA</font> | NA ||
 |39|[GMem异构融合内存提升异构资源利用率](https://gitee.com/openeuler/QA/pulls/1253/files)|  本特性共计执行用例56个，主要覆盖了功能测试和可靠性测试，失败用例0个，继承用例56个，用例全部通过， 发现问题已解决， 回归通过， 无遗留风险，整体质量良好。 | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |40|[毕昇JDK21支持元数据压缩优化降低堆数据内存使用](https://gitee.com/openeuler/QA/pulls/1281)| 共计执行97334个用例，主要覆盖了功能测试，通过经过fuzz和7*24的长稳测试，发现问题已解决，回归通过，无遗留风险，整体质量良好；  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
 |41|[TF原生Embedding算子图优化提高推理性能](https://gitee.com/openeuler/QA/pulls/1244)| ANNC需求共包含4个特性，共计执行82个用例，主要覆盖了功能测试,性能测试和资料测试，发现问题1，已修复问题1，无遗留风险，整体质量良好。  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
 |42|[毕昇JDK21版本 G1、PS支持堆内存扩缩容](https://gitee.com/openeuler/QA/pulls/1281)| 共计执行97334个用例，主要覆盖了功能测试，通过经过fuzz和7*24的长稳测试，发现问题已解决，回归通过，无遗留风险，整体质量良好；  | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
 |43|[LLVM编译器提升数据库（MySQL）、压缩解压缩（lz4/zstd/xz）等性能](https://gitee.com/openeuler/QA/pulls/1288/files)|共进行三轮测试, 共执行用例68个，前两轮测试执行包括: 特性包构建，全量版本验证及特性功能测试，主要测试内容包括新增特性后的版本包引入对于全量版本构建没有影响、新增特性涉及的包能够正常安装和使用, 第三轮测试包括功能测试、性能测试，共发现7个问题,以及4个环境问题/非问题，部分解决，遗留问题数0, 整体质量良好。   | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> |NA | |
 |44|[毕昇JDK21支持JIT warmup， 提升Java启动性能](https://gitee.com/openeuler/QA/pulls/1281)|  共计执行97334个用例，主要覆盖了功能测试，通过经过fuzz和7*24的长稳测试，发现问题已解决，回归通过，无遗留风险，整体质量良好； | | | <font color=green>█</font> | <font>NA</font> | <font>NA</font> | NA ||
-|45|[RISC-V 架构面向 RVA23 指令集扩展规范推出正式版本]()|   | | | <font>NA</font> | <font>NA</font> | <font>NA</font> | NA ||
+|45|[RISC-V 架构面向 RVA23 指令集扩展规范推出正式版本]()|  测试结果已更新到整体测试报告中 | | | <font>NA</font> | <font>NA</font> | <font color=green>█</font> | NA ||
 
 
 
@@ -426,13 +428,8 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 | **CPU架构** | **CPU厂商**  | **CPU代号** | **整机厂商** | **测试结果**|
 |--------------|---------------|-------|--------------|------------|
 | x86   | intel |  cascade    |      超聚变    | pass|
-| x86   | intel | GNR/SRF     |   H3C/超聚变   | |
-| x86   | amd   |  turin      |   H3C/超聚变   |  |
-| x86   | hygon | hygon4       | 中科可控     |    |
-| x86   | zhaoxin | KH-50000   | zhaoxin   |  |
 | aarch64   | huawei | kunpeng920 | huawei | pass |
 | aarch64   | huawei | kunpeng920 7270z | huawei | pass|
-| aarch64   | Phytium| s5000c |  Phytium |  |
 | riscv64 | 算能sophgo | 算丰SG2042 | 算能sophgo | pass |
 |loongarch| 龙芯|3C5000|龙芯|pass|
 |loongarch| 龙芯|3C6000|龙芯|pass|
@@ -444,34 +441,16 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 
 | **对应团队**   | **芯片型号**   | **板卡型号**     | **x86_64架构测试结果** | **aarch64架构测试结果** | 
 | ----------  | -------------- | ------------------ | ------------------ | ------------ | 
-|   huawei   |    Hi1822（Hi1823）      |   SP680      |    |    |
-|            |    Hi1822                |   SP580      |  pass  |  pass  |
+|   huawei   |    Hi1822                |   SP580      |  pass  |  pass  |
 |            |    板载网卡               |         |  NA  |  pass  |
-|            |    B80121                |   SP686C      |    |    |
-|   marvell  |    ISP2812               |   QLE2770/QLE2772/QLE2870/QLE2872     |    |    |
 |   microchip|    PM8204                |   PMC3152      |  pass  |  pass  |
 |   nvidia   |    ConnectX-6 LX         |   MCX631102AN-ADAT      |  pass  |  pass  |
 |            |    ConnectX-6 DX         |   MCX623106AN-CDAT      |  pass  |  pass  |
-|            |    GA100                 |   Tesla A100      |  pass  |  failed  |
-|   broadcom |    SAS3908               |    9560-8i     |  暂无环境  |  pass  |
-|            |    BCM57508              |  P2100G      |    |    |
-|            |    BCM57508              |  P2100G      |    |    |
-|            |    LPe35000/LPe36000     |  LPE36002-M64       |    |    |
-|            |    SAS3916               |  9560-16i   |    |    |
+|            |    GA100                 |   Tesla A100      |  pass  |  pass  |
+|   broadcom |    SAS3908               |    9560-8i     |  NA  |  pass  |
 |   intel    |    I350                  |    I350-F2     |  pass  |  pass  |
 |            |   82599ES                |   SP310      |  pass  |  pass  |
-|            |   XL710                  |  XL710-QDA1/XL710-QDA2       |  已知问题  |  已知问题  |
 |            |   E810-XXV               |   E810-XXV-2      |  pass  |  pass |
-|   mucse    |   N10                    |   N10G-X4-QC      |    |    |
-|   nebula-matrix |    M16100           | N1045XS    |    |    |
-|   netswift |   WX1860A2               |  SF200T   |    |   |
-|            |   WX1860A4               |  SF400T   |   |    |
-|   sssnic   |   Gemini                 |  3S910/3S920/3S930  |    |   |
-|            |   Aries                  |  3S585/3S5A5/3S590 |    |    |
-|   中兴丁海  |    8049    　　　　　　　　 |  549c(E312)   |    |    |
-|   北京纵存  |    型号未定，与厂商沟通中      | | | |
-|   yunsilicon  |    型号未定，与厂商沟通中      | | | |
-|   bzwx     |    型号未定，与厂商沟通中      | | | |
 
 
 
@@ -498,11 +477,13 @@ openEuler 24.03 LTS SP3版本详细测试内容包括：
 
 ### 4.3.1 安全测试
 
+[24.03-LTS-SP3版本安全测试报告](https://atomgit.com/openeuler/QA/pull/1308)
+
 24.03-LTS-SP3版本测试阶段完成了安全测试，包括病毒扫描、安全编译选项扫描、安全片段引用扫描、开源license合规检查、签名和完整性性校验、SBOM校验；测试发现的主要问题都得到了修正，回归测试结果正常。
 
 1、病毒扫描：使用majun平台病毒扫描工具，对aarch64、x86_64架构的Everything(包含BaseOS)、EPOL所提供软件包进行病毒扫描。共计扫描52, 782个rpm包，未有病毒告警，无风险。
 
-2、开源漏洞评估：漏洞感知详情（数据统计截至2025年11月30日），如下表。待分析漏洞中，超危漏洞6个，高危漏洞34个，正在联系相关sig进行修复，预计版本发布前完成漏洞修复。低分漏洞288个待分析，版本发布前，优先保障高分漏洞修复，低分漏洞能修尽修，未修复漏洞在update版本处理。
+2、开源漏洞评估：majun平台漏洞感知详情（数据统计截至2025年12月24日），如下表。待办的漏洞有644个，0分529个，内核115个。内核高分CVE均已修复，115个为低分CVE，SP3版本发布分支冻结，非关键CVE已停止修复，后续在update版本修复。
 
 3、安全编译选项扫描：使用majun平台二进制扫描工具，对aarch64、x86_64架构的BaseOS所提供软件包进行安全编译选项（包括BIND_NOW、 NX、PIE、RELRO、SP、NO Rpath/Runpath、Strip）扫描。共计扫描5, 065个rpm包，总计问题数问题数99个（不同架构重复82个），所有问题均已评估或修复，无风险。
 
@@ -547,7 +528,8 @@ openEuler 24.03-LTS-SP3版本共发现问题322个，有效问题314个，其中
 | openEuler 24.03 LTS SP3  RC5        | 37    |  35  |  2  |   0   |
 | openEuler 24.03 LTS SP3 RC6         | 53    |  51  |  2  |   0   | 
 | openEuler 24.03 LTS SP3 RC7         | 5     |  5   |  0  |   0   | 
-
+| openEuler 24.03 LTS SP3 RC8         | 0     |  0   |  0  |   0   | 
+| openEuler 24.03 LTS SP3 RC9         | 0     |  0   |  0  |   0   | 
 
 # 6 版本测试过程评估
 
@@ -561,7 +543,6 @@ openEuler 24.03-LTS-SP3版本共发现问题322个，有效问题314个，其中
 2.	RC1-RC3保障everything\epol范围内软件包正常发布，发现构建和降级问题137个，新需求转测较少，发现问题6个，主要测试活动为OS通用场景和各专项测试，发现问题51个 
 3.	RC4-RC6 sysSentry、llvm、OBMM、GMEM、智能交付平台等多个新需求集中转测，同步开展OS通用场景及专项测试，OS通用场景和各专项测试发现问题8个，sysSentry、llvm、OBMM、GMEM、智能交付平台等新需求转测，发现的问题也主要集中在新需求，共发现问题70+个。
 4. RC7少量遗留需求验证及全量问题回归，发现新需求问题2个（低优先级体验优化类）、构建问题3个已修复，无阻塞性风险。
-5. 综上所述，剔除RC5-RC6新需求集中转测的70+个问题后，其余阶段新增Issue从Alpha的5个→RC1-RC3的194个→RC7的5个，呈先升后降的收敛趋势，符合质量预期。高风险问题（严重/主要）仅RC3出现2个（已闭环），其余阶段以主要/次要问题为主，且无OS基础能力退化问题。
 
 
 #### 6.2 OS集成测试迭代版本基线
