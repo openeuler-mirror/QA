@@ -41,7 +41,7 @@ Key\_Manager：使用第三方密钥管理工具存储和提供服务在验证�
 |||
 |---|---|
 |机型|Kunpeng 920|
-|OS|Openeuler 24.03.SP3|
+|OS|openEuler-24.03-LTS-SP3|
 
 
 # 3. 测试结论概述
@@ -129,7 +129,7 @@ rpm安装形式客户需要预置
 
 经测试。测试结论为PASS，文档路径：
 
-[https://gitee.com/openeuler/global-trust-authority/tree/master/docs](https://gitee.com/openeuler/global-trust-authority/tree/master/docs)
+[https://atomgit.com/openeuler/global-trust-authority/tree/master/docs](https://atomgit.com/openeuler/global-trust-authority/tree/master/docs)
 
 <table data-type="luckysheet_copy_action_table"><colgroup width="175px"></colgroup><colgroup width="345px"></colgroup><colgroup width="169px"></colgroup><tr><td  style="height:19px;font-weight: bold;">领域</td><td  style="font-weight: bold;">手册名称</td><td  style="font-weight: bold;">测试结果</td></tr><tr><td rowspan="8" colspan="1" style="height:19px;">远程证明</td><td>Challenge_Request_Challenge_Response_Environment_Preparation.md</td><td>PASS</td></tr><tr><td>Complete_List_of_Management_Tool_Commands.md</td><td>PASS</td></tr><tr><td>GTA_Usage_Guidelines.md</td><td>PASS</td></tr><tr><td>api_documentation.md</td><td>PASS</td></tr><tr><td>attestation_agent.md</td><td>PASS</td></tr><tr><td>attestation_common.md</td><td>PASS</td></tr><tr><td>attestation_service.md</td><td>PASS</td></tr><tr><td>key_manager_install.md</td><td>PASS</td></tr></table>
 
@@ -140,7 +140,7 @@ rpm安装形式客户需要预置
 # 5.测试执行
 
 ## 测试执行统计数据
-<table data-type="luckysheet_copy_action_table"><colgroup width="175px"></colgroup><colgroup width="121px"></colgroup><colgroup width="169px"></colgroup><colgroup width="72px"></colgroup><tr><td  style="height:19px;font-weight: bold;">版本名称</td><td  style="font-weight: bold;">测试用例数</td><td  style="font-weight: bold;">用例执行结果</td><td  style="font-weight: bold;">发现缺陷数</td></tr><tr><td  style="height:19px;">Openeuler 24.03.SP3</td><td>260</td><td>PASS</td><td>5</td></tr></table>
+<table data-type="luckysheet_copy_action_table"><colgroup width="175px"></colgroup><colgroup width="121px"></colgroup><colgroup width="169px"></colgroup><colgroup width="72px"></colgroup><tr><td  style="height:19px;font-weight: bold;">版本名称</td><td  style="font-weight: bold;">测试用例数</td><td  style="font-weight: bold;">用例执行结果</td><td  style="font-weight: bold;">发现缺陷数</td></tr><tr><td  style="height:19px;">openEuler-24.03-LTS-SP3</td><td>260</td><td>PASS</td><td>5</td></tr></table>
 
 # 后续测试建议
 
