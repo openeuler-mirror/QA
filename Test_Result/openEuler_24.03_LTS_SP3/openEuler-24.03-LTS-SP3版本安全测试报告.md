@@ -5,10 +5,11 @@
 
 修订记录
 
-| 日期       | 修订版本 | 修改描述                                 | 作者      |
-| ---------- | -------- | ---------------------------------------- | --------- |
-| 2025/12/05 | v1       | openEuler-24.03-LTS-SP3 版本安全测试初版 | SPYFAMILY |
-| 2025/12/24 | v2       | openEuler-24.03-LTS-SP3 版本漏洞状态刷新 | SPYFAMILY |
+| 日期       | 修订版本 | 修改描述                                      | 作者      |
+| ---------- | -------- | --------------------------------------------- | --------- |
+| 2025/12/05 | v1       | openEuler-24.03-LTS-SP3 版本安全测试初版      | SPYFAMILY |
+| 2025/12/24 | v2       | openEuler-24.03-LTS-SP3 版本漏洞状态刷新      | SPYFAMILY |
+| 2026/01/04 | v3       | openEuler-24.03-LTS-SP3 版本ISO签名及SBOM检查 | SPYFAMILY |
 
 关键词： 版本安全测试 安全扫描 合规检查
 
@@ -275,13 +276,13 @@ NX、PIE、RELRO、SP、NO Rpath/Runpath、Strip）扫描。
 
  测试结果：待版本发布后检查
 
-| 名称 | 架构 | sha256sum | SBOM | SBOM签名 |
-| ---- | ---- | --------- | ---- | -------- |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
-|      |      |           |      |          |
+| 名称                                                         | 架构    | sha256sum | SBOM | SBOM签名 |
+| ------------------------------------------------------------ | ------- | --------- | ---- | -------- |
+| [openEuler-24.03-LTS-SP3-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/aarch64/openEuler-24.03-LTS-SP3-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-24.03-LTS-SP3-everything-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/aarch64/openEuler-24.03-LTS-SP3-everything-aarch64-dvd.iso) | aarch64 | 是        | 是   | 是       |
+| [openEuler-24.03-LTS-SP3-everything-debug-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/aarch64/openEuler-24.03-LTS-SP3-everything-debug-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-24.03-LTS-SP3-netinst-aarch64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/aarch64/openEuler-24.03-LTS-SP3-netinst-aarch64-dvd.iso) | aarch64 | 是        | -    | -        |
+| [openEuler-24.03-LTS-SP3-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/x86_64/openEuler-24.03-LTS-SP3-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
+| [openEuler-24.03-LTS-SP3-everything-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/x86_64/openEuler-24.03-LTS-SP3-everything-x86_64-dvd.iso) | x86_64  | 是        | 是   | 是       |
+| [openEuler-24.03-LTS-SP3-everything-debug-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/x86_64/openEuler-24.03-LTS-SP3-everything-debug-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
+| [openEuler-24.03-LTS-SP3-netinst-x86_64-dvd.iso](https://dl-cdn.openeuler.openatom.cn/openEuler-24.03-LTS-SP3/ISO/x86_64/openEuler-24.03-LTS-SP3-netinst-x86_64-dvd.iso) | x86_64  | 是        | -    | -        |
