@@ -69,7 +69,7 @@
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
 | --- | ------- | ------ | ------- | ------- | ------- | ---------- | 
-|1|https://gitcode.com/openeuler/umdk/issues/59|共享jfr，主umq不bind，执行read/write，当block_size不是8K的时候失败|次要|不影响当前京东使用场景|无|NA|
+|1|https://gitcode.com/openeuler/umdk/issues/59|共享jfr，主umq不bind，执行read/write，当block_size不是8K的时候失败|次要|单边语义+共享jfr才会出现，不影响当前京东使用场景|无需规避，下个update版本解决|NA|
 
 ### 3.3.2 问题统计
 
