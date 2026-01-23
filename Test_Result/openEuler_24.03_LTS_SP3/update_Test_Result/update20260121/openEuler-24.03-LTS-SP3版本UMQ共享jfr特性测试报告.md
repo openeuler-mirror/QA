@@ -85,7 +85,7 @@
 | 序号 | 问题单号 | 问题简述 | 优先级 | 当前状态 |
 | --- | ------- | ------ | ------- | ------- |
 | 1 |https://gitcode.com/openeuler/umdk/issues/59|共享jfr，主umq不bind，执行read/write，当block_size不是8K的时候失败|次要|修复中
-| 2 |https://gitcode.com/openeuler/umdk/issues/52|共享jfr场景，子queue不指定rx_depth和rx_buf_size，查询到值和父queue不一致|次要|已完成
+| 2 |https://gitcode.com/openeuler/umdk/issues/52|共享jfr场景，子queue不指定rx_depth和rx_buf_size，查询到值和父queue不一致|次要|已验收
 
 # 4 详细测试结论
 
