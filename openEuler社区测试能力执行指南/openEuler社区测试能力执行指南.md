@@ -1261,111 +1261,7 @@ nmap 192.168.1.1-100
 
 ## 6、内核测试
 
-### 6.1、trinity:  syscall fuzzer
-
-**基本概念：**
-
-trinity是一个关于Linux系统调用的fuzz测试工具，此工具采用一些技术将半智能参数传递给被调用的系统调用，支持aarch64、x86-64等多种架构。
-
-智能功能包括：
-
-- 如果系统调用需要某种数据类型作为参数（例如文件描述符），它会被传递一个。这就是初始启动缓慢的原因，因为它会生成可以从 /sys、/proc 和 /dev 读取的文件的 fd 列表，然后用 fd 对各种网络协议套接字进行补充。（关于哪些协议成功/失败的信息在第一次运行时被缓存，大大提高了后续运行的速度）。
-- 如果系统调用只接受某些值作为参数（例如“标志”字段），Trinity 会列出所有可以传递的有效标志。只是为了在工作中扔一把扳手，偶尔，它会翻转其中一个标志，只是为了让事情变得更有趣。
-- 如果系统调用只接受一个范围的值，则传递的随机值通常会偏向该范围内。
-
-Trinity 将它的输出记录到文件中（每个子进程 1 个），并且 fsync 在它实际进行系统调用之前记录文件。这样，如果你触发了一些让内核恐慌的事情，你应该能够通过检查日志来准确地找出发生了什么。
-
-提供了几个测试工具 (test-*.sh)，它们以各种模式运行 trinity，并负责处理 CPU 亲和性等事情，并确保它从 tmp 目录运行。（便于清理任何名为垃圾的文件；之后只需 rm -rf tmp）
-
-**安装部署：**
-
-```bash
-git clone https://github.com/kernelslacker/trinity.git
-cd trinity
-./configure
-make && make install
-```
-
-**参数说明：**
-
-```
---quiet/-q: reduce verbosity.
-   Specify once to not output register values, or twice to also suppress syscall count.
-
- --verbose: increase verbosity.
-
- -D: Debug mode.
-     This is useful for catching core dumps if trinity is segfaulting, as by default
-     the child processes ignore those signals.
-
- -sN: use N as random seed.  (Omitting this uses time of day as a seed).
-  Note: There are currently a few bugs that mean no two runs are necessary 100%
-  identical with the same seed. See the TODO for details.
-
- --kernel_taint/-T: controls which kernel taint flags should be considered.
-	The following flag names are supported: PROPRIETARY_MODULE, FORCED_MODULE, UNSAFE_SMP,
-	FORCED_RMMOD, MACHINE_CHECK, BAD_PAGE, USER, DIE, OVERRIDDEN_ACPI_TABLE, WARN, CRAP,
-	FIRMWARE_WORKAROUND, and OOT_MODULE. For instance, to set trinity to monitor only BAD,
-	WARN and MACHINE_CHECK flags one should specify "-T BAD,WARN,MACHINE_CHECK" parameter.
-
- --list/-L: list known syscalls and their offsets
-
- --proto/-P: For network sockets, only use a specific packet family.
-
- --victims/-V: Victim file/dirs.  By default, on startup trinity tree-walks /dev, /sys and /proc.
-     Using this option you can specify a different path.
-     (Currently limited to just one path)
-
- -p: Pause after making a syscall
-
- --children/-C: Number of child processes.
-
- -x: Exclude a syscall from being called.  Useful when there's a known kernel bug
-     you keep hitting that you want to avoid.
-     Can be specified multiple times.
-
- -cN: do syscall N with random inputs.
-     Good for concentrating on a certain syscall, if for eg, you just added one.
-     Can be specified multiple times.
-
- --group/-g
-   Used to specify enabling a group of syscalls. Current groups defined are 'vm' and 'vfs'.
-
- --logging/-l <arg>
-  off: This disables logging to files. Useful if you have a serial console, though you
-         will likely lose any information about what system call was being called,
-         what maps got set up etc. Does make things go considerably faster however,
-         as it no longer fsync()'s after every syscall
-  <hostname> : sends packets over udp to a trinity server running on another host.
-         Note: Still in development. Enabling this feature disables log-to-file.
-  <dir> : Specify a directory where trinity will dump its log files.
-
- --ioctls/-I will dump all available ioctls.
-
- --arch/-a Explicit selection of 32 or 64 bit variant of system calls.
-```
-
-**使用示例：**
-
-对splice这个系统调用进行压力测试
-
-```bash
-./trinity -c splice
-```
-
- 对除splice这个系统调用以外的所有系统调用进行测试
-
-```bash
-./trinity -x splice
-```
-
-关闭日志记录，并抑制大多数输出以尽可能快地运行。使用 16 个子进程
-
-```bash
-./trinity -qq -l off -C16
-```
-
-### 6.2、 LTP
+### 6.1、 LTP
 
 **测试准备**
 
@@ -1390,7 +1286,7 @@ make && make install
 3. 分析失败用例并提单    
  确认是问题后在问题单仓库`(https://gitee.com/openeuler/kernel/issues)`查看是否有单，如果不存在问题单则提单跟踪 
 
-### 6.3、 posix
+### 6.2、 posix
 
 **测试准备**
 
@@ -1406,7 +1302,7 @@ make && make install
     
 查看上述脚本执成功，且结果中的用例通过率>=97%即可。
 
-### 6.4、long stress
+### 6.3、long stress
 
 **测试准备**
 
@@ -1424,7 +1320,7 @@ make && make install
 执行如下脚本查看运行结果：`sh result_check.sh`
   > 需要查看服务是否出现中断，是否有core、crash、大文件生成等。
 
-### 6.5、syzkaller
+### 6.4、syzkaller
 
 **测试准备**
 
@@ -1465,7 +1361,7 @@ make && make install
 - 失败分析   
   如果日志有报错，在社区根据历史问题单进行查询和定位
 
-### 6.6、 mmtests
+### 6.5、 mmtests
 
 **测试准备**
 
