@@ -90,8 +90,8 @@ NA
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | --- | ----------- | :--------: | --- |
 |1|ubctl支持查询环境端口信息| <font color=green>■</font> |   |
-|2|ubctl支持查询各层dump信息| <font color=green>▲</font> |   |
-|3|ubctl支持查询各个模块DFX信息| <font color=green>▲</font> |   |
+|2|ubctl支持查询各层dump信息| <font color=green>■</font> |   |
+|3|ubctl支持查询各个模块DFX信息| <font color=green>■</font> |   |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
@@ -101,11 +101,11 @@ NA
 
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | --- | ----------- | :--------: | --- |
-|1|ubctl支持查询SSU窝包统计| <font color=green>●</font> |   |
-|2|ubctl支持查询端口级统计指标信息| <font color=green>▲</font> |   |
-|3|ubctl支持查询实时带宽统计| <font color=green>▲</font> |   |
-|4|ubctl支持查询端口link历史状态| <font color=green>▲</font> |   |
-|5|ubctl支持查询固件版本号| <font color=green>▲</font> |   |
+|1|ubctl支持查询SSU窝包统计| <font color=green>■</font> |   |
+|2|ubctl支持查询端口级统计指标信息| <font color=green>■</font> |   |
+|3|ubctl支持查询实时带宽统计| <font color=green>■</font> |   |
+|4|ubctl支持查询端口link历史状态| <font color=green>■</font> |   |
+|5|ubctl支持查询固件版本号| <font color=green>■</font> |   |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
