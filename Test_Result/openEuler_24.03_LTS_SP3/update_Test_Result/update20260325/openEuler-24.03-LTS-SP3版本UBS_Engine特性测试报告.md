@@ -73,7 +73,7 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 |        | 问题总数 | 严重   | 主要  | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
 | 数目    |  0      |  0    |   0   |  0  |  0  |
-| 百分比  |  100%   |  100%  |   0  |  0  |  0  |
+| 百分比  |  100%   |  0%  |   0  |  0  |  0  |
 
 #### 3.3.2.2 发现问题
 
@@ -92,6 +92,9 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 | 2 | 分布式高可靠能力特性 | <font color=green>■</font> |   |
 | 3 | UB池化资源管理能力 | <font color=green>■</font> |   |
 
+<font color=red>●</font>： 表示特性不稳定，风险高
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
+<font color=green>■</font>： 表示特性质量良好
 
 ### 4.1.2 新增特性测试结论
 
