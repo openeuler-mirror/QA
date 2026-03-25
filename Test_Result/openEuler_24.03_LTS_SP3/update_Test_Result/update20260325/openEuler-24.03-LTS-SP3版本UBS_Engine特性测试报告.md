@@ -1,4 +1,4 @@
-![avatar](../../images/openEuler.png)
+![avatar](../../../images/openEuler.png)
 
 
 版权所有 © 2025  openEuler社区
@@ -38,7 +38,7 @@
 
 | 硬件型号  | 硬件配置信息 | 备注  |
 | -------- | ----------- | ---- |
-| 920新版本 |  典型配置   | 两节点 |
+| 鲲鹏920新版本 |  典型配置   |      |
 
 
 # 3     测试结论概述
@@ -57,7 +57,8 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 
 ## 3.2   约束说明
 
-特性使用时涉及到的约束及限制条件
+1. 依赖UB硬件，UB连接正常
+2. 安装ubm，obmm，libvirt，qemu等相关组件，各个组件正常运行
 
 ## 3.3   遗留问题分析
 
