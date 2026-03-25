@@ -18,7 +18,6 @@ Coding Agent、GitCode
 缩略语清单：
 | 缩略语 | 英文全名 | 中文解释 |
 | ------ | -------- | -------- |
-|        |          |          |
 
 # 1     特性概述
 - 智能助手实现Coding Agent能力
@@ -43,18 +42,7 @@ Coding Agent、GitCode
 
 ## 3.1   测试整体结论
 
-智能助手实现coding Agent特性，共计执行18个用例，主要覆盖了功能测试和可靠性测试，无遗留风险，整体质量良好。
-
-| 测试活动 | 测试子项 | 活动评价 |
-| ------- | -------- | ------- |
-| 功能测试 | 继承特性测试 |   不涉及   |
-| 功能测试 | 新增特性测试 |  <font color=blue>▲</font>    |
-| 兼容性测试 |          |  不涉及     |
-| DFX专项测试 | 性能测试 | 不涉及     |
-| DFX专项测试 | 可靠性/韧性测试 | <font color=blue>▲</font>|
-| DFX专项测试 | 安全测试 |  <font color=blue>▲</font>    |
-| 资料测试 |         |  不涉及       |
-| 其他测试 |         |   不涉及      |
+智能助手实现coding Agent特性，共计执行18个用例，主要覆盖了功能测试、可靠性测试和安全测试，无遗留风险，整体质量良好。
 
 ## 3.2   约束说明
 
@@ -65,13 +53,16 @@ Coding Agent、GitCode
 ## 3.3   遗留问题分析
 
 ### 3.3.1 遗留问题影响以及规避措施
+不涉及
 
 ### 3.3.2 问题统计
-| 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
+| 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 | 问题单状态 |
 | --- | ------- | ------ | ------- | ------- | ------- | ---------- | 
-|  1   |  https://gitcode.com/src-openeuler/witty-service/issues/3       |  容器环境获取失败导致witty-backend启动失败      |    主要     |         |   手动把witty-service用户加入docker用户组      |            |
-|  2   |   https://gitcode.com/src-openeuler/witty-service/issues/2      |   缺少nginx用户导致启动witty-frontend失败     |  主要       |         |   手动添加nginx用户      |            |
-|  3   |   https://gitcode.com/src-openeuler/witty-service/issues/4      |  安装包卸载时有文件残留     |  次要       |         |         |            |
+|  1   |  https://gitcode.com/src-openeuler/witty-service/issues/3       |  容器环境获取失败导致witty-backend启动失败      |    主要     |         |   手动把witty-service用户加入docker用户组      |            | 已验收 |
+|  2   |   https://gitcode.com/src-openeuler/witty-service/issues/2      |   缺少nginx用户导致启动witty-frontend失败     |  主要       |         |   手动添加nginx用户      |            | 已验收 |
+|  3   |   https://gitcode.com/src-openeuler/witty-service/issues/4      |  安装包卸载时有文件残留     |  次要       |         |         |            | 已验收 |
+
+问题单全部已验收。
 
 |        | 问题总数 | 严重 | 主要 | 次要 | 不重要 |
 | ------ | -------- | ---- | ---- | ---- | ------ |
@@ -98,14 +89,13 @@ Coding Agent、GitCode
 | 4   | 根据GitCode令牌能够自动展示仓库和分支，选择后自动下载到工作目录|<font color=green>■</font> | 用例2个  |
 | 5   | Coding Agent能够根据用户提示自动创建GitCode pr提交到对应的仓库下|<font color=green>■</font>  | 用例1个  |
 | 6   | openEuler容器中vscode功能可用：包括显示、编辑文件、新建终端、git的使用等|<font color=green>■</font> |用例4个   |
-| 7   | 智能助手集成Coding Agent功能| <font color=blue>▲</font>  | 用例1个 |
+| 7   | 智能助手集成Coding Agent功能| <font color=green>■</font>  | 用例1个 |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
 <font color=green>■</font>： 表示特性质量良好
 
 ## 4.2 兼容性测试结论
-
 不涉及
 
 ## 4.3 DFX专项测试结论
@@ -117,9 +107,9 @@ Coding Agent、GitCode
 
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
-|  可靠性 |  关闭会话后能够正常恢复       |   用例1个测试通过       |
-|  可靠性 |  重启系统后回复会话       |  用例1个测试通过        |
-|  可靠性 |  打包沙箱环境可下载、可移植、解压即可用       |  用例1个测试通过        |
+|  可靠性 |  关闭会话后能够正常恢复 （10次以上）      |   用例1个测试通过       |
+|  可靠性 |  重启系统后回复会话 （10次以上）      |  用例1个测试通过        |
+|  可靠性 |  打包沙箱环境可下载、可移植、解压即可用 （5次以上）      |  用例1个测试通过        |
 
 ### 4.3.3 安全测试结论
 
@@ -141,7 +131,7 @@ Coding Agent、GitCode
 
 | 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------- | ---------- | ------------ | ------------ |
-| openEuler 24.03-LTS-SP3  | 18           |   基本通过，安装过程有问题，但不影响用例执行           |       3       |
+| openEuler 24.03-LTS-SP3  | 18           |   安装过程有问题已经解决，全部用例执行通过           |       3       |
 
 
 *数据项说明：*
@@ -152,7 +142,7 @@ Coding Agent、GitCode
 
 ## 5.2   后续测试建议
 
-后续测试需要关注点(可选)
+不涉及
 
 # 6     附件
 
