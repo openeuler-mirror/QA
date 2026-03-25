@@ -117,10 +117,13 @@ NA
 
 ## 4.4 资料测试结论
 
-| 测试类型                  | 测试内容                                                     | 测试结论           |
-| ------------------------- | ------------------------------------------------------------ | ------------------ |
-| Design_docs_Reference文档 | https://atomgit.com/openeuler/ubs-engine/blob/master/src/addons/ucache/doc/Developer_Guide.md | 测试通过，质量良好 |
-| User_Guide文档            | https://atomgit.com/openeuler/ubs-engine/blob/master/src/addons/ucache/doc/User_Guide.md | 测试通过，质量良好 |
+| 测试类型 | 测试内容 | 测试结论 |
+| ------- | ------- | -------- |
+| Design_docs_Reference文档 | https://atomgit.com/openeuler/ubturbo/blob/master/doc/Design_docs_Reference.md | 测试通过，质量良好 |
+| Developer_Guide文档 | https://atomgit.com/openeuler/ubturbo/blob/master/doc/Developer_Guide.md | 测试通过，质量良好 |
+| Tutorial文档 | https://atomgit.com/openeuler/ubturbo/blob/master/doc/Tutorial.md | 测试通过，质量良好 |
+| User_Guide文档 | https://atomgit.com/openeuler/ubturbo/blob/master/doc/User_Guide.md | 测试通过，质量良好 |
+| docapi_docs_reference文档 | https://atomgit.com/openeuler/ubturbo/blob/master/doc/docapi_docs_reference.md | 测试通过，质量良好 |
 
 ## 4.5 其他测试结论
 
