@@ -19,11 +19,14 @@ Coding Agent、GitCode
 | 缩略语 | 英文全名 | 中文解释 |
 | ------ | -------- | -------- |
 
-# 1     特性概述
+# 1     特性概述与介绍
 - 智能助手实现Coding Agent能力
+	- 用户输入编码需求，智能助手支持用户需求转代码的能力，最终在工作区新增或者修改代码
 - 支持关联gitcode仓库
+	- 根据gitcode access token，Coding Agent支持拉取授权的gitcode仓库，并基于该仓库代码进行coding
 - Coding Agent支持基于openEuler 24.03-LTS-SP3构建的容器环境运行代码。
-
+  	 - 构建基于openEuler 24.03-LTS-SP3的Docker沙箱，支持代码执行，代码生成等操作在沙箱中触发执行，包过git、vscode、chromium等常用开发组件。
+     
 # 2     特性测试信息
 
 本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
@@ -118,7 +121,7 @@ Coding Agent、GitCode
 |  安全测试 | 提示让Coding Agent执行危险命令，如"rm -rf /" | 预测到危险命令，不执行，用例1个测试通过   |
 
 ## 4.4 资料测试结论
-不涉及
+因为此功能使用主要从前端进入，前端更新后会补充用户使用说明等资料。
 
 ## 4.5 其他测试结论
 不涉及
