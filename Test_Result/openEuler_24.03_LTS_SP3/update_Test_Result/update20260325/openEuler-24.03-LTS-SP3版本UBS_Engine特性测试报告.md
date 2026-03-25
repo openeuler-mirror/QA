@@ -1,4 +1,4 @@
-![avatar](../../../images/openEuler.png)
+![avatar](../../../../images/openEuler.png)
 
 
 版权所有 © 2025  openEuler社区
@@ -58,7 +58,7 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 ## 3.2   约束说明
 
 1. 依赖UB硬件，UB连接正常
-2. 安装ubm，obmm，libvirt，qemu等相关组件，各个组件正常运行
+2. 安装UBM，UBE等相关组件，各个组件正常运行
 
 ## 3.3   遗留问题分析
 
