@@ -24,7 +24,7 @@
 
 # 1     特性概述
 
-本测试报告为UBS Engine在openEuler 24.03-LTS-SP3操作系统上的测试报告，目的在于跟踪测试阶段中发现的问题，总结UBS Engine的测试结果，测试的范围主要包括UBS Engine提供的基础日志、通信、配置、CLI、SDK基础机制，分布式选举机制、fd、numa借用类型的内存池配置、内存借用、内存查询能力等。
+本测试报告为UBS Engine在openEuler 24.03-LTS-SP3操作系统上的测试报告，目的在于跟踪测试阶段中发现的问题，总结UBS Engine的测试结果，测试的范围主要包括UBS Engine继承特性，及新增的预借出内存池加速、拓扑查询能力、指定NUMA创建共享内存、ubsectl工具运维能力等
 
 # 2     特性测试信息
 
@@ -45,9 +45,10 @@
 
 ## 3.1   测试整体结论
 
-UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了功能、安全、资料测试，共计执行102个测试用例，发现问题已解决，回归通过，无遗留风险，整体质量良好。
+UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了功能、性能、可靠性、安全、资料测试，共计执行647个测试用例，无遗留风险，整体质量良好。
 |  测试活动  |   测试子项    | 活动评价 |
 | ---------- | ------------ | ------- |
+| 功能测试    | 继承特性测试 | 测试通过 |
 | 功能测试    | 新增特性测试 | 测试通过 |
 | DFX专项测试 | 性能测试     | 测试通过 |
 | DFX专项测试 | 可靠性测试    | 测试通过 |
@@ -87,7 +88,10 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 
 | 序号 | 组件/特性名称 | 特性质量评估 | 备注 |
 | --- | ----------- | :--------: | --- |
-| 1 | UBS Engine支持UB池化资源管理能力特性 | <font color=green>■</font> |   |
+| 1 | 生命周期管理能力特性 | <font color=green>■</font> |   |
+| 2 | 分布式高可靠能力特性 | <font color=green>■</font> |   |
+| 3 | UB池化资源管理能力 | <font color=green>■</font> |   |
+
 
 ### 4.1.2 新增特性测试结论
 
@@ -98,7 +102,8 @@ UBS Engine在openEuler openEuler-24.03-LTS-SP3-update20260325 版本，进行了
 | 3 | 提供拓扑查询能力，对接urma使能 | <font color=green>■</font> |   |
 | 4 | 支持指定NUMA创建共享内存 | <font color=green>■</font> |   |
 | 5 | 支持内存非交织模式 | <font color=green>■</font> |   |
-
+| 6 | 提供基于ubsectl工具的运维能力 | <font color=green>■</font> |   |
+| 7 | 支持容器内应用使用共享内存 | <font color=green>■</font> |   |
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
