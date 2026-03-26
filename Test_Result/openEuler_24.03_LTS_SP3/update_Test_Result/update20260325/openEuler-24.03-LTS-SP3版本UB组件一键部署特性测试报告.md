@@ -1,0 +1,176 @@
+# openEuler-24.03-LTS-SP3版本UB组件一键部署特性测试报告
+
+![avatar](../../images/openEuler.png)
+
+版权所有 © 2026 openEuler社区
+您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
+
+修订记录
+
+| 日期       | 修订 版本 | 修改描述       | 作者      |
+| ---------- | --------- | -------------- | --------- |
+| 2026.03.22 | v1        | 初始化测试报告 | SPYFAMILY |
+|            |           |                |           |
+
+关键词：特性测试 ub-pkg-manager UB
+
+摘要：本文描述了灵衢UB组件一键部署特性的测试信息与结果。主要涵盖功能测试、可靠性测试、兼容性测试、可维护性测试。
+
+缩略语清单：
+
+| 缩略语 | 英文全名    | 中文解释                   |
+| ------ | ----------- | -------------------------- |
+| UB     | Unified Bus | 灵衢，面向超节点的互联协议 |
+|        |             |                            |
+
+# 1 特性概述
+
+ub-pkg-manager 是一套用于管理、部署和监控 UB OS 软件包的工具集，包含多个功能模块和一个统一的命令行界面。实现UB组件的快速安装部署与驱动自动加载。提供ub-pkg-cli命令用于配置UB相关组件的配置参数与基础功能检测能力。[openEuler源码仓地址](https://atomgit.com/openeuler/ub-pkg-manager)（README）
+
+# 2 特性测试信息
+
+本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件。
+
+| 版本名称 | 测试起始时间 | 测试结束时间 |
+| -------- | ------------ | ------------ |
+| 0.0.4-3  | 2026.03.03   | 2026.03.06   |
+| 0.0.4-4  | 2026.03.16   | 2026.03.18   |
+| 0.0.4-5  | 2026.03.22   | 2026.03.24   |
+
+- 目前UB组件仅支持aarch64架构服务器，x86架构未提供构建相关RPM包，因此不测试。
+
+- UB组件能力同时依赖物理机提供相关的能力（ACPI UBRT表），目前在鲲鹏950提供，鲲鹏920与新型号作兼容性测试使用。
+
+| 硬件型号      | 硬件配置信息 | 备注       |
+| ------------- | ------------ | ---------- |
+| 鲲鹏920       |              | 兼容性测试 |
+| 鲲鹏920新型号 |              | 兼容性测试 |
+| 鲲鹏950       |              | 测试机型   |
+
+# 3 测试结论概述
+
+## 3.1 测试整体结论
+
+ub-pkg-manager特性，共计执行56个用例，主要功能测试、可靠性测试、兼容性测试、可维护性测试、资料测试。发现问题12个，均已解决，回归通过无遗留风险，整体质量良好。
+
+## 3.2 约束说明
+
+硬件环境依赖支持UB功能的物理机
+
+## 3.3 遗留问题分析
+
+### 3.3.1 遗留问题影响以及规避措施
+
+无
+
+### 3.3.2 问题统计
+
+#### 3.3.2.1 问题数量
+
+|        | 问题总数 | 严重 | 主要  | 次要 | 不重要 |
+| ------ | -------- | ---- | ----- | ---- | ------ |
+| 数目   | 12       | 1    | 4     | 6    | 1      |
+| 百分比 | 100%     | 8.3% | 33.3% | 50%  | 8.3%   |
+
+#### 3.3.2.2 发现问题
+
+| 序号 | 问题单号 | 问题简述                                                                                                                                  | 优先级 | 当前状态    |
+| ---- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------- |
+| 1    | 3        | [【openEuler-24.03-LTS-SP3】ub-pkg-cli version显示版本信息与软件包版本不一致](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/3)  | 次要   | close       |
+| 2    | 4        | [【README】文档说明修改](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/4)                                                       | 不重要 | close       |
+| 3    | 6        | [【openEuler-24.03-LTS-SP3】命令输出日志修改与提示补充](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/6)                        | 次要   | close<br /> |
+| 4    | 11       | [【openEuler-24.03-LTS-SP3】ub-pkg-cli update失败](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/11)                            | 主要   | close       |
+| 5    | 12       | [【openEuler-24.03-LTS-SP3】ub-pkg-cli rollback命令问题](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/12)                      | 主要   | close       |
+| 6    | 14       | [【openEuler-24.03-LTS-SP3】grub修改后reboot未实际生效](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/14)                       | 次要   | close       |
+| 7    | 15       | [【openEuler-24.03-LTS-SP3】ub-pkg-cli check --action conf检测结果错误](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/15)       | 次要   | close       |
+| 8    | 16       | [【openEuler-24.03-LTS-SP3】参数值缺失仍然可以更新驱动插入参数](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/16)               | 主要   | close       |
+| 9    | 17       | [【openEuler-24.03-LTS-SP3】参数名重复仍然可以插入参数](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/17)                       | 主要   | close       |
+| 10   | 18       | [【openEuler-24.03-LTS-SP3】缺失参数名插入仍然成功，且导致下一条正常命令失败](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/18) | 严重   | close       |
+| 11   | 19       | [【openEuler-24.03-LTS-SP3】mem-pool-test测试套运行失败](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/19)                      | 次要   | close       |
+| 12   | 20       | [【openEuler-24.03-LTS-SP3】-f、--file导出文件失败情况](https://atomgit.com/src-openeuler/ub-pkg-manager/issues/20)                       | 次要   | close       |
+
+# 4 详细测试结论
+
+## 4.1 功能测试
+
+### 4.1.1 继承特性测试结论
+
+无继承特性
+
+### 4.1.2 新增特性测试结论
+
+| 序号 | 组件/特性名称                                                          |        特性质量评估        | 备注 |
+| ---- | ---------------------------------------------------------------------- | :------------------------: | ---- |
+| 1    | ub-pkg-manager安装卸载                                                 | <font color=green>■</font> |      |
+| 2    | ub-pkg-urma安装卸载                                                    | <font color=green>■</font> |      |
+| 3    | ub-pkg-mem安装卸载<br />                                               | <font color=green>■</font> |      |
+| 4    | ub-pkg-virt安装卸载                                                    | <font color=green>■</font> |      |
+| 5    | ub-pkg-cli支持grub参数配置                                             | <font color=green>■</font> |      |
+| 6    | ub-pkg-cli支持驱动参数配置                                             | <font color=green>■</font> |      |
+| 7    | ub-pkg-cli回退配置                                                     | <font color=green>■</font> |      |
+| 8    | ub-pkg-cli支持导出当前驱动配置                                         | <font color=green>■</font> |      |
+| 9    | ub-pkg-cli支持检测UB基础组件部署状态（软件包、驱动加载、基础服务运行） | <font color=green>■</font> |      |
+| 10   | ub-pkg-cli提供UB功能的测试能力                                         | <font color=green>■</font> |      |
+
+<font color=red>●</font>： 表示特性不稳定，风险高
+<font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
+<font color=green>■</font>： 表示特性质量良好
+
+## 4.2 兼容性测试结论
+
+OS兼容性：目前UB特性相关特性的组件仅在openEuler-24.03-LTS-SP3版本发布
+
+硬件兼容性：x86架构无相关特性组件。在不支持UBRT表的aarch64架构硬件环境，软件包可安装，但服务运行时会提示当前环境不支持UB特性。
+
+## 4.3 DFX专项测试结论
+
+### 4.3.1 性能测试结论
+
+不涉及
+
+### 4.3.2 可靠性/韧性测试结论
+
+| 测试类型 | 测试内容         | 测试结论                        |
+| -------- | ---------------- | ------------------------------- |
+| 反复操作 | 重复安装卸载     | 功能正常                        |
+| 异常场景 | 构造命令输入错误 | 发现问题5个，已回归通过，无问题 |
+
+### 4.3.3 安全测试结论
+
+不涉及
+
+## 4.4 资料测试结论
+
+| 测试类型 | 测试内容                                                                      | 测试结论 |
+| -------- | ----------------------------------------------------------------------------- | -------- |
+| 说明文档 | [openEuler源码仓地址](https://atomgit.com/openeuler/ub-pkg-manager)（README） | 通过     |
+
+## 4.5 其他测试结论
+
+无
+
+# 5 测试执行
+
+## 5.1 测试执行统计数据
+
+_本节内容根据测试用例及实际执行情况进行特性整体测试的统计，可根据第二章的测试轮次分开进行统计说明。_
+
+| 版本名称 | 测试用例数 | 用例执行结果   | 发现问题单数 |
+| -------- | ---------- | -------------- | ------------ |
+| 0.0.4-3  | 56         | 通过42，失败14 | 10           |
+| 0.0.4-4  | 56         | 通过54，失败2  | 2            |
+| 0.0.4-5  | 56         | 通过56         | 0            |
+
+_数据项说明：_
+
+_测试用例数－－到本测试活动结束时，所有可用测试用例数；_
+
+_发现问题单数－－本测试活动总共发现的问题单数。_
+
+## 5.2 后续测试建议
+
+无
+
+# 6 附件
+
+_无_
