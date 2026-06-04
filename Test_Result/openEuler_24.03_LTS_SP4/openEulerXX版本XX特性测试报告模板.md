@@ -1,15 +1,14 @@
 ![avatar](../../images/openEuler.png)
 
 
-版权所有 © 2023  openEuler社区
+版权所有 © 2026  openEuler社区
  您对“本文档”的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称“CC BY-SA 4.0”)的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
 
 修订记录
 
 | 日期 | 修订版本 | 修改描述 | 作者 |
 | ---- | ----------- | -------- | ---- |
-| 2023/03/11 | V1.0 | 测试报告模板初始化 | @disnight |
-| 2025/10/14 | V1.1 | 增加特性对应软件及依赖描述，保证特性功能开源可获得，可复现（如sysHax等特性依赖oepkgs的相关二进制，则在约束说明中增加相关依赖约束） | @disnight |
+
 
 关键词： 
 
