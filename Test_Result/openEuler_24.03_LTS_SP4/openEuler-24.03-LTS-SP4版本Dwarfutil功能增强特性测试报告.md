@@ -8,12 +8,12 @@
 
 | 日期 | 修订版本 | 修改描述 | 作者 |
 | ---- | ----------- | -------- | ---- |
-| 2026/06/03 | V1.0 | Dwarfuuitl功能增强特性测试报告 | 陈静怡 |
+| 2026/06/03 | V1.0 | Dwarfuitl功能增强特性测试报告 | 陈静怡 |
 
 
-关键词： llvm-dwarfuuitl、debuginfo、debug types、DWARF4
+关键词： llvm-dwarfuitl、debuginfo、debug types、DWARF4
 
-摘要：本报告主要描述openEuler-24.03-LTS-SP4版本 Dwarfuuitl功能增强特性的整体测试过程，详细叙述测试覆盖情况，并通过问题分析对版本整体质量进行评估和总结。
+摘要：本报告主要描述openEuler-24.03-LTS-SP4版本 Dwarfuitl功能增强特性的整体测试过程，详细叙述测试覆盖情况，并通过问题分析对版本整体质量进行评估和总结。
 
 缩略语清单：
 
