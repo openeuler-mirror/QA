@@ -109,7 +109,7 @@
 
 | <br /> | 问题总数 | 严重 | 主要   | 次要 | 不重要 |
 | ------ | ---- | -- | ---- | -- | --- |
-| 数目     | 3    | 0  | 3    | 0  | 0   |
+| 数目     | 11    | 0  | 11    | 0  | 0   |
 | 百分比    | 100% | 0% | 100% | 0% | 0%  |
 
 # 4 详细测试结论
@@ -183,8 +183,8 @@
 
 | 版本名称                                   | 测试用例数 | 用例执行结果 | 发现问题单数 |
 | -------------------------------------- | ----- | ------ | ------ |
-| openEuler-24.03-LTS-SP4-update20260606 | 4    | 部分通过     | 3      |
-| **总计**                                 | **4** | **部分通过** | **3**  |
+| openEuler-24.03-LTS-SP4-update20260606 | 4    | 部分通过     | 11      |
+| **总计**                                 | **4** | **部分通过** | **11**  |
 
 *数据项说明：*
 
@@ -196,19 +196,19 @@
 
 ## 6.1 问题单详情
 
-| Issue编号 | Issue标题 | 关联文件 | 修复状态 |
+| Issue链接 | Issue标题 | 关联文件 | 修复状态 |
 | ------- | ----------------------------------------------------------- | ----------------------------------------------------------------------- | ---- |
-| #31 | [PatchFlow]	AI判断出来已经有类似的功能，不需要合入，点尝试解冲突，过会变成了未冲突，但还是可以点应用 已定位解决 | - | closed |
-| #32 | [PatchFlow]	AI解决冲突解决不确定 | - | closed |
-| #33 | [PatchFlow]	生成出来的补丁仍然冲突 | - | closed |
-| #34 | [PatchFlow]	commit当前按照合入时间排序 | - | closed |
-| #35 | [PatchFlow]	commit message自定义格式 | - | closed |
-| #36 | [PatchFlow]	merged_in_target判断失误 | - | open |
-| #37 | [PatchFlow]	自动化测试验证patchflow准确率 | - | open |
-| #38 | [PatchFlow]	超大xlsx（200个commit）导入失败，报错超时 | - | open |
-| #39 | [PatchFlow]	修改commit信息应用补丁报错 | - | closed |
-| #40 | [PatchFlow]	前置补丁合入后，后续补丁冲突状态不会刷新 | - | closed |
-| #41 | [PatchFlow]	存在前置补丁时，ai解决冲突只能在当前补丁里解决 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/31>| [PatchFlow]	AI判断出来已经有类似的功能，不需要合入，点尝试解冲突，过会变成了未冲突，但还是可以点应用 已定位解决 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/32>| [PatchFlow]	AI解决冲突解决不确定 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/33>| [PatchFlow]	生成出来的补丁仍然冲突 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/34>| [PatchFlow]	commit当前按照合入时间排序 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/35>| [PatchFlow]	commit message自定义格式 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/36>| [PatchFlow]	merged_in_target判断失误 | - | open |
+| <https://atomgit.com/openeuler/mcp-servers/issues/37>| [PatchFlow]	自动化测试验证patchflow准确率 | - | open |
+| <https://atomgit.com/openeuler/mcp-servers/issues/38>| [PatchFlow]	超大xlsx（200个commit）导入失败，报错超时 | - | open |
+| <https://atomgit.com/openeuler/mcp-servers/issues/39>| [PatchFlow]	修改commit信息应用补丁报错 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/40>| [PatchFlow]	前置补丁合入后，后续补丁冲突状态不会刷新 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/41>| [PatchFlow]	存在前置补丁时，ai解决冲突只能在当前补丁里解决 | - | closed |
 
 
 ## 6.2 相关资料链接
