@@ -128,7 +128,7 @@ NA
 | ------- | ------- | -------- |
 |        资料测试       |     特性资料说明          |  测试通过         |
 
-PR:https://atomgit.com/openeuler/sysTrace/pull/138
+PR:https://gitcode.com/openeuler/sysTrace/pull/139
 
 ## 4.5 其他测试结论
 
