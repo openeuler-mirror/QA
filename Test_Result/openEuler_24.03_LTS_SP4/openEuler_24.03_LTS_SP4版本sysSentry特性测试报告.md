@@ -63,7 +63,7 @@ sysSentry继承提醒，共计执行11个用例，主要覆盖了功能测试，
 
 | 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 
 | --- | ------- | ------ | ------- | ------- | ------- 
-|  1   |  DTS2026060432725       | reboot 场景收不到ack     |  严重      |   reboot 消息上报后收不到服务端回复的ack     | 根因是ubm 的问题和sysSentry无关，现在已经在解决方案CCB通过，按照非问题约束处理      |            |
+|  1   |  https://gitcode.com/src-openeuler/sysSentry/issues/148       | reboot 场景收不到ack     |  严重      |   reboot 消息上报后收不到服务端回复的ack     | 根因是ubm 的问题和sysSentry无关，现在已经在解决方案CCB通过，按照非问题约束处理      |            |
 |     |         |        |         |         |         |            |
 
 
