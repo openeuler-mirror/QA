@@ -84,7 +84,7 @@
 | ------- | -------- | ------- |
 | 功能测试 | 继承特性测试 | <font color=green>■</font>通过 |
 | 功能测试    | 新增特性测试 | <font color=green>■</font> 通过 |
-| 兼容性测试   | 环境与配置兼容性  | <font color=blue>▲</font> 通过 |
+| 兼容性测试   | 环境与配置兼容性  | <font color=blue>■</font> 通过 |
 | DFX专项测试 | 代码语法与日志能力 | <font color=green>■</font> 通过 |
 | 资料测试 |         | 质量良好 |
 | 其他测试 |         | 未执行外部联调 |
