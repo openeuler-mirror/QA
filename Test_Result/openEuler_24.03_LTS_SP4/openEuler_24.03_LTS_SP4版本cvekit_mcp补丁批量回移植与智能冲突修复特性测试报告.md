@@ -1,0 +1,215 @@
+![avatar](../../images/openEuler.png)
+
+版权所有 © 2026 openEuler社区
+ 您对"本文档"的复制、使用、修改及分发受知识共享(Creative Commons)署名—相同方式共享4.0国际公共许可协议(以下简称"CC BY-SA 4.0")的约束。为了方便用户理解，您可以通过访问https://creativecommons.org/licenses/by-sa/4.0/ 了解CC BY-SA 4.0的概要 (但不是替代)。CC BY-SA 4.0的完整协议内容您可以访问如下网址获取：https://creativecommons.org/licenses/by-sa/4.0/legalcode。
+
+修订记录
+
+| 日期 | 修订版本 | 修改描述 | 作者 |
+| ---------- | ---- | ----------------------------------------------------------------------- | -- |
+| 2026/06/12 | V2.0 | openEuler_24.03_LTS_SP4版本cvekit_mcp补丁批量回移植与智能冲突修复特性测试报告 | 魏皓 |
+
+关键词： cvekit、MCP servers、批量回移植、智能冲突修复、openEuler
+
+摘要： 本报告描述了对 openEuler 社区 `cvekit_mcp` 补丁批量回移植与智能冲突修复特性的测试结果。当前版本围绕 CVE 补丁分析、批量回移植、报告生成、LLM 辅助冲突修复和 MCP 服务封装等能力展开，支持 `portgpt` 与 `mystique` 两种回移植引擎，并支持 `--stop-at-first-conflict`、`--no-confirm`、提交信息模板定制等增强能力。本次测试主要基于当前代码仓状态、关键文档、样例报告和本地自动化验证结果开展
+
+缩略语清单：
+
+| 缩略语 | 英文全名 | 中文解释 |
+| --- | ------------------------------------ | ------------ |
+| MCP | Model Context Protocol               | 模型上下文协议     |
+| LLM | Large Language Model                 | 大语言模型 |
+| PR | Pull Request                         | 合并请求 |
+
+# 1     特性概述
+
+`cvekit_mcp` 是 openEuler 社区围绕 CVE 补丁处理场景构建的 MCP Server 与 CLI 工具集合，主要用于帮助开发者或安全维护人员完成漏洞补丁分析、目标分支适配、批量回移植、冲突修复和 PR 提交流程。
+
+## 1.1 特性说明
+
+当前版本主要包含以下能力：
+
+### 批量回移植能力（backport-batch）
+
+该能力通过 YAML/JSON 或 Excel 配置文件驱动批量补丁检查与回移植流程，主要功能包括：
+
+- 批量提交信息读取与配置生成
+- 对 commit 列表进行排序、合入检测和冲突检测
+- 自动生成 `*.report.yml` 报告文件用于复跑和人工确认
+- 支持按报告执行回移植或直接应用指定补丁
+
+### 智能冲突修复能力（portgpt / mystique）
+
+当补丁在目标分支应用失败时，工具支持通过大模型辅助完成冲突修复。主要功能包括：
+
+- `portgpt` 与 `mystique` 两种回移植引擎选择
+- `mystique` 的 `full` / `changed` 两种格式处理模式
+- LLM 生成补丁后的人工确认或自动应用
+- 补丁内容、提交信息和来源信息的结构化输出
+
+## 1.2 核心能力
+
+- **批量报告生成**：支持批量检查结果落盘为 `*.report.yml`，便于复跑与人工确认
+- **多级引擎选择**：支持 commit 级、命令行级、全局配置级三层 `backport_engine` 优先级
+- **首冲突止损控制**：支持 `--stop-at-first-conflict`，在检测到首个冲突后停止后续执行并标记 `pending`
+- **智能冲突修复**：支持 LLM 参与补丁回移植与冲突处理
+- **人工确认机制**：默认要求人工确认 LLM 生成补丁，可通过 `--no-confirm` 用于自动化场景
+- **MCP 服务集成**：支持通过 `server.py` 向上层 Agent/MCP 运行时暴露能力
+
+# 2     特性测试信息
+
+本节描述被测对象的版本信息和测试的时间及测试轮次，包括依赖的硬件环境。
+
+| 版本名称 | 测试起始时间 | 测试结束时间 |
+| -------------------------------------- | ---------- | ---------- |
+| openEuler-24.03-LTS-SP4 | 2026/06/06 | 2026/06/12 |
+
+描述特性测试的硬件环境信息
+
+| 硬件型号 | 硬件配置信息 | 备注 |
+| ------- | ------------ | ------ |
+| x86_64 | Python 3.12.4，本地代码验证环境 | 标准验证环境 |
+
+
+# 3     测试结论概述
+
+## 3.1   测试整体结论
+
+`cvekit_mcp` 补丁批量回移植与智能冲突修复特性测试，共计执行4项验证活动，主要覆盖了批量回移植配置与报告机制、回移植引擎选择、LLM 人工确认机制、代码语法健康度和现有入口测试基线验证等内容。
+
+从当前代码仓状态看，`backport-batch`、`portgpt` / `mystique` 引擎选择、`--stop-at-first-conflict`、`--no-confirm`、提交信息模板与来源控制等核心能力实现完整，且文档与代码整体保持一致，关键 Python 文件语法校验通过，样例报告结构完整。
+
+
+| 测试活动 | 测试子项 | 活动评价                          |
+| ------- | -------- | ------- |
+| 功能测试 | 继承特性测试 | <font color=green>■</font>通过 |
+| 功能测试    | 新增特性测试 | <font color=green>■</font> 通过 |
+| 兼容性测试   | 环境与配置兼容性  | <font color=blue>■</font> 通过 |
+| DFX专项测试 | 代码语法与日志能力 | <font color=green>■</font> 通过 |
+| 资料测试 |         | 质量良好 |
+| 其他测试 |         | 未执行外部联调 |
+
+## 3.2   约束说明
+
+1. 特性需依赖目标代码仓、补丁数据目录、签名信息以及相应的仓库访问权限。
+2. LLM 辅助冲突修复能力依赖可用的大模型服务或本地 OpenAI 兼容接口。
+3. `mystique` 模式依赖 Joern，`changed` 格式模式可选依赖 `clang-format`。
+4. 本次测试为当前代码仓状态下的本地验证，不包含真实 Gitee/GitCode、真实目标仓、真实 token 和真实 LLM 服务下的完整端到端联调。
+
+## 3.3   遗留问题分析
+
+### 3.3.1 遗留问题影响以及规避措施
+
+| 序号 | 问题单号 | 问题简述 | 问题级别 | 影响分析 | 规避措施 | 历史发现场景 |
+| -- | ---- | ---- | ---- | ---- | ---- | ------ |
+| -  | 无    | -    | -    | -    | -    | -      |
+
+### 3.3.2 问题统计
+
+| <br /> | 问题总数 | 严重 | 主要   | 次要 | 不重要 |
+| ------ | ---- | -- | ---- | -- | --- |
+| 数目     | 11    | 0  | 11    | 0  | 0   |
+| 百分比    | 100% | 0% | 100% | 0% | 0%  |
+
+# 4 详细测试结论
+
+## 4.1 功能测试
+### 4.1.1 继承特性测试结论
+| 序号 | 组件/特性名称 |           特性质量评估           | 备注     |
+| -- | ------- | :------------------------: | ------ |
+| 1  | CVE / Issue 解析入口 | <font color=green>■</font> | 正常 |
+| 2  | 分支分析与补丁应用入口 | <font color=green>■</font> | 正常 |
+| 3  | MCP 服务封装与引擎透传 | <font color=green>■</font> | 正常 |
+
+
+### 4.1.2 新增特性测试结论
+
+| 序号 | 组件/特性名称 |           特性质量评估           | 备注     |
+| -- | ------- | :------------------------: | ------ |
+| 1  | 批量配置生成 | <font color=green>■</font> | 正常 |
+| 2  | `*.report.yml` 报告生成与续跑 | <font color=green>■</font> | 正常 |
+| 3  | `--stop-at-first-conflict` 首冲突停止 | <font color=green>■</font> | 正常 |
+| 4  | `portgpt` / `mystique` 引擎切换 | <font color=green>■</font> | 正常 |
+| 5  | `mystique` 格式处理模式 | <font color=green>■</font> | 正常 |
+| 6  | LLM 人工确认与 `--no-confirm` | <font color=green>■</font> | 正常 |
+| 7  | commit message 模板与来源控制 | <font color=green>■</font> | 正常 |
+
+<font color=red>●</font>： 表示特性不稳定，风险高 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题 <font color=green>■</font>： 表示特性质量良好
+
+## 4.2 兼容性测试结论
+
+| 测试类型   | 测试内容                                         | 测试结论                          |
+| ------ | -------------------------------------------- | ----------------------------- |
+| Python兼容性 | Python 3.12.4 环境下关键文件语法检查 | <font color=green>■</font> 通过 |
+| 配置兼容性 | 文档声明参数与 CLI 定义匹配 | <font color=green>■</font> 通过 |
+
+## 4.3 DFX专项测试结论
+
+### 4.3.1 性能/可维护性测试结论
+
+| 指标大项 | 指标小项   | 指标值    | 测试结论 |
+| ---- | ------ | ------ | ---- |
+| 报告可读性 | `*.report.yml` 结构完整性 | 包含状态、冲突信息、补丁路径、commit message 预览 | 通过   |
+| 日志能力 | `backport-batch` 日志落盘 | 已支持 `~/.backport/<timestamp>.log` | 通过   |
+| 语法健康度 | 关键 Python 文件编译 | `py_compile` 通过 | 通过   |
+
+### 4.3.2 可靠性/韧性测试结论
+
+| 测试类型 | 测试内容         | 测试结论 |
+| ---- | ------------ | ---- |
+| 错误处理 | 非法 `backport_engine` 参数保护 | 通过   |
+| 流程控制  | `pending` 状态与 report 模式衔接   | 通过   |
+
+### 4.3.3 安全测试结论
+
+| 测试类型    | 测试内容      | 测试结论 |
+| ------- | --------- | ---- |
+| 流程安全 | LLM 生成补丁默认人工确认 | 通过   |
+| 信息安全 | 文档建议使用环境变量传入 token / api_key | 通过   |
+
+## 4.4 资料测试结论
+
+| 测试类型  | 测试内容          | 测试结论 |
+| ----- | ------------- | ---- |
+| 文档可用性 | README 与专项说明文档可指导主要功能使用 | 通过   |
+
+
+
+# 5     测试执行
+
+## 5.1   测试执行统计数据
+
+| 版本名称                                   | 测试用例数 | 用例执行结果 | 发现问题单数 |
+| -------------------------------------- | ----- | ------ | ------ |
+| openEuler-24.03-LTS-SP4 | 4    | 部分通过     | 11      |
+
+*数据项说明：*
+
+*测试用例数：到本测试活动结束时，实际执行的验证动作数，包括静态核对、语法验证、自动化测试和样例报告检查；*
+
+*发现问题单数：本测试活动总共发现的问题单数。*
+
+# 6     附件
+
+## 6.1 问题单详情
+
+| Issue链接 | Issue标题 | 关联文件 | 修复状态 |
+| ------- | ----------------------------------------------------------- | ----------------------------------------------------------------------- | ---- |
+| <https://atomgit.com/openeuler/mcp-servers/issues/31>| [PatchFlow]	AI判断出来已经有类似的功能，不需要合入，点尝试解冲突，过会变成了未冲突，但还是可以点应用 已定位解决 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/32>| [PatchFlow]	AI解决冲突解决不确定 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/33>| [PatchFlow]	生成出来的补丁仍然冲突 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/34>| [PatchFlow]	commit当前按照合入时间排序 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/35>| [PatchFlow]	commit message自定义格式 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/36>| [PatchFlow]	merged_in_target判断失误 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/37>| [PatchFlow]	自动化测试验证patchflow准确率 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/38>| [PatchFlow]	超大xlsx（200个commit）导入失败，报错超时 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/39>| [PatchFlow]	修改commit信息应用补丁报错 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/40>| [PatchFlow]	前置补丁合入后，后续补丁冲突状态不会刷新 | - | closed |
+| <https://atomgit.com/openeuler/mcp-servers/issues/41>| [PatchFlow]	存在前置补丁时，ai解决冲突只能在当前补丁里解决 | - | closed |
+
+
+## 6.2 相关资料链接
+
+- cvekit_mcp 仓库: <https://atomgit.com/openeuler/mcp-servers/tree/master/servers/cvekit_mcp>
+- Issue列表：<https://gitcode.com/openeuler/mcp-servers/issues>
+- PR合入记录：<https://gitcode.com/openeuler/mcp-servers/merge_requests>
