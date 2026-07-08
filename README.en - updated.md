@@ -10,26 +10,33 @@ The Quality Assurance (QA) SIG aims to test the software components that make up
 - Organize test open days, which focus on testing a specific feature or component.
 
 ### Managed Repositories
-- https://gitee.com/openeuler/avocado
-- https://gitee.com/openeuler/avocado-vt
-- https://gitee.com/openeuler/tp-libvirt
-- https://gitee.com/openeuler/tp-qemu
-- https://gitee.com/openeuler/quality-assurance
-- https://gitee.com/openeuler/EulerRobot
-- https://gitee.com/openeuler/compiler-test
-- https://gitee.com/openeuler/package-reinforce-test
-- https://gitee.com/openeuler/integration-test
-- https://gitee.com/openeuler/container-test
-- https://gitee.com/openeuler/test-tools
+- https://gitcode.com/openeuler/QA
+- https://gitcode.com/openeuler/mugen
+- https://gitcode.com/src-openeuler/avocado
+- https://gitcode.com/openeuler/avocado-vt
+- https://gitcode.com/openeuler/tp-libvirt
+- https://gitcode.com/openeuler/tp-qemu
+- https://gitcode.com/openeuler/EulerRobot
+- https://gitcode.com/openeuler/compiler-test
+- https://gitcode.com/openeuler/package-reinforce-test
+- https://gitcode.com/openeuler/integration-test
+- https://gitcode.com/openeuler/container-test
+- https://gitcode.com/openeuler/test-tools
 
 ### Maintainers
 
-- wu_fengguang
-- charlie_li(@charlie_li)
-- wubodong(@walkingwalk)
-- kuhnchen(@kuhnchen18)
-- speacher
-- rigorous
+- @Charlie_li1
+- @Rigorous
+- @SupMario
+- @hfutsdd
+- @lemon-higgins
+- @linqian0322
+- @lutianxiong
+- @saarloos
+- @walkingwalk
+- @wangpeng_uniontech
+- @wu_fengguang
+- @zjl_long 
 
 ### Contact
 qa@openeuler.org

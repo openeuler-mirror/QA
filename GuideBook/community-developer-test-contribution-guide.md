@@ -26,23 +26,23 @@ You can contribute test code to the upstream community of the software package. 
 
 ##### Tests on New Requests or Features to be Released by openEuler
 
-   As a community of integration, the openEuler community welcomes all developers in the industry to construct, share, and govern the community together. You are welcome to contribute to the community development by referring to the [Contribution Guide](https://gitee.com/openeuler/community/tree/master/en/contributors). Currently, the requirements of the community edition are managed by the release management SIG. The SIGs of the community are responsible for the corresponding requirements submitted by the release management SIG. The maintainers and developers of the SIGs provide assurance for the contributions, such as code submission, issue resolution, CVE fixes, and testing delivery. The QA SIG is the quality assurance team of the community, which manages testing of the community edition. The maintainers of the QA SIG are responsible for composing and reviewing the overall test policy to guide the testing activities for subsequent version iterations.
+   As a community of integration, the openEuler community welcomes all developers in the industry to construct, share, and govern the community together. You are welcome to contribute to the community development by referring to the [Contribution Guide](https://gitcode.com/openeuler/community/tree/master/en/contributors). Currently, the requirements of the community edition are managed by the release management SIG. The SIGs of the community are responsible for the corresponding requirements submitted by the release management SIG. The maintainers and developers of the SIGs provide assurance for the contributions, such as code submission, issue resolution, CVE fixes, and testing delivery. The QA SIG is the quality assurance team of the community, which manages testing of the community edition. The maintainers of the QA SIG are responsible for composing and reviewing the overall test policy to guide the testing activities for subsequent version iterations.
 
 - Requirement analysis 
 
-  To participate in requirement analysis, see the feature lists and the release plans in the [release management SIG repository](https://gitee.com/openeuler/release-management). For details about the implementation of a specific requirement, click the link in the comment area of the corresponding issue or view the associated repository.
+  To participate in requirement analysis, see the feature lists and the release plans in the [release management SIG repository](https://gitcode.com/openeuler/release-management). For details about the implementation of a specific requirement, click the link in the comment area of the corresponding issue or view the associated repository.
 
 - Test scheme design 
 
-  After understanding feature implementation details, you can participate in test scheme design by referring to the [Test Scheme Design Template](https://gitee.com/openeuler/package-reinforce-test/blob/master/单软件包加固测试设计方案参考.mmap). After the QA SIG reviews the test design scheme, submit it to the archive directory of the corresponding version in the [QA SIG repository](https://gitee.com/openeuler/QA) through a PR.
+  After understanding feature implementation details, you can participate in test scheme design by referring to the [Test Scheme Design Template](https://gitcode.com/openeuler/package-reinforce-test/blob/master/单软件包加固测试设计方案参考.mmap). After the QA SIG reviews the test design scheme, submit it to the archive directory of the corresponding version in the [QA SIG repository](https://gitcode.com/openeuler/QA) through a PR.
 
 - Test code writing 
 
-  The [mugen test framework](https://gitee.com/openeuler/test-tools/tree/master/mugen) is now available in the openEuler community. Write test code and perform local debugging based on the discussed test scheme in compliance with [Test Case Naming and Coding Specifications](https://gitee.com/openeuler/package-reinforce-test/blob/master/test-case-naming-and-coding-specifications.md).
+  The [mugen test framework](https://gitcode.com/openeuler/mugen) is now available in the openEuler community. Write test code and perform local debugging based on the discussed test scheme in compliance with [Test Case Naming and Coding Specifications](https://gitcode.com/openeuler/package-reinforce-test/blob/master/test-case-naming-and-coding-specifications.md).
 
 - Code submission 
 
-  After coding and debugging, submit code to the [code repository](https://gitee.com/openeuler/integration-test) and manage directories based on feature names through PRs.
+  After coding and debugging, submit code to the [code repository](https://gitcode.com/openeuler/integration-test) and manage directories based on feature names through PRs.
 
 - Test report compilation
   
@@ -50,7 +50,7 @@ You can contribute test code to the upstream community of the software package. 
 
 ##### Package Reinforcement Tests on Software Packages Released by openEuler
 
-For details, see [Package Reinforcement Test](https://gitee.com/openeuler/package-reinforce-test).
+For details, see [Package Reinforcement Test](https://gitcode.com/openeuler/package-reinforce-test).
 
 ### Note
 
@@ -59,11 +59,11 @@ For details, see [Package Reinforcement Test](https://gitee.com/openeuler/packag
 
 ## Version Test Contribution
 
-See the [release management SIG repository](https://gitee.com/openeuler/release-management) for the release plan of the openEuler community edition. You can make contributions as a developer by performing version tests in the [Community Test System](community-test-system.md). For details about the repositories, see the list of repositories in the [QA SIG repository](https://gitee.com/openeuler/QA) and [repository description](https://gitee.com/openeuler/community/tree/master/sig/README-en.md).
+See the [release management SIG repository](https://gitcode.com/openeuler/release-management) for the release plan of the openEuler community edition. You can make contributions as a developer by performing version tests in the [Community Test System](https://gitcode.com/openeuler/QA). For details about the repositories, see the list of repositories in the [QA SIG repository](https://gitcode.com/openeuler/QA) and [repository description](https://gitcode.com/openeuler/QA/blob/master/README.md#%E9%A1%B9%E7%9B%AE%E6%B8%85%E5%8D%9).
 
 ## Tool Contribution
 
-The ecosystem construction and quality assurance in the openEuler community depends on efficient and convenient tools. You can contribute various tools to the [tool repository](https://gitee.com/openeuler/test-tools) as a developer, including but not limited to:
+The ecosystem construction and quality assurance in the openEuler community depends on efficient and convenient tools. You can contribute various tools to the [tool repository](https://gitcode.com/openeuler/test-tools) as a developer, including but not limited to:
 
 - Tools that integrate advanced test concepts and capabilities 
 - Efficient test frameworks 

@@ -34,7 +34,7 @@ As an open and innovative Linux community, openEuler welcomes all developers in 
 
 ### Introduction
 
-See the [release management SIG repository](https://gitee.com/openeuler/release-management) for the release plan of the openEuler community edition. The QA SIG is responsible for quality assurance of the planned versions. The openEuler community edition builds include:
+See the [release management SIG repository](https://gitcode.com/openeuler/release-management) for the release plan of the openEuler community edition. The QA SIG is responsible for quality assurance of the planned versions. The openEuler community edition builds include:
 
 - Daily build 
 - Beta build 

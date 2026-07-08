@@ -4,7 +4,7 @@
 
 ## 1. 流程质量要求
 
-软件包引入指导文档见[openEuler社区软件包引入&版本基线纳入或变更指导](https://gitee.com/openeuler/release-management/blob/master/openEuler社区软件包引入&版本基线纳入或者变更指导.md)
+软件包引入指导文档见[openEuler社区软件包引入&版本基线纳入或变更指导](https://gitcode.com/openeuler/release-management/blob/master/Guidebook/软件包引入流程.md)
 
 ### 1.1. 软件包引入质量要求
 
@@ -14,7 +14,7 @@
 
 社区License黑白名单、兼容表等信息可以通过貂蝉平台进行查询：https://compliance.openeuler.org
 
-sig-Compliance仓库地址：https://gitee.com/openeuler/compliance
+sig-Compliance仓库地址：https://gitcode.com/openeuler/compliance
 
 #### 1.1.2. 软件包版本选择
 
@@ -22,7 +22,7 @@ sig-Compliance仓库地址：https://gitee.com/openeuler/compliance
 
 #### 1.1.3. spec格式要求
 
-软件包命名规范及patch命名规范详见[openEuler packaging guidelines](https://gitee.com/openeuler/community/blob/master/zh/contributors/packaging.md#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99)
+软件包命名规范及patch命名规范详见[openEuler packaging guidelines](https://gitcode.com/openeuler/community/blob/master/zh/contributors/packaging.md#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99)
 
 #### 1.1.4. License合法性要求
 
