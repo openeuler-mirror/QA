@@ -59,7 +59,7 @@ For details, see [Package Reinforcement Test](https://gitcode.com/openeuler/pack
 
 ## Version Test Contribution
 
-See the [release management SIG repository](https://gitcode.com/openeuler/release-management) for the release plan of the openEuler community edition. You can make contributions as a developer by performing version tests in the [Community Test System](https://gitcode.com/openeuler/QA). For details about the repositories, see the list of repositories in the [QA SIG repository](https://gitcode.com/openeuler/QA) and [repository description](https://gitcode.com/openeuler/QA/blob/master/README.md#%E9%A1%B9%E7%9B%AE%E6%B8%85%E5%8D%9).
+See the [release management SIG repository](https://gitcode.com/openeuler/release-management) for the release plan of the openEuler community edition. You can make contributions as a developer by performing version tests in the [Community Test System](https://gitcode.com/openeuler/QA/blob/master/GuideBook/community-test-system.md). For details about the repositories, see the list of repositories in the [QA SIG repository](https://gitcode.com/openeuler/QA) and [repository description](https://gitcode.com/openeuler/QA/blob/master/README.md#%E9%A1%B9%E7%9B%AE%E6%B8%85%E5%8D%9).
 
 ## Tool Contribution
 
