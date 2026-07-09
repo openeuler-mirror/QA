@@ -11,7 +11,7 @@ release-plan可参考 [24.03 LTS SP4 release-plan](https://gitcode.com/openeuler
     * 需求提交：由需求归属-sig，在openEuler的[RM-sig](https://gitcode.com/openeuler/release-management)通过issue的方式提交需求(可参考[该需求](https://gitcode.com/openeuler/release-management/issues/2491))
     * 需求接纳：由RM-sig进行评审，release-plan的需求状态为最终状态（接纳/拒绝）
 2. 需求开发(需求归属-sig):
-    * 仓库与分支创建：由需求归属-sig在[community仓库](https://gitcode.com/openeuler/community)提交pr进行仓库与分支创建(可参考[PR](https://gitcode.com/openeuler/release-management/pull/1020))
+    * 仓库与分支创建：由需求归属-sig在[community仓库](https://gitcode.com/openeuler/community)提交pr进行仓库与分支创建(可参考[PR](https://gitcode.com/openeuler/community/pull/7448))
     * 开发交付：由需求归属-sig在src-openEuler对应开发(master或LTS-Next分支)及版本分支(LTS-SPx)进行开发
 3. 需求构建(RM-sig):
     * 加入版本构建：由需求归属-sig在[RM仓库](https://gitcode.com/openeuler/release-management)提交版本工程增加pr(可参考[PR](https://gitcode.com/openeuler/release-management/pull/1312)), 新加入社区的软件包先进入Factory，构建功能稳定后进入mainline再进入版本分支。
