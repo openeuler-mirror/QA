@@ -2496,7 +2496,7 @@ Nginx 性能测试是指通过模拟真实或预期的用户请求负载，对 N
         listen 10000;
         location / {
             root /usr/local/nginx/html;
-            index index.html index.gtm;
+            index index.html index.htm;
         }
         error_page 500 502 503 504 /50x.html;
         location = /50x.html {
