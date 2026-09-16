@@ -53,7 +53,7 @@ SkillHub 平台提供以下基本能力：
 
 | 硬件型号 | 硬件配置信息 | 备注 |
 | -------- | ------------ | ---- |
-| x86_64 虚拟机 | 8 vCPU / 16 GB 内存 | 基础环境：Docker Compose 部署 api/postgres/web |
+| x86_64、arm 虚拟机 | 8 vCPU / 16 GB 内存 | 基础环境：Docker Compose 部署 api/postgres/web |
 
 # 3     测试结论概述
 
