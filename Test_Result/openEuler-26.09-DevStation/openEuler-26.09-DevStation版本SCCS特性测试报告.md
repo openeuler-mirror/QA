@@ -161,24 +161,3 @@ openclaw_plugin 与 OpenClaw 2026.8.1 集成兼容性验证通过（零侵入激
 | 测试类型 | 测试内容 | 测试结论 |
 | ------- | ------- | -------- |
 | SWE-bench 端到端对照 | 20 实例 × off/on × 2 轮，含压缩/取回机制深入分析（触发场景分布：read 41 次、exec 37 次、web_fetch 9 次） | 压缩/取回链路真实工作；正确率持平；需求指标 input 上下文减少 10.1%，达标 |
-
-# 5     测试执行
-
-## 5.1   测试执行统计数据
-
-| 版本名称 | 测试用例数 | 用例执行结果 | 发现问题单数 |
-| -------- | ---------- | ------------ | ------------ |
-| 第 1 轮（300s，20 实例×2 配置） | 40 | off：14 resolved / 3 超时 / 6 错误；on：12 resolved / 6 超时 / 2 错误 | 0 |
-| 第 2 轮（600s，20 实例×2 配置） | 40 | off：14 resolved / 2 超时 / 0 错误；on：16 resolved / 1 超时 / 0 错误 | 0 |
-
-原始数据存于 `swebench-runs/`（20260814-130604 / 20260816-105254 / 20260816-125251），每目录含 results.json(l)、preds-sccs-{off,on}.jsonl、reports/*.json、state/（隔离会话）与 workspaces/（仓库）。
-
-# 6     附件
-
-- 原始报告：`SWE-bench-SCCS-test-report.md`（SWE-bench × SCCS 基准测试报告，2026-08-16）
-- 关联文档：`SWE-bench-SCCS-benchmark-guide.md`（接入指南）、`benchmark-results.md`（速查表）
-- 复现命令：`python swebench_sccs_bench.py --run-root swebench-runs/<目录> --skip-extract --instances <实例>`；汇总：`python aggregate_rounds.py`
-
----
-
-> **需求达成总结**：特性需求为"通过数据引用方式按需加载构建上下文管理系统，上下文长度减少 10%~20%"（上下文以 input 指标为准）。实测 input 上下文减少 10.1%，达到目标区间下限，**需求达标**；正确率完全持平（70% vs 70%），按需加载机制不损害任务质量。取回循环带来的 output/cache_read 增量不影响本需求指标。
