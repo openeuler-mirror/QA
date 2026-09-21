@@ -11,6 +11,7 @@
 | --------- | -------- | ---------- | -------- | ----------- |
 | 2026-08-18 | 1.0.0    |            | 初稿     | linqian0322 |
 | 2026-08-18 | 1.0.1 | | add RISC-V | jean9823 |
+| 2026-09-18 | 1.0.2 | | 刷新需求清单 | linqian0322 |
 
 
 目 录
@@ -73,7 +74,7 @@ openEuler 26.09版本交付[需求列表](https://gitcode.com/openeuler/release-
 ## 继承需求测试策略
 
 本次26.09版本的具体测试分层策略如下：
-                                           |
+                                           
 | 序号   | 需求 | 责任主体 | 测试重点  | arm/x86 | riscv rva23 | loongarch |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 |1|UKUI桌面|sig-UKUI|验证UKUI桌面系统在openEuler版本上的可安装和基本功能|√|√||
@@ -157,11 +158,20 @@ openEuler 26.09版本交付[需求列表](https://gitcode.com/openeuler/release-
 
 
 
-## 新增需求测试策略
+## 新增需求清单
 
-| 序号   | 需求 | 责任主体 | 测试重点  | arm/x86 | riscv | loongarch |
-|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-|    |   |   |  |  |  |  |   |
+|编号|特性|状态|SIG|责任人|发布方式|涉及软件包列表|
+|:----|:---|:---|:--|:----|:----|:----|
+| [2561](https://atomgit.com/openeuler/release-management/issues/2561) | 【openEuler 26.09创新】【Agent Infra】【Agent调度】通过数据引用方式按需加载构建上下文管理系统，减少上下文长度 | Developing | sig-Intelligence | [@linpengcheng1994](https://gitcode.com/linpengcheng1994)     | EPOL | sccs |
+| [2562](https://atomgit.com/openeuler/release-management/issues/2562) | 【openEuler 26.09创新】【Agent Infra】【可观测&治理】构建可观测+治理框架底座，穿刺全链路观测+安全防护+审计能力 | Developing | sig-Intelligence | [@yaozhenhe](https://gitcode.com/yaozhenhe)     | EPOL | AcTrail |
+| [2563](https://atomgit.com/openeuler/release-management/issues/2563) | 【openEuler 26.09创新】【Agent Infra】【Agent调度】Agent/KVC协同调度：感知“Agent语义”的KVC调度，降低Agent推理等待时延 | Developing | sig-Intelligence | [@xtchen](https://gitcode.com/xtchen)     | EPOL | RAM-A |
+| [2564](https://atomgit.com/openeuler/release-management/issues/2564) | 【openEuler 26.09创新】【AI Infra】【推理加速】DDR+HBM 分级协同，KV swap聚合传输，长序列>64K 推理场景多BS降低平均时延 | Developing | sig-Intelligence | [@zxstty](https://gitcode.com/zxstty)     | EPOL | sysHAX |
+| [2565](https://atomgit.com/openeuler/release-management/issues/2565) | 【openEuler 26.09创新】【开发者生态及工具】【skillhub】openEuler上线skillshub，汇聚社区skill生态 | Developing | sig-Devstation | [@ftboy](https://gitcode.com/ftboy)     | 独立发布 | wittyhub, wittyhub-cli |
+| [2566](https://atomgit.com/openeuler/release-management/issues/2566) | 【openEuler 26.09创新】【开发者生态及工具】【DevStation】openEuler DevStation：面向用户和开发者快速迭代尝鲜的openEuler创新版本 | Developing | sig-Devstation | [@w520203](https://gitcode.com/w520203)     | 独立发布 | gdm, gnome-shell,gnome-session,epkg,polymind |
+| [2567](https://atomgit.com/openeuler/release-management/issues/2567) | 【openEuler 26.09创新】【开发者生态及工具】【EPKG】完成EPKG默认集成到openEuler DevStation版本 | Developing | sig-epkg | [@w520203](https://gitcode.com/w520203)     | 独立发布 | epkg |
+| [2568](https://atomgit.com/openeuler/release-management/issues/2568) | 【openEuler 26.09创新】oeaware：提供场景化智能调优skills | Developing | sig-Intelligence | [@cloudyyy1234](https://gitcode.com/cloudyyy1234)     | EPOL | witty-opentunex |
+| [2569](https://atomgit.com/openeuler/release-management/issues/2569) | 【openEuler 26.09创新】【AI】【模型加速】ModelFS用户态模型加载优化方案 | Developing | sig-kernel | [@yubo-liu](https://gitcode.com/yubo-liu)     | ISO | kernel |
+| [2570](https://atomgit.com/openeuler/release-management/issues/2570) | 【openEuler 26.09创新】【AI Infra】【推理加速】多级KV缓存+SSD直访，结合UB加速跨节点KV传输，长序列降低TTFT | Developing | sig-kernel,sig-Long | [@qiao-yifan4](https://gitcode.com/qiao-yifan4),[@chloroethylene](https://gitcode.com/chloroethylene)     | ISO | kernel, LMCache,LMCache-Ascend |
 
 
 
