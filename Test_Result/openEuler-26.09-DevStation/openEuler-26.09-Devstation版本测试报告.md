@@ -8,6 +8,8 @@
 | 日期       | 修订版本 | 修改章节          | 修改描述    |
 | ---------- | -------- | ----------------- | ----------- |
 | 2026/9/22 | 1.0.0    | 初稿 | linqian0322 |
+| 2026/9/28 | 1.0.1    | 刷新继承特性验证结果和新需求验证情况 | linqian0322 |
+| 2026/9/30 | 1.0.2    | 刷新继承特性验证结果和新需求问题回归情况 | linqian0322 |
 
 
 摘要：
@@ -258,7 +260,9 @@ openEuler 26.09版本详细测试内容包括：
 |52|支持树莓派|sig-SBC|继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试|<font color=green>█</font>
 |53|远程证明统一框架(secgear)支持virtCCA Platform Token报告生成及验证|sig-confidential-computing|继承已有测试能力，重点验证virtCCA UEFI虚机/Direct Boot虚机远程证明/IMA度量远程证明|<font color=green>█</font>
 |54|LLVM平行宇宙计划 RISC-V Preview 版本|sig-RISC-V|验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动||risc-v测试进度延迟| 
+|55|NestOS Kubernetes Deployer |sig-k8sDistro|继承已有测试能力，重点验证基础设施&Kubernetes集群的部署、扩展与销毁;aarch64和x86_64架构的兼容性测试以及操作响应测试；|<font color=green>█</font>
 
+|<font color=green>█</font>
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -280,7 +284,7 @@ openEuler 26.09版本详细测试内容包括：
 | 5 | [【openEuler 26.09创新】【开发者生态及工具】【skillhub】openEuler上线skillshub，汇聚社区skill生态](https://gitcode.com/openeuler/QA/pull/1521)|SkillHub 平台特性测试，共计执行 50 个用例，主要覆盖了功能测试、安全测试、性能测试、可靠性测试和资料测试，用例全部通过，发现6个问题，已全部解决回归通过，无遗留问题，整体质量良好 |   || <font color=green>█</font>||||
 | 6 | [【openEuler 26.09创新】【开发者生态及工具】【DevStation】openEuler   DevStation：面向用户和开发者快速迭代尝鲜的openEuler创新版本](https://atomgit.com/openeuler/QA/pull/1522)|  DevStation组件升级特性测试共执行118个用例，主要覆盖Gnome 49、内核6.18、nodejs 22三项新增需求功能测试、继承特性回归测试、桌面系统基线测试，以及安全、可靠性与性能DFX专项测试。共发现问题4个，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |  <font color=green>█</font>
 | 7 | [【openEuler 26.09创新】【开发者生态及工具】【EPKG】完成EPKG默认集成到openEuler DevStation版本](https://gitcode.com/openeuler/QA/pull/1523)|本次测试共执行49个测试用例，主要覆盖功能测试、兼容性测试及性能测试。其中49个用例通过，0个用例未通过，发现两个问题，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |<font color=green>█</font>
-| 8 | [【openEuler 26.09创新】oeaware：提供场景化智能调优skills]()| 场景化智能调优skills针对9个场景的数据采集，分析并给出调优建议。共执行13个用例，主要覆盖了功能测试、兼容性测试、可靠性测试以及性能测试，共发现9个问题，8个均已解决并回归通过，剩余1个解决中，预计9.29回归验证 |  | |  <font color=blue>▲</font>
+| 8 | [【openEuler 26.09创新】oeaware：提供场景化智能调优skills]()| 场景化智能调优skills针对9个场景的数据采集，分析并给出调优建议。共执行13个用例，主要覆盖了功能测试、兼容性测试、可靠性测试以及性能测试，共发现9个问题，均已解决并回归通过|  | |  <font color=green>█</font>
 | 9 | [【openEuler 26.09创新】【AI】【模型加速】ModelFS用户态模型加载优化方案]()| maio-utils可编程缓存框架特性测试用户态设备监听、事件读取/处理，预读/trace/回放/移除策略等，共执行12个用例，主要覆盖功能测试、fuzz测试，所有用例执行通过，未发现问题，特性整体质量良好| | |  <font color=green>█</font>
 | 10 | [【openEuler 26.09创新】【AI Infra】【推理加速】多级KV缓存+SSD直访，结合UB加速跨节点KV传输，长序列降低TTFT](https://gitcode.com/openeuler/QA/pull/1547)| KVC池化&多级KV缓存特性主要覆盖了功能测试和性能测试和资料测试，功能测试包含PD分离和P2P池化模式，性能测试取大模型首Token生成时间ttft值，P2P池化在整体表现上降低50%，PD分离在整体表现上降低30%，共发现5个问题，已全部闭环无遗留风险，整体质量良好 |  |  | <font color=green>█</font>
 
