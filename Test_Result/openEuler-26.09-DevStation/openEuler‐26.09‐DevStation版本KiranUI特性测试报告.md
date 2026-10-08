@@ -87,9 +87,10 @@ Kiran2.6，共计执行6个用例，主要覆盖功能测试，满足了功能�
 ### 4.1.1 继承特性测试结论
 
 | 序号  | 功能模块    |           特性质量评估           | 备注  |
+| --- | ------- | :------------------------: | --- |
 | 1   | 所有应用    | <font color=green>■</font>  |     |
 | 2   | 文件管理器   | <font color=green>■</font> |     |
-| 3   | 桌面图标及功能 |<font color=blue>■</font> |     |
+| 3   | 桌面图标及功能 |<font color=green>■</font> |     |
 | 4   | 控制面板    | <font color=green>■</font>  |    |
 | 5   | 开始菜单    | <font color=green>■</font> |     |
 | 6   | 系统面板    | <font color=green>■</font> |     |
@@ -101,6 +102,7 @@ Kiran2.6，共计执行6个用例，主要覆盖功能测试，满足了功能�
 <font color=red>●</font>： 表示特性不稳定，风险高
 <font color=blue>▲</font>： 表示特性基本可用，遗留少量问题
 <font color=green>■</font>： 表示特性质量良好
+
 
 ### 4.1.2 新增特性测试结论
 
