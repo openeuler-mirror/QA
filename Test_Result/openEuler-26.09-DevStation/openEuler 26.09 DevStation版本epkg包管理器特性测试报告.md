@@ -94,7 +94,22 @@ fs模式是pivot_root进入环境根，其下挂载。隔离能力稍强于env�
 
 ### 4.1.1 继承特性测试结论
 
-无继承特性。
+本次继承特性测试主要验证epkg跨平台安装能力、环境管理能力及软件包管理能力。测试结果表明，epkg支持在Windows、macOS和Linux系统上完成安装，并能够对软件环境进行创建、删除、激活和注册等管理操作，同时支持软件包的安装、卸载和查询，继承功能整体运行正常。
+
+| 序号 | 组件/特性名称           |           特性质量评估           | 备注 |
+| -- | ------------------ | :------------------------: | ---- |
+| 1  | Windows系统安装       | <font color=green>■</font> | 通过 |
+| 2  | macOS系统安装         | <font color=green>■</font> | 通过 |
+| 3  | Linux系统安装         | <font color=green>■</font> | 通过 |
+| 4  | epkg环境创建           | <font color=green>■</font> | 通过 |
+| 5  | epkg环境删除           | <font color=green>■</font> | 通过 |
+| 6  | epkg环境激活           | <font color=green>■</font> | 通过 |
+| 7  | epkg环境注册           | <font color=green>■</font> | 通过 |
+| 8  | 软件包安装             | <font color=green>■</font> | 通过 |
+| 9  | 软件包卸载             | <font color=green>■</font> | 通过 |
+| 10 | 软件包查询             | <font color=green>■</font> | 通过 |
+
+测试结果表明，epkg具备稳定的跨平台基础能力，能够在Windows、macOS和Linux系统上完成安装；环境管理和软件包管理相关操作均符合预期，满足继承特性要求。
 
 ### 4.1.2 新增特性测试结论
 
