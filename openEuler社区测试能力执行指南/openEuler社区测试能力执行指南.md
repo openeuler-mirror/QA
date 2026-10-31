@@ -456,7 +456,7 @@ netperf是一种网络性能测试工具，主要基于TCP或UDP的传输。netp
 
 **预置条件**
 
-1.获取netperf软件包  
+1.获取netperf软件包
 下载地址：https://github.com/HewlettPackard/netperf/archive/refs/tags/netperf-2.7.0.tar.gz  
 2.客户端主机和服务端主机通过板载光口直连通信
 3.服务端主机关闭防火墙
@@ -1057,25 +1057,25 @@ Mail results [default yes]: no (设置为no)
   扫描特定主机：
 
   ```bash
-nmap 192.168.1.2 
+  nmap 192.168.1.2 
   ```
 
   扫描整个子网：
 
   ```bash
-nmap 192.168.1.1/24 
+  nmap 192.168.1.1/24 
   ```
 
   扫描多个目标：
 
   ```bash
-nmap 192.168.1.2 192.168.1.5 
+  nmap 192.168.1.2 192.168.1.5 
   ```
 
   扫描一个范围内主机 (扫描IP地址为192.168.1.1-192.168.1.100内的所有主机) 
 
   ```bash：
-nmap 192.168.1.1-100
+  nmap 192.168.1.1-100
   ```
 
 ### 4.4、mugen/security_test
@@ -1688,11 +1688,11 @@ https://mirrors.ustc.edu.cn/gnu/dejagnu/dejagnu-1.6.1.tar.gz
 
 （1）安装expect(否则会报错)
 
-dnf install -y expect
+`dnf install -y expect`
 
 （2）解压并构建
 
-tar -zxf dejagnu-1.6.1.tar.gz
+```tar -zxf dejagnu-1.6.1.tar.gz
 
 mkdir /home/install_runtest
 
@@ -1703,46 +1703,51 @@ cd dejagnu-1.6.1/
 make -j
 
 make install
+```
 
 3、设置环境变量（这里设置的是runtest的）
 
+```
 export PATH=/home/install_runtest/bin:$PATH
-
+```
 
 
 **测试**
 
 1、设置编译器环境变量
-
+```
 export PATH=/home/install/bin:$PATH
-
+```
 2、在gcc源码主目录下执行命令测试
 
-make -j -k check
+```make -j -k check```
 
 获取源码方式1：
 
-git clone https://gitcode.com/openeuler/gcc.git
+```git clone https://gitcode.com/openeuler/gcc.git```
 
 这种方式获取的源码里面有testsuite，可以直接复制测试套进行测试
 
 获取源码方式2：
 
-git clone -b branch_name https://gitcode.com/src-openeuler/gcc.git
+```git clone -b branch_name https://gitcode.com/src-openeuler/gcc.git```
 
 获取的源码需要rpmbuild 后才能在/root/rpmbuild/BUILD下生成正真的源码
-
+```
 cd gcc
 
 rpmbuild -bp gcc.spec
+```
+如果没有rpmbuild命令，则安装：
+```yum install -y rpm-build```
 
-如果没有rpmbuild命令，则安装：yum install -y rpm-build
-
-若有错误，则在当前目录(源码主目录)下执行：cp ./* /root/rpmbuild/SOURCES/
+若有错误，则在当前目录(源码主目录)下执行：
+```
+cp ./* /root/rpmbuild/SOURCES/
 
 ```
 此种方式的testsuite在 /root/rpmbuild/BUILD下，复制一个测试套进行测试全量用例测试
-
+```
 cp /root/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite  /root/rpmbuild/BUILD/gcc-10.3.0/gcc/testsuite-gcc -r
 
 runtest --tool gcc
@@ -1757,7 +1762,7 @@ runtest --tool gfortran
 ```
 
 3、测试结果保存在如下日志文件
-
+```
 ./host-aarch64-linux-gnu/gcc/testsuit/gcc/gcc.log
 
 ./host-aarch64-linux-gnu/gcc/testsuit/g++/g++.log
@@ -1767,7 +1772,7 @@ runtest --tool gfortran
 ./host-aarch64-linux-gnu/gcc/testsuit/objc/objc.log
 
 ./host-aarch64-linux-gnu/gcc/testsuit/gfortran/gfortran.log
-
+```
 
 
 **单个用例或单个exp执行**
@@ -1775,14 +1780,14 @@ runtest --tool gfortran
 例如split-path-10.c，同目录下有exp文件：tree-ssa.exp，如果没有在上层目录找
 
 在testsuite目录下执行：
-
+```
 runtest --tool gcc tree-ssa.exp=split-path-10.c
 
 runtest --tool gcc tree-ssa.exp
-
+```
 全量执行gcc
 
-runtest --tool gcc
+`runtest --tool gcc`
 
 ### 10.2、llvmcase
 
@@ -1792,13 +1797,14 @@ LLVM 项目是模块化和可重用的编译器和工具链技术的集合
 
 **测试部署环境准备：**
 
-安装GCC:yum install -y gcc gcc-*
+安装GCC:
+```yum install -y gcc gcc-*```
 
 **测试安装部署：**
 
 - 源码下载
 
-  git clone https://github.com/llvm/llvm-project.git
+  ```git clone https://github.com/llvm/llvm-project.git```
 
 - 编译
 
@@ -1816,13 +1822,12 @@ LLVM 项目是模块化和可重用的编译器和工具链技术的集合
 
   (3).f .F90 .f90文件编译
 
-  ```
-  gfortran ***.f ${option} -o ***.out
-  ```
+  ```gfortran ***.f ${option} -o ***.out```
+  
 
 - 运行
 
-  ./***.out
+  ```./***.out```
 
 ### 10.3、Anghabench
 
@@ -1832,23 +1837,24 @@ LLVM 项目是模块化和可重用的编译器和工具链技术的集合
 
 **测试部署环境准备：**
 
-安装GCC:yum install -y gcc gcc-*
+安装GCC:
+```yum install -y gcc gcc-*```
 
 **测试安装部署：**
 
 - 源码下载
 
-  git clone https://github.com/brenocfg/AnghaBench.git
+  ```git clone https://github.com/brenocfg/AnghaBench.git```
 
 - 编译
 
-  gcc ***.c ${option} -o ***.out
+  ```gcc ***.c ${option} -o ***.out```
 
   编译成功会生成.out文件
 
 - 运行
 
-  ./***.out
+  ```./***.out```
 
 ### 10.4、jotai
 
@@ -1858,17 +1864,17 @@ LLVM 项目是模块化和可重用的编译器和工具链技术的集合
 
 **测试部署环境准备：**
 
-安装GCC:yum install -y gcc gcc-*
+安装GCC:```yum install -y gcc gcc-*```
 
 **测试安装部署：**
 
 - 源码下载
 
-  git clone https://github.com/lac-dcc/jotai-benchmarks.git
+  ```git clone https://github.com/lac-dcc/jotai-benchmarks.git```
 
 - 编译
 
-  gcc ***.c ${option} -o ***.out
+  ```gcc ***.c ${option} -o ***.out```
 
   编译成功会生成.out文件
 
@@ -1884,33 +1890,37 @@ Csmith 是 C 程序的随机生成器。它的主要目的是使用差异测试�
 
 **测试部署环境准备：**
 
-- 安装GCC:yum install -y gcc gcc-*
+- 安装GCC:```yum install -y gcc gcc-*```
 
-- 安装依赖：yum install -y cmake m4
+- 安装依赖：```yum install -y cmake m4```
 
 - 源码下载
 
-  git clone https://github.com/csmith-project/csmith.git
+  ```git clone https://github.com/csmith-project/csmith.git```
 
 - csmith编译
 
+  ```
   cd csmith
 
   cmake -DCMAKE_INSTALL_PREFIX=<INSTALL-PREFIX> .
 
   make && make install
+  ```
 
 - 使用csmith生成.c文件
-
+  ```
   export PATH=$PATH:$HOME/csmith/bin
 
   csmith > random1.c
-
+  ```
 - 编译及运行
 
+  ```
   gcc random1.c -I$HOME/csmith/include -o random1
 
   ./random1
+  ```
 
 **其他**
 
@@ -1926,40 +1936,40 @@ yarpgen是一个随机程序生成器，可生成正确的可运行 C/C++ 和 DP
 
 **测试部署环境准备：**
 
-- 安装GCC:yum install -y gcc gcc-*
-
-- 安装依赖：yum install -y cmake
-
+- 安装GCC:
+  ```
+  yum install -y gcc gcc-*
+  ```
+- 安装依赖：
+  ```
+  yum install -y cmake
+  ```  
 - 源码下载
-
+  ```
   git clone https://github.com/intel/yarpgen.git
-
+  ```
 - yarpgen编译
-
+  ```
   cd yarpgen
-
   mkdir build
-
   cd build
-
   cmake ..
-
   make
-
+  ```
 - 使用yarpgen生成.cpp文件
-
+  ```
   ./yarpgen
 
   cat init.h func.cpp driver.cpp > random1.cpp
 
   sed -i 's|#include "init.h"||g' random1.cpp
-
+  ```
 - 编译及运行
-
+  ```
   g++ random1.cpp -I$HOME/csmith/include -o random1
 
   ./random1
-
+  ```
 **其他**
 
 查看yarpgen其他选项：./yarpgen -h
