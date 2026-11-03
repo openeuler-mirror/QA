@@ -10,6 +10,7 @@
 | 日期      | 修订版本 | 修改  章节 | 修改描述 | 作者        |
 | --------- | -------- | ---------- | -------- | ----------- |
 | 2026-10-24 | 1.0.0    |            | 初稿     | linqian0322 |
+| 2026-11-03 | 1.0.1    |            | 新增Loongarch64测试策略     | liqianwen |
 
 
 目 录
@@ -73,134 +74,134 @@ openEuler 24.03 LTS SP5版本交付[需求列表](https://gitcode.com/openeuler/
 
 | 序号   | 需求 | 责任主体 | 测试重点  | arm/x86 | riscv rva23 | loongarch |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-|1| 支持UKUI桌面    |sig-UKUI  |验证UKUI桌面系统在openEuler版本上的可安装和基本功能    |√|
-|2|	DDE桌面	|sig-DDE| 验证DDE桌面系统在openEuler版本上的可安装和基本功能及其他性能指标 |   √|
-|3|	Kiran桌面 |sig-KIRAN-DESKTOP | 验证kiran桌面在openEuler版本上的可安装卸载和基本功能    | √|
-|4|	安装部署 | sig-OS-Builder  |   验证覆盖裸机/虚机场景下，通过光盘/PXE等安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |√|
-|5|	内核	|sig-Kernel   |    关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持 |√|
-|6|	虚拟化	|sig-Virt    |  重点关注回合新特性后，新版本上虚拟化相关组件的基本功能|√|
-|7| A-Tune	|sig-A-Tune |	重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注|√|
-|8|	secPaver|	sig-security-facility	|验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性|√|
-|9| secGear	| sig-confidential-computing|	继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行|√|
-|10| etmem	| sig-Storage|	重点验证继承特性的基本功能和稳定性，如memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力|√|
-|11| gazelle|	sig-high-performance-network	| 继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能|√|
-|12| 国密全栈	|sig-security-facility |	继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法|√|
-|13| pod带宽管理	|sig-high-performance-network| 	验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |√|
-|14| iSulad	|sig-iSulad	|继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景|√|
-|15| Kuasar|	sig-CloudNative|	继承已有测试能力，重点验证kuasa的容器运行时特性以及kuasa机密容器适配virtCCA、容器镜像加解密等|√|
-|16| X-diagnose	|sig-ops	|继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能|√|
-|17| nvwa|	sig-ops	| 覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等 |√|
-|18| dpu-utilities	|sig-DPU| 验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源 |√|
-|19| syscare	|sig-ops|  验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力 |√|
-|20| DIM	|sig-security-facility|	继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量|√|
-|21| secDetector| sig-security-facility	|继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等|√|
-|22| devmaster	|sig-dev-utils|	继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景|√|
-|23| TPCM	|sig-Base-service|	验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等|√|
-|24| sysMaster	|sig-dev-utils|	验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景|√|
-|25| sysmonitor	|sig-ops|	继承已有测试能力，验证sysmonitor监控OS系统运行过程中的异常，并将监控到的异常记录到系统日志的能力，覆盖文件监控、磁盘分区监控、网卡监控、cpu监控等场景|√|
-|26| 混合部署	|sig-CloudNative |	结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试|√|
-|27| 安全配置工具	|sig-security-facility|	使用Linux系统安全检查工具 secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险|√|
-|28| 安全配置规范框架设计及核心内容构建	|sig-security-facility|	继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性|√|
-|29| IMA	|sig-security-facility|	验证rpm构建时，使用第三方证书对rpm摘要列表进行签名，内核导入第三方证书后，IMA摘要列表功能正常，以及xfs文件系统下，正常开启IMA摘要列表评估模式|√|
-|30| 支持IMA virtCCA	|sig-security-facility|	验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|√|
-|31| 安全启动	|sig-security-facility	|验证bios导入证书后，正常开启安全启动，以及防回滚功能开启后，无法进行版本降级操作等|√|
-|32| Kmesh	|sig-ebpf|	验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等|√|
-|33| openssl |	sig-security-facility|	验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上|√|
-|34| sysboost|	sig-A-Tune |	验证HOST和容器场景，涉及功能、可靠性、性能、安全测试，重点关注可靠性测试|√|
-|35| 远程证明统一框架|	sig-security-facility	|继承已有测试能力，重点验证ta被篡改后、严格模式和宽松模式下的远程通道能力等功能|√|
-|36| A-ops	|sig-ops	|继承已有测试功能，验证容器干扰检测，微服务性能问题分钟级定位定界场景、AI集群慢节点快速发现、 基于通信算子的低开销高精度慢节点检测 、支持典型内存故障定位等异常检测、故障诊断能力|√|
-|37| 编译器(gcc/jdk)  | sig-Compiler | 	基于开源测试套对gcc和jdk相关功能进行验证    |  √|
-|38| 支持HA软件|  sig-Ha   |验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标  |√|
-|39| 支持k3s   |sig-K8sDistro|  	继承已有测试能力，验证k3s软件的部署功能正常|√|
-|40| 智能问答在线服务  |   sig-intelligence	|继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力|√|
-|41| 支持GreatSQL     |sig-DB  |验证openEuler支持高可用、高性能、高安全、高兼容的GreatSQL开源数据库|√|
-|42| 增加 utsudo 支持    | sig-memsafety |	继承已有测试能力，验证utsudo基础命令使用正常|√|
-|43| 增加 utshell支持  |  sig-memsafety |继承已有测试能力，验证utshell基础命令使用正常√|
-|44| LLVM多版本实现  |sig-Compiler| 继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用 |√|
-|45| 新增密码套件openHiTLS |  sig-security-facility |继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试 |√|
-|46| 支持oeaware    |  sig-A-Tune  |继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容|√|
-|47| 鲲鹏KAE加速器驱动安装包合入   |sig-kernel |继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩 |√|
-|48| Add Intel QAT packages support  | sig-Intel-Arch |  继承已有测试能力，重点验证intel qat相关软件包的功能和性能 |√|           
-|49| 版本引入ACPO包 |sig-Compiler |继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容|√|
-|50| openAMDC合入	|sig-BigData|	验证软件的核心功能模块，包括string、list、hash、set、sortedset等数据类型读写和主从复制、服务高可用功能|√|
-|51| 支持树莓派 |SIG-SBC |继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试   |√|
-|52| 智能诊断+智能调优 |sig-intelligence|	验证干扰检测、干扰源分析、负载感知、参数推荐等接口能力 以及配置错误检测功能|√|
-|53| CCA机密虚机基本能力	|sig-security-facility	|验证基于CCA架构的机密虚机生命周期管理-定义、销毁虚拟机域，创建、启动、销毁虚拟机功能以及获取证明报告的功能测试|√|
-|54| 慢IO检测	|sig-AccLib	|验证ai阈值、平均阈值、IO采集、告警插件配置文件的功能|√|
-|55| CCA机密虚机基于DA的设备直通	|sig-security-facility	|主要验证CCA机密虚机支持nvme磁盘/网卡设备/KAE等设备直通能力以及直通机密虚机后各设备的基础功能|√|
-|56| OS层性能分析调优skills	|sig-intelligence|	主要验证AgentOS场景下，自动化数据收集分析模式下的skill对于数据级别判断，流程执行的遵从情况|√|
-|57| KubeOS |sig-CloudNative|	验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级|√|
-|58| 异构通用内存管理框架gmem |sig-Kernel|	继承已有测试能力，重点验证异构通用内存管理框架能力，如基础融合内存能力，通过内存协同，互相借用扩大内存空间提升异构资源利用率等|√|
-|59| RH2D |sig-Long|	验证RH2D多级缓存直通加速特性，包含命令行参数测试、接口测试、基础功能测试等 |√|
-|60| 共享内存支持gdb |sig-Kernel |	继承已有测试能力，验证共享内存段支持gdb操作|√|
-|61| obmm |sig-Kernel |	继承已有测试能力，主要覆盖接口／功能，以及场景测试,验证OBMM提供跨节点内存访问与一致性控制能力功能正常|√|
-|62| sysSentry-灵衢	|sig-Base-service|	继承已有测试能力，重点覆盖panic/reboot场景劫持通过URMA/UVB通道上报消息答复功能；主动下电/oom通过sysSentry内逻辑上报消息答复功能；ub内存故障上报以及故障上报后根据物理地址杀掉对应的业务进程功能|√|
-|63| 支持OpenStack  |sig-OpenStack   |重点验证openstack稳定版本发布主要组件的安装部署、基本功能|√|
-|64| 发布Nestos-kubernetes-deployer  |sig-K8sDistro   |继承已有测试能力，覆盖在NestOS上部署，升级和维护kubernetes集群功能正常|√|
-|65| 支持NestOS |sig-CloudNative  |验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证|√|
-|66| virtCCA机密虚机特性合入     |	sig-kernel/sig-virt |  继承已有测试能力，重点验证机密虚机的基本功能、安全、兼容性以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试  |√|
-|67| virtcca: 支持virtCCA机密虚机热迁移    |	sig-kernel,virt  |继承已有测试能力，主要覆盖功能测试、可靠性测试、性能测试，功能重点覆盖不同虚机规格、数量热迁移执行，业务不中断，可靠性重点覆盖迁移前可用资源检查、迁移失败源虚机恢复、并发/反复迁移稳定性、内存完整性检查等|√|
-|68| 集成openGauss 6.0.0 LTS企业版   |sig-DB   |	重点验证openGauss 6.0.0数据库系统工具、SQL功能、数据库升级、兼容B库模块等功能测试  |√|
-|69| 内核TCP/IP协议栈支持CAQM拥塞     |sig-kernel |	继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能 |√|
-|70| 海光CSV3支持（支持主机创建CSV3虚拟机，支持虚拟机中运行内核）     |sig-kernel |	重点验证CSV3虚拟机的不同启动方式，覆盖功能、稳定性、兼容性测试 |√|
-|71| OVMF_CODE.fd支持CSV1/2/3开箱即用 |  sig-edk2     |继承已有测试能力，主要覆盖功能测试和稳定性测试，验证普通/CSV1/CSV2/CSV3虚拟机启动是否正常、在各种配置下混合启动是否正常以及虚拟机循环启动的压力测试是否正常| √|
-|72| OVMF.fd支持CSV1/2/3开箱即用 |  sig-edk2 |继承已有测试能力，主要覆盖功能测试和稳定性测试，验证Kernel Direct Boot方式或机密计算全磁盘加密方案启动CSV1、CSV2、CSV3虚拟机的功能测试及多种类型海光机密虚拟机同时启动的功能稳定性 |√|
-|73| 新的psp/ccp device id支持 |  sig-kernel/sig-qemu | 继承已有测试能力，主要覆盖海光可信功能验证|√|
-|74| 可信功能内核驱动剥离sev依赖  |sig-kernel  |    继承已有测试能力，主要覆盖海光可信功能验证|√|
-|75| vTKM 性能优化  |sig-kernel  |   继承已有测试能力，主要覆盖普通虚拟机和CSV虚拟机下的TKM功能验证，性能测试验证,内密钥的SM2签名、SM2解密、SM4加密、SM4解密等功能|√|
-|76| FUSE passthrough支持      |sig-kernel  | 继承已有测试能力，主要覆盖功能测试、性能测试和可靠性测试，验证fuse新增passthrough模式，在打开文件后，后续的读写直接通过fuse透传到tmpfs，达成io密集场景下性能提升|√|
-|77| openssl：Backport 主线 RISC-V 架构的 SHA-2 汇编优化  |sig-dev-utils  |   继承已有测试能力，验证SHA-2算法核心应用场景，如数据完整性验证，数据签名基础，密码安全存储||√| |
-|78| openssl库：RISC-V架构的系列优化-SM2优化 |sig-dev-utils   |继承已有测试能力，使用官方自带测试用例，运行make test涵盖特性的所有类型验证测试；使用openssl speed工具测试加入特性前后的sm2/rsa2048/aes-128-cbc性能||√||
-|79| golang: Backport RVA23 |sig-golang | 继承已有测试能力，重点验证 Backport 后 Golang 软件包本身能够通过所有测试| |√| |
-|80| snappy库：FindMatchLength支持RISC-V架构的优化  |sig-Base-service    |继承已有测试能力，主要覆盖功能测试，验证引入snappy优化后，snappy能够正常解压缩| |√| |
-|81| lz4库：提高riscv架构的压缩速度  |sig-Base-service|  继承已有测试能力，主要覆盖功能测试、性能测试、兼容性测试和稳定性测试，重点验证优化后的性能提升效果| |√| |
-|82| 支持IP over URMA  |sig-unifiedbus   |继承已有测试能力，验证IP over URMA支持智算组网TCP/IP协议通信，主要覆盖API接口测试，功能测试，并发压力测试，可靠性测试以及安全测试等|√|
-|83| URMA：URMA支持UB基础通信能力  |sig-UnifiedBus   | 	继承已有测试能力，重点覆盖对用户呈现的接口测试，功能方面覆盖URMA初始化、管理面建链、数据面收发等测试，对资源不足、对端进程异常退出等可靠性场景开展测试|√|
-|84| UMS：UMS支持socket接口通信   |sig-UnifiedBus  | 	继承已有测试能力，重点覆盖用户使用UMS的主要场景，功能方面覆盖UMS的正常建链、逃生通道触发、建链信息打印以及配置参数写入等场景|√|
-|85| DLock：支持基于UB的分布式锁  |  sig-UnifiedBus | 继承已有测试能力，覆盖对用户呈现的接口测试，功能方面覆盖DLock初始化、管理面建链、数据面收发等测试，对资源上限、进程异常退出等可靠性开展测试|√|
-|86| URPC：URPC支持UB | sig-UnifiedBus |	继承已有测试能力，功能方面覆盖对用户呈现的接口测试、URPC初始化、管理面建链、数据面收发等功能测试，对资源不足、对端进程异常退出等可靠性场景开展测试，并开展正常使用流程的长稳压测|√|
-|87| UBTurbo: HAM支持确定性热迁移能力 |  sig-UnifiedBus  |  继承已有测试能力，主要覆盖基于灵衢总线的远端内存访问能力与大带宽，实现确定性时长的虚机热迁移能力|√|
-|88| UBTurbo： SMAP支持内存冷热扫描和迁移能力  |  sig-UnifiedBus  |继承已有测试能力，重点验证SMAP可进行页面的冷热判断，根据冷热把页面在本地内存和远端内存之间做迁移，主要覆盖功能测试、可靠性测试和安全测试|√|
-|89| UBTurbo：RMRS Agent支持内存迁移决策与执行 |  sig-UnifiedBus  |继承已有测试能力，重点覆盖RMRS Agent对用户提供的API接口，验证内存迁移决策与执行功能|√|
-|90| UBTurbo： UBTurbo提供基础框架(配置读取、插件加载、日志管理、IPC通信等)能力  |  sig-UnifiedBus  |继承已有测试能力，构建UBTurbo测试插件，覆盖UBTurbo框架提供的插件注册/去注册,配置项获取以及日志记录功能|√|
-|91| UBS Engine: UBS Engine支持UB池化资源管理能力|sig-UB-ServiceCore  |继承已有测试能力，结合UBS Engine需求的交付的能力，覆盖接口/功能、场景、专项测试|√|
-|92| UBS Comm: HCOM支持UB通信能力 |sig-UB-ServiceCore  |  继承已有测试能力，重点测试UB通信单边Read/Write，双边send以及多路径能力，基于场景侧通信能力要求，多并发大数据量发送验证|√|
-|93| utpam：基于Rust开发的身份认证模块  | sig-memsafety   |  继承已有测试能力，重点验证utpam在openEuler版本上可正常编辑PAM配置文件设置认证策略|√|
-|94| UB lib & tool：灵衢基础工具和库  | sig-UnifiedBus    | 继承已有测试能力，重点验证ubctl作为dfx工具查询公共功能配置、模块状态、统计数据和固件信息等功能|√|
-|95| secScanner:操作系统安全加固组件    |  sig-security_facility   |	继承已有测试能力，重点验证安全加固、漏洞扫描、入侵检测在openEuler系统下正常运行，以及检测组件使用权限限制、组件日志未泄露系统敏感信息|√|
-|96| VMAnalyzer:轻量级虚拟化性能监控组件   | sig-ops  |  	继承已有测试能力，重点验证虚拟机运行状况和性能采集检测、宿主机信息/虚拟化环境信息/虚机基本信息采集检测测试|√|
-|97| 毕昇JDK21支持元数据压缩优化降低堆数据内存使用  |sig-Compiler |继承已有测试能力，重点验证通过降低Java对象头占用而减少Java堆内存（Heap Memory）占用能力，主要覆盖功能和可靠性测试|√|
-|98| TF原生Embedding算子图优化提高推理性能  | sig-Compiler | 继承已有测试能力，重点验证图算优化提升推理性能，主要覆盖功能测试和性能测试|√|
-|99| 毕昇JDK21版本 G1、PS支持堆内存扩缩容  |	sig-Compiler  | 继承已有测试能力，重点验证用户可在应用运行时动态扩展Java堆内存的上限无需重启JVM的能力，主要覆盖功能、性能和可靠性测试|√|
-|100| LLVM编译器提升数据库（MySQL）、压缩解压缩（lz4/zstd/xz）等性能|sig-Compiler   |继承已有测试能力，重点验证通过编译器优化提升应用性能，主要覆盖功能、性能和可靠性测试|√|
-|101| 毕昇JDK21支持JIT warmup， 提升Java启动性能   |sig-Compiler  |     	继承已有测试能力，重点验证开启优化特性可避免编译竞争提升应用性能，主要覆盖功能、性能和可靠性测试|√|
-|102| OS灵衢组件一键安装配置，业务可感知的通信故障场景快速定位  |sig-unifiedbus   | 继承已有测试能力，UB组件可一键快速安装部署与驱动自动加载，重点验证ub-pkg-cli命令用于配置UB相关组件的配置参数与基础功能检测能力|√|
-|103| E2B Agent沙箱提供生命周期管理统一接口，支持脚本、K8S方式部署E2B集群    |sig-CloudNative  | 	继承已有测试能力，验证E2B沙箱平台在openEuler上可一键部署，并可使用K8S进行管理部署，主要覆盖功能测试和可靠性测试|√|
-|104|智能Cache注入    |sig-A-tune |	继承已有测试能力，验证智能cache注入支持LLC与L2 cache stash配置，主要覆盖API接口测试、功能测试、可靠性测试和性能测试|√|
-|105| sysSentry支持硬盘寿命检测和健康监控  |   sig-Base-service    | 	继承已有测试能力，增强sysSentry故障检测能力，支持上报BMC所有硬盘告警事件，支持告警事件类型可配置化等，主要覆盖功能测试和可靠性测试|√|
-|106| Go语言map SIMD加速、hashtriemap算法优化等，提升hashmap性能    |  	sig-golang   |	继承已有测试能力，验证Go语言map SIMD加速、hashtriemap算法优化等效果，主要覆盖功能测试和性能测试|√|
-|107| AI图编译器TF+XLA动态batch场景并行化优化，提升性能  |sig-Compiler    |  	继承已有测试能力，验证XLA编译器支持动态batch和并行优化的效果，主要覆盖功能测试和性能测试|√|
-|108| LLVM实现RabitQ性能提升   |  sig-Compiler   | 	继承已有测试能力，验证向量化增强优化和memcpy inline优化效果，主要覆盖功能测试和性能测试|√|
-|109| LLVM优化降低数据库、搜推场景编译时长   |  sig-Compiler   | 	继承已有测试能力，验证LLVM使能编译优化效果，主要覆盖功能测试和性能测试|√|
-|110| 毕昇JDK GC算法、SVE/DMB指令等优化，提升大数据性能  |sig-Compiler| 	继承已有测试能力，验证毕昇JDK17 GC算法、SVE/DMB指令等优化特性效果，主要覆盖功能测试和性能测试|√|
-|111| 增加可信计算资源分发服务组件	| sig-security-facility| 继承已有测试能力，验证可信计算资源分发服务组件，,主要覆盖远程证明基础功能、可靠性以及安全合规性 |√|
-|112| 海光ccp驱动升级，支持sm4-xts和sm4-gcm	|sig-Kernel    | 继承已有测试能力，主要覆盖功能测试、可靠性测试、安全测试和兼容性测试，验证 SM4-XTS 和 SM4-GCM 的加密、解密、异常输入、stream/multithread 调用等场景 |√|
-|113| cu-cockpit	| sig-security-facility|继承已有测试能力，验证单节点场景下轻量化运维管理工具相关功能，包括服务管理、资源管理、配置管理、日志管理、终端功能等六大模块 |√|
-|114| fastblock块存储项目	| sig-SDS |	继承已有测试能力，主要覆盖功能测试、性能测试、安全测试、可靠性测试和兼容性测试，验证集群部署、QEMU/vhost 对接、NVMe-oF 导出、性能、故障恢复、Raft 成员变更与 Recovery/Snapshot 机制等 |√|
-|115| cu-concrete|	sig-security-facility	| 继承已有测试能力，覆盖安全加固全流程，包括安全加固平台启动、加固列表查看、加固执行、加固还原以及TUI界面启动/TUI界面加固执行/TUI界面加固还原/TUI界面日志查看 |√|
-|116| cu-scanner	|sig-security-facility|	继承已有测试能力，主要覆盖了功能测试，验证CSAF转换测试和获取OVAL文件测试 |√|
-|117| safeguard	|sig-ebpf	| 继承已有测试能力，主要覆盖safeguard 白名单功能、黑名单功能、启动运行接口及配置加载路径等功能，包括白名单生成加载、网络白名单监控模式、进程白名单阻断模式、白名单手动调整、黑名单文件访问控制、黑名单网络访问控制、启动运行接口正常及异常路径等 |√|
-|118| 引入IOInflight QoS控制器，降低混部场景在线业务干扰率  | sig-kernel  | 	继承已有测试能力，重点验证识别和优先处理关键任务的读写请求能力，主要覆盖功能测试和可靠性测试|√|
-|119| ModelFS提升推理服务启动速度  |   sig-kernel |继承已有测试能力，重点验证ModelFS 语义功能和事件管理功能，以及长稳测试|√|
-|120| 内核态操作用户态内存场景，通过容错机制避免UCE故障上报导致系统panic   |	sig-kernel   | 	继承已有测试能力，重点验证内核在已知故障模式下可保持稳定，避免远端UB内存故障引发的内核崩溃，主要覆盖功能测试和可靠性测试|√|
-|121| NPU时域切分及隔离提升利用率  |  sig-kernel  | 	继承已有测试能力，验证算力切分特性实现任务到异构算力的按需调度机制，主要覆盖功能、性能和可靠性测试 |√|
-|122| cgroup v2支持内存异步回收功能  | sig-kernel  |	继承已有测试能力，验证cgroup v2 内存异步回收解决当前cgroup隔离方案导致的易卡死，同步内存回收带来性能下降的痛点，主要覆盖功能测试、性能测试和可靠性测试|√|
-|123| sockmap加速同主机tcp流  	| sig-kernel   | 继承已有测试能力，验证sockmap在socket层旁路tcp协议栈，降低延迟的作用，主要覆盖功能测试和性能测试|√|
-|124| GIC超分优化，提升Nginx性能  | sig-kernel | 继承已有测试能力，验证相同亲和组动静态迁移测试，跨亲和组动静态迁移测试，主要覆盖功能、性能和可靠性测试等|√|
-|125| 内存支持zone粒度内存回收（异步模式） |  sig-kernel  |继承已有测试能力，验证使能node_reclaim后唤醒kswapd进行异步回收，主要覆盖功能测试、可靠性测试 |√|
-|126| 混部场景，降低在线任务P99劣化率，提高整机的CPU利用率|sig-Kernel   | 继承已有测试能力，验证混部场景下SMT QoS提升CPU利用率，覆盖功能测试如选核策略、绑核/隔离核、cpu上下线等场景测试，可靠性测试如选核迁移等  |  √ | 
-|127| 支持 NPU 显存 MB 级切分及隔离	|sig-Kernel  | 继承已有测试能力，验证算力切分特性支持 NPU 卡显存切分，多模型混部时显存隔离最低支持1MB，主要覆盖功能测试、显存切分稳定性测试、相关功能并发场景测试 |√|
-|128| 支持CGroupV2	|sig-Kernel| 继承已有测试能力，验证支持cgroup v2,增强资源管理和隔离能力，提升容器运行可靠性,主要覆盖功能测试和cgroup v2各子系统功能并发压力测试 |√|
+|1| 支持UKUI桌面    |sig-UKUI  |验证UKUI桌面系统在openEuler版本上的可安装和基本功能    |√||√|
+|2|	DDE桌面	|sig-DDE| 验证DDE桌面系统在openEuler版本上的可安装和基本功能及其他性能指标 |   √||√|
+|3|	Kiran桌面 |sig-KIRAN-DESKTOP | 验证kiran桌面在openEuler版本上的可安装卸载和基本功能    | √||√|
+|4|	安装部署 | sig-OS-Builder  |   验证覆盖裸机/虚机场景下，通过光盘/PXE等安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署 |√||√|
+|5|	内核	|sig-Kernel   |    关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；通过开源性能测试工具对内核性能进行验证，保证性能基线与LTS基本持 |√||√|
+|6|	虚拟化	|sig-Virt    |  重点关注回合新特性后，新版本上虚拟化相关组件的基本功能|√||√|
+|7| A-Tune	|sig-A-Tune |	重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注|√||×|
+|8|	secPaver|	sig-security-facility	|验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性|√||√|
+|9| secGear	| sig-confidential-computing|	继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行|√||×|
+|10| etmem	| sig-Storage|	重点验证继承特性的基本功能和稳定性，如memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力|√||×|
+|11| gazelle|	sig-high-performance-network	| 继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能|√||×|
+|12| 国密全栈	|sig-security-facility |	继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法|√||×|
+|13| pod带宽管理	|sig-high-performance-network| 	验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试 |√||√|
+|14| iSulad	|sig-iSulad	|继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景|√||√|
+|15| Kuasar|	sig-CloudNative|	继承已有测试能力，重点验证kuasa的容器运行时特性以及kuasa机密容器适配virtCCA、容器镜像加解密等|√||×|
+|16| X-diagnose	|sig-ops	|继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能|√||×|
+|17| nvwa|	sig-ops	| 覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等 |√||√|
+|18| dpu-utilities	|sig-DPU| 验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源 |√||×|
+|19| syscare	|sig-ops|  验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力 |√||×|
+|20| DIM	|sig-security-facility|	继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量|√||×|
+|21| secDetector| sig-security-facility	|继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等|√||×|
+|22| devmaster	|sig-dev-utils|	继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景|√||×|
+|23| TPCM	|sig-Base-service|	验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等|√||×|
+|24| sysMaster	|sig-dev-utils|	验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景|√||×|
+|25| sysmonitor	|sig-ops|	继承已有测试能力，验证sysmonitor监控OS系统运行过程中的异常，并将监控到的异常记录到系统日志的能力，覆盖文件监控、磁盘分区监控、网卡监控、cpu监控等场景|√||√|
+|26| 混合部署	|sig-CloudNative |	结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试|√||√|
+|27| 安全配置工具	|sig-security-facility|	使用Linux系统安全检查工具 secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险|√||√|
+|28| 安全配置规范框架设计及核心内容构建	|sig-security-facility|	继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性|√||√|
+|29| IMA	|sig-security-facility|	验证rpm构建时，使用第三方证书对rpm摘要列表进行签名，内核导入第三方证书后，IMA摘要列表功能正常，以及xfs文件系统下，正常开启IMA摘要列表评估模式|√||×|
+|30| 支持IMA virtCCA	|sig-security-facility|	验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|√||×|
+|31| 安全启动	|sig-security-facility	|验证bios导入证书后，正常开启安全启动，以及防回滚功能开启后，无法进行版本降级操作等|√||×|
+|32| Kmesh	|sig-ebpf|	验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等|√||×|
+|33| openssl |	sig-security-facility|	验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上|√||√|
+|34| sysboost|	sig-A-Tune |	验证HOST和容器场景，涉及功能、可靠性、性能、安全测试，重点关注可靠性测试|√||×|
+|35| 远程证明统一框架|	sig-security-facility	|继承已有测试能力，重点验证ta被篡改后、严格模式和宽松模式下的远程通道能力等功能|√||×|
+|36| A-ops	|sig-ops	|继承已有测试功能，验证容器干扰检测，微服务性能问题分钟级定位定界场景、AI集群慢节点快速发现、 基于通信算子的低开销高精度慢节点检测 、支持典型内存故障定位等异常检测、故障诊断能力|√||×|
+|37| 编译器(gcc/jdk)  | sig-Compiler | 	基于开源测试套对gcc和jdk相关功能进行验证    |  √||√|
+|38| 支持HA软件|  sig-Ha   |验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标  |√||×|
+|39| 支持k3s   |sig-K8sDistro|  	继承已有测试能力，验证k3s软件的部署功能正常|√||×|
+|40| 智能问答在线服务  |   sig-intelligence	|继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力|√||×|
+|41| 支持GreatSQL     |sig-DB  |验证openEuler支持高可用、高性能、高安全、高兼容的GreatSQL开源数据库|√||√|
+|42| 增加 utsudo 支持    | sig-memsafety |	继承已有测试能力，验证utsudo基础命令使用正常|√||√|
+|43| 增加 utshell支持  |  sig-memsafety |继承已有测试能力，验证utshell基础命令使用正常|√||√|
+|44| LLVM多版本实现  |sig-Compiler| 继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用 |√||√|
+|45| 新增密码套件openHiTLS |  sig-security-facility |继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试 |√||×|
+|46| 支持oeaware    |  sig-A-Tune  |继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容|√||×|
+|47| 鲲鹏KAE加速器驱动安装包合入   |sig-kernel |继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩 |√||×|
+|48| Add Intel QAT packages support  | sig-Intel-Arch |  继承已有测试能力，重点验证intel qat相关软件包的功能和性能 |√||×|           
+|49| 版本引入ACPO包 |sig-Compiler |继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容|√||×|
+|50| openAMDC合入	|sig-BigData|	验证软件的核心功能模块，包括string、list、hash、set、sortedset等数据类型读写和主从复制、服务高可用功能|√||×|
+|51| 支持树莓派 |SIG-SBC |继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试   |√||×|
+|52| 智能诊断+智能调优 |sig-intelligence|	验证干扰检测、干扰源分析、负载感知、参数推荐等接口能力 以及配置错误检测功能|√||×|
+|53| CCA机密虚机基本能力	|sig-security-facility	|验证基于CCA架构的机密虚机生命周期管理-定义、销毁虚拟机域，创建、启动、销毁虚拟机功能以及获取证明报告的功能测试|√||×|
+|54| 慢IO检测	|sig-AccLib	|验证ai阈值、平均阈值、IO采集、告警插件配置文件的功能|√||×|
+|55| CCA机密虚机基于DA的设备直通	|sig-security-facility	|主要验证CCA机密虚机支持nvme磁盘/网卡设备/KAE等设备直通能力以及直通机密虚机后各设备的基础功能|√||×|
+|56| OS层性能分析调优skills	|sig-intelligence|	主要验证AgentOS场景下，自动化数据收集分析模式下的skill对于数据级别判断，流程执行的遵从情况|√||×|
+|57| KubeOS |sig-CloudNative|	验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级|√||×|
+|58| 异构通用内存管理框架gmem |sig-Kernel|	继承已有测试能力，重点验证异构通用内存管理框架能力，如基础融合内存能力，通过内存协同，互相借用扩大内存空间提升异构资源利用率等|√||×|
+|59| RH2D |sig-Long|	验证RH2D多级缓存直通加速特性，包含命令行参数测试、接口测试、基础功能测试等 |√||×|
+|60| 共享内存支持gdb |sig-Kernel |	继承已有测试能力，验证共享内存段支持gdb操作|√||×|
+|61| obmm |sig-Kernel |	继承已有测试能力，主要覆盖接口／功能，以及场景测试,验证OBMM提供跨节点内存访问与一致性控制能力功能正常|√||×|
+|62| sysSentry-灵衢	|sig-Base-service|	继承已有测试能力，重点覆盖panic/reboot场景劫持通过URMA/UVB通道上报消息答复功能；主动下电/oom通过sysSentry内逻辑上报消息答复功能；ub内存故障上报以及故障上报后根据物理地址杀掉对应的业务进程功能|√||×|
+|63| 支持OpenStack  |sig-OpenStack   |重点验证openstack稳定版本发布主要组件的安装部署、基本功能|√||√|
+|64| 发布Nestos-kubernetes-deployer  |sig-K8sDistro   |继承已有测试能力，覆盖在NestOS上部署，升级和维护kubernetes集群功能正常|√||×|
+|65| 支持NestOS |sig-CloudNative  |验证NestOS各项特性：ignition自定义配置、nestos-installer安装、zincati自动升级、rpm-ostree原子化更新、双系统分区验证|√||×|
+|66| virtCCA机密虚机特性合入     |	sig-kernel/sig-virt |  继承已有测试k能力，重点验证机密虚机的基本功能、安全、兼容性以及虚拟机注入故障/宿主机注入故障/老化测试/并发测试的可靠性测试  |√||×|
+|67| virtcca: 支持virtCCA机密虚机热迁移    |	sig-kernel,virt  |继承已有测试能力，主要覆盖功能测试、可靠性测试、性能测试，功能重点覆盖不同虚机规格、数量热迁移执行，业务不中断，可靠性重点覆盖迁移前可用资源检查、迁移失败源虚机恢复、并发/反复迁移稳定性、内存完整性检查等|√||×|
+|68| 集成openGauss 6.0.0 LTS企业版   |sig-DB   |	重点验证openGauss 6.0.0数据库系统工具、SQL功能、数据库升级、兼容B库模块等功能测试  |√||×|
+|69| 内核TCP/IP协议栈支持CAQM拥塞     |sig-kernel |	继承已有测试能力，验证CAQM拥塞控制算法使能后标准功能和性能 |√||×|
+|70| 海光CSV3支持（支持主机创建CSV3虚拟机，支持虚拟机中运行内核）     |sig-kernel |	重点验证CSV3虚拟机的不同启动方式，覆盖功能、稳定性、兼容性测试 |√||×|
+|71| OVMF_CODE.fd支持CSV1/2/3开箱即用 |  sig-edk2     |继承已有测试能力，主要覆盖功能测试和稳定性测试，验证普通/CSV1/CSV2/CSV3虚拟机启动是否正常、在各种配置下混合启动是否正常以及虚拟机循环启动的压力测试是否正常| √||×|
+|72| OVMF.fd支持CSV1/2/3开箱即用 |  sig-edk2 |继承已有测试能力，主要覆盖功能测试和稳定性测试，验证Kernel Direct Boot方式或机密计算全磁盘加密方案启动CSV1、CSV2、CSV3虚拟机的功能测试及多种类型海光机密虚拟机同时启动的功能稳定性 |√||×|
+|73| 新的psp/ccp device id支持 |  sig-kernel/sig-qemu | 继承已有测试能力，主要覆盖海光可信功能验证|√||×|
+|74| 可信功能内核驱动剥离sev依赖  |sig-kernel  |    继承已有测试能力，主要覆盖海光可信功能验证|√||×|
+|75| vTKM 性能优化  |sig-kernel  |   继承已有测试能力，主要覆盖普通虚拟机和CSV虚拟机下的TKM功能验证，性能测试验证,内密钥的SM2签名、SM2解密、SM4加密、SM4解密等功能|√||×|
+|76| FUSE passthrough支持      |sig-kernel  | 继承已有测试能力，主要覆盖功能测试、性能测试和可靠性测试，验证fuse新增passthrough模式，在打开文件后，后续的读写直接通过fuse透传到tmpfs，达成io密集场景下性能提升|√||×|
+|77| openssl：Backport 主线 RISC-V 架构的 SHA-2 汇编优化  |sig-dev-utils  |   继承已有测试能力，验证SHA-2算法核心应用场景，如数据完整性验证，数据签名基础，密码安全存储||√| × |
+|78| openssl库：RISC-V架构的系列优化-SM2优化 |sig-dev-utils   |继承已有测试能力，使用官方自带测试用例，运行make test涵盖特性的所有类型验证测试；使用openssl speed工具测试加入特性前后的sm2/rsa2048/aes-128-cbc性能||√|×|
+|79| golang: Backport RVA23 |sig-golang | 继承已有测试能力，重点验证 Backport 后 Golang 软件包本身能够通过所有测试| |√| ×|
+|80| snappy库：FindMatchLength支持RISC-V架构的优化  |sig-Base-service    |继承已有测试能力，主要覆盖功能测试，验证引入snappy优化后，snappy能够正常解压缩| |√|× |
+|81| lz4库：提高riscv架构的压缩速度  |sig-Base-service|  继承已有测试能力，主要覆盖功能测试、性能测试、兼容性测试和稳定性测试，重点验证优化后的性能提升效果| |√| ×|
+|82| 支持IP over URMA  |sig-unifiedbus   |继承已有测试能力，验证IP over URMA支持智算组网TCP/IP协议通信，主要覆盖API接口测试，功能测试，并发压力测试，可靠性测试以及安全测试等|√|| ×|
+|83| URMA：URMA支持UB基础通信能力  |sig-UnifiedBus   | 	继承已有测试能力，重点覆盖对用户呈现的接口测试，功能方面覆盖URMA初始化、管理面建链、数据面收发等测试，对资源不足、对端进程异常退出等可靠性场景开展测试|√|| ×|
+|84| UMS：UMS支持socket接口通信   |sig-UnifiedBus  | 	继承已有测试能力，重点覆盖用户使用UMS的主要场景，功能方面覆盖UMS的正常建链、逃生通道触发、建链信息打印以及配置参数写入等场景|√|| ×|
+|85| DLock：支持基于UB的分布式锁  |  sig-UnifiedBus | 继承已有测试能力，覆盖对用户呈现的接口测试，功能方面覆盖DLock初始化、管理面建链、数据面收发等测试，对资源上限、进程异常退出等可靠性开展测试|√|| ×|
+|86| URPC：URPC支持UB | sig-UnifiedBus |	继承已有测试能力，功能方面覆盖对用户呈现的接口测试、URPC初始化、管理面建链、数据面收发等功能测试，对资源不足、对端进程异常退出等可靠性场景开展测试，并开展正常使用流程的长稳压测|√|| ×|
+|87| UBTurbo: HAM支持确定性热迁移能力 |  sig-UnifiedBus  |  继承已有测试能力，主要覆盖基于灵衢总线的远端内存访问能力与大带宽，实现确定性时长的虚机热迁移能力|√|| ×|
+|88| UBTurbo： SMAP支持内存冷热扫描和迁移能力  |  sig-UnifiedBus  |继承已有测试能力，重点验证SMAP可进行页面的冷热判断，根据冷热把页面在本地内存和远端内存之间做迁移，主要覆盖功能测试、可靠性测试和安全测试|√|| ×|
+|89| UBTurbo：RMRS Agent支持内存迁移决策与执行 |  sig-UnifiedBus  |继承已有测试能力，重点覆盖RMRS Agent对用户提供的API接口，验证内存迁移决策与执行功能|√|| ×|
+|90| UBTurbo： UBTurbo提供基础框架(配置读取、插件加载、日志管理、IPC通信等)能力  |  sig-UnifiedBus  |继承已有测试能力，构建UBTurbo测试插件，覆盖UBTurbo框架提供的插件注册/去注册,配置项获取以及日志记录功能|√|| ×|
+|91| UBS Engine: UBS Engine支持UB池化资源管理能力|sig-UB-ServiceCore  |继承已有测试能力，结合UBS Engine需求的交付的能力，覆盖接口/功能、场景、专项测试|√|| ×|
+|92| UBS Comm: HCOM支持UB通信能力 |sig-UB-ServiceCore  |  继承已有测试能力，重点测试UB通信单边Read/Write，双边send以及多路径能力，基于场景侧通信能力要求，多并发大数据量发送验证|√|| ×|
+|93| utpam：基于Rust开发的身份认证模块  | sig-memsafety   |  继承已有测试能力，重点验证utpam在openEuler版本上可正常编辑PAM配置文件设置认证策略|√|| ×|
+|94| UB lib & tool：灵衢基础工具和库  | sig-UnifiedBus    | 继承已有测试能力，重点验证ubctl作为dfx工具查询公共功能配置、模块状态、统计数据和固件信息等功能|√|| ×|
+|95| secScanner:操作系统安全加固组件    |  sig-security_facility   |	继承已有测试能力，重点验证安全加固、漏洞扫描、入侵检测在openEuler系统下正常运行，以及检测组件使用权限限制、组件日志未泄露系统敏感信息|√|| ×|
+|96| VMAnalyzer:轻量级虚拟化性能监控组件   | sig-ops  |  	继承已有测试能力，重点验证虚拟机运行状况和性能采集检测、宿主机信息/虚拟化环境信息/虚机基本信息采集检测测试|√|| ×|
+|97| 毕昇JDK21支持元数据压缩优化降低堆数据内存使用  |sig-Compiler |继承已有测试能力，重点验证通过降低Java对象头占用而减少Java堆内存（Heap Memory）占用能力，主要覆盖功能和可靠性测试|√|| ×|
+|98| TF原生Embedding算子图优化提高推理性能  | sig-Compiler | 继承已有测试能力，重点验证图算优化提升推理性能，主要覆盖功能测试和性能测试|√|| ×|
+|99| 毕昇JDK21版本 G1、PS支持堆内存扩缩容  |	sig-Compiler  | 继承已有测试能力，重点验证用户可在应用运行时动态扩展Java堆内存的上限无需重启JVM的能力，主要覆盖功能、性能和可靠性测试|√|| ×|
+|100| LLVM编译器提升数据库（MySQL）、压缩解压缩（lz4/zstd/xz）等性能|sig-Compiler   |继承已有测试能力，重点验证通过编译器优化提升应用性能，主要覆盖功能、性能和可靠性测试|√|| ×|
+|101| 毕昇JDK21支持JIT warmup， 提升Java启动性能   |sig-Compiler  |     	继承已有测试能力，重点验证开启优化特性可避免编译竞争提升应用性能，主要覆盖功能、性能和可靠性测试|√|| ×|
+|102| OS灵衢组件一键安装配置，业务可感知的通信故障场景快速定位  |sig-unifiedbus   | 继承已有测试能力，UB组件可一键快速安装部署与驱动自动加载，重点验证ub-pkg-cli命令用于配置UB相关组件的配置参数与基础功能检测能力|√|| ×|
+|103| E2B Agent沙箱提供生命周期管理统一接口，支持脚本、K8S方式部署E2B集群    |sig-CloudNative  | 	继承已有测试能力，验证E2B沙箱平台在openEuler上可一键部署，并可使用K8S进行管理部署，主要覆盖功能测试和可靠性测试|√|| ×|
+|104|智能Cache注入    |sig-A-tune |	继承已有测试能力，验证智能cache注入支持LLC与L2 cache stash配置，主要覆盖API接口测试、功能测试、可靠性测试和性能测试|√|| ×|
+|105| sysSentry支持硬盘寿命检测和健康监控  |   sig-Base-service    | 	继承已有测试能力，增强sysSentry故障检测能力，支持上报BMC所有硬盘告警事件，支持告警事件类型可配置化等，主要覆盖功能测试和可靠性测试|√|| ×|
+|106| Go语言map SIMD加速、hashtriemap算法优化等，提升hashmap性能    |  	sig-golang   |	继承已有测试能力，验证Go语言map SIMD加速、hashtriemap算法优化等效果，主要覆盖功能测试和性能测试|√|| ×|
+|107| AI图编译器TF+XLA动态batch场景并行化优化，提升性能  |sig-Compiler    |  	继承已有测试能力，验证XLA编译器支持动态batch和并行优化的效果，主要覆盖功能测试和性能测试|√|| ×|
+|108| LLVM实现RabitQ性能提升   |  sig-Compiler   | 	继承已有测试能力，验证向量化增强优化和memcpy inline优化效果，主要覆盖功能测试和性能测试|√|| ×|
+|109| LLVM优化降低数据库、搜推场景编译时长   |  sig-Compiler   | 	继承已有测试能力，验证LLVM使能编译优化效果，主要覆盖功能测试和性能测试|√|| ×|
+|110| 毕昇JDK GC算法、SVE/DMB指令等优化，提升大数据性能  |sig-Compiler| 	继承已有测试能力，验证毕昇JDK17 GC算法、SVE/DMB指令等优化特性效果，主要覆盖功能测试和性能测试|√|| ×|
+|111| 增加可信计算资源分发服务组件	| sig-security-facility| 继承已有测试能力，验证可信计算资源分发服务组件，,主要覆盖远程证明基础功能、可靠性以及安全合规性 |√|| ×|
+|112| 海光ccp驱动升级，支持sm4-xts和sm4-gcm	|sig-Kernel    | 继承已有测试能力，主要覆盖功能测试、可靠性测试、安全测试和兼容性测试，验证 SM4-XTS 和 SM4-GCM 的加密、解密、异常输入、stream/multithread 调用等场景 |√|| ×|
+|113| cu-cockpit	| sig-security-facility|继承已有测试能力，验证单节点场景下轻量化运维管理工具相关功能，包括服务管理、资源管理、配置管理、日志管理、终端功能等六大模块 |√|| ×|
+|114| fastblock块存储项目	| sig-SDS |	继承已有测试能力，主要覆盖功能测试、性能测试、安全测试、可靠性测试和兼容性测试，验证集群部署、QEMU/vhost 对接、NVMe-oF 导出、性能、故障恢复、Raft 成员变更与 Recovery/Snapshot 机制等 |√|| ×|
+|115| cu-concrete|	sig-security-facility	| 继承已有测试能力，覆盖安全加固全流程，包括安全加固平台启动、加固列表查看、加固执行、加固还原以及TUI界面启动/TUI界面加固执行/TUI界面加固还原/TUI界面日志查看 |√|| ×|
+|116| cu-scanner	|sig-security-facility|	继承已有测试能力，主要覆盖了功能测试，验证CSAF转换测试和获取OVAL文件测试 |√|| ×|
+|117| safeguard	|sig-ebpf	| 继承已有测试能力，主要覆盖safeguard 白名单功能、黑名单功能、启动运行接口及配置加载路径等功能，包括白名单生成加载、网络白名单监控模式、进程白名单阻断模式、白名单手动调整、黑名单文件访问控制、黑名单网络访问控制、启动运行接口正常及异常路径等 |√|| ×|
+|118| 引入IOInflight QoS控制器，降低混部场景在线业务干扰率  | sig-kernel  | 	继承已有测试能力，重点验证识别和优先处理关键任务的读写请求能力，主要覆盖功能测试和可靠性测试|√|| ×|
+|119| ModelFS提升推理服务启动速度  |   sig-kernel |继承已有测试能力，重点验证ModelFS 语义功能和事件管理功能，以及长稳测试|√|| ×|
+|120| 内核态操作用户态内存场景，通过容错机制避免UCE故障上报导致系统panic   |	sig-kernel   | 	继承已有测试能力，重点验证内核在已知故障模式下可保持稳定，避免远端UB内存故障引发的内核崩溃，主要覆盖功能测试和可靠性测试|√|| ×|
+|121| NPU时域切分及隔离提升利用率  |  sig-kernel  | 	继承已有测试能力，验证算力切分特性实现任务到异构算力的按需调度机制，主要覆盖功能、性能和可靠性测试 |√|| ×|
+|122| cgroup v2支持内存异步回收功能  | sig-kernel  |	继承已有测试能力，验证cgroup v2 内存异步回收解决当前cgroup隔离方案导致的易卡死，同步内存回收带来性能下降的痛点，主要覆盖功能测试、性能测试和可靠性测试|√|| ×|
+|123| sockmap加速同主机tcp流  	| sig-kernel   | 继承已有测试能力，验证sockmap在socket层旁路tcp协议栈，降低延迟的作用，主要覆盖功能测试和性能测试|√|| ×|
+|124| GIC超分优化，提升Nginx性能  | sig-kernel | 继承已有测试能力，验证相同亲和组动静态迁移测试，跨亲和组动静态迁移测试，主要覆盖功能、性能和可靠性测试等|√|| ×|
+|125| 内存支持zone粒度内存回收（异步模式） |  sig-kernel  |继承已有测试能力，验证使能node_reclaim后唤醒kswapd进行异步回收，主要覆盖功能测试、可靠性测试 |√|| ×|
+|126| 混部场景，降低在线任务P99劣化率，提高整机的CPU利用率|sig-Kernel   | 继承已有测试能力，验证混部场景下SMT QoS提升CPU利用率，覆盖功能测试如选核策略、绑核/隔离核、cpu上下线等场景测试，可靠性测试如选核迁移等  |  √ | | ×|
+|127| 支持 NPU 显存 MB 级切分及隔离	|sig-Kernel  | 继承已有测试能力，验证算力切分特性支持 NPU 卡显存切分，多模型混部时显存隔离最低支持1MB，主要覆盖功能测试、显存切分稳定性测试、相关功能并发场景测试 |√|| ×|
+|128| 支持CGroupV2	|sig-Kernel| 继承已有测试能力，验证支持cgroup v2,增强资源管理和隔离能力，提升容器运行可靠性,主要覆盖功能测试和cgroup v2各子系统功能并发压力测试 |√|| ×|
 
 ## 新增需求测试策略
 
@@ -252,6 +253,7 @@ openEuler作为社区开源版本，在系统整体安全上需要进行保证�
 |   aarch64   |   huawei     |  kunpeng920 7270z    |
 |   aarch64   |   huawei     |  kunpeng950    |
 | loongarch64 | 龙芯 | 3C5000 |
+| loongarch64 | 龙芯 | 3D5000 |
 | loongarch64 | 龙芯 | 3C6000 |
 | loongarch64 | 龙芯 | 3D6000 |
 | loongarch64 | 龙芯 | 3A5000 |
