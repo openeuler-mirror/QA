@@ -10,6 +10,7 @@
 | 2026/9/22 | 1.0.0    | 初稿 | linqian0322 |
 | 2026/9/28 | 1.0.1    | 刷新继承特性验证结果和新需求验证情况 | linqian0322 |
 | 2026/9/30 | 1.0.2    | 刷新继承特性验证结果和新需求问题回归情况 | linqian0322 |
+| 2026/11/25 | 1.0.3 | add RISC-V | jean9823 |
 
 
 摘要：
@@ -70,7 +71,7 @@ openEuler 26.09版本按照社区release-manager团队的计划，详细的版�
 | ---------------------- | ---------------------------------------- | -------------- |
 | TaiShan 200 2280均衡型 | Kunpeng 920(支持1.70以上的bios版本)        | OS集成测试     |
 | RH2288H V3            | Intel(R) Xeon(R) Gold 5118 CPU @ 2.30GHz | OS集成测试     |
-| 算能            | 算丰SG2042 | OS集成测试     |
+| SpacemiT K3-CoM260 | SpacemiT K3 | OS集成测试     |
 
 ## 2.3 需求清单
 
@@ -204,65 +205,62 @@ openEuler 26.09版本详细测试内容包括：
 
 ### 4.1.1   继承特性评价
 
-| 序号   | 需求 | 责任主体 | 测试重点  | arm/x86质量评估 | riscv rva23评估 | 
+| 序号   | 需求 | 责任主体 | 测试重点  | arm/x86质量评估 | riscv rva23评估 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|1|UKUI桌面|sig-UKUI|验证UKUI桌面系统在openEuler版本上的可安装和基本功能|<font color=green>█</font>||
-|2|DDE桌面|sig-DDE|验证DDE桌面系统在openEuler版本上的可安装和基本功能及其他性能指标|<font color=green>█</font>||
-|3|Kiran桌面|sig-KIRAN-DESKTOP|验证kiran桌面在openEuler版本上的可安装卸载和基本功能|<font color=green>█</font>
-|4|安装部署|sig-OS-Builder|验证覆盖裸机/虚机场景下，通过光盘/PXE等安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署|<font color=green>█</font>
-|5|内核|sig-Kernel|关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；|<font color=green>█</font>|
-|6|虚拟化|sig-Virt|重点关注回合新特性后，新版本上虚拟化相关组件的基本功能|<font color=green>█</font>
-|7|A-Tune|sig-A-Tune|重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注|<font color=green>█</font>
-|8|secPaver|sig-security-facility|验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性|<font color=green>█</font>
-|9|secGear|sig-confidential-computing|继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行|<font color=green>█</font>
-|10|etmem|sig-Storage|重点验证继承特性的基本功能和稳定性，如memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力|<font color=green>█</font>||
-|11|gazelle|sig-high-performance-network|继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能|<font color=green>█</font>
-|12|国密全栈|sig-security-facility|继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法|<font color=green>█</font>
-|13|pod带宽管理|sig-high-performance-network|验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试|<font color=green>█</font>
-|14|iSulad|sig-iSulad|继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景|<font color=green>█</font>
-|15|Kuasar|sig-CloudNative|继承已有测试能力，重点验证kuasa的容器运行时特性以及kuasa机密容器适配virtCCA、容器镜像加解密等|<font color=green>█</font>
-|16|X-diagnosis|sig-ops|继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能|<font color=green>█</font>
-|17|nvwa|sig-ops|覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等|<font color=green>█</font>
-|18|dpu-utilities|sig-DPU|验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源|<font color=green>█</font>
-|19|syscare|sig-ops|继承已有测试能力，验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力，重点关注新增合入栈检测，容器化能力|<font color=green>█</font>
-|20|DIM|sig-security-facility|继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量|<font color=green>█</font>
-|21|secDetector|sig-security-facility|继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等|<font color=green>█</font>
-|22|devmaster|sig-dev-utils|继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景|<font color=green>█</font>
-|23|TPCM|sig-Base-service|验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等|<font color=green>█</font>
-|24|sysMaster|sig-dev-utils|验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景|<font color=green>█</font>
-|25|sysmonitor|sig-ops|继承已有测试能力，验证sysmonitor监控OS系统运行过程中的异常，并将监控到的异常记录到系统日志的能力，覆盖文件监控、磁盘分区监控、网卡监控、cpu监控等场景|<font color=green>█</font>
-|26|混合部署|sig-CloudNative|结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试|<font color=green>█</font>
-|27|安全配置工具|sig-security-facility|使用Linux系统安全检查工具secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险|<font color=green>█</font>
-|28|安全配置规范框架设计及核心内容构建|sig-security-facility|继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性|<font color=green>█</font>
-|29|IMA|sig-security-facility|验证rpm构建时，使用第三方证书对rpm摘要列表进行签名，内核导入第三方证书后，IMA摘要列表功能正常，以及xfs文件系统下，正常开启IMA摘要列表评估模式|<font color=green>█</font>
-|30|支持IMA virtCCA|sig-security-facility|验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|<font color=green>█</font>
-|31|安全启动|sig-security-facility|验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|<font color=green>█</font>
-|32|Kmesh|sig-ebpf|验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等|<font color=green>█</font>
-|33|openssl|sig-security-facility|验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上|<font color=green>█</font>
-|34|远程证明统一框架|sig-security-facility|继承已有测试能力，重点验证ta被篡改后、严格模式和宽松模式下的远程通道能力等功能|<font color=green>█</font>
-|35|A-ops|sig-ops|继承已有测试功能，验证容器干扰检测，微服务性能问题分钟级定位定界场景、AI集群慢节点快速发现、 基于通信算子的低开销高精度慢节点检测 、支持典型内存故障定位等能力|<font color=green>█</font>
-|36|KubeOS|sig-CloudNative|验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级|<font color=blue>▲</font>
-|37|编译器(gcc/jdk)|sig-Compiler|基于开源测试套对gcc和jdk相关功能进行验证|<font color=green>█</font>
-|38|支持HA软件|sig-Ha|验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标|<font color=green>█</font>
-|39|支持k3s|sig-K8sDistro|继承已有测试能力，验证k3s软件的部署功能正常|<font color=green>█</font>
-|40|智能问答在线服务|sig-intelligence|继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力|<font color=green>█</font>
-|41|支持GreatSQL|sig-DB|验证openEuler支持高可用、高性能、高安全、高兼容的GreatSQL开源数据库|<font color=green>█</font>
-|42|增加 utsudo 支持|sig-memsafety|继承已有测试能力，验证utsudo基础命令使用正常|<font color=green>█</font>
-|43|增加 utshell支持|sig-memsafety|继承已有测试能力，验证utshell基础命令使用正常|<font color=green>█</font>
-|44|LLVM多版本实现|sig-Compiler|继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用。| <font color=green>█</font>
-|45|新增密码套件openHiTLS|sig-security-facility|继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试| <font color=green>█</font>
-|46|支持oeaware|sig-A-Tune|继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容|<font color=green>█</font>
-|47|鲲鹏KAE加速器驱动安装包合入|sig-kernel|继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩|<font color=green>█</font>
-|48|Add Intel QAT packages support|sig-Intel-Arch|继承已有测试能力，重点验证intel qat相关软件包的功能和性能|<font color=green>█</font>
-|49|版本引入ACPO包|sig-Compiler|继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容| 9.28反馈测试结果
-|50|openAMDC合入|sig-BigData|验证软件的核心功能模块，包括string、list、hash、set、sortedset等数据类型读写和主从复制、服务高可用功能| <font color=green>█</font>
-|51|DevStation|sig-Devstation|继承已有测试能力，围绕智能化的一站式开发环境，验证devstation图形化编程环境、智能助手、原生开发工具链（如oedp）以及开发者软件商店等主要功能|<font color=green>█</font>
-|52|支持树莓派|sig-SBC|继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试|<font color=green>█</font>
-|53|远程证明统一框架(secgear)支持virtCCA Platform Token报告生成及验证|sig-confidential-computing|继承已有测试能力，重点验证virtCCA UEFI虚机/Direct Boot虚机远程证明/IMA度量远程证明|<font color=green>█</font>
-|54|LLVM平行宇宙计划 RISC-V Preview 版本|sig-RISC-V|验证 openEuler 平行宇宙计划产物镜像的可安装和可使用性, 覆盖功能、性能、可靠性、安全等各项测试活动||risc-v测试进度延迟| 
-|55|NestOS Kubernetes Deployer |sig-k8sDistro|继承已有测试能力，重点验证基础设施&Kubernetes集群的部署、扩展与销毁;aarch64和x86_64架构的兼容性测试以及操作响应测试；|<font color=green>█</font>
-
-|<font color=green>█</font>
+|1|UKUI桌面|sig-UKUI|验证UKUI桌面系统在openEuler版本上的可安装和基本功能|<font color=green>█</font>|N/A|
+|2|DDE桌面|sig-DDE|验证DDE桌面系统在openEuler版本上的可安装和基本功能及其他性能指标|<font color=green>█</font>|N/A|
+|3|Kiran桌面|sig-KIRAN-DESKTOP|验证kiran桌面在openEuler版本上的可安装卸载和基本功能|<font color=green>█</font>|N/A|
+|4|安装部署|sig-OS-Builder|验证覆盖裸机/虚机场景下，通过光盘/PXE等安装方式，覆盖最小化/虚拟化/服务器三种模式的安装部署|<font color=green>█</font>|<font color=green>█</font>|
+|5|内核|sig-Kernel|关注本次版本发布特性涉及内核配置参数修改后，是否对原有内核功能有影响；采用开源测试套LTP/mmtest等进行内核基本功能的测试保障；|<font color=green>█</font>|<font color=green>█</font>|
+|6|虚拟化|sig-Virt|重点关注回合新特性后，新版本上虚拟化相关组件的基本功能|<font color=green>█</font>|<font color=green>█</font>|
+|7|A-Tune|sig-A-Tune|重点关注本次新合入部分优化需求后，A-Tune整体性能调优引擎功能在各类场景下是否能根据业务特征进行最佳参数的适配；另外A-Tune服务/配置检查也需重点关注|<font color=green>█</font>|N/A|
+|8|secPaver|sig-security-facility|验证secPave策略开发工具在openEuler上的安装及基本功能，关注服务端的稳定性|<font color=green>█</font>|<font color=green>█</font>|
+|9|secGear|sig-confidential-computing|继承已有测试能力，验证secGear特性的功能完整性，包括远程证明基线与策略导入，查询，创建、加解密、边界检查、生成随机数、打印、销毁等特性正常运行|<font color=green>█</font>|N/A|
+|10|etmem|sig-Storage|重点验证继承特性的基本功能和稳定性，如memRouter内存策略框架的基本功能以及用户态页面切换技术userswap的内存迁移能力|<font color=green>█</font>|N/A|
+|11|gazelle|sig-high-performance-network|继承已有测试能力，验证gazelle高性能用户态协议栈功能，包括支持ceph,支持DWS，支持单网卡negligible，支持苏移krpc，一键脚本部署等继承功能|<font color=green>█</font>|<font color=green>█</font>|
+|12|国密全栈|sig-security-facility|继承已有测试能力，验证SSH协议栈、TLCP协议栈、内核模块签名、安全启动、文件完整性保护、用户身份鉴别、磁盘加密、算法库等模块支持国密算法|<font color=green>█</font>|N/A|
+|13|pod带宽管理|sig-high-performance-network|验证命令行接口，带宽管理功能场景，并发、异常流程、网卡故障以及ebpf程序篡改等故障注入，功能生效过程中反复使能/网卡Qos功能、反复修改cgroup优先级、反复修改在线水线、反复修改离线带宽等测试|<font color=green>█</font>|N/A|
+|14|iSulad|sig-iSulad|继承已有测试能力，覆盖继承功能cgroup v2,热升级，健康检查，本地卷，容器生命周期管理，镜像管理，资源管理等，重点验证isulad长稳场景|<font color=green>█</font>|<font color=green>█</font>|
+|15|Kuasar|sig-CloudNative|继承已有测试能力，重点验证kuasa的容器运行时特性以及kuasa机密容器适配virtCCA、容器镜像加解密等|<font color=green>█</font>|N/A|
+|16|X-diagnosis|sig-ops|继承已有测试能力，覆盖x-diagnosis的问题定位工具集、系统巡检、ftrace增强等功能|<font color=green>█</font>|N/A|
+|17|nvwa|sig-ops|覆盖内核热升级管理能力：内核热升级命令行、保持业务的配置、升级状态查询、热升级特性开关等|<font color=green>█</font>|N/A|
+|18|dpu-utilities|sig-DPU|验证DPU支持将管理面进程无感卸载到DPU，搭配网络、存储、安全等的卸载，释放主机计算资源|<font color=green>█</font>|N/A|
+|19|syscare|sig-ops|继承已有测试能力，验证热补丁服务管理工具syscare在补丁管理、补丁制作等能力，重点关注新增合入栈检测，容器化能力|<font color=green>█</font>|<font color=green>█</font>|
+|20|DIM|sig-security-facility|继承已有测试能力，验证dim_core、dim_monitor模块各启动参数的功能测试，例如开启签名校验、配置度量算法、配置自动周期度量、配置度量调度时间等，用户态程序、ko、内核代码段在篡改前后的dim_core动态基线创建及度量，以及度量策略篡改前后dim_monitor对dim_core的代码段和关键数据的动态基线创建及度量|<font color=green>█</font>|<font color=green>█</font>|
+|21|secDetector|sig-security-facility|继承已有测试能力，验证secDetector 入侵检测系统支持检测能力、响应能力和服务能力等|<font color=green>█</font>|N/A|
+|22|devmaster|sig-dev-utils|继承已有测试能力，验证devmaster的安装部署、进程配置、客户端工具等使用场景|<font color=green>█</font>|<font color=green>█</font>|
+|23|TPCM|sig-Base-service|验证openEuler支持TPCM能力，覆盖shim和grub支持国密算法度量、上报度量信息到BMC、接收BMC控制命令等|<font color=green>█</font>|N/A|
+|24|sysMaster|sig-dev-utils|验证sysMaster组件支持进程、容器和虚拟机的统一管理能力，覆盖创建单元配置文件、管理单元服务等场景|<font color=green>█</font>|<font color=green>█</font>|
+|25|sysmonitor|sig-ops|继承已有测试能力，验证sysmonitor监控OS系统运行过程中的异常，并将监控到的异常记录到系统日志的能力，覆盖文件监控、磁盘分区监控、网卡监控、cpu监控等场景|<font color=green>█</font>|<font color=green>█</font>|
+|26|混合部署|sig-CloudNative|结合容器场景，验证在线对离线业务的抢占，以及混部情况下的调度优先级测试|<font color=green>█</font>|N/A|
+|27|安全配置工具|sig-security-facility|使用Linux系统安全检查工具secureguardian，通过执行一系列的安全检查脚本, 查看生成的安全报告，评估系统的安全性是否存在风险|<font color=green>█</font>|<font color=green>█</font>|
+|28|安全配置规范框架设计及核心内容构建|sig-security-facility|继承已有测试能力，验证安全配置构建工程可以正常构建，安全配置指导内容正确，具有指导性|<font color=green>█</font>|<font color=green>█</font>|
+|29|IMA|sig-security-facility|验证rpm构建时，使用第三方证书对rpm摘要列表进行签名，内核导入第三方证书后，IMA摘要列表功能正常，以及xfs文件系统下，正常开启IMA摘要列表评估模式|<font color=green>█</font>|N/A|
+|30|支持IMA virtCCA|sig-security-facility|验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|<font color=green>█</font>|N/A|
+|31|安全启动|sig-security-facility|验证可信根为virtcca时，IMA度量扩展日志可正常扩展到可信根，以及存在全0度量日志，系统不会crash等|<font color=green>█</font>|N/A|
+|32|Kmesh|sig-ebpf|验证mdacore使能\去使能\查询功能，k8s场景的fortio网格加速测试、非容器场景的tcp网格加速功能，kmesh支持pod粒度/namespace粒度流量治理功能等|<font color=green>█</font>|N/A|
+|33|openssl|sig-security-facility|验证相比关闭指令集加速开关，sm4算法的加解密速度在默认打开情况下提升40倍以上|<font color=green>█</font>|<font color=green>█</font>|
+|34|远程证明统一框架|sig-security-facility|继承已有测试能力，重点验证ta被篡改后、严格模式和宽松模式下的远程通道能力等功能|<font color=green>█</font>|N/A|
+|35|A-ops|sig-ops|继承已有测试功能，验证容器干扰检测，微服务性能问题分钟级定位定界场景、AI集群慢节点快速发现、 基于通信算子的低开销高精度慢节点检测 、支持典型内存故障定位等能力|<font color=green>█</font>|N/A|
+|36|KubeOS|sig-CloudNative|验证kubeOS提供的镜像制作工具和制作出来镜像在K8S集群场景下的双区升级的能力；可靠性需关注在分区信息异常及升级过程中故障异常场景下的恢复能力；另外关注连续反复的双区交替升级|<font color=blue>▲</font>|N/A|
+|37|编译器(gcc/jdk)|sig-Compiler|基于开源测试套对gcc和jdk相关功能进行验证|<font color=green>█</font>|<font color=green>█</font>|
+|38|支持HA软件|sig-Ha|验证HA软件的安装和软件的基本功能，重点关注服务的可靠性和性能等指标|<font color=green>█</font>|<font color=green>█</font>|
+|39|支持k3s|sig-K8sDistro|继承已有测试能力，验证k3s软件的部署功能正常|<font color=green>█</font>|N/A|
+|40|智能问答在线服务|sig-intelligence|继承已有测试能力，验证openEuler统一知识问答平台支持用户通过自然语言提问获取准确的答案，并具备多轮对话能力|<font color=green>█</font>|N/A|
+|41|支持GreatSQL|sig-DB|验证openEuler支持高可用、高性能、高安全、高兼容的GreatSQL开源数据库|<font color=green>█</font>|N/A|
+|42|增加 utsudo 支持|sig-memsafety|继承已有测试能力，验证utsudo基础命令使用正常|<font color=green>█</font>|<font color=green>█</font>|
+|43|增加 utshell支持|sig-memsafety|继承已有测试能力，验证utshell基础命令使用正常|<font color=green>█</font>|N/A|
+|44|LLVM多版本实现|sig-Compiler|继承已有测试能力，验证LLVM多版本下，全量版本构建正常、LLVM多版本包能够正常工作和使用。| <font color=green>█</font>|<font color=green>█</font>|
+|45|新增密码套件openHiTLS|sig-security-facility|继承已有测试能力，重点验证openHiTLS密码算法、密码协议和证书的功能测试| <font color=green>█</font>|N/A|
+|46|支持oeaware|sig-A-Tune|继承已有测试能力，重点验证oeaware插件框架以及采集、感知等插件，主要覆盖了服务测试、客户端测试、框架测试、可靠性测试、安全测试等测试内容|<font color=green>█</font>|N/A|
+|47|鲲鹏KAE加速器驱动安装包合入|sig-kernel|继承已有测试能力，验证KAE加解密加速SSL/TLS应用和使用KAEzip进行数据压缩|<font color=green>█</font>|N/A|
+|48|Add Intel QAT packages support|sig-Intel-Arch|继承已有测试能力，重点验证intel qat相关软件包的功能和性能|<font color=green>█</font>|N/A|
+|49|版本引入ACPO包|sig-Compiler|继承已有测试能力，重点验证使能ACPO、使用ACPO进行模型训练和推理，覆盖功能、性能和可靠性测试内容| 9.28反馈测试结果|N/A|
+|50|openAMDC合入|sig-BigData|验证软件的核心功能模块，包括string、list、hash、set、sortedset等数据类型读写和主从复制、服务高可用功能| <font color=green>█</font>|N/A|
+|51|DevStation|sig-Devstation|继承已有测试能力，围绕智能化的一站式开发环境，验证devstation图形化编程环境、智能助手、原生开发工具链（如oedp）以及开发者软件商店等主要功能|<font color=green>█</font>|N/A|
+|52|支持树莓派|sig-SBC|继承已有测试能力，对树莓派镜像进行内核版本检查，安装、基本功能、管理工具、硬件兼容性等测试|<font color=green>█</font>|N/A|
+|53|远程证明统一框架(secgear)支持virtCCA Platform Token报告生成及验证|sig-confidential-computing|继承已有测试能力，重点验证virtCCA UEFI虚机/Direct Boot虚机远程证明/IMA度量远程证明|<font color=green>█</font>|N/A|
+|54|NestOS Kubernetes Deployer |sig-k8sDistro|继承已有测试能力，重点验证基础设施&Kubernetes集群的部署、扩展与销毁;aarch64和x86_64架构的兼容性测试以及操作响应测试；|<font color=green>█</font>|N/A|
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
@@ -270,29 +268,34 @@ openEuler 26.09版本详细测试内容包括：
 
 <font color=green>█</font>： 表示特性质量良好
 
+NA：表示不涉及此特性
+
 ### 4.1.2   新需求评价
 
 
 对新需求进行评价，用表格形式评价，包括特性列表（与特性清单保持一致），验证质量评估
 
-| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v质量评估**    |       **备注** |
-| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- | 
-| 1 | [【openEuler 26.09创新】【Agent Infra】【Agent调度】通过数据引用方式按需加载构建上下文管理系统，减少上下文长度](https://gitcode.com/openeuler/QA/pull/1524)| SCCS 特性共计执行40个对照测试样本，主要覆盖了功能测试（引用替换/按需取回全链路验证、会话与进程隔离）、基于 SWE-bench 的端到端正确率对照测试以及 input 上下文长度测试；以及性能、安全、可靠性和资料测试。无遗留风险，整体质量良好| |  |  <font color=green>█</font>|  | |
-| 2 | [【openEuler 26.09创新】【Agent Infra】【可观测&治理】构建可观测+治理框架底座，穿刺全链路观测+安全防护+审计能力]()| AcTrail（Agent长稳可靠运行）特性面向AI Agent运行时的可观测性与治理，并基于可观测结果进行离线评测并给出检测结果展示，AgentCensor基于AcTrial数据采集能力，增强了基于session的富观测能力，同时面向Agent运行时的安全管控与审计系统实现对agent审计支持，覆盖功能测试（含接口测试）、性能测试、可靠性、兼容性、安全测试和资料测试，全部通过，共发现问题32个，均已解决回归通过，无遗留问题|  ||  <font color=green>█</font>
-| 3 | [【openEuler 26.09创新】【Agent Infra】【Agent调度】Agent/KVC协同调度：感知“Agent语义”的KVC调度，降低Agent推理等待时延](https://gitcode.com/openeuler/QA/pull/1527)| 记忆智能RAM-A-KV特性，共计执行22个用例，覆盖了场景、接口、功能、可靠性、性能测试和安全测试，发现有效问题6个，已全部解决，回归通过，无遗留风险，整体质量良好 |   | | <font color=green>█</font>||配套昇腾 NPU 与 CANN 驱动 ||
-| 4 | [【openEuler 26.09创新】【AI Infra】【推理加速】DDR+HBM 分级协同，KV swap聚合传输，长序列>64K 推理场景多BS降低平均时延](https://gitcode.com/openeuler/QA/pull/1539)| K+X 内存协同 DSA Decode 卸载及 Sparse KV 小包聚合特性，在序列长度大于 64K 场景下，Sparse KV Offload 推理 TPOT 小于 50ms，推理吞吐相对基线提升 10%，符合需求；小包聚合功能正常，运行结果正确；小包聚合掩盖传输，实现 KV swap 倍级提升（相对离散 H2D，speedup 约 1.5x～5.1x），未发现问题，无遗留风险，整体质量良好。 | |  | <font color=green>█</font>| |
-| 5 | [【openEuler 26.09创新】【开发者生态及工具】【skillhub】openEuler上线skillshub，汇聚社区skill生态](https://gitcode.com/openeuler/QA/pull/1521)|SkillHub 平台特性测试，共计执行 50 个用例，主要覆盖了功能测试、安全测试、性能测试、可靠性测试和资料测试，用例全部通过，发现6个问题，已全部解决回归通过，无遗留问题，整体质量良好 |   || <font color=green>█</font>||||
-| 6 | [【openEuler 26.09创新】【开发者生态及工具】【DevStation】openEuler   DevStation：面向用户和开发者快速迭代尝鲜的openEuler创新版本](https://atomgit.com/openeuler/QA/pull/1522)|  DevStation组件升级特性测试共执行118个用例，主要覆盖Gnome 49、内核6.18、nodejs 22三项新增需求功能测试、继承特性回归测试、桌面系统基线测试，以及安全、可靠性与性能DFX专项测试。共发现问题4个，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |  <font color=green>█</font>
-| 7 | [【openEuler 26.09创新】【开发者生态及工具】【EPKG】完成EPKG默认集成到openEuler DevStation版本](https://gitcode.com/openeuler/QA/pull/1523)|本次测试共执行49个测试用例，主要覆盖功能测试、兼容性测试及性能测试。其中49个用例通过，0个用例未通过，发现两个问题，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |<font color=green>█</font>
-| 8 | [【openEuler 26.09创新】oeaware：提供场景化智能调优skills]()| 场景化智能调优skills针对9个场景的数据采集，分析并给出调优建议。共执行13个用例，主要覆盖了功能测试、兼容性测试、可靠性测试以及性能测试，共发现9个问题，均已解决并回归通过|  | |  <font color=green>█</font>
-| 9 | [【openEuler 26.09创新】【AI】【模型加速】ModelFS用户态模型加载优化方案]()| maio-utils可编程缓存框架特性测试用户态设备监听、事件读取/处理，预读/trace/回放/移除策略等，共执行12个用例，主要覆盖功能测试、fuzz测试，所有用例执行通过，未发现问题，特性整体质量良好| | |  <font color=green>█</font>
-| 10 | [【openEuler 26.09创新】【AI Infra】【推理加速】多级KV缓存+SSD直访，结合UB加速跨节点KV传输，长序列降低TTFT](https://gitcode.com/openeuler/QA/pull/1547)| KVC池化&多级KV缓存特性主要覆盖了功能测试和性能测试和资料测试，功能测试包含PD分离和P2P池化模式，性能测试取大模型首Token生成时间ttft值，P2P池化在整体表现上降低50%，PD分离在整体表现上降低30%，共发现5个问题，已全部闭环无遗留风险，整体质量良好 |  |  | <font color=green>█</font>
+| **序号** | **特性名称**   | **测试覆盖情况**     | **约束依赖说明** | **遗留问题单** | **aarch64/x86_64质量评估**    |  **risc-v rva23质量评估**  |       **备注** |
+| -------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------- | ---------------- | ---------------- | ---------------- | -------------- |
+| 1 | [【openEuler 26.09创新】【Agent Infra】【Agent调度】通过数据引用方式按需加载构建上下文管理系统，减少上下文长度](https://gitcode.com/openeuler/QA/pull/1524)| SCCS 特性共计执行40个对照测试样本，主要覆盖了功能测试（引用替换/按需取回全链路验证、会话与进程隔离）、基于 SWE-bench 的端到端正确率对照测试以及 input 上下文长度测试；以及性能、安全、可靠性和资料测试。无遗留风险，整体质量良好| |  |  <font color=green>█</font>| N/A | |
+| 2 | [【openEuler 26.09创新】【Agent Infra】【可观测&治理】构建可观测+治理框架底座，穿刺全链路观测+安全防护+审计能力]()| AcTrail（Agent长稳可靠运行）特性面向AI Agent运行时的可观测性与治理，并基于可观测结果进行离线评测并给出检测结果展示，AgentCensor基于AcTrial数据采集能力，增强了基于session的富观测能力，同时面向Agent运行时的安全管控与审计系统实现对agent审计支持，覆盖功能测试（含接口测试）、性能测试、可靠性、兼容性、安全测试和资料测试，全部通过，共发现问题32个，均已解决回归通过，无遗留问题|  ||  <font color=green>█</font>|N/A||
+| 3 | [【openEuler 26.09创新】【Agent Infra】【Agent调度】Agent/KVC协同调度：感知“Agent语义”的KVC调度，降低Agent推理等待时延](https://gitcode.com/openeuler/QA/pull/1527)| 记忆智能RAM-A-KV特性，共计执行22个用例，覆盖了场景、接口、功能、可靠性、性能测试和安全测试，发现有效问题6个，已全部解决，回归通过，无遗留风险，整体质量良好 |   | | <font color=green>█</font>|N/A|配套昇腾 NPU 与 CANN 驱动 |
+| 4 | [【openEuler 26.09创新】【AI Infra】【推理加速】DDR+HBM 分级协同，KV swap聚合传输，长序列>64K 推理场景多BS降低平均时延](https://gitcode.com/openeuler/QA/pull/1539)| K+X 内存协同 DSA Decode 卸载及 Sparse KV 小包聚合特性，在序列长度大于 64K 场景下，Sparse KV Offload 推理 TPOT 小于 50ms，推理吞吐相对基线提升 10%，符合需求；小包聚合功能正常，运行结果正确；小包聚合掩盖传输，实现 KV swap 倍级提升（相对离散 H2D，speedup 约 1.5x～5.1x），未发现问题，无遗留风险，整体质量良好。 | |  | <font color=green>█</font>| N/A ||
+| 5 | [【openEuler 26.09创新】【开发者生态及工具】【skillhub】openEuler上线skillshub，汇聚社区skill生态](https://gitcode.com/openeuler/QA/pull/1521)|SkillHub 平台特性测试，共计执行 50 个用例，主要覆盖了功能测试、安全测试、性能测试、可靠性测试和资料测试，用例全部通过，发现6个问题，已全部解决回归通过，无遗留问题，整体质量良好 |   || <font color=green>█</font>|N/A||
+| 6 | [【openEuler 26.09创新】【开发者生态及工具】【DevStation】openEuler   DevStation：面向用户和开发者快速迭代尝鲜的openEuler创新版本](https://atomgit.com/openeuler/QA/pull/1522)|  DevStation组件升级特性测试共执行118个用例，主要覆盖Gnome 49、内核6.18、nodejs 22三项新增需求功能测试、继承特性回归测试、桌面系统基线测试，以及安全、可靠性与性能DFX专项测试。共发现问题4个，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |  <font color=green>█</font>|N/A||
+| 7 | [【openEuler 26.09创新】【开发者生态及工具】【EPKG】完成EPKG默认集成到openEuler DevStation版本](https://gitcode.com/openeuler/QA/pull/1523)|本次测试共执行49个测试用例，主要覆盖功能测试、兼容性测试及性能测试。其中49个用例通过，0个用例未通过，发现两个问题，已全部闭环，回归通过，无遗留风险，整体质量良好|  |  |<font color=green>█</font>|N/A||
+| 8 | [【openEuler 26.09创新】oeaware：提供场景化智能调优skills]()| 场景化智能调优skills针对9个场景的数据采集，分析并给出调优建议。共执行13个用例，主要覆盖了功能测试、兼容性测试、可靠性测试以及性能测试，共发现9个问题，均已解决并回归通过|  | |  <font color=green>█</font>|N/A||
+| 9 | [【openEuler 26.09创新】【AI】【模型加速】ModelFS用户态模型加载优化方案]()| maio-utils可编程缓存框架特性测试用户态设备监听、事件读取/处理，预读/trace/回放/移除策略等，共执行12个用例，主要覆盖功能测试、fuzz测试，所有用例执行通过，未发现问题，特性整体质量良好| | |  <font color=green>█</font>|N/A||
+| 10 | [【openEuler 26.09创新】【AI Infra】【推理加速】多级KV缓存+SSD直访，结合UB加速跨节点KV传输，长序列降低TTFT](https://gitcode.com/openeuler/QA/pull/1547)| KVC池化&多级KV缓存特性主要覆盖了功能测试和性能测试和资料测试，功能测试包含PD分离和P2P池化模式，性能测试取大模型首Token生成时间ttft值，P2P池化在整体表现上降低50%，PD分离在整体表现上降低30%，共发现5个问题，已全部闭环无遗留风险，整体质量良好 |  |  | <font color=green>█</font>|N/A||
 
 <font color=red>●</font>： 表示特性不稳定，风险高
 
 <font color=blue>▲</font>： 表示特性基本可用，或遗留少量问题
 
 <font color=green>█</font>： 表示特性质量良好
+
+N/A： 表示不涉及此特性
+
 
 ## 4.2   兼容性测试结论
 
@@ -307,6 +310,8 @@ openEuler 26.09版本详细测试内容包括：
 | openEuler 26.09 | Centos 8 | x86_64  | PASS |
 | openEuler 26.09  | Windows Server 2016 | x86_64  | PASS |
 | openEuler 26.09  | Windows Server 2019 | x86_64  | PASS |
+| openEuler 26.09 | Ubuntu 24.04 | riscv64 | PASS |
+| openEuler 26.09 | Ubuntu 26.04 | riscv64 | PASS |
 
 ## 4.3   专项测试结论
 
@@ -315,19 +320,19 @@ openEuler 26.09版本详细测试内容包括：
 整体安全测试覆盖：
 
 1、病毒扫描
-测试内容：使用openlibing平台病毒扫描工具，对aarch64、x86_64架构的Everything(包含BaseOS)、EPOL所提供软件包、源码包进行病毒扫描。
-测试结果：共计扫描55,124个rpm包（Everything(包含BaseOS) 35,375个、EPOL 13,677个、SOURCE 6,072个）。经3种病毒扫描引擎扫描，仅1种病毒引擎存在告警一项，病毒类型：PUP.Netcat，病毒文件指向nmap的/usr/bin/ncat。经病毒引擎提供方确认，网络扫描工具视为潜在有害程序进行默认进行告警，经openEuler安委会评审无安全风险
+测试内容：使用openlibing平台病毒扫描工具，对aarch64、x86_64架构的Everything(包含BaseOS)、EPOL所提供软件包、源码包进行病毒扫描；使用社区内部病毒扫描工具，对 riscv64 架构的 Everything(包含BaseOS)、EPOL 所提供软件包、源码包进行病毒扫描。
+测试结果：aarch64、x86_64架构共计扫描55,124个rpm包（Everything(包含BaseOS) 35,375个、EPOL 13,677个、SOURCE 6,072个），riscv64 架构共计扫描 37202 个rpm包（Everything(包含BaseOS) 27160个、EPOL 10042个）。经3种病毒扫描引擎扫描，仅1种病毒引擎存在告警一项，病毒类型：PUP.Netcat，病毒文件指向nmap的/usr/bin/ncat。经病毒引擎提供方确认，网络扫描工具视为潜在有害程序进行默认进行告警，经openEuler安委会评审无安全风险。
 
 2、漏洞扫描
 测试说明：openEuler-26.09-DevStation 为创新版本，漏洞扫描不作为版本安全测试项
 
 3、安全编译选项扫描
-测试说明：使用openlibing平台二进制扫描工具，对aarch64、x86_64架构的BaseOS所提供软件包进行安全编译选项（包括BIND_NOW、NX、PIE、RELRO、SP、NO Rpath/Runpath、Strip）扫描。
-测试结果：共计扫描5,107个rpm包（aarch64 2,545个、x86_64 2,562个），发现问题12个（aarch64 10个、x86_64 2个），均已闭环，无风险。
+测试说明：使用openlibing平台二进制扫描工具，对aarch64、x86_64、riscv64 架构的BaseOS所提供软件包进行安全编译选项（包括BIND_NOW、NX、PIE、RELRO、SP、NO Rpath/Runpath、Strip）扫描。
+测试结果：aarch64、x86_64 共计扫描5,107个rpm包（aarch64 2,545个、x86_64 2,562个），发现问题12个（aarch64 10个、x86_64 2个），均已闭环，无风险；riscv64 共计扫描 2448 个rpm包，新发现问题0个，无新增风险
 
 4、安全测试基线用例
 测试说明：使用openscap、mugen对标准镜像进行用例测试。覆盖初始部署、安全访问、运行服务、日志审计等方面。
-测试结果：mugen用例测试在aarch64与x86_64上分别执行security_guide 49个、security_test 71个用例，用例数及通过数与上一版本保持一致，无遗留问题无风险。openscap为创新版本已评审通过，无需测试
+测试结果：mugen用例测试在aarch64与x86_64上分别执行security_guide 49个、security_test 71个用例，用例数及通过数与上一版本保持一致，无遗留问题无风险。openscap为创新版本已评审通过，无需测试。mugen用例测试在 riscv64 上分别执行security_guide 49个、security_test 71个用例，用例数及通过数与上一版本保持一致，无遗留问题无风险。
 
 5、开源片段引用扫描
 测试说明：对openEuler社区孵化软件包仓库使用openlibing平台开源合规扫描工具进行扫描
@@ -339,7 +344,7 @@ openEuler 26.09版本详细测试内容包括：
 
 7、软件包签名检查
 测试说明：对于Everything (包含BaseOS)、EPOL提供的软件包，使用rpm工具进行签名校验
-测试结果：共计验证55,124个rpm包，均通过签名检查
+测试结果：共计验证55,124个rpm包，均通过签名检查。riscv64架构共验证23181个rpm包，均通过签名检查。
 
 8、ISO签名及SBOM检查
 测试说明：版本发布后对应的ISO镜像存在sha256sum签名文件，SBOM文件、SBOM文件签名
@@ -351,9 +356,9 @@ https://gitcode.com/openeuler/QA/blob/72b7479daf0673f157c6069f4ff533c21f8ac258/T
 
 ### 4.3.2 可靠性测试
 
-| 测试类型     | 测试内容                                                     | 测试结论                                                    |
-| ------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况；稳定性测试时长7\*24 |通过 |
+| 测试类型     | 测试内容                                                     | Arm/X86 测试结论 | RISC-V RVA23 测试结论 |
+| ------------ | ------------------------------------------------------------ | ---------------- | --------------------- |
+| 操作系统长稳 | 系统在各种压力背景下，随机执行LTP等测试；过程中关注系统重要进程/服务、日志的运行情况；稳定性测试时长7\*24 | 通过             | 通过                  |
 
 ### 4.3.3 性能测试
 创新版本不涉及
@@ -559,6 +564,37 @@ openEuler 26.09版本共发现有效问题596个，其中遗留问题1个，详�
 |                             | 发布件sha256值校验       |                       |
 |                             | sbom、sha256sum文件|                    |
 |                             | rpm包签名  |                    |
+
+riscv64 测试基线
+
+| 迭代版本                    | 测试项              | 测试子项              |
+| --------------------------- | ------------------- | --------------------- |
+| openEuler 26.09 riscv64 RC1 | 冒烟测试            |                       |
+|                             | 包管理              | 软件包安装卸载        |
+|                             | 安装部署            | 标准镜像riscv64物理机 |
+|                             |                     | 标准镜像riscv64虚拟机 |
+|                             | 内核                | 基本功能测试          |
+|                             |                     | 长稳测试              |
+|                             |                     | POSIX标准测试         |
+|                             |                     | 性能测试              |
+|                             |                     | 安全测试              |
+|                             | 单包                | 单包命令              |
+|                             |                     | 单包服务              |
+|                             | 版本变化检查        | 软件包升降级变化测试  |
+|                             |                     | 软件范围变化测试      |
+|                             | 文件系统            |                       |
+|                             | 网络系统            |                       |
+|                             | 重启                | 冷启动                |
+|                             |                     | 热启动                |
+|                             | 安全专项            |                       |
+|                             | 虚拟机兼容性        |                       |
+| openEuler 26.09 riscv64 RC2 | 回归测试            |                       |
+|                             | 安装部署            | 标准镜像riscv64物理机 |
+|                             |                     | 标准镜像riscv64虚拟机 |
+| 发布件测试                  | release发布件测试   |                       |
+|                             | 发布件sha256值校验  |                       |
+|                             | sbom、sha256sum文件 |                       |
+|                             | rpm包签名           |                       |
 
 
 
